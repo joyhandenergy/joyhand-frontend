@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { useForm, useWatch } from 'react-hook-form';
 import PageHeader from "@/components/pageHeader/PageHeader";
-import SectionHeader from "@/components/SectionHeader/SectionHeader";
+import SectionHeader from "@/components/sectionHeader/SectionHeader";
 import { 
   MapPin, Phone, Mail, Clock, 
   User, Building2, ChevronRight, CheckCircle2, Zap 

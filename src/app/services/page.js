@@ -9,7 +9,7 @@ import {
   PiCheckCircle
 } from "react-icons/pi";
 import PageHeader from "@/components/pageHeader/PageHeader";
-import SectionHeader from "@/components/SectionHeader/SectionHeader";
+import SectionHeader from "@/components/sectionHeader/SectionHeader";
 import Link from "next/link";
 import "./services.css";
 

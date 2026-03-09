@@ -3,7 +3,7 @@ import Link from "next/link";
 import { PiLinkedinLogo, PiArrowRight } from "react-icons/pi";
 import PageHeader from "@/components/pageHeader/PageHeader";
 import Trustee from "@/components/Trustee/Trustee";
-import SectionHeader from "@/components/SectionHeader/SectionHeader";
+import SectionHeader from "@/components/sectionHeader/SectionHeader";
 import "./about.css";
 
 export default function AboutPage() {
