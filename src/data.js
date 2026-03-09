@@ -159,7 +159,7 @@ export const productData = [
   {
     id: 1,
     title: "Industrial Grade Solar Inverter 5KVA",
-    slug: "industrial-solar-inverter-5kva",
+    slug: "industrial-solar-inverter-5kva09",
     category: "Solar Inverters",
     // Array of images for the slider
     images: [
@@ -180,7 +180,7 @@ export const productData = [
   {
     id: 2,
     title: "Industrial Grade Solar Inverter 5KVA",
-    slug: "industrial-solar-inverter-5kva",
+    slug: "industrial-solar-inverter-5kva0",
     category: "Storage Battery",
     // Array of images for the slider
     images: [
@@ -201,7 +201,7 @@ export const productData = [
   {
     id: 3,
     title: "Industrial Grade Solar Inverter 5KVA",
-    slug: "industrial-solar-inverter-5kva",
+    slug: "industrial-solar-inverter-5kva1",
     category: "Electric Mobility",
     // Array of images for the slider
     images: [
@@ -222,7 +222,7 @@ export const productData = [
   {
     id: 4,
     title: "Industrial Grade Solar Inverter 5KVA",
-    slug: "industrial-solar-inverter-5kva",
+    slug: "industrial-solar-inverter-5kva2",
     category: "Solar Inverters",
     // Array of images for the slider
     images: [
@@ -243,7 +243,7 @@ export const productData = [
   {
     id: 5,
     title: "Industrial Grade Solar Inverter 5KVA",
-    slug: "industrial-solar-inverter-5kva",
+    slug: "industrial-solar-inverter-5kva3",
     category: "Storage Battery",
     // Array of images for the slider
     images: [
@@ -264,7 +264,7 @@ export const productData = [
   {
     id: 6,
     title: "Industrial Grade Solar Inverter 5KVA",
-    slug: "industrial-solar-inverter-5kva",
+    slug: "industrial-storage-battery-10kwh4",
     category: "Electric Mobility",
     // Array of images for the slider
     images: [
@@ -285,7 +285,7 @@ export const productData = [
   {
     id: 7,
     title: "Industrial Grade Solar Inverter 5KVA",
-    slug: "industrial-solar-inverter-5kva",
+    slug: "industrial-solar-inverter-5kva5",
     category: "Solar Inverters",
     // Array of images for the slider
     images: [
@@ -306,7 +306,7 @@ export const productData = [
   {
     id: 8,
     title: "Industrial Grade Solar Inverter 5KVA",
-    slug: "industrial-solar-inverter-5kva",
+    slug: "industrial-solar-inverter-5kva6",
     category: "Storage Battery",
     // Array of images for the slider
     images: [
@@ -327,7 +327,7 @@ export const productData = [
   {
     id: 9,
     title: "Industrial Grade Solar Inverter 5KVA",
-    slug: "industrial-solar-inverter-5kva",
+    slug: "industrial-solar-inverter-5kva7",
     category: "Electric Mobility",
     // Array of images for the slider
     images: [

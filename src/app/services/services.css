@@ -1,0 +1,193 @@
+/* Intro Section */
+.services-intro {
+  padding: var(--spacing-8) 0;
+}
+
+.services-intro__grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: var(--spacing-6);
+  align-items: flex-end;
+}
+
+.services-intro__desc {
+  color: var(--neutral-medium);
+  font-size: var(--font-size-lg);
+  border-left: 4px solid var(--primary-color-light);
+  padding-left: var(--spacing-4);
+  margin-bottom: var(--spacing-2);
+}
+
+/* Service Cards */
+.services-grid {
+  padding: var(--spacing-8) 0;
+  background-color: var(--neutral-light);
+}
+
+.services-grid__wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-4);
+}
+
+.service-card {
+  background: var(--neutral-white);
+  padding: var(--spacing-5);
+  border-radius: var(--spacing-2);
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+}
+
+.service-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--spacing-3);
+}
+
+.service-card__icon {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  background: var(--accent-color-light);
+  padding: var(--spacing-2);
+  border-radius: var(--spacing-1);
+}
+
+.service-card__badge {
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  color: var(--secondary-color);
+  background: var(--neutral-light);
+  padding: 4px 12px;
+  border-radius: 100px;
+  text-transform: uppercase;
+}
+
+.service-card__title {
+  margin-bottom: var(--spacing-2);
+}
+
+.service-card__link {
+  margin-top: auto;
+  padding-top: var(--spacing-3);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  color: var(--primary-color);
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.service-card__link:hover {
+  gap: var(--spacing-2);
+}
+
+/* Reliability Section */
+.reliability {
+  padding: var(--spacing-8) 0;
+}
+
+.reliability__box {
+  background: var(--secondary-color);
+  padding: var(--spacing-6);
+  border-radius: var(--spacing-3);
+  color: var(--neutral-white);
+}
+
+/* Overriding SectionHeader colors for dark background */
+.reliability .section-header__title { color: var(--neutral-white); }
+.reliability .section-header__subtitle { color: var(--neutral-light); opacity: 0.8; }
+
+.reliability__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-4);
+  margin-top: var(--spacing-5);
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: var(--spacing-5);
+}
+
+.reliability-item {
+  display: flex;
+  gap: var(--spacing-3);
+}
+
+.reliability-item__icon {
+  font-size: 2rem;
+  color: var(--primary-color);
+  flex-shrink: 0;
+}
+
+.reliability-item__title {
+  color: var(--neutral-white);
+  margin-bottom: var(--spacing-1);
+}
+
+/* Process Section */
+.process {
+  padding: var(--spacing-8) 0;
+}
+
+.process__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-4);
+}
+
+.process-card {
+  position: relative;
+  text-align: center;
+  padding: var(--spacing-4);
+}
+
+.process-card__step {
+  font-size: var(--font-size-xxl);
+  font-weight: 900;
+  color: var(--neutral-light);
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: -1;
+}
+
+.process-card__icon {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-2);
+}
+
+/* CTA Banner */
+.services-cta {
+  padding-bottom: var(--spacing-8);
+}
+
+.services-cta__banner {
+  text-align: center;
+  background: linear-gradient(rgba(18, 27, 45, 0.9), rgba(18, 27, 45, 0.9)), url('/images/solarImg/panel.home.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: var(--spacing-8) var(--spacing-4);
+  border-radius: var(--spacing-3);
+  color: var(--neutral-white);
+}
+
+.services-cta__title { color: var(--neutral-white); margin-bottom: var(--spacing-2); }
+.services-cta__subtitle { margin-bottom: var(--spacing-4); opacity: 0.9; }
+
+/* Responsive */
+@media (max-width: 992px) {
+  .services-intro__grid, .services-grid__wrapper, .reliability__grid {
+    grid-template-columns: 1fr;
+  }
+  .process__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

@@ -3,9 +3,9 @@
 import React, { useState, use } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { CaretLeft, CaretRight, ArrowLeft } from "phosphor-react";
+import { CaretLeft, CaretRight, ArrowLeft, FileText, ChatCenteredDots } from "phosphor-react";
 import { productData } from "@/data";
-import "../Products.css"; // only one import
+import "../Products.css"; 
 
 const ProductDetailsPage = ({ params: paramsPromise }) => {
   const params = use(paramsPromise);
@@ -14,89 +14,91 @@ const ProductDetailsPage = ({ params: paramsPromise }) => {
   // Find product by slug
   const product = productData.find((p) => p.slug === params.slug);
 
-  // Custom "Product Not Found"
+  // 404 State
   if (!product) {
     return (
       <main className="product-details-notfound">
         <div className="container text-center">
-          <h1>Product Not Found</h1>
-          <p>
-            Sorry, the product you are looking for doesn’t exist or may have been removed.
+          <h1 className="product-details-notfound__title">Product Not Found</h1>
+          <p className="product-details-notfound__text">
+            The specific energy solution you are looking for is unavailable. 
+            Please browse our catalog for alternatives.
           </p>
           <Link href="/products" className="btn btn--primary">
-            Back to Products
+            Back to Catalog
           </Link>
         </div>
       </main>
     );
   }
 
-  // Image gallery handlers
   const handleNext = () => {
-    setCurrentIndex((prev) =>
-      prev === product.images.length - 1 ? 0 : prev + 1
-    );
+    setCurrentIndex((prev) => (prev === product.images.length - 1 ? 0 : prev + 1));
   };
 
   const handlePrev = () => {
-    setCurrentIndex((prev) =>
-      prev === 0 ? product.images.length - 1 : prev - 1
-    );
+    setCurrentIndex((prev) => (prev === 0 ? product.images.length - 1 : prev - 1));
   };
 
   return (
     <main className="product-details">
       <div className="container">
-        {/* Back Button */}
+        {/* Navigation Breadcrumb */}
         <Link href="/products" className="product-details__back-link">
-          <ArrowLeft size={18} /> Back to Catalog
+          <ArrowLeft size={18} weight="bold" /> Back to Solutions Catalog
         </Link>
 
         <div className="product-details__grid">
-          {/* Image Gallery */}
+          {/* Visual Gallery Block - Refactored for Full Container Impact */}
           <section className="product-details__gallery">
-            <div className="product-details__main-viewer">
-              <Image
-                src={product.images[currentIndex]}
-                alt={product.title}
-                fill
-                priority
-                className="product-details__main-img"
-              />
-
-              <div className="product-details__controls">
-                <button onClick={handlePrev} className="product-details__nav-btn">
-                  <CaretLeft size={24} weight="bold" />
-                </button>
-                <button onClick={handleNext} className="product-details__nav-btn">
-                  <CaretRight size={24} weight="bold" />
-                </button>
+            <div className="product-details__viewer">
+              <div className="product-details__main-wrapper">
+                <Image
+                  src={product.images[currentIndex]}
+                  alt={product.title}
+                  fill
+                  priority
+                  className="product-details__main-img"
+                />
+                
+                {product.images.length > 1 && (
+                  <div className="product-details__arrows">
+                    <button onClick={handlePrev} className="product-details__arrow-btn" aria-label="Previous">
+                      <CaretLeft size={24} weight="bold" />
+                    </button>
+                    <button onClick={handleNext} className="product-details__arrow-btn" aria-label="Next">
+                      <CaretRight size={24} weight="bold" />
+                    </button>
+                  </div>
+                )}
               </div>
-            </div>
 
-            {/* Thumbnails */}
-            <div className="product-details__thumbnails">
-              {product.images.map((img, idx) => (
-                <button
-                  key={idx}
-                  className={`product-details__thumb-btn ${
-                    currentIndex === idx ? "product-details__thumb-btn--active" : ""
-                  }`}
-                  onClick={() => setCurrentIndex(idx)}
-                >
-                  <Image src={img} alt={`${product.title} thumbnail`} width={80} height={80} />
-                </button>
-              ))}
+              {/* Full Width Thumbnail Strip */}
+              <div className="product-details__strip">
+                {product.images.map((img, idx) => (
+                  <button
+                    key={idx}
+                    className={`product-details__strip-item ${
+                      currentIndex === idx ? "product-details__strip-item--active" : ""
+                    }`}
+                    onClick={() => setCurrentIndex(idx)}
+                  >
+                    <Image src={img} alt="Thumbnail" fill className="product-details__strip-img" />
+                  </button>
+                ))}
+              </div>
             </div>
           </section>
 
-          {/* Product Information */}
+          {/* Specification & Meta Block */}
           <section className="product-details__info">
-            <span className="product-details__category-tag">{product.category}</span>
+            <div className="product-details__meta">
+              <span className="solar-badge">{product.category}</span>
+            </div>
+            
             <h1 className="product-details__title">{product.title}</h1>
             <p className="product-details__description">{product.description}</p>
 
-            {/* Technical Specs */}
             <div className="product-details__specs">
               <h3 className="product-details__specs-heading">Technical Specifications</h3>
               <div className="product-details__specs-table">
@@ -109,13 +111,12 @@ const ProductDetailsPage = ({ params: paramsPromise }) => {
               </div>
             </div>
 
-            {/* Actions */}
             <div className="product-details__actions">
               <button className="btn btn--primary product-details__cta">
-                Request Technical Datasheet
+                <FileText size={20} weight="fill" /> Request Datasheet
               </button>
               <button className="btn btn--secondary product-details__cta">
-                Inquire for Bulk Pricing
+                <ChatCenteredDots size={20} weight="fill" /> Bulk Pricing Inquiry
               </button>
             </div>
           </section>

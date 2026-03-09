@@ -1,4 +1,3 @@
-/* app/blog/page.jsx */
 import { blogPosts } from "@/data";
 import BlogCard from "@/components/blogCard/BlogCard";
 import PageHeader from "@/components/pageHeader/PageHeader";
@@ -13,7 +12,7 @@ export default function BlogPage() {
         pageImage="/images/solarImg/panel.home.jpg" 
       />
       
-      <section className="blog-section mt-8 mb-8">
+      <section className="blog-section">
         <div className="container">
           <SectionHeader 
             badge="Stay Updated"
@@ -27,7 +26,7 @@ export default function BlogPage() {
                 key={post.id}
                 title={post.title}
                 image={post.image}
-               description={post.excerpt}
+                description={post.excerpt}
                 slug={post.slug}
               />
             ))}

@@ -1,0 +1,137 @@
+/* Intro Section */
+.about-intro {
+  padding: var(--spacing-8) 0;
+}
+
+.about-intro__container {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: var(--spacing-6);
+  align-items: center;
+}
+
+.about-intro__image-wrapper {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 8px solid var(--accent-color-light);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.about-intro__img {
+  object-fit: cover;
+}
+
+/* Capabilities Grid */
+.capabilities {
+  padding: var(--spacing-8) 0;
+  background-color: var(--neutral-light);
+}
+
+.capabilities__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-4);
+}
+
+.capabilities__card {
+  background: var(--neutral-white);
+  padding: var(--spacing-5);
+  border-radius: var(--spacing-2);
+  transition: var(--transition);
+  border-bottom: 3px solid transparent;
+}
+
+.capabilities__card:hover {
+  transform: translateY(-8px);
+  border-color: var(--primary-color);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.capabilities__card-icon {
+  margin-top: var(--spacing-3);
+  color: var(--primary-color);
+  font-size: var(--font-size-xl);
+}
+
+/* Team Section */
+.team-section {
+  padding: var(--spacing-8) 0;
+}
+
+.team-section__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-4);
+}
+
+.team-card {
+  background: var(--neutral-white);
+  padding: var(--spacing-4);
+  border: 1px solid var(--neutral-light);
+  border-radius: var(--spacing-2);
+}
+
+.team-card__header {
+  display: flex;
+  gap: var(--spacing-3);
+  margin-bottom: var(--spacing-3);
+}
+
+.team-card__image-container {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  border-radius: var(--spacing-1);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.team-card__social {
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  margin-top: var(--spacing-1);
+  cursor: pointer;
+}
+
+/* CTA Banner */
+.cta-banner {
+  padding-bottom: var(--spacing-8);
+}
+
+.cta-banner__wrapper {
+  background: var(--secondary-color);
+  padding: var(--spacing-6);
+  border-radius: var(--spacing-3);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--neutral-white);
+}
+
+.cta-banner__title {
+  color: var(--neutral-white);
+  margin-bottom: var(--spacing-1);
+}
+
+.cta-banner__btn {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .about-intro__container {
+    grid-template-columns: 1fr;
+  }
+  .capabilities__grid {
+    grid-template-columns: 1fr;
+  }
+  .cta-banner__wrapper {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--spacing-4);
+  }
+}
