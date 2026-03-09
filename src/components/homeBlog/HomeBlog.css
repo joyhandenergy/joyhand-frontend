@@ -1,0 +1,97 @@
+/* ===============================
+   HOME BLOG SECTION
+================================= */
+.home-blog {
+  padding: var(--spacing-8) 0;
+  background-color: var(--neutral-light);
+  overflow: hidden; /* Prevents horizontal scroll on the whole page */
+}
+
+/* ===============================
+   HORIZONTAL SCROLL (THE SLEEK PART)
+================================= */
+.home-blog__slider-wrapper {
+  position: relative;
+  /* Visual cue: Fades the right side to show more content exists */
+  -webkit-mask-image: linear-gradient(to right, black 85%, transparent 100%);
+  mask-image: linear-gradient(to right, black 85%, transparent 100%);
+}
+
+/* ===============================
+   HOME BLOG SECTION
+================================= */
+.home-blog__slider {
+  display: flex;
+  /* 1. Gap from your 8-point system */
+  gap: var(--spacing-3); 
+  
+  /* 2. Enable horizontal scrolling */
+  overflow-x: auto;
+  overflow-y: hidden;
+  
+  /* 3. Snapping for that 'sleek' feel */
+  scroll-snap-type: x mandatory;
+  
+  /* 4. Ensure container doesn't stretch beyond its parent */
+  width: 100%;
+  
+  /* Optional: Hide scrollbar but keep functionality */
+  scrollbar-width: none; 
+  -ms-overflow-style: none;
+}
+
+.home-blog__slider::-webkit-scrollbar {
+  display: none;
+}
+
+.home-blog__item {
+  flex: 0 0 320px; /* Base width on 8-point system (40 * 8) */
+  scroll-snap-align: start;
+  transition: var(--transition);
+}
+
+/* Hover effect for a "Sleek" feel */
+.home-blog__item:hover {
+  transform: translateY(-4px);
+}
+
+/* ===============================
+   FOOTER & LINK
+================================= */
+.home-blog__footer {
+  margin-top: var(--spacing-4);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.home-blog__link {
+  font-weight: 600;
+  color: var(--primary-color);
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+}
+
+.home-blog__link:hover {
+  color: var(--primary-color-dark);
+  padding-right: var(--spacing-1); /* Subtle movement */
+}
+
+/* ===============================
+   RESPONSIVE (MOBILE FIRST)
+================================= */
+@media (max-width: 768px) {
+  .home-blog {
+    padding: var(--spacing-6) 0;
+  }
+
+  .home-blog__item {
+    flex: 0 0 280px; /* Slightly smaller cards on mobile */
+  }
+
+  .home-blog__slider-wrapper {
+    -webkit-mask-image: none; /* Remove fade on mobile for full visibility */
+    mask-image: none;
+  }
+}

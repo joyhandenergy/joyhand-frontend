@@ -1,0 +1,86 @@
+/* CtaBanner.css */
+
+.cta-section {
+  padding: var(--spacing-8) 0;
+}
+
+.cta-banner {
+  background-color: var(--secondary-color);
+  border-radius: var(--spacing-4); /* Using larger radius for that modern 'pill' card look */
+  padding: var(--spacing-8) var(--spacing-4);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  box-shadow: 0 24px 48px rgba(18, 27, 45, 0.2);
+}
+
+/* Decorative Background Glow */
+.cta-banner::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -10%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(255, 127, 65, 0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.cta-banner__content {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.cta-banner__title {
+  color: var(--neutral-white);
+  font-size: var(--font-size-xxl);
+  margin-bottom: var(--spacing-2);
+  letter-spacing: -0.5px;
+}
+
+.cta-banner__description {
+  color: var(--neutral-light); /* Off-white for better readability than pure white */
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--spacing-5);
+  opacity: 0.9;
+  line-height: 1.5;
+}
+
+/* Button override to match the image's white pill style */
+.cta-banner__button {
+  background-color: var(--neutral-white);
+  color: var(--secondary-color);
+  padding: var(--spacing-2) var(--spacing-6);
+  border-radius: 100px; /* Full pill shape */
+  font-weight: 700;
+  font-size: var(--font-size-md);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: var(--transition);
+}
+
+.cta-banner__button:hover {
+  background-color: var(--primary-color);
+  color: var(--neutral-white);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(255, 127, 65, 0.3);
+}
+
+/* Tablet & Mobile */
+@media screen and (max-width: 768px) {
+  .cta-banner {
+    border-radius: var(--spacing-2);
+    padding: var(--spacing-6) var(--spacing-3);
+  }
+  
+  .cta-banner__title {
+    font-size: var(--font-size-xl);
+  }
+
+  .cta-banner__description {
+    font-size: var(--font-size-md);
+  }
+}

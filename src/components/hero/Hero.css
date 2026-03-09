@@ -1,0 +1,188 @@
+/* =====================================================
+   HERO SECTION
+===================================================== */
+.hero {
+  position: relative;
+  height: 85vh;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background-color: var(--secondary-color-dark);
+}
+
+/* BACKGROUND VIDEO logic remains the same for stability */
+.hero__background {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.hero__video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+}
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(
+    90deg,
+    rgba(18, 27, 45, 0.95) 30%,
+    rgba(18, 27, 45, 0.7) 100%
+  );
+}
+
+/* --- CONTENT LAYER --- */
+.hero__container {
+  position: relative;
+  z-index: 10;
+}
+
+.hero__content {
+  max-width: 650px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.hero__subtitle {
+  color: var(--primary-color-light);
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.hero__title {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.hero__title-line {
+  font-size: clamp(3rem, 8vw, 5.5rem);
+  color: var(--neutral-white);
+  font-weight: 800;
+}
+
+.hero__title-line--highlight {
+  background: linear-gradient(to right, var(--primary-color), var(--primary-color-light));
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero__desc {
+  color: var(--neutral-light);
+  font-size: var(--font-size-md);
+  line-height: 1.6;
+  max-width: 500px;
+}
+
+.hero__cta {
+  width: fit-content;
+  padding: var(--spacing-3) var(--spacing-6);
+}
+
+/* =====================================================
+   RADIAL NFT SUN GRAPHIC ANIMATION
+===================================================== */
+.hero__sun-graphic {
+  position: absolute;
+  right: -5%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  z-index: 5;
+  pointer-events: none;
+  
+  /* Base Glow */
+  background: radial-gradient(
+    circle, 
+    rgba(255, 127, 65, 0.2) 0%, 
+    transparent 70%
+  );
+  
+  border: 1px solid rgba(255, 127, 65, 0.1);
+}
+
+/* The Animated Pulse Rings */
+.hero__sun-graphic::before,
+.hero__sun-graphic::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid var(--primary-color);
+  opacity: 0;
+  animation: nftPulse 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.hero__sun-graphic::after {
+  animation-delay: 2s;
+}
+
+/* The Tech "Half-tone" Grid Overlay */
+.hero__sun-graphic::before {
+  background-image: radial-gradient(
+    var(--primary-color) 1px, 
+    transparent 1px
+  );
+  background-size: 20px 20px; /* Dot grid size */
+  mask-image: radial-gradient(circle, black 30%, transparent 70%);
+  border: none;
+  opacity: 0.3;
+  animation: nftRotate 20s linear infinite;
+}
+
+@keyframes nftPulse {
+  0% {
+    transform: scale(0.5);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+}
+
+@keyframes nftRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* =====================================================
+   MOBILE RESPONSIVENESS
+===================================================== */
+@media screen and (max-width: 768px) {
+  .hero {
+    height: auto;
+    padding: var(--spacing-8) 0;
+  }
+
+  .hero__content {
+    text-align: center;
+    align-items: center;
+  }
+
+  .hero__sun-graphic {
+    width: 300px;
+    height: 300px;
+    top: 20%;
+    right: -20%;
+    opacity: 0.5; /* Fade it out so it doesn't distract from text */
+  }
+
+  .hero__title-line {
+    font-size: 2.5rem;
+  }
+}

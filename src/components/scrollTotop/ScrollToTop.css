@@ -1,0 +1,64 @@
+/* ScrollToTop.css */
+
+.scroll-btn {
+  /* Position */
+  position: fixed;
+  bottom: var(--spacing-4); /* 32px - 8pt system */
+  right: var(--spacing-4);
+  z-index: 1000;
+
+  /* Sizing: 48px square (6 * 8pt) */
+  width: 3rem;
+  height: 3rem;
+  
+  /* Brand Styling */
+  background-color: var(--primary-color);
+  color: var(--neutral-white);
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  
+  /* Layout */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  
+  /* State Handling */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(var(--spacing-3)); /* 24px entrance */
+  transition: var(--transition);
+}
+
+/* Modifier: Shown State */
+.scroll-btn--visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Hover: Solar Orange Darkens */
+.scroll-btn:hover {
+  background-color: var(--primary-color-dark);
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+/* Element: Icon */
+.scroll-btn__icon {
+  transition: transform 0.2s ease;
+}
+
+.scroll-btn:hover .scroll-btn__icon {
+  transform: scale(1.1);
+}
+
+/* Mobile: Scaling down to 40px (5 * 8pt) */
+@media (max-width: 768px) {
+  .scroll-btn {
+    bottom: var(--spacing-2); /* 16px */
+    right: var(--spacing-2);
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+}

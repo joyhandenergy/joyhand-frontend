@@ -1,0 +1,255 @@
+/* =====================================================
+   TRUSTED BY SECTION
+===================================================== */
+
+.trustee {
+  padding: var(--spacing-4) 0;
+  background-color: var(--neutral-white);
+  overflow: hidden;
+  position: relative;
+}
+
+.trustee__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.trustee__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.trustee__title {
+  color: var(--neutral-dark);
+  font-size: var(--font-size-sm);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+
+.trustee__divider {
+  width: 60px;
+  height: 2px;
+  background-color: var(--primary-color);
+  margin-top: var(--spacing-1);
+}
+
+/* =====================================================
+   MARQUEE VIEWPORT
+===================================================== */
+
+.trustee__marquee {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+
+  /* add breathing room so logos don't get clipped */
+  padding: 0 40px;
+
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 5%,
+    black 95%,
+    transparent
+  );
+}
+
+/* =====================================================
+   ENERGY BACKGROUND PULSE
+===================================================== */
+
+.trustee__marquee::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: radial-gradient(
+    circle at center,
+    rgba(255,127,65,0.12),
+    transparent 70%
+  );
+
+  animation: energyPulse 6s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* =====================================================
+   LOGO TRACK (SCROLLING)
+===================================================== */
+
+.trustee__track {
+  display: flex;
+  width: max-content;
+
+  animation: scroll-left 45s linear infinite;
+
+  position: relative;
+  z-index: 2;
+
+  /* smoother animation */
+  will-change: transform;
+}
+
+/* =====================================================
+   LOGO ITEMS
+===================================================== */
+
+.trustee__item {
+  flex-shrink: 0;
+  width: 200px;
+
+  padding: 0 var(--spacing-3);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  animation: logoFloat 6s ease-in-out infinite;
+}
+
+/* floating variation */
+
+.trustee__item:nth-child(2n) {
+  animation-delay: 2s;
+}
+
+.trustee__item:nth-child(3n) {
+  animation-delay: 3s;
+}
+
+/* =====================================================
+   LOGO CONTAINER
+===================================================== */
+
+.trustee__logo-container {
+  position: relative;
+  width: 140px;
+  height: 60px;
+}
+
+/* =====================================================
+   LOGO STYLE
+===================================================== */
+
+.trustee__logo {
+  object-fit: contain;
+
+  filter: grayscale(100%);
+  opacity: 0.6;
+
+  transition: all 0.35s ease;
+}
+
+.trustee__logo:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+
+  transform: scale(1.08);
+
+  filter:
+    grayscale(0%)
+    drop-shadow(0 0 8px rgba(255,127,65,0.4))
+    drop-shadow(0 0 15px rgba(255,127,65,0.2));
+}
+
+/* =====================================================
+   SCROLL ANIMATION
+===================================================== */
+
+@keyframes scroll-left {
+
+  0% {
+    transform: translate3d(0,0,0);
+  }
+
+  100% {
+    transform: translate3d(-50%,0,0);
+  }
+
+}
+
+/* =====================================================
+   FLOATING ENERGY MOTION
+===================================================== */
+
+@keyframes logoFloat {
+
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+
+}
+
+/* =====================================================
+   ENERGY PULSE
+===================================================== */
+
+@keyframes energyPulse {
+
+  0% {
+    opacity: 0.25;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.55;
+    transform: scale(1.05);
+  }
+
+  100% {
+    opacity: 0.25;
+    transform: scale(1);
+  }
+
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 992px) {
+
+  .trustee__item {
+    width: 160px;
+  }
+
+  .trustee__logo-container {
+    width: 120px;
+    height: 50px;
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  .trustee__track {
+    animation: scroll-left 35s linear infinite;
+  }
+
+  .trustee__item {
+    width: 140px;
+  }
+
+  .trustee__logo-container {
+    width: 100px;
+    height: 45px;
+  }
+
+}

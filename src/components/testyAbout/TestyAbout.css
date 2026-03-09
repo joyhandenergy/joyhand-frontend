@@ -1,0 +1,356 @@
+/* ========================================
+   TESTY ABOUT SECTION
+======================================== */
+
+.testy-about {
+  padding: 80px 0;
+  background: linear-gradient(to bottom, #f1f5f9, #ffffff);
+  overflow: hidden;
+}
+
+/* CONTAINER */
+
+.testy-about__container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+/* ========================================
+   LEFT VISUAL GRID
+======================================== */
+
+.testy-about__visual-grid {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* NFC PULSE ANIMATION */
+
+.testy-about__visual-grid::before {
+  content: "";
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background: var(--primary-color);
+  top: -16px;
+  left: -16px;
+  opacity: 0.15;
+  border-radius: 10px;
+
+  animation: nfcPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes nfcPulse {
+
+  0% {
+    transform: scale(0.9);
+    opacity: 0.35;
+  }
+
+  50% {
+    transform: scale(1.3);
+    opacity: 0.15;
+  }
+
+  100% {
+    transform: scale(0.9);
+    opacity: 0.35;
+  }
+
+}
+
+/* TOP ROW */
+
+.testy-about__top-row {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* ========================================
+   CARD
+======================================== */
+
+.testy-about__card {
+  background: var(--secondary-color);
+  color: var(--neutral-white);
+  padding: 28px;
+  border-radius: 10px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  min-height: 220px;
+
+  transition: transform .35s ease, box-shadow .35s ease;
+}
+
+.testy-about__card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 45px rgba(18, 27, 45, 0.18);
+}
+
+/* CARD HEADER */
+
+.testy-about__card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* NFC ICON */
+
+.testy-about__card-icon {
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--primary-color);
+  border-radius: 6px;
+
+  color: white;
+
+  box-shadow: 0 4px 12px rgba(255,127,65,0.4);
+}
+
+.testy-about__card-brand {
+  font-weight: 600;
+  font-size: var(--font-size-sm);
+}
+
+/* TEXT */
+
+.testy-about__quote {
+  font-size: var(--font-size-md);
+  line-height: 1.6;
+  margin-top: 16px;
+}
+
+/* BUTTON */
+
+.testy-about__card-btn {
+  background: var(--neutral-white);
+  color: var(--secondary-color);
+
+  padding: 10px 22px;
+
+  border-radius: 40px;
+
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+
+  width: max-content;
+
+  cursor: pointer;
+
+  transition: all .3s ease;
+}
+
+.testy-about__card-btn:hover {
+  background: var(--primary-color);
+  color: white;
+}
+
+/* ========================================
+   IMAGES
+======================================== */
+
+.testy-about__img-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 15px 40px rgba(18,27,45,0.08);
+}
+
+.testy-about__img-wrapper--small {
+  width: 100%;
+  height: 220px;
+}
+
+.testy-about__img-wrapper--large {
+  width: 100%;
+  height: 260px;
+  border: 2px solid var(--accent-color-dark);
+}
+
+.testy-about__image {
+  object-fit: cover;
+  transition: transform .7s ease;
+}
+
+.testy-about__img-wrapper:hover .testy-about__image {
+  transform: scale(1.08);
+}
+
+/* ========================================
+   RIGHT CONTENT
+======================================== */
+
+.testy-about__content {
+  max-width: 540px;
+}
+
+.testy-about__tag {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  color: var(--accent-color-dark);
+  font-weight: 700;
+  font-size: var(--font-size-sm);
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+}
+
+.testy-about__tag-square {
+  width: 12px;
+  height: 12px;
+  background: var(--primary-color);
+}
+
+.testy-about__heading {
+  font-size: clamp(28px, 4vw, 40px);
+  margin-bottom: 24px;
+  color: var(--secondary-color);
+}
+
+.testy-about__heading::after {
+  content: "";
+  display: block;
+  width: 72px;
+  height: 4px;
+  background: var(--accent-color-dark);
+  margin-top: 16px;
+}
+
+/* LIST */
+
+.testy-about__list {
+  margin-bottom: 32px;
+}
+
+.testy-about__list li {
+  position: relative;
+  padding-left: 28px;
+  margin-bottom: 12px;
+  color: var(--neutral-medium);
+  font-weight: 500;
+}
+
+.testy-about__list li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  color: var(--accent-color-dark);
+}
+
+/* ACTIONS */
+
+.testy-about__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ========================================
+   SCROLL ANIMATION
+======================================== */
+
+/* LEFT SIDE START */
+
+.testy-about__visual-grid {
+
+  opacity: 0;
+  transform: translateX(-70px);
+
+  will-change: transform, opacity;
+
+  transition:
+    opacity .9s cubic-bezier(.16,1,.3,1),
+    transform .9s cubic-bezier(.16,1,.3,1);
+
+}
+
+/* RIGHT SIDE START */
+
+.testy-about__content {
+
+  opacity: 0;
+  transform: translateX(70px);
+
+  will-change: transform, opacity;
+
+  transition:
+    opacity .9s cubic-bezier(.16,1,.3,1),
+    transform .9s cubic-bezier(.16,1,.3,1);
+
+}
+
+/* LEFT ENTER */
+
+.testy-about.is-visible .testy-about__visual-grid {
+
+  opacity: 1;
+  transform: translateX(0);
+
+}
+
+/* RIGHT ENTER */
+
+.testy-about.is-visible .testy-about__content {
+
+  opacity: 1;
+  transform: translateX(0);
+
+  transition-delay: .25s;
+
+}
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (min-width:768px){
+
+  .testy-about__top-row{
+    flex-direction:row;
+  }
+
+  .testy-about__img-wrapper--small{
+    height:240px;
+  }
+
+  .testy-about__img-wrapper--large{
+    height:300px;
+  }
+
+  .testy-about__actions{
+    flex-direction:row;
+  }
+
+}
+
+/* ========================================
+   DESKTOP
+======================================== */
+
+@media (min-width:1024px){
+
+  .testy-about__container{
+    grid-template-columns:1fr 1fr;
+    gap:64px;
+  }
+
+  .testy-about__img-wrapper--large{
+    height:340px;
+  }
+
+}

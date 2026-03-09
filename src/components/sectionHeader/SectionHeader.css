@@ -1,0 +1,70 @@
+/* SectionHeader.css */
+
+.section-header {
+  margin-bottom: var(--spacing-5);
+  max-width: 700px;
+}
+
+.section-header--center {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+/* The Solar Badge - Enhanced with your Brand Colors */
+.solar-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  background: var(--accent-color-light); /* Light peach/cream */
+  color: var(--primary-color);
+  padding: 6px 16px;
+  border-radius: 100px;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: var(--spacing-2);
+  border: 1px solid rgba(255, 127, 65, 0.2);
+}
+
+.solar-badge__icon {
+  fill: var(--primary-color);
+  filter: drop-shadow(0 0 5px var(--primary-color-light));
+}
+
+/* Title Styling */
+.section-header__title {
+  color: var(--secondary-color);
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  margin-bottom: var(--spacing-2);
+  line-height: 1.2;
+}
+
+/* Subtitle Styling */
+.section-header__subtitle {
+  color: var(--neutral-medium);
+  font-size: var(--font-size-md);
+  max-width: 600px;
+}
+
+/* Accent Bar */
+.section-header__bar {
+  width: 50px;
+  height: 4px;
+  background: var(--accent-color-dark);
+  margin-top: var(--spacing-2);
+  border-radius: 2px;
+}
+
+.section-header--center .section-header__bar {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Mobile adjustments */
+@media screen and (max-width: 768px) {
+  .section-header {
+    margin-bottom: var(--spacing-4);
+  }
+}

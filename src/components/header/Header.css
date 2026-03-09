@@ -1,0 +1,242 @@
+/* =====================================================
+   HEADER CORE
+===================================================== */
+.header {
+  width: 100%;
+  background-color: var(--accent-color-light);
+  font-family: var(--font-family-heading);
+
+  position: fixed;   /* changed from sticky */
+  top: 0;
+  left: 0;
+
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.header__top {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  padding: var(--spacing-1) 0;
+}
+
+.header__top-container {
+  display: flex;
+  align-items: center;
+}
+
+.header__contact {
+  display: flex;
+  gap: var(--spacing-3);
+}
+
+.header__contact-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  font-size: var(--font-size-sm);
+  color: var(--accent-color);
+  font-weight: 500;
+}
+
+/* --- Main Section --- */
+.header__main {
+  padding: var(--spacing-2) 0;
+  position: relative;
+  z-index: 1001; /* Keeps logo/hamburger above the mobile overlay */
+  background-color: var(--accent-color-light);
+}
+
+.header__main-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__logo {
+  display: block;
+  flex-shrink: 0;
+}
+
+.header__logo-img {
+  width: 140px;
+  height: auto;
+  display: block;
+}
+
+/* --- Desktop Navigation --- */
+.header__nav {
+  display: flex;
+  gap: var(--spacing-4);
+}
+
+.header__nav-item {
+  position: relative;
+}
+
+.header__nav-link {
+  color: var(--secondary-color);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: var(--spacing-1) 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: var(--transition);
+}
+
+.header__nav-link:hover,
+.header__nav-link--active {
+  color: var(--primary-color);
+}
+
+/* --- Desktop Dropdown --- */
+.header__dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 220px;
+  background-color: var(--neutral-white);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  border-top: 3px solid var(--primary-color);
+  padding: var(--spacing-1) 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: var(--transition);
+}
+
+.header__nav-item:hover .header__dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.header__dropdown-link {
+  display: block;
+  padding: var(--spacing-2) var(--spacing-3);
+  color: var(--secondary-color);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.header__dropdown-link:hover {
+  background-color: var(--accent-color-light);
+  color: var(--primary-color);
+  padding-left: var(--spacing-4);
+}
+
+/* --- Mobile Elements Styling --- */
+.header__mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--secondary-color);
+  cursor: pointer;
+}
+
+.header__mobile-menu {
+  display: none; /* Hidden on Desktop */
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--neutral-white);
+  z-index: 1000;
+  padding: 120px var(--spacing-4) var(--spacing-4);
+  overflow-y: auto;
+}
+
+/* =====================================================
+   RESPONSIVE LOGIC (992px Breakpoint)
+===================================================== */
+@media screen and (max-width: 992px) {
+  .header__top, 
+  .header__nav, 
+  .header__cta-desktop {
+    display: none !important;
+  }
+
+  .header__mobile-toggle {
+    display: block;
+  }
+
+  .header__logo-img {
+    width: 120px;
+  }
+
+  /* Mobile Menu Visibility */
+  .header__mobile-menu {
+    display: flex;
+    flex-direction: column;
+    transform: translateY(-100%);
+    transition: transform 0.4s ease-in-out;
+  }
+
+  .header__mobile-menu--open {
+    transform: translateY(0);
+  }
+
+  .header__mobile-link-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--neutral-light);
+    padding: var(--spacing-2) 0;
+    cursor: pointer;
+  }
+
+  .header__mobile-link {
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    color: var(--secondary-color);
+  }
+
+  .header__mobile-caret {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    transition: transform 0.3s ease;
+  }
+
+  .header__mobile-caret--open {
+    transform: rotate(180deg);
+  }
+
+  .header__mobile-sub {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    padding-left: var(--spacing-3);
+    transition: all 0.35s ease-in-out;
+  }
+
+  .header__mobile-sub--open {
+    max-height: 500px;
+    opacity: 1;
+    padding: var(--spacing-1) 0 var(--spacing-2);
+  }
+
+  .header__mobile-sub-link {
+    color: var(--neutral-medium);
+    font-size: var(--font-size-md);
+    font-weight: 600;
+    padding: var(--spacing-1) 0;
+    display: block;
+  }
+}
+
+/* Desktop Safety Override */
+@media screen and (min-width: 993px) {
+  .header__mobile-menu {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .header__logo-img {
+    width: 110px;
+  }
+}

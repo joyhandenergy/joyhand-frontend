@@ -1,0 +1,196 @@
+/* ========================================
+   INNOVATION SECTION (Base Styles)
+======================================== */
+.innovation-section {
+  position: relative;
+  margin-bottom: var(--spacing-8);
+}
+
+.innovation-section__hero {
+  position: relative;
+  height: 70vh;
+  min-height: 500px;
+  overflow: hidden;
+}
+
+.innovation-section__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.innovation-section__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(18,27,45,0.8), rgba(18,27,45,0.5));
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.innovation-section__hero-content {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: transform .9s cubic-bezier(.16,1,.3,1), opacity .9s cubic-bezier(.16,1,.3,1);
+}
+
+.innovation-section.is-visible .innovation-section__hero-content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.innovation-section__title {
+  color: var(--neutral-white);
+  font-size: var(--font-size-xxl);
+  margin-bottom: var(--spacing-2);
+}
+
+.innovation-section__subtitle {
+  color: var(--primary-color-dark);
+  font-size: var(--font-size-lg);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* ========================================
+   FLOATING GRID
+======================================== */
+.innovation-section__container {
+  margin-top: -120px;
+  position: relative;
+  z-index: 10;
+}
+
+.innovation-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-3);
+}
+
+/* ========================================
+   CARD 
+======================================== */
+.innovation-card {
+  background: var(--neutral-white);
+  padding: var(--spacing-4);
+  border-radius: var(--spacing-3);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 4px solid transparent;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(60px) scale(.96);
+  transition: transform .8s cubic-bezier(.16,1,.3,1), opacity .8s cubic-bezier(.16,1,.3,1), box-shadow .4s ease;
+  transition-delay: var(--delay);
+}
+
+.innovation-section.is-visible .innovation-card {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.innovation-card:hover {
+  transform: translateY(-8px);
+  border-bottom-color: var(--primary-color);
+  box-shadow: 0 30px 60px rgba(18,27,45,0.15);
+}
+
+/* BACKGROUND CIRCLE PATTERN */
+.innovation-card::before {
+  content:"";
+  position:absolute;
+  top:-32px;
+  right:-32px;
+  width:160px;
+  height:160px;
+  border-radius:50%;
+  background: radial-gradient(circle, transparent 40%, rgba(255,127,65,0.25) 41%, transparent 42% );
+  transition: transform .6s ease;
+}
+
+.innovation-card:hover::before { transform: scale(1.2) rotate(15deg); }
+
+/* ICON & TITLE */
+.innovation-card__icon {
+  width:48px;
+  height:48px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(255,127,65,.1);
+  color:var(--primary-color);
+  border-radius:50%;
+  font-size:24px;
+  margin-bottom:var(--spacing-3);
+  transition: 0.3s ease;
+}
+
+.innovation-card:hover .innovation-card__icon {
+  background:var(--primary-color);
+  color:white;
+}
+
+.innovation-card__title {
+  font-size: var(--font-size-lg);
+  color: var(--secondary-color);
+}
+
+/* THE SWAP LOGIC: Link hides, Content appears */
+
+.innovation-card__link {
+  position: absolute;
+  bottom: var(--spacing-4);
+  left: var(--spacing-4);
+  color: var(--primary-color);
+  font-weight: 600;
+  font-size: var(--font-size-sm);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none; /* Link is decorative until hover ends */
+}
+
+.innovation-card:hover .innovation-card__link {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.innovation-card__hover-content {
+  margin-top: var(--spacing-3);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.innovation-card:hover .innovation-card__hover-content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.innovation-card__description {
+  font-size: var(--font-size-sm);
+  color: var(--neutral-medium);
+  line-height: 1.6;
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+@media (max-width:1024px){
+  .innovation-grid { grid-template-columns: repeat(2, 1fr); }
+  .innovation-section__container { margin-top: -64px; }
+}
+
+@media (max-width:768px){
+  .innovation-grid { grid-template-columns: 1fr; }
+  .innovation-card { height: auto; padding-bottom: 60px; }
+  /* On mobile, usually better to keep both visible as there is no hover */
+  .innovation-card__link { position: relative; bottom: auto; left: auto; margin-top: 20px; opacity: 1; }
+  .innovation-card__hover-content { opacity: 1; transform: none; }
+}
