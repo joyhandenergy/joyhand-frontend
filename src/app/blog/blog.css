@@ -25,6 +25,7 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
   transition: var(--transition);
   height: 100%;
+  width: 100%; /* Ensure full width availability */
 }
 
 .blog-card:hover {
@@ -107,7 +108,6 @@
 }
 
 .blog-details__container {
-  /* Removed the negative margin to sit below PageHeader correctly */
   padding-top: var(--spacing-4); 
   position: relative;
   z-index: 5;
@@ -117,7 +117,7 @@
   display: inline-flex;
   align-items: center;
   gap: var(--spacing-1);
-  color: var(--neutral-medium); /* Changed to neutral for readability below header */
+  color: var(--neutral-medium);
   font-weight: 700;
   margin-bottom: var(--spacing-5);
   transition: var(--transition);
@@ -131,7 +131,6 @@
   transform: translateX(-4px);
 }
 
-/* Main Layout Grid */
 .blog-details__main-layout {
   display: grid;
   grid-template-columns: 1fr 20rem;
@@ -147,7 +146,6 @@
   padding: var(--spacing-6);
 }
 
-/* Meta Bar Inside Body */
 .blog-details__meta-row {
   display: flex;
   align-items: center;
@@ -182,7 +180,7 @@
   font-size: 1.125rem;
   line-height: 1.85;
   margin-bottom: var(--spacing-4);
-  display: block; /* Ensures visibility */
+  display: block; 
 }
 
 .blog-content__h2 {
@@ -213,7 +211,6 @@
   line-height: 1.7;
 }
 
-/* Industrial Tech Bullet (Square) */
 .blog-content__li::before {
   content: "";
   position: absolute;
@@ -281,6 +278,84 @@
 }
 
 /* =====================================================
+   RESPONSIVE (FIXED FOR MOBILE SHRINKING)
+===================================================== */
+@media (max-width: 1100px) {
+  /* Blog Index Grid */
+  .blog-page__content {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Blog Details Layout */
+  .blog-details__main-layout { 
+    grid-template-columns: 1fr; 
+  }
+  
+  .blog-details__sidebar { 
+    position: static; 
+    flex-direction: row; 
+    margin-top: var(--spacing-6);
+    gap: var(--spacing-4);
+  }
+  
+  .sidebar-card { 
+    flex: 1; 
+  }
+}
+
+@media (max-width: 768px) {
+  /* Prevent cards from shrinking - Force Single Column */
+  .blog-page__content {
+    grid-template-columns: 1fr !important; 
+    gap: var(--spacing-5);
+  }
+
+  /* Enforce full width on cards */
+  .blog-card, .blog-details__body {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Blog Details Refinements */
+  .blog-details__container { 
+    padding-top: var(--spacing-4); 
+  }
+  
+  .blog-details__sidebar { 
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .blog-details__body { 
+    padding: var(--spacing-5);
+    border-radius: 16px;
+  }
+
+  .blog-details__back { 
+    justify-content: center; 
+    width: 100%; 
+    padding: var(--spacing-1) 0;
+  }
+
+  .blog-details__meta-row {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: var(--spacing-2);
+  }
+  
+  .blog-details__meta-item {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .blog-details__meta-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* =====================================================
    404 NOT FOUND
 ===================================================== */
 .blog-details-notfound {
@@ -294,23 +369,3 @@
 
 .blog-details-notfound__title { font-size: 8rem; color: var(--neutral-white); font-weight: 900; }
 .blog-details-notfound__subtitle { margin-top: -1.5rem; margin-bottom: var(--spacing-2); color: var(--secondary-color); }
-
-/* =====================================================
-   RESPONSIVE
-===================================================== */
-@media (max-width: 1100px) {
-  .blog-details__main-layout { grid-template-columns: 1fr; }
-  .blog-details__sidebar { 
-    position: static; 
-    flex-direction: row; 
-    margin-top: var(--spacing-6);
-  }
-  .sidebar-card { flex: 1; }
-}
-
-@media (max-width: 768px) {
-  .blog-details__container { padding-top: var(--spacing-4); }
-  .blog-details__sidebar { flex-direction: column; }
-  .blog-details__body { padding: var(--spacing-5); border-radius: 0; }
-  .blog-details__back { justify-content: center; width: 100%; }
-}

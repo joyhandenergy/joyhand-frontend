@@ -11,6 +11,7 @@
   box-shadow: 0 4px 20px rgba(0,0,0,0.05);
   transition: var(--transition);
   height: 100%;
+  width: 100%; /* Force standard width */
 }
 
 .product-card:hover {
@@ -109,6 +110,7 @@
   transition: var(--transition);
   text-transform: capitalize;
   color: var(--secondary-color);
+  white-space: nowrap; /* Prevents text inside button from shrinking */
 }
 
 .products-page__filter-btn--active {
@@ -146,7 +148,6 @@
   transform: translateX(-4px);
 }
 
-/* ADDED: META SECTION FOR BADGE */
 .product-details__meta {
   display: flex;
   align-items: center;
@@ -285,7 +286,14 @@
   margin-top: var(--spacing-8);
 }
 
+/* =====================================================
+   RESPONSIVE OVERRIDES
+===================================================== */
 @media (max-width: 992px) {
+  .products-page__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
   .product-details__grid {
     grid-template-columns: 1fr;
     gap: var(--spacing-6);
@@ -293,6 +301,21 @@
 }
 
 @media (max-width: 768px) {
+  /* Prevent Product Cards from shrinking */
+  .products-page__grid {
+    grid-template-columns: 1fr !important;
+    gap: var(--spacing-5);
+  }
+
+  .product-card {
+    max-width: 100%;
+  }
+
+  .products-page__filter {
+    justify-content: center;
+    padding: 0 var(--spacing-2);
+  }
+
   .product-details__actions {
     grid-template-columns: 1fr;
   }
@@ -301,10 +324,18 @@
     display: flex;
     overflow-x: auto;
     padding-bottom: 10px;
+    gap: var(--spacing-2);
   }
   
   .product-details__strip-item {
     width: 80px;
     flex-shrink: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .products-page__filter-btn {
+    padding: var(--spacing-1) var(--spacing-3);
+    font-size: 0.75rem;
   }
 }
