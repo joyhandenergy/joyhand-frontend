@@ -11,22 +11,14 @@ const ProductDetailsPage = ({ params: paramsPromise }) => {
   const params = use(paramsPromise);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Find product by slug
   const product = productData.find((p) => p.slug === params.slug);
 
-  // 404 State
   if (!product) {
     return (
       <main className="product-details-notfound">
         <div className="container text-center">
           <h1 className="product-details-notfound__title">Product Not Found</h1>
-          <p className="product-details-notfound__text">
-            The specific energy solution you are looking for is unavailable. 
-            Please browse our catalog for alternatives.
-          </p>
-          <Link href="/products" className="btn btn--primary">
-            Back to Catalog
-          </Link>
+          <Link href="/products" className="btn btn--primary">Back to Catalog</Link>
         </div>
       </main>
     );
@@ -43,13 +35,12 @@ const ProductDetailsPage = ({ params: paramsPromise }) => {
   return (
     <main className="product-details">
       <div className="container">
-        {/* Navigation Breadcrumb */}
         <Link href="/products" className="product-details__back-link">
           <ArrowLeft size={18} weight="bold" /> Back to Solutions Catalog
         </Link>
 
         <div className="product-details__grid">
-          {/* Visual Gallery Block - Refactored for Full Container Impact */}
+          {/* VISUAL GALLERY - FULL CONTAINER IMPACT */}
           <section className="product-details__gallery">
             <div className="product-details__viewer">
               <div className="product-details__main-wrapper">
@@ -73,7 +64,7 @@ const ProductDetailsPage = ({ params: paramsPromise }) => {
                 )}
               </div>
 
-              {/* Full Width Thumbnail Strip */}
+              {/* THUMBNAIL STRIP */}
               <div className="product-details__strip">
                 {product.images.map((img, idx) => (
                   <button
@@ -90,7 +81,7 @@ const ProductDetailsPage = ({ params: paramsPromise }) => {
             </div>
           </section>
 
-          {/* Specification & Meta Block */}
+          {/* INFO BLOCK */}
           <section className="product-details__info">
             <div className="product-details__meta">
               <span className="solar-badge">{product.category}</span>
@@ -116,7 +107,7 @@ const ProductDetailsPage = ({ params: paramsPromise }) => {
                 <FileText size={20} weight="fill" /> Request Datasheet
               </button>
               <button className="btn btn--secondary product-details__cta">
-                <ChatCenteredDots size={20} weight="fill" /> Bulk Pricing Inquiry
+                <ChatCenteredDots size={20} weight="fill" /> Bulk Inquiry
               </button>
             </div>
           </section>
