@@ -17,14 +17,14 @@ const contactDetails = [
   {
     icon: <Phone size={22} />,
     title: "Global Support",
-    content: "+65 8061 0116",
-    link: "tel:+6580610116"
+    content: "+86 13060850167",
+    link: "tel:+8613060850167"
   },
   {
     icon: <Mail size={22} />,
     title: "Inquiries",
-    content: "info@fomo.energy",
-    link: "mailto:info@fomo.energy"
+    content: "info@joyhand.com",
+    link: "mailto:info@joyhand.com"
   },
   {
     icon: <Clock size={22} />,
@@ -38,7 +38,7 @@ export default function ContactPage() {
   return (
     <main className="contact-page">
       <PageHeader
-        title="Connect With Us"
+        title="Talk About Your Energy Project"
         pageImage="/images/pageHeadImg/pageheader3.jpg"
       />
 

@@ -119,7 +119,7 @@ export default function AboutPage() {
           <div className="cta-banner__wrapper">
             <div className="cta-banner__text">
               <h4 className="cta-banner__title">Partner With JoyHand</h4>
-              <p className="cta-banner__subtitle">Ready to develop next-generation energy solutions?</p>
+              <p className="cta-banner__subtitle">Ready to source solar and electric mobility products for your market? Whether you need:</p>
             </div>
             <Link href="/contact" className="btn btn--secondary cta-banner__btn">
               Get Started <PiArrowRight weight="bold" />

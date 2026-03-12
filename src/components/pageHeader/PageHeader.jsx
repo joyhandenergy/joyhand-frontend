@@ -3,14 +3,18 @@
 import Link from "next/link";
 import "./PageHeader.css";
 
-const PageHeader = ({ title, pageImage }) => {
+const PageHeader = ({ title, pageImage, subtitle }) => {
   return (
     <section
       className="page-header"
       style={{ backgroundImage: `url(${pageImage})` }}
     >
 
+      {/* Overlay */}
       <div className="page-header__overlay"></div>
+
+      {/* Soft energy glow to match hero */}
+      <div className="page-header__glow"></div>
 
       <div className="container page-header__container">
 
@@ -32,11 +36,11 @@ const PageHeader = ({ title, pageImage }) => {
             {title}
           </h1>
 
-          <p className="page-header__description">
-            Engineering the future of energy storage and electric mobility systems
-          </p>
-
-          <div className="page-header__accent-line"></div>
+          {subtitle && (
+            <p className="page-header__description">
+              {subtitle}
+            </p>
+          )}
 
         </div>
 
