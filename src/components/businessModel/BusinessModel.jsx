@@ -137,32 +137,31 @@ export default function BusinessModel() {
             id="business-model-heading"
             className="businessModel__heading"
           >
-            Supporting Energy Brands From Manufacturing to Global Supply
+            Bridging Distributors and World-Class Manufacturers
           </h2>
 
 
           <p className="businessModel__description">
 
-            JoyHand partners with distributors, infrastructure developers,
-            and emerging energy brands worldwide. Through advanced
-            manufacturing, engineering support, and global logistics,
-            we help companies scale reliable clean energy technologies
-            and electric mobility solutions for international markets.
+            JoyHand partners with distributors, infrastructure developers, and emerging 
+            energy brands worldwide. Through our network of certified factories, dedicated 
+            engineering support, and streamlined global logistics, we help companies source, 
+            customize, and scale reliable clean energy technologies for international markets.
 
           </p>
 
 
           <ul className="businessModel__list">
 
-            <li>OEM & ODM manufacturing for energy technology brands</li>
+            <li>OEM & ODM partnerships with vetted manufacturers</li>
 
-            <li>Global distribution of solar power and battery storage systems</li>
+            <li>Global sourcing and logistics for solar and storage products</li>
 
-            <li>Electric mobility platforms including e-motorcycles</li>
+            <li>Electric mobility platforms sourced from specialized factories</li>
 
-            <li>Engineering support for product customization</li>
+            <li>Engineering bridge between your specs and factory capabilities</li>
 
-            <li>International logistics and scalable supply chain support</li>
+            <li>International logistics and supply chain coordination</li>
 
           </ul>
 

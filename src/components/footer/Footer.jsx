@@ -37,7 +37,8 @@ export default function Footer() {
             />
           </Link>
           <p className="footer__description">
-            Your global partner in sustainable energy. Specializing in OEM/ODM manufacturing of Tier-1 solar storage and e-mobility solutions.
+            Your global partner in sustainable energy. Specializing in OEM/ODM sourcing of 
+            Tier-1 solar storage and e-mobility solutions from vetted manufacturing partners.
           </p>
           <div className="footer__social">
             <a href="#" className="footer__social-link" aria-label="LinkedIn"><PiLinkedinLogo size={18} /></a>

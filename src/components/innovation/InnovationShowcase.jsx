@@ -57,11 +57,11 @@ const InnovationShowcase = () => {
         </video>
         <div className="innovation-section__overlay">
           <div className="container innovation-section__hero-content">
-            <h3 className="innovation-section__title">Why Global Energy Brands Partner With JoyHand</h3>
+            <h3 className="innovation-section__title">Why Distributors Choose JoyHand as Their Partner</h3>
             <p className="innovation-section__subtitle">
-              From engineering development to global distribution,
-              JoyHand supports energy companies with the technology,
-              manufacturing, and logistics required to scale.
+              From factory selection to final delivery, JoyHand gives energy companies the 
+              confidence to scale. We don&apos;t just connect you with manufacturers—we stand 
+              behind every shipment with rigorous quality control and logistics expertise.
             </p>
           </div>
         </div>

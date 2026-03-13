@@ -1,4 +1,13 @@
-/* ================= SERVICES INTRO ================= */
+/* =====================================================
+   SERVICES PAGE
+===================================================== */
+.services-page {
+  overflow-x: hidden;
+}
+
+/* =====================================================
+   SERVICES INTRO
+===================================================== */
 .services-intro {
   padding: var(--spacing-8) 0;
 }
@@ -19,7 +28,9 @@
   margin-top: var(--spacing-4);
 }
 
-/* ================= SERVICE CARDS (TECH PATTERN & GLASS) ================= */
+/* =====================================================
+   SERVICE CARDS (TECH PATTERN & GLASS)
+===================================================== */
 .services-grid {
   padding: var(--spacing-8) 0;
   background-color: var(--neutral-light);
@@ -135,9 +146,64 @@
   transform: translateX(10px);
 }
 
-/* ================= RELIABILITY (TECH DARK) ================= */
-.reliability { padding: var(--spacing-8) 0; }
-.reliability__box {
+/* =====================================================
+   QUALITY CONTROL PROTOCOLS
+===================================================== */
+.qc-protocols {
+  padding: var(--spacing-8) 0;
+  background-color: var(--neutral-white);
+}
+
+.qc-protocols__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-4);
+  margin-top: var(--spacing-6);
+}
+
+.qc-card {
+  background: var(--neutral-light);
+  padding: var(--spacing-5);
+  border-radius: 24px;
+  text-align: center;
+  transition: var(--transition);
+  border: 1px solid transparent;
+}
+
+.qc-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--primary-color-light);
+  box-shadow: 0 20px 40px rgba(255, 127, 65, 0.1);
+}
+
+.qc-card__icon {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-3);
+}
+
+.qc-card__title {
+  color: var(--secondary-color);
+  font-size: 1.25rem;
+  margin-bottom: var(--spacing-2);
+}
+
+.qc-card__desc {
+  color: var(--neutral-medium);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+/* =====================================================
+   WHY DISTRIBUTORS CHOOSE US
+===================================================== */
+.why-distributors {
+  padding: var(--spacing-8) 0;
+  background-color: var(--neutral-light);
+}
+
+.why-distributors__box {
   background: var(--secondary-color);
   padding: var(--spacing-8);
   border-radius: 32px;
@@ -146,73 +212,361 @@
   overflow: hidden;
 }
 
-.reliability__title { color: white; font-size: 2.5rem; margin-bottom: var(--spacing-2); }
-.reliability__subtitle { color: rgba(255,255,255,0.7); font-size: 1.1rem; max-width: 600px; }
+.why-distributors__box::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 200px;
+  height: 200px;
+  background: var(--primary-color);
+  opacity: 0.05;
+  border-radius: 50%;
+}
 
-.reliability__grid {
+.why-distributors__header {
+  margin-bottom: var(--spacing-6);
+}
+
+.why-distributors__header .badge {
+  display: inline-block;
+  background: rgba(255, 127, 65, 0.2);
+  color: var(--primary-color);
+  padding: 6px 14px;
+  border-radius: 100px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: var(--spacing-3);
+}
+
+.why-distributors__title {
+  color: white;
+  font-size: 2.5rem;
+  max-width: 600px;
+}
+
+.why-distributors__grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-4);
+  margin-top: var(--spacing-4);
+}
+
+.why-item {
+  background: rgba(255, 255, 255, 0.05);
+  padding: var(--spacing-5);
+  border-radius: 24px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: var(--transition);
+}
+
+.why-item:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--primary-color);
+}
+
+.why-item__number {
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--primary-color);
+  opacity: 0.3;
+  line-height: 1;
+  margin-bottom: var(--spacing-2);
+}
+
+.why-item__title {
+  color: white;
+  font-size: 1.25rem;
+  margin-bottom: var(--spacing-2);
+}
+
+.why-item__text {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+/* =====================================================
+   SOURCING PROCESS
+===================================================== */
+.sourcing-process {
+  padding: var(--spacing-8) 0;
+  background-color: var(--neutral-white);
+}
+
+.sourcing-process__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: var(--spacing-6);
   margin-top: var(--spacing-6);
-  border-top: 1px solid rgba(255,255,255,0.1);
-  padding-top: var(--spacing-6);
 }
 
-.reliability-item { display: flex; gap: var(--spacing-4); }
-.reliability-item__icon-wrapper {
-  width: 60px; height: 60px;
-  background: rgba(255,127,65,0.15);
-  border-radius: 12px;
-  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+.process-card {
+  position: relative;
+  background: var(--neutral-light);
+  border-radius: 24px;
+  padding: var(--spacing-5);
+  transition: var(--transition);
+  border: 1px solid transparent;
 }
 
-.reliability-item__icon { font-size: 2rem; color: var(--primary-color); }
-.reliability-item__title { color: white; margin-bottom: 5px; }
-.reliability-item__text { color: rgba(255,255,255,0.6); font-size: 0.9rem; line-height: 1.5; }
+.process-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--primary-color-light);
+  box-shadow: 0 20px 40px rgba(255, 127, 65, 0.1);
+}
 
-/* ================= PROCESS ================= */
-.process { padding: var(--spacing-8) 0; }
-.process__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--spacing-4); margin-top: var(--spacing-6); }
-
-.process-card { position: relative; padding-top: 40px; }
 .process-card__number {
-  position: absolute;
-  top: 0; left: 0;
-  font-size: 4.5rem;
-  font-weight: 900;
-  color: var(--neutral-light);
-  opacity: 0.6;
-  z-index: 1;
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-3);
+  letter-spacing: 2px;
 }
 
-.process-card__inner { position: relative; z-index: 2; padding-left: 10px; }
-.process-card__icon { font-size: 2rem; color: var(--primary-color); margin-bottom: 10px; }
-.process-card__title { color: var(--secondary-color); margin-bottom: 8px; }
-.process-card__text { font-size: 0.9rem; color: var(--neutral-medium); line-height: 1.6; }
+.process-card__inner {
+  position: relative;
+  z-index: 2;
+}
 
-/* ================= CTA BANNER ================= */
-.services-cta { padding-bottom: var(--spacing-8); margin-bottom: 60px; }
-.services-cta__banner {
-  background: linear-gradient(rgba(18, 27, 45, 0.9), rgba(18, 27, 45, 0.9)), url('/images/solarImg/panel.home.jpg');
-  background-size: cover; background-position: center;
-  padding: var(--spacing-8) var(--spacing-4);
+.process-card__icon {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-3);
+}
+
+.process-card__title {
+  color: var(--secondary-color);
+  font-size: 1.25rem;
+  margin-bottom: var(--spacing-2);
+}
+
+.process-card__text {
+  color: var(--neutral-medium);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+/* =====================================================
+   PARTNER FACILITIES
+===================================================== */
+.partner-facilities {
+  padding: var(--spacing-8) 0;
+  background: linear-gradient(135deg, var(--secondary-color) 0%, var(--secondary-color-light) 100%);
+  color: white;
+}
+
+.partner-facilities__box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-8);
+  align-items: center;
+}
+
+.partner-facilities__content {
+  color: white;
+}
+
+.partner-facilities__content .section-header h2,
+.partner-facilities__content .badge {
+  color: white;
+}
+
+.partner-facilities__text {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.1rem;
+  margin-bottom: var(--spacing-4);
+}
+
+.partner-facilities__list {
+  list-style: none;
+  margin-bottom: var(--spacing-6);
+}
+
+.partner-facilities__list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.partner-facilities__list svg {
+  color: var(--primary-color);
+  font-size: 1.25rem;
+}
+
+.partner-facilities__visual {
+  display: flex;
+  justify-content: center;
+}
+
+.facility-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-4);
+  background: rgba(255, 255, 255, 0.05);
+  padding: var(--spacing-6);
   border-radius: 32px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  width: 100%;
+}
+
+.facility-stats__item {
   text-align: center;
 }
 
-.services-cta__icon { font-size: 4rem; color: var(--primary-color); margin-bottom: var(--spacing-4); }
-.services-cta__title { color: white; font-size: 2.5rem; margin-bottom: 10px; }
-.services-cta__subtitle { color: rgba(255,255,255,0.8); margin-bottom: var(--spacing-5); font-size: 1.1rem; }
+.facility-stats__number {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--primary-color);
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
 
-/* ================= RESPONSIVE ================= */
+.facility-stats__label {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* =====================================================
+   CTA BANNER
+===================================================== */
+.services-cta {
+  padding: var(--spacing-8) 0;
+}
+
+.services-cta__banner {
+  background: linear-gradient(rgba(18, 27, 45, 0.95), rgba(18, 27, 45, 0.95)), url('/images/solarImg/panel.home.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: var(--spacing-8) var(--spacing-4);
+  border-radius: 32px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.services-cta__banner::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 200px;
+  height: 200px;
+  background: var(--primary-color);
+  opacity: 0.1;
+  border-radius: 50%;
+}
+
+.services-cta__icon {
+  font-size: 4rem;
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-4);
+  position: relative;
+  z-index: 2;
+}
+
+.services-cta__title {
+  color: white;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 2;
+}
+
+.services-cta__subtitle {
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: var(--spacing-5);
+  font-size: 1.1rem;
+  position: relative;
+  z-index: 2;
+}
+
+.services-cta .btn {
+  position: relative;
+  z-index: 2;
+}
+
+/* =====================================================
+   RESPONSIVE QUERIES
+===================================================== */
+@media (max-width: 1024px) {
+  .why-distributors__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .sourcing-process__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 992px) {
-  .services-intro__grid, .services-grid__wrapper, .reliability__grid { grid-template-columns: 1fr; }
-  .process__grid { grid-template-columns: repeat(2, 1fr); gap: var(--spacing-6); }
-  .reliability__title { font-size: 2rem; }
+  .services-intro__grid,
+  .services-grid__wrapper,
+  .qc-protocols__grid,
+  .partner-facilities__box {
+    grid-template-columns: 1fr;
+  }
+  
+  .services-intro__desc {
+    margin-top: 0;
+  }
+  
+  .partner-facilities__visual {
+    order: -1;
+  }
+  
+  .facility-stats {
+    max-width: 500px;
+    margin: 0 auto;
+  }
 }
 
 @media (max-width: 768px) {
-  .process__grid { grid-template-columns: 1fr; }
-  .services-cta__title { font-size: 1.75rem; }
-  .service-card { padding: var(--spacing-5); }
+  .why-distributors__grid,
+  .sourcing-process__grid,
+  .facility-stats {
+    grid-template-columns: 1fr;
+  }
+  
+  .why-distributors__title {
+    font-size: 1.75rem;
+  }
+  
+  .services-cta__title {
+    font-size: 1.75rem;
+  }
+  
+  .service-card {
+    padding: var(--spacing-5);
+  }
+  
+  .qc-protocols__grid {
+    gap: var(--spacing-3);
+  }
+}
+
+@media (max-width: 576px) {
+  .why-item {
+    text-align: center;
+  }
+  
+  .process-card {
+    text-align: center;
+  }
+  
+  .facility-stats__item {
+    padding: var(--spacing-3) 0;
+  }
 }
