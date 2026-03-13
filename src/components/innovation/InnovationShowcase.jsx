@@ -30,12 +30,12 @@ const InnovationShowcase = () => {
     {
       title: "ODM Development",
       icon: <PiFlask />,
-      content: "Custom hardware development and software integration for global energy brands."
+      content: "Custom product design and engineering support for companies launching new energy storage and mobility solutions."
     },
     {
       title: "OEM Production",
       icon: <PiBuildings />,
-      content: "Scalable high-volume manufacturing with rigorous ISO/TS certified quality control."
+      content: "Large-scale OEM production with strict quality management and international manufacturing standards."
     },
     {
       title: "Engineering Labs",
@@ -45,7 +45,7 @@ const InnovationShowcase = () => {
     {
       title: "Quality Control",
       icon: <PiLightbulb />,
-      content: "End-to-end testing protocols ensuring international safety and performance standards."
+      content: "Comprehensive testing and quality control processes to ensure safety, durability, and consistent performance."
     }
   ];
 
@@ -57,9 +57,11 @@ const InnovationShowcase = () => {
         </video>
         <div className="innovation-section__overlay">
           <div className="container innovation-section__hero-content">
-            <h2 className="innovation-section__title">Advanced Manufacturing</h2>
+            <h3 className="innovation-section__title">Why Global Energy Brands Partner With JoyHand</h3>
             <p className="innovation-section__subtitle">
-              Pioneering next-generation energy storage through automated gigafactories and scientific excellence.
+              From engineering development to global distribution,
+              JoyHand supports energy companies with the technology,
+              manufacturing, and logistics required to scale.
             </p>
           </div>
         </div>

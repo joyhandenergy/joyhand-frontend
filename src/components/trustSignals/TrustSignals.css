@@ -1,0 +1,168 @@
+/* =====================================================
+   TRUST SECTION
+===================================================== */
+
+.trust {
+  padding: var(--spacing-6) 0;
+  background: var(--neutral-light);
+}
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.trust__header {
+  max-width: 640px;
+  margin: 0 auto var(--spacing-5);
+}
+
+.trust__title {
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--spacing-1);
+}
+
+.trust__subtitle {
+  color: var(--neutral-medium);
+  font-size: var(--font-size-md);
+}
+
+/* =====================================================
+   LOGOS
+===================================================== */
+
+.trust__logos {
+  margin-bottom: var(--spacing-6);
+}
+
+.trust__marquee {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+}
+
+.trust__track {
+  display: flex;
+  width: max-content;
+  animation: trust-scroll 40s linear infinite;
+}
+
+.trust__logo-item {
+  flex-shrink: 0;
+  padding: 0 var(--spacing-3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.trust__logo-wrapper {
+  position: relative;
+  width: 140px;
+  height: 60px;
+}
+
+.trust__logo {
+  object-fit: contain;
+  opacity: 0.6;
+  filter: grayscale(100%);
+  transition: var(--transition);
+}
+
+.trust__logo:hover {
+  opacity: 1;
+  filter: grayscale(0%);
+  transform: scale(1.05);
+}
+
+/* =====================================================
+   STATS
+===================================================== */
+
+.trust__stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-4);
+  text-align: center;
+}
+
+.trust__stat {
+  background: var(--neutral-white);
+  padding: var(--spacing-4);
+  border-radius: var(--spacing-1);
+  transition: var(--transition);
+}
+
+.trust__stat:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+}
+
+.trust__stat-number {
+  display: block;
+  font-size: var(--font-size-2xl);
+  font-family: var(--font-family-heading);
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-1);
+}
+
+.trust__stat-label {
+  color: var(--neutral-medium);
+  font-size: var(--font-size-sm);
+}
+
+/* =====================================================
+   ANIMATION
+===================================================== */
+
+@keyframes trust-scroll {
+
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 992px) {
+
+  .trust__stats {
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  .trust__logo-wrapper {
+    width: 120px;
+    height: 50px;
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  .trust__stats {
+    grid-template-columns: 1fr;
+  }
+
+  .trust__track {
+    animation: trust-scroll 30s linear infinite;
+  }
+
+  .trust__logo-wrapper {
+    width: 100px;
+    height: 45px;
+  }
+
+}

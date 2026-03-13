@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { PiLinkedinLogo, PiArrowRight, PiShieldCheckFill } from "react-icons/pi";
 import PageHeader from "@/components/pageHeader/PageHeader";
-import Trustee from "@/components/Trustee/Trustee";
+import TrustSignals from "@/components/trustSignals/TrustSignals";
 import SectionHeader from "@/components/sectionHeader/SectionHeader";
 import "./about.css";
 
@@ -63,7 +63,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-    <Trustee />
+    <TrustSignals />
       {/* ================= CAPABILITIES ================= */}
       <section className="capabilities">
         <div className="container">

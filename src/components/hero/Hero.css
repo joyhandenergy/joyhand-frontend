@@ -102,6 +102,7 @@
   font-size: var(--font-size-md);
   line-height: 1.7;
   max-width: 520px;
+  text-align: justify;
 }
 
 /* =====================================================
