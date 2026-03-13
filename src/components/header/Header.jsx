@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import "./Header.css";
+import { usePathname } from "next/navigation";
 import {
   PiPhone,
   PiEnvelopeSimple,
@@ -11,8 +11,8 @@ import {
   PiCaretDownBold,
   PiX
 } from "react-icons/pi";
-import { usePathname } from "next/navigation";
 import PopUpModal from "../contactForm/PopUpModal";
+import "./Header.css";
 
 const links = [
   { name: "About Us", href: "/about_Us" },
@@ -30,15 +30,24 @@ const links = [
   { name: "Blog", href: "/blog" }
 ];
 
-const Header = () => {
+export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  const [scrolled, setScrolled] = useState(false);
+  
   const pathName = usePathname();
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+  // Handle scroll effect for glassmorphism sharpening
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Close menu when clicking a link
+  const closeMenu = () => {
+    setIsMenuOpen(false);
     setActiveDropdown(null);
   };
 
@@ -51,42 +60,35 @@ const Header = () => {
 
   return (
     <>
-      <header className="header">
-
-        {/* TOP BAR */}
+      <header className={`header ${scrolled ? "header--scrolled" : ""}`}>
+        
+        {/* TOP BAR - Dark Premium Style */}
         <div className="header__top">
           <div className="container header__top-container">
             <div className="header__contact">
-
               <a href="tel:+8613060850617" className="header__contact-item">
-                <PiPhone size={18} color="var(--accent-color)" />
-                +8613060850617
+                <PiPhone size={14} />
+                <span>+86 130 6085 0617</span>
               </a>
-
               <a href="mailto:info@joyhand.com" className="header__contact-item">
-                <PiEnvelopeSimple size={18} color="var(--accent-color)" />
-                info@joyhand.com
+                <PiEnvelopeSimple size={14} />
+                <span>info@joyhand.com</span>
               </a>
-
             </div>
           </div>
         </div>
 
-        {/* MAIN NAV */}
+        {/* MAIN NAV - Glassmorphism Style */}
         <div className="header__main">
           <div className="container header__main-container">
-
+            
             {/* LOGO */}
-            <Link
-              href="/"
-              className="header__logo"
-              onClick={() => setIsMenuOpen(false)}
-            >
+            <Link href="/" className="header__logo" onClick={closeMenu}>
               <Image
                 src="/logos/joyhand-logo.png"
                 alt="JOYHAND Logo"
-                width={140}
-                height={45}
+                width={150}
+                height={50}
                 className="header__logo-img"
                 priority
               />
@@ -96,17 +98,14 @@ const Header = () => {
             <nav className="header__nav">
               {links.map((link, idx) => (
                 <div key={idx} className="header__nav-item">
-
                   <Link
                     href={link.href}
                     className={`header__nav-link ${
-                      pathName === link.href
-                        ? "header__nav-link--active"
-                        : ""
+                      pathName === link.href ? "header__nav-link--active" : ""
                     }`}
                   >
                     {link.name}
-                    {link.subLinks && <PiCaretDownBold />}
+                    {link.subLinks && <PiCaretDownBold className="header__nav-icon" />}
                   </Link>
 
                   {link.subLinks && (
@@ -123,15 +122,12 @@ const Header = () => {
                       ))}
                     </ul>
                   )}
-
                 </div>
               ))}
             </nav>
 
             {/* ACTIONS */}
             <div className="header__actions">
-
-              {/* DESKTOP QUOTE BUTTON */}
               <button
                 className="btn btn--outline header__cta-desktop"
                 onClick={() => setIsModalOpen(true)}
@@ -139,43 +135,30 @@ const Header = () => {
                 Get a Quote
               </button>
 
-              {/* MOBILE MENU BUTTON */}
-              <button
-                className="header__mobile-toggle"
-                onClick={toggleMenu}
+              <button 
+                className="header__mobile-toggle" 
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                aria-label="Toggle Menu"
               >
                 {isMenuOpen ? <PiX size={32} /> : <PiList size={32} />}
               </button>
-
             </div>
-
           </div>
         </div>
 
-        {/* MOBILE MENU */}
-        <div
-          className={`header__mobile-menu ${
-            isMenuOpen ? "header__mobile-menu--open" : ""
-          }`}
-        >
+        {/* MOBILE OVERLAY MENU - Dark Premium Theme */}
+        <div className={`header__mobile-menu ${isMenuOpen ? "header__mobile-menu--open" : ""}`}>
           <nav className="header__mobile-nav">
-
             {links.map((link, idx) => (
               <div key={idx} className="header__mobile-item">
-
                 <div
                   className="header__mobile-link-wrapper"
-                  onClick={(e) =>
-                    link.subLinks && handleMobileDropdown(link.name, e)
-                  }
+                  onClick={(e) => link.subLinks && handleMobileDropdown(link.name, e)}
                 >
-
                   <Link
                     href={link.href}
                     className="header__mobile-link"
-                    onClick={() =>
-                      !link.subLinks && setIsMenuOpen(false)
-                    }
+                    onClick={() => !link.subLinks && closeMenu()}
                   >
                     {link.name}
                   </Link>
@@ -183,29 +166,22 @@ const Header = () => {
                   {link.subLinks && (
                     <PiCaretDownBold
                       className={`header__mobile-caret ${
-                        activeDropdown === link.name
-                          ? "header__mobile-caret--open"
-                          : ""
+                        activeDropdown === link.name ? "header__mobile-caret--open" : ""
                       }`}
                     />
                   )}
-
                 </div>
 
                 {link.subLinks && (
-                  <ul
-                    className={`header__mobile-sub ${
-                      activeDropdown === link.name
-                        ? "header__mobile-sub--open"
-                        : ""
-                    }`}
-                  >
+                  <ul className={`header__mobile-sub ${
+                    activeDropdown === link.name ? "header__mobile-sub--open" : ""
+                  }`}>
                     {link.subLinks.map((sub, sIdx) => (
                       <li key={sIdx}>
                         <Link
                           href={sub.href}
                           className="header__mobile-sub-link"
-                          onClick={() => setIsMenuOpen(false)}
+                          onClick={closeMenu}
                         >
                           {sub.name}
                         </Link>
@@ -213,27 +189,23 @@ const Header = () => {
                     ))}
                   </ul>
                 )}
-
               </div>
             ))}
 
-            {/* MOBILE QUOTE BUTTON */}
             <button
-              className="btn btn--primary mt-4"
+              className="btn btn--primary mt-4 w-full"
+              style={{ width: '100%' }}
               onClick={() => {
-                setIsMenuOpen(false);
+                closeMenu();
                 setIsModalOpen(true);
               }}
             >
               Get a Quote
             </button>
-
           </nav>
         </div>
-
       </header>
 
-      {/* POPUP MODAL */}
       <PopUpModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
@@ -241,6 +213,4 @@ const Header = () => {
       />
     </>
   );
-};
-
-export default Header;
+}

@@ -5,45 +5,60 @@
   width: 100%;
   background-color: var(--accent-color-light);
   font-family: var(--font-family-heading);
-
-  position: fixed;   /* changed from sticky */
+  position: fixed; 
   top: 0;
   left: 0;
-
   z-index: 1000;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  /* 8pt: Subtler shadow for NFC look */
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  transition: var(--transition);
+}
+
+/* Glassmorphism state added for the JSX scroll logic */
+.header--scrolled {
+  background-color: rgba(255, 246, 242, 0.9);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .header__top {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  padding: var(--spacing-1) 0;
+  /* IMPROVED: Match your secondary tech color but very faint */
+  background-color: var(--secondary-color);
+  padding: 8px 0;
 }
 
 .header__top-container {
   display: flex;
-  align-items: center;
+  justify-content: flex-end; /* Keeps contact info to the right */
 }
 
 .header__contact {
   display: flex;
-  gap: var(--spacing-3);
+  gap: var(--spacing-4);
 }
 
 .header__contact-item {
   display: flex;
   align-items: center;
-  gap: var(--spacing-1);
-  font-size: var(--font-size-sm);
-  color: var(--accent-color);
+  gap: 8px;
+  font-size: 0.75rem;
+  /* IMPROVED: White text on dark top bar looks more professional */
+  color: rgba(255, 255, 255, 0.8);
   font-weight: 500;
+  transition: var(--transition);
 }
+
+.header__contact-item:hover {
+  color: var(--primary-color);
+}
+
 
 /* --- Main Section --- */
 .header__main {
-  padding: var(--spacing-2) 0;
+  padding: 16px 0; /* 8pt: 2 * 8 */
   position: relative;
-  z-index: 1001; /* Keeps logo/hamburger above the mobile overlay */
-  background-color: var(--accent-color-light);
+  z-index: 1001; 
+  background-color: transparent; /* Allows header bg to show */
 }
 
 .header__main-container {
@@ -53,12 +68,13 @@
 }
 
 .header__logo {
-  display: block;
+  display: flex;
+  align-items: center;
   flex-shrink: 0;
 }
 
 .header__logo-img {
-  width: 140px;
+  width: 144px; /* 8pt: 18 * 8 */
   height: auto;
   display: block;
 }
@@ -66,7 +82,7 @@
 /* --- Desktop Navigation --- */
 .header__nav {
   display: flex;
-  gap: var(--spacing-4);
+  gap: 32px; /* 8pt: 4 * 8 */
 }
 
 .header__nav-item {
@@ -78,11 +94,29 @@
   font-size: var(--font-size-sm);
   font-weight: 600;
   text-transform: uppercase;
-  padding: var(--spacing-1) 0;
+  letter-spacing: 0.5px;
+  padding: 8px 0; /* 8pt */
   display: flex;
   align-items: center;
   gap: 4px;
   transition: var(--transition);
+}
+
+/* NFC Underline Animation */
+.header__nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--primary-color);
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.header__nav-link:hover::after,
+.header__nav-link--active::after {
+  width: 100%;
 }
 
 .header__nav-link:hover,
@@ -94,16 +128,17 @@
 .header__dropdown {
   position: absolute;
   top: 100%;
-  left: 0;
-  min-width: 220px;
+  left: -16px; /* 8pt */
+  min-width: 224px; /* 8pt: 28 * 8 */
   background-color: var(--neutral-white);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  box-shadow: 0 16px 32px rgba(18, 27, 45, 0.1);
+  border-radius: 8px; /* 8pt */
   border-top: 3px solid var(--primary-color);
-  padding: var(--spacing-1) 0;
+  padding: 8px 0; /* 8pt */
   opacity: 0;
   visibility: hidden;
-  transform: translateY(10px);
-  transition: var(--transition);
+  transform: translateY(16px); /* 8pt */
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .header__nav-item:hover .header__dropdown {
@@ -114,7 +149,7 @@
 
 .header__dropdown-link {
   display: block;
-  padding: var(--spacing-2) var(--spacing-3);
+  padding: 12px 24px; /* 8pt */
   color: var(--secondary-color);
   font-size: var(--font-size-sm);
   font-weight: 600;
@@ -124,7 +159,7 @@
 .header__dropdown-link:hover {
   background-color: var(--accent-color-light);
   color: var(--primary-color);
-  padding-left: var(--spacing-4);
+  padding-left: 32px; /* 8pt: Subtle sliding animation */
 }
 
 /* --- Mobile Elements Styling --- */
@@ -134,17 +169,24 @@
   border: none;
   color: var(--secondary-color);
   cursor: pointer;
+  padding: 8px; /* 8pt */
+  transition: var(--transition);
+}
+
+.header__mobile-toggle:hover {
+  color: var(--primary-color);
 }
 
 .header__mobile-menu {
-  display: none; /* Hidden on Desktop */
+  display: none; 
   position: fixed;
   inset: 0;
   width: 100%;
   height: 100vh;
   background-color: var(--neutral-white);
   z-index: 1000;
-  padding: 120px var(--spacing-4) var(--spacing-4);
+  /* Top padding accounts for header height (110px) plus 16px gap */
+  padding: 128px 24px 24px; /* 8pt */
   overflow-y: auto;
 }
 
@@ -159,19 +201,19 @@
   }
 
   .header__mobile-toggle {
-    display: block;
+    display: flex;
+    align-items: center;
   }
 
   .header__logo-img {
-    width: 120px;
+    width: 120px; /* 15 * 8 */
   }
 
-  /* Mobile Menu Visibility */
   .header__mobile-menu {
     display: flex;
     flex-direction: column;
     transform: translateY(-100%);
-    transition: transform 0.4s ease-in-out;
+    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
   }
 
   .header__mobile-menu--open {
@@ -183,7 +225,7 @@
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid var(--neutral-light);
-    padding: var(--spacing-2) 0;
+    padding: 16px 0; /* 8pt */
     cursor: pointer;
   }
 
@@ -209,22 +251,27 @@
     opacity: 0;
     display: flex;
     flex-direction: column;
-    padding-left: var(--spacing-3);
-    transition: all 0.35s ease-in-out;
+    padding-left: 16px; /* 8pt */
+    transition: all 0.4s ease-in-out;
   }
 
   .header__mobile-sub--open {
-    max-height: 500px;
+    max-height: 400px;
     opacity: 1;
-    padding: var(--spacing-1) 0 var(--spacing-2);
+    padding: 8px 0 16px; /* 8pt */
   }
 
   .header__mobile-sub-link {
     color: var(--neutral-medium);
     font-size: var(--font-size-md);
     font-weight: 600;
-    padding: var(--spacing-1) 0;
+    padding: 8px 0; /* 8pt */
     display: block;
+    transition: var(--transition);
+  }
+
+  .header__mobile-sub-link:active {
+    color: var(--primary-color);
   }
 }
 
@@ -237,6 +284,10 @@
 
 @media screen and (max-width: 480px) {
   .header__logo-img {
-    width: 110px;
+    width: 112px; /* 14 * 8 */
+  }
+  
+  .header__mobile-menu {
+    padding-top: 104px; /* Matches mobile header height (80px) + 24px */
   }
 }
