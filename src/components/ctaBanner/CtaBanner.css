@@ -1,86 +1,129 @@
-/* CtaBanner.css */
-
 .cta-section {
   padding: var(--spacing-8) 0;
 }
 
 .cta-banner {
   background-color: var(--secondary-color);
-  border-radius: var(--spacing-4); /* Using larger radius for that modern 'pill' card look */
+  border-radius: var(--spacing-4);
   padding: var(--spacing-8) var(--spacing-4);
   text-align: center;
   position: relative;
   overflow: hidden;
   z-index: 1;
-  box-shadow: 0 24px 48px rgba(18, 27, 45, 0.2);
+  box-shadow: 0 30px 60px rgba(18, 27, 45, 0.25);
 }
 
-/* Decorative Background Glow */
+/* Engineering Grid Background Overlay */
+.cta-banner__grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 30px 30px;
+  z-index: -1;
+  opacity: 0.5;
+}
+
+/* Decorative Glows for "Platform" feel */
 .cta-banner::before {
   content: "";
   position: absolute;
-  top: -50%;
+  top: -20%;
   left: -10%;
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(circle, rgba(255, 127, 65, 0.15) 0%, transparent 70%);
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(255, 127, 65, 0.12) 0%, transparent 70%);
   border-radius: 50%;
   z-index: -1;
-  pointer-events: none;
 }
 
 .cta-banner__content {
-  max-width: 700px;
+  max-width: 800px;
   margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.cta-banner__badge {
+  display: inline-block;
+  color: var(--primary-color);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: var(--spacing-2);
 }
 
 .cta-banner__title {
   color: var(--neutral-white);
-  font-size: var(--font-size-xxl);
+  font-size: clamp(1.8rem, 4vw, 3rem); /* Responsive typography */
   margin-bottom: var(--spacing-2);
-  letter-spacing: -0.5px;
+  line-height: 1.1;
 }
 
 .cta-banner__description {
-  color: var(--neutral-light); /* Off-white for better readability than pure white */
+  color: rgba(255, 255, 255, 0.8);
   font-size: var(--font-size-lg);
-  margin-bottom: var(--spacing-5);
-  opacity: 0.9;
-  line-height: 1.5;
+  margin-bottom: var(--spacing-6);
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* Button override to match the image's white pill style */
+.cta-banner__actions {
+  display: flex;
+  gap: var(--spacing-2);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Primary Button Override */
 .cta-banner__button {
   background-color: var(--neutral-white);
   color: var(--secondary-color);
   padding: var(--spacing-2) var(--spacing-6);
-  border-radius: 100px; /* Full pill shape */
+  border-radius: 50px;
   font-weight: 700;
-  font-size: var(--font-size-md);
-  text-transform: uppercase;
-  letter-spacing: 1px;
   transition: var(--transition);
 }
 
 .cta-banner__button:hover {
   background-color: var(--primary-color);
   color: var(--neutral-white);
-  transform: translateY(-4px);
-  box-shadow: 0 10px 20px rgba(255, 127, 65, 0.3);
+  transform: translateY(-3px);
 }
 
-/* Tablet & Mobile */
+/* Secondary Button Override */
+.cta-banner__button--outline {
+  background-color: transparent;
+  color: var(--neutral-white);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: var(--spacing-2) var(--spacing-6);
+  border-radius: 50px;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.cta-banner__button--outline:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: var(--neutral-white);
+}
+
+/* Responsive Styles */
 @media screen and (max-width: 768px) {
-  .cta-banner {
-    border-radius: var(--spacing-2);
-    padding: var(--spacing-6) var(--spacing-3);
+  .cta-section {
+    padding: var(--spacing-4) 16px;
   }
   
-  .cta-banner__title {
-    font-size: var(--font-size-xl);
+  .cta-banner {
+    padding: var(--spacing-6) var(--spacing-3);
   }
 
-  .cta-banner__description {
-    font-size: var(--font-size-md);
+  .cta-banner__actions {
+    flex-direction: column;
+  }
+
+  .cta-banner__button,
+  .cta-banner__button--outline {
+    width: 100%;
   }
 }

@@ -1,9 +1,9 @@
 import BusinessModel from "@/components/businessModel/BusinessModel";
 import CtaBanner from "@/components/ctaBanner/CtaBanner";
+import EnergyPlatforms from "@/components/energyPlatform/EnergyPlatforms";
 import Hero from "@/components/hero/Hero";
 import HomeBlogSection from "@/components/homeBlog/HomeBlogSection";
 import InnovationShowcase from "@/components/innovation/InnovationShowcase";
-import SolarServices from "@/components/solarServices/SolarServices";
 import TrustSignals from "@/components/trustSignals/TrustSignals";
 export default function Home() {
   return (
@@ -12,7 +12,7 @@ export default function Home() {
       <TrustSignals />
       <BusinessModel />
       <InnovationShowcase />
-      <SolarServices/>
+      <EnergyPlatforms />
       <CtaBanner />  
       <HomeBlogSection/>    
       

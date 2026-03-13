@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { PiXLogo, PiFacebookLogo, PiInstagramLogo, PiLinkedinLogo, PiEnvelopeSimple, PiPhone, PiMapPin } from "react-icons/pi";
+import { PiXLogo, PiFacebookLogo, PiInstagramLogo, PiLinkedinLogo, PiEnvelopeSimple, PiPhone, PiMapPin, PiArrowRight } from "react-icons/pi";
 import "./Footer.css";
 
 export default function Footer() {
@@ -13,65 +13,69 @@ export default function Footer() {
         {/* BRAND SECTION */}
         <div className="footer__brand">
           <Link href="/" className="footer__logo">
-            <Image src="/logos/joyhand-logo.png" alt="JOYHAND Logo" width={140} height={46} priority />
+            {/* Using a light version of logo if background is dark */}
+            <Image src="/logos/joyhand-logo.png" alt="JOYHAND Energy" width={150} height={50} priority />
           </Link>
           <p className="footer__description">
-            Leading the transition to sustainable energy with high-performance solar batteries 
-            and smart power storage solutions.
+            Your global partner in sustainable energy. Specializing in OEM/ODM manufacturing of Tier-1 solar storage and e-mobility solutions.
           </p>
           <div className="footer__social">
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="footer__social-link" aria-label="Facebook"><PiFacebookLogo size={20} /></a>
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="footer__social-link" aria-label="Instagram"><PiInstagramLogo size={20} /></a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="footer__social-link" aria-label="LinkedIn"><PiLinkedinLogo size={20} /></a>
-            <a href="https://x.com" target="_blank" rel="noopener noreferrer" className="footer__social-link" aria-label="X"><PiXLogo size={20} /></a>
+            <a href="#" className="footer__social-link" aria-label="LinkedIn"><PiLinkedinLogo size={18} /></a>
+            <a href="#" className="footer__social-link" aria-label="X"><PiXLogo size={18} /></a>
+            <a href="#" className="footer__social-link" aria-label="Facebook"><PiFacebookLogo size={18} /></a>
           </div>
         </div>
 
-        {/* NAVIGATION COLUMN */}
+        {/* SOLUTIONS COLUMN */}
         <div className="footer__column">
-          <h4 className="footer__title">Quick Links</h4>
+          <h4 className="footer__title">Platforms</h4>
           <ul className="footer__list">
-            <li><Link href="/" className="footer__link">Homepage</Link></li>
-            <li><Link href="/about-us" className="footer__link">About Us</Link></li>
-            <li><Link href="/products" className="footer__link">Solar Batteries</Link></li>
-            <li><Link href="/services" className="footer__link">Services</Link></li>
+            <li><Link href="/products?cat=storage" className="footer__link"><PiArrowRight /> Storage Batteries</Link></li>
+            <li><Link href="/products?cat=inverters" className="footer__link"><PiArrowRight /> Solar Inverters</Link></li>
+            <li><Link href="/products?cat=portable" className="footer__link"><PiArrowRight /> Portable Power</Link></li>
+            <li><Link href="/services" className="footer__link"><PiArrowRight /> OEM/ODM Services</Link></li>
           </ul>
         </div>
 
-        {/* CONTACT COLUMN */}
+        {/* COMPANY COLUMN */}
         <div className="footer__column">
-          <h4 className="footer__title">Contact Us</h4>
+          <h4 className="footer__title">Company</h4>
+          <ul className="footer__list">
+            <li><Link href="/about" className="footer__link">Our Factory</Link></li>
+            <li><Link href="/partnership" className="footer__link">Partnership Hub</Link></li>
+            <li><Link href="/insights" className="footer__link">Energy Insights</Link></li>
+            <li><Link href="/contact" className="footer__link">Contact Support</Link></li>
+          </ul>
+        </div>
+
+        {/* GLOBAL OFFICE */}
+        <div className="footer__column">
+          <h4 className="footer__title">Global Office</h4>
           <ul className="footer__list">
             <li className="footer__contact-item">
+              <PiMapPin className="footer__icon" />
+              <span>Shenzhen Tech Park, China / AL, USA</span>
+            </li>
+            <li className="footer__contact-item">
               <PiEnvelopeSimple className="footer__icon" />
-              <a href="mailto:info@joyhand.com">info@joyhand.com</a>
+              <a href="mailto:partnership@joyhand.com">partnership@joyhand.com</a>
             </li>
             <li className="footer__contact-item">
               <PiPhone className="footer__icon" />
-              <a href="tel:+8613060850617">+86 130 6085</a>
+              <a href="tel:+8613060850617">+86 130 6085 0617</a>
             </li>
-            <li className="footer__contact-item">
-              <PiMapPin className="footer__icon" />
-              <span>AL, USA</span>
-            </li>
-          </ul>
-        </div>
-
-        {/* LEGAL COLUMN */}
-        <div className="footer__column">
-          <h4 className="footer__title">Legal</h4>
-          <ul className="footer__list">
-            <li><Link href="/privacy" className="footer__link">Privacy</Link></li>
-            <li><Link href="/terms" className="footer__link">Terms</Link></li>
-            <li><Link href="/cookies" className="footer__link">Cookies</Link></li>
           </ul>
         </div>
       </div>
 
       <div className="footer__bottom">
         <div className="container footer__bottom-container">
-          <p className="footer__copyright">© {year} JOYHAND Energy.</p>
-          <p className="footer__credit">Powered by Beraki Digital</p>
+          <div className="footer__legal-links">
+            <Link href="/privacy">Privacy Policy</Link>
+            <Link href="/terms">Terms of Service</Link>
+          </div>
+          <p className="footer__copyright">© {year} JOYHAND Energy. All Rights Reserved.</p>
+          <p className="footer__credit">Design by Beraki Digital</p>
         </div>
       </div>
     </footer>
