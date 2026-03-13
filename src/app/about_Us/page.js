@@ -2,13 +2,20 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { PiLinkedinLogo, PiArrowRight, PiShieldCheckFill } from "react-icons/pi";
+import {
+  PiLinkedinLogo,
+  PiArrowRight,
+  PiCheckCircleFill
+} from "react-icons/pi";
+
 import PageHeader from "@/components/pageHeader/PageHeader";
 import TrustSignals from "@/components/trustSignals/TrustSignals";
 import SectionHeader from "@/components/sectionHeader/SectionHeader";
+
 import "./about.css";
 
 export default function AboutPage() {
+
   const team = [
     {
       name: "Michael Zhang",
@@ -26,107 +33,340 @@ export default function AboutPage() {
 
   return (
     <main className="about-page">
-      <PageHeader title="About JoyHand" pageImage="/images/pageHeadImg/pageheader1.jpg" />
 
-      {/* ================= INTRO (NFC ANIMATION) ================= */}
+      <PageHeader
+        title="Global Energy Solutions"
+        pageImage="/images/pageHeadImg/pageheader1.jpg"
+      />
+
+      {/* ================= INTRO ================= */}
+
       <section className="about-intro">
+
         <div className="container about-intro__container">
+
           <div className="about-intro__content">
-            <SectionHeader 
-              badge="Innovation Leader" 
-              title="A unique combination of solar energy and advanced battery technology"
-            />
+
             <div className="about-intro__description">
-              <p>JoyHand is a technology-driven manufacturer specializing in solar energy systems, lithium battery storage, and electric mobility power platforms.</p>
-              <p>Our engineering teams combine expertise in solar technology and battery management to deliver scalable energy products.</p>
+
+              <p>
+                Founded in 2018, JoyHand has evolved from a specialized
+                manufacturing unit into a
+                <strong> premier global trading and OEM partner.</strong>
+                We solve the two biggest hurdles for distributors:
+                <strong> Quality Assurance</strong> and
+                <strong> Supply Chain Liquidity.</strong>
+              </p>
+
+              <div className="about-intro__highlights">
+
+                <div className="highlight-tag">
+                  <span className="highlight-tag__icon">🚢</span>
+
+                  <div>
+                    <strong>Global Logistics Mastery</strong>
+                    <p>
+                      We manage complex shipping and customs for effortless
+                      container-load delivery.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="highlight-tag">
+                  <span className="highlight-tag__icon">🛡️</span>
+
+                  <div>
+                    <strong>Independent QC Protocols</strong>
+                    <p>
+                      Our engineers perform on-site factory audits before
+                      any product leaves the hub.
+                    </p>
+                  </div>
+                </div>
+
+              </div>
+
             </div>
+
           </div>
+
+          {/* IMAGE */}
 
           <div className="about-intro__visual">
+
             <div className="nfc-scanner">
+
               <div className="nfc-scanner__ring"></div>
               <div className="nfc-scanner__ring nfc-scanner__ring--delayed"></div>
+
               <div className="about-intro__image-wrapper">
-                <Image 
-                  src="/images/solarImg/panel.home.jpg" 
-                  alt="Solar expertise" 
-                  fill 
-                  className="about-intro__img" 
+
+                <Image
+                  src="/images/solarImg/panel.home.jpg"
+                  alt="QC Verification"
+                  fill
+                  className="about-intro__img"
                   priority
                 />
+
                 <div className="nfc-status">
                   <div className="nfc-status__dot"></div>
-                  <span>System Verified</span>
+                  <span>Batch Quality Verified</span>
                 </div>
+
               </div>
+
             </div>
+
           </div>
+
         </div>
-      </section>
-    <TrustSignals />
-      {/* ================= CAPABILITIES ================= */}
-      <section className="capabilities">
-        <div className="container">
-          <SectionHeader title="Our Core Capabilities" center />
-          <div className="capabilities__grid">
-            {["Solar Energy Systems", "Energy Storage Technology", "Electric Mobility Power"].map((cap, i) => (
-              <div key={i} className="capabilities__card">
-                <div className="capabilities__card-header">
-                   <h3 className="capabilities__card-title">{cap}</h3>
-                   <PiShieldCheckFill className="capabilities__card-badge" />
-                </div>
-                <p className="capabilities__card-text">Advanced systems engineered for residential and industrial energy optimization.</p>
-                <div className="capabilities__card-link">
-                   <span>Learn More</span>
-                   <PiArrowRight />
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+
       </section>
 
-      {/* ================= TEAM (CIRCULAR DESIGN) ================= */}
+      <TrustSignals />
+
+      {/* ================= FOUR PILLARS ================= */}
+
+      <section className="visual-proof">
+
+        <div className="container">
+
+          <SectionHeader
+            badge="Our Ecosystem"
+            title="The Four Pillars of JoyHand Energy"
+            center
+          />
+
+          {/* PILLAR 1 */}
+
+          <div className="proof-row">
+
+            <div className="proof-image">
+              <Image
+                src="/images/solarImg/panel.home.jpg"
+                alt="Solar Inverter"
+                fill
+              />
+              <div className="proof-badge">System Brain</div>
+            </div>
+
+            <div className="proof-text">
+
+              <h3>Intelligent Solar Inverters</h3>
+
+              <p>
+                The &quote;Brain&quote; of your energy system. We source high-efficiency
+                pure sine wave inverters that bridge solar harvest and grid
+                stability.
+              </p>
+
+              <ul className="proof-list">
+                <li><PiCheckCircleFill /> 98% Peak Efficiency</li>
+                <li><PiCheckCircleFill /> Smart Grid Switching</li>
+                <li><PiCheckCircleFill /> Tier-1 Components</li>
+              </ul>
+
+              <Link href="/products" className="btn-link">
+                View Inverter Specs <PiArrowRight />
+              </Link>
+
+            </div>
+
+          </div>
+
+          {/* PILLAR 2 */}
+
+          <div className="proof-row proof-row--reverse">
+
+            <div className="proof-image">
+              <Image
+                src="/images/solarImg/panel.home.jpg"
+                alt="Battery"
+                fill
+              />
+              <div className="proof-badge">Energy Heart</div>
+            </div>
+
+            <div className="proof-text">
+
+              <h3>High-Density Storage Batteries</h3>
+
+              <p>
+                Safe, long-lasting energy storage. Our LFP batteries are
+                tested for 6,000+ cycles for long-term reliability.
+              </p>
+
+              <ul className="proof-list">
+                <li><PiCheckCircleFill /> LiFePO4 Chemistry</li>
+                <li><PiCheckCircleFill /> Intelligent BMS</li>
+                <li><PiCheckCircleFill /> Modular Design</li>
+              </ul>
+
+              <Link href="/products" className="btn-link">
+                Explore Battery Tech <PiArrowRight />
+              </Link>
+
+            </div>
+
+          </div>
+
+          {/* PILLAR 3 */}
+
+          <div className="proof-row">
+
+            <div className="proof-image">
+              <Image
+                src="/images/solarImg/panel.home.jpg"
+                alt="Power Station"
+                fill
+              />
+              <div className="proof-badge">Mobile Power</div>
+            </div>
+
+            <div className="proof-text">
+
+              <h3>Portable Solar Power Stations</h3>
+
+              <p>
+                Rugged, high-capacity portable units for emergency backup
+                and off-grid energy independence.
+              </p>
+
+              <ul className="proof-list">
+                <li><PiCheckCircleFill /> Fast Charge</li>
+                <li><PiCheckCircleFill /> Multiple Outputs</li>
+                <li><PiCheckCircleFill /> OEM Branding</li>
+              </ul>
+
+              <Link href="/products" className="btn-link">
+                Portable Solutions <PiArrowRight />
+              </Link>
+
+            </div>
+
+          </div>
+
+          {/* PILLAR 4 */}
+
+          <div className="proof-row proof-row--reverse">
+
+            <div className="proof-image">
+              <Image
+                src="/images/solarImg/panel.home.jpg"
+                alt="EV Charger"
+                fill
+              />
+              <div className="proof-badge">Future Ready</div>
+            </div>
+
+            <div className="proof-text">
+
+              <h3>Electric Mobility Infrastructure</h3>
+
+              <p>
+                EV charging systems designed for commercial hubs,
+                residential properties, and smart cities.
+              </p>
+
+              <ul className="proof-list">
+                <li><PiCheckCircleFill /> Universal Connectors</li>
+                <li><PiCheckCircleFill /> IP65 Weatherproof</li>
+                <li><PiCheckCircleFill /> Smart Monitoring</li>
+              </ul>
+
+              <Link href="/products" className="btn-link">
+                E-Mobility Catalog <PiArrowRight />
+              </Link>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* ================= TEAM ================= */}
+
       <section className="team-section">
+
         <div className="container">
-          <SectionHeader badge="Leadership" title="The Experts Behind JoyHand" center />
+
+          <SectionHeader
+            badge="Leadership"
+            title="The Supply Chain Experts"
+            center
+          />
+
           <div className="team-section__grid">
-            {team.map((member, idx) => (
-              <div key={idx} className="team-card">
+
+            {team.map((member, index) => (
+
+              <div key={index} className="team-card">
+
                 <div className="team-card__visual-container">
+
                   <div className="team-card__visual">
-                    <Image src={member.image} alt={member.name} fill className="team-card__img" />
+                    <Image
+                      src={member.image}
+                      alt={member.name}
+                      fill
+                      className="team-card__img"
+                    />
                   </div>
-                  {/* LinkedIn Icon as requested */}
-                  <a href="#" className="team-card__linkedin" aria-label="LinkedIn Profile">
-                    <PiLinkedinLogo size={24} weight="fill" />
+
+                  <a href="#" className="team-card__linkedin">
+                    <PiLinkedinLogo size={24} />
                   </a>
+
                 </div>
-                <div className="team-card__content">
-                  <h4 className="team-card__name">{member.name}</h4>
-                  <span className="team-card__role">{member.title}</span>
-                  <p className="team-card__bio">{member.bio}</p>
-                </div>
+
+                <h4 className="team-card__name">{member.name}</h4>
+                <span className="team-card__role">{member.title}</span>
+                <p className="team-card__bio">{member.bio}</p>
+
               </div>
+
             ))}
+
           </div>
+
         </div>
+
       </section>
 
-      {/* ================= CTA (BOTTOM MARGIN) ================= */}
+      {/* ================= CTA ================= */}
+
       <section className="cta-banner">
+
         <div className="container">
+
           <div className="cta-banner__wrapper">
+
             <div className="cta-banner__text">
-              <h4 className="cta-banner__title">Partner With JoyHand</h4>
-              <p className="cta-banner__subtitle">Ready to source solar and electric mobility products for your market? Whether you need:</p>
+
+              <h4 className="cta-banner__title">
+                Expand Your Distribution Hub
+              </h4>
+
+              <p className="cta-banner__subtitle">
+                Partner with JoyHand for reliable sourcing and factory-direct
+                quality control.
+              </p>
+
             </div>
+
             <Link href="/contact" className="btn btn--secondary cta-banner__btn">
-              Get Started <PiArrowRight weight="bold" />
+              Apply for Partnership <PiArrowRight />
             </Link>
+
           </div>
+
         </div>
+
       </section>
+
     </main>
   );
 }

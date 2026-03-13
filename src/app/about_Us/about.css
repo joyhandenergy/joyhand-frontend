@@ -1,5 +1,17 @@
-/* ================= INTRO & NFC SCANNER ================= */
-.about-intro { padding: var(--spacing-8) 0; overflow: hidden; }
+/* =====================================================
+   ABOUT PAGE - MAIN WRAPPER
+===================================================== */
+.about-page {
+  overflow-x: hidden;
+}
+
+/* =====================================================
+   SECTION 1: INTRO & NFC SCANNER
+===================================================== */
+.about-intro { 
+  padding: var(--spacing-8) 0; 
+  background-color: var(--neutral-white);
+}
 
 .about-intro__container {
   display: grid;
@@ -8,6 +20,66 @@
   align-items: center;
 }
 
+.about-intro__description {
+  margin-top: var(--spacing-4);
+}
+
+.about-intro__description p {
+  line-height: 1.7;
+  color: var(--neutral-medium);
+  margin-bottom: var(--spacing-4);
+}
+
+/* Evolution Highlights */
+.about-intro__highlights {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+  margin: var(--spacing-4) 0;
+}
+
+.highlight-tag {
+  display: flex;
+  gap: var(--spacing-3);
+  padding: var(--spacing-3);
+  background: var(--accent-color-light);
+  border-radius: var(--spacing-2);
+  border-left: 4px solid var(--primary-color);
+  transition: var(--transition);
+}
+
+.highlight-tag:hover {
+  background: white;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+  transform: translateX(5px);
+}
+
+.highlight-tag__icon {
+  font-size: 1.5rem;
+}
+
+.highlight-tag strong {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--secondary-color);
+  margin-bottom: 2px;
+}
+
+.highlight-tag p {
+  font-size: 0.85rem;
+  margin-bottom: 0 !important;
+  line-height: 1.4;
+}
+
+.about-intro__footer-text {
+  font-style: italic;
+  font-size: 0.9rem;
+  padding-top: var(--spacing-3);
+  border-top: 1px solid rgba(0,0,0,0.05);
+  color: var(--neutral-medium);
+}
+
+/* NFC Scanner Visual */
 .about-intro__visual {
   display: flex;
   justify-content: center;
@@ -33,10 +105,22 @@
   box-shadow: 0 30px 60px rgba(18, 27, 45, 0.2);
 }
 
-.about-intro__img { object-fit: cover; transition: transform 0.8s ease; }
-.nfc-scanner:hover .about-intro__img { transform: scale(1.1); }
+.about-intro__img { 
+  object-fit: cover; 
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); 
+}
 
-/* NFC Rings Animation */
+.nfc-scanner:hover .about-intro__img { 
+  transform: scale(1.1); 
+}
+
+/* NFC Pulsing Rings */
+@keyframes nfc-pulse {
+  0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0; }
+  50% { opacity: 0.4; }
+  100% { transform: translate(-50%, -50%) scale(1.3); opacity: 0; }
+}
+
 .nfc-scanner__ring {
   position: absolute;
   top: 50%; left: 50%;
@@ -46,9 +130,12 @@
   border-radius: 50px;
   animation: nfc-pulse 3s linear infinite;
   opacity: 0;
+  pointer-events: none;
 }
 
-.nfc-scanner__ring--delayed { animation-delay: 1.5s; }
+.nfc-scanner__ring--delayed { 
+  animation-delay: 1.5s; 
+}
 
 .nfc-status {
   position: absolute;
@@ -73,26 +160,110 @@
   box-shadow: 0 0 10px var(--accent-color-dark);
 }
 
-/* ================= CAPABILITIES ================= */
-.capabilities { padding: var(--spacing-8) 0; background: var(--neutral-light); }
-.capabilities__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--spacing-4); margin-top: var(--spacing-6); }
-
-.capabilities__card {
-  background: var(--neutral-white);
-  padding: var(--spacing-6);
-  border-radius: var(--spacing-2);
-  transition: var(--transition);
-  display: flex;
-  flex-direction: column;
+/* =====================================================
+   NEW: VISUAL PROOF (ZIG-ZAG LAYOUT)
+===================================================== */
+.visual-proof {
+  padding: var(--spacing-8) 0;
+  background-color: var(--neutral-white);
 }
 
-.capabilities__card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.08); }
-.capabilities__card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--spacing-3); }
-.capabilities__card-badge { color: var(--primary-color); font-size: 2rem; opacity: 0.2; }
-.capabilities__card-link { margin-top: auto; padding-top: var(--spacing-4); display: flex; align-items: center; gap: 8px; font-weight: 700; color: var(--primary-color); cursor: pointer; }
+.proof-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-8);
+  align-items: center;
+  margin-top: var(--spacing-8);
+  margin-bottom: var(--spacing-8);
+}
 
-/* ================= TEAM SECTION (CIRCULAR) ================= */
-.team-section { padding: var(--spacing-8) 0; }
+.proof-row--reverse .proof-image { order: 2; }
+.proof-row--reverse .proof-text { order: 1; }
+
+.proof-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--spacing-4);
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.proof-image img {
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.proof-row:hover .proof-image img { transform: scale(1.05); }
+
+.proof-badge {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: var(--primary-color);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+.proof-text h3 {
+  font-size: 2.25rem;
+  margin-bottom: var(--spacing-3);
+  color: var(--secondary-color);
+}
+
+.proof-text p {
+  color: var(--neutral-medium);
+  margin-bottom: var(--spacing-4);
+  font-size: 1.05rem;
+}
+
+.proof-list {
+  margin-bottom: var(--spacing-5);
+  list-style: none !important;
+}
+
+.proof-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  font-weight: 600;
+  color: var(--secondary-color-light);
+  font-size: 0.95rem;
+}
+
+.proof-list svg {
+  color: var(--primary-color);
+  font-size: 1.25rem;
+}
+
+.btn-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--primary-color);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: var(--transition);
+}
+
+.btn-link:hover {
+  transform: translateX(10px);
+}
+
+/* =====================================================
+   SECTION 3: TEAM LEADERSHIP (CIRCULAR)
+===================================================== */
+.team-section { 
+  padding: var(--spacing-8) 0; 
+}
+
 .team-section__grid { 
   display: grid; 
   grid-template-columns: repeat(2, 1fr); 
@@ -109,9 +280,9 @@
 
 .team-card__visual-container {
   position: relative;
-  width: 260px; /* Large circular images */
-  height: 260px;
-  margin-bottom: var(--spacing-4);
+  width: 280px; 
+  height: 280px;
+  margin-bottom: var(--spacing-5);
 }
 
 .team-card__visual {
@@ -119,8 +290,8 @@
   height: 100%;
   border-radius: 50%;
   overflow: hidden;
-  border: 4px solid var(--neutral-white);
-  box-shadow: 0 20px 40px rgba(18, 27, 45, 0.1);
+  border: 6px solid var(--neutral-white);
+  box-shadow: 0 25px 50px rgba(18, 27, 45, 0.12);
   position: relative;
   transition: var(--transition);
 }
@@ -130,18 +301,18 @@
   transform: scale(1.02);
 }
 
-.team-card__img { object-fit: cover; transition: 0.5s ease; }
-.team-card:hover .team-card__img { transform: scale(1.1); }
+.team-card__img { 
+  object-fit: cover; 
+}
 
-/* LinkedIn Floating Icon */
 .team-card__linkedin {
   position: absolute;
-  bottom: 15px;
-  right: 15px;
+  bottom: 20px;
+  right: 20px;
   background-color: var(--primary-color);
   color: white;
-  width: 50px;
-  height: 50px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -152,50 +323,98 @@
   border: 4px solid var(--neutral-white);
 }
 
-.team-card__linkedin:hover {
-  background-color: var(--secondary-color);
-  transform: scale(1.1) rotate(15deg);
+.team-card__name { 
+  color: var(--secondary-color); 
+  font-size: 1.75rem; 
+  margin-bottom: 4px; 
 }
 
-.team-card__name { color: var(--secondary-color); font-size: 1.5rem; margin-bottom: 5px; }
-.team-card__role { color: var(--primary-color); font-weight: 700; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; margin-bottom: var(--spacing-3); display: block; }
-.team-card__bio { color: var(--neutral-medium); font-size: 0.95rem; line-height: 1.6; max-width: 420px; }
+.team-card__role { 
+  color: var(--primary-color); 
+  font-weight: 700; 
+  text-transform: uppercase; 
+  font-size: 0.85rem; 
+  letter-spacing: 1.5px; 
+  margin-bottom: var(--spacing-3); 
+  display: block; 
+}
 
-/* ================= CTA BANNER & PADDING ================= */
+.team-card__bio { 
+  color: var(--neutral-medium); 
+  font-size: 0.95rem; 
+  line-height: 1.6; 
+  max-width: 440px; 
+}
+
+/* =====================================================
+   SECTION 4: CTA BANNER
+===================================================== */
 .cta-banner { 
-  padding: var(--spacing-6) 0 var(--spacing-8); 
-  margin-bottom: 60px; /* Safe space before footer */
+  padding-bottom: var(--spacing-8); 
+  margin-bottom: 40px; 
 }
 
 .cta-banner__wrapper {
   background: var(--secondary-color);
   padding: var(--spacing-8);
-  border-radius: var(--spacing-3);
+  border-radius: var(--spacing-4);
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: white;
+  box-shadow: 0 20px 40px rgba(18, 27, 45, 0.2);
 }
 
-.cta-banner__title { color: white; margin-bottom: 8px; }
-
-/* ================= ANIMATIONS ================= */
-@keyframes nfc-pulse {
-  0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0; }
-  50% { opacity: 0.5; }
-  100% { transform: translate(-50%, -50%) scale(1.2); opacity: 0; }
+.cta-banner__title { 
+  color: white; 
+  font-size: 2.25rem;
+  margin-bottom: 8px; 
 }
 
-/* ================= RESPONSIVE ================= */
-@media (max-width: 992px) {
-  .about-intro__container { grid-template-columns: 1fr; text-align: center; }
-  .about-intro__visual { order: -1; margin-bottom: var(--spacing-4); }
-  .capabilities__grid { grid-template-columns: repeat(2, 1fr); }
+.cta-banner__subtitle {
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 500px;
+}
+
+.cta-banner__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: var(--spacing-3) var(--spacing-6);
+  border-radius: 50px;
+  font-weight: 700;
+}
+
+/* =====================================================
+   RESPONSIVE QUERIES
+===================================================== */
+@media (max-width: 1024px) {
   .team-card__visual-container { width: 220px; height: 220px; }
+  .about-intro__container { gap: var(--spacing-4); }
+}
+
+@media (max-width: 992px) {
+  .about-intro__container,
+  .proof-row { 
+    grid-template-columns: 1fr; 
+    text-align: center; 
+    gap: var(--spacing-5);
+  }
+  
+  .about-intro__visual,
+  .proof-row--reverse .proof-image { 
+    order: -1; 
+    margin-bottom: var(--spacing-6); 
+  }
+
+  .highlight-tag { text-align: left; max-width: 500px; margin: 0 auto; }
+  .proof-list { display: inline-block; text-align: left; }
+  .cta-banner__wrapper { flex-direction: column; text-align: center; gap: var(--spacing-5); }
 }
 
 @media (max-width: 768px) {
-  .capabilities__grid, .team-section__grid { grid-template-columns: 1fr; }
-  .cta-banner__wrapper { flex-direction: column; text-align: center; gap: var(--spacing-5); }
-  .team-card__visual-container { width: 200px; height: 200px; }
+  .team-section__grid { grid-template-columns: 1fr; }
+  .team-card__visual-container { width: 240px; height: 240px; }
+  .cta-banner__title { font-size: 1.75rem; }
+  .proof-text h3 { font-size: 1.75rem; }
 }

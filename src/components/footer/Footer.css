@@ -5,7 +5,7 @@
   background-color: var(--secondary-color);
   padding-top: var(--spacing-8);
   color: var(--neutral-white);
-  border-top: 4px solid var(--primary-color);
+  border-top: 4px solid var(--accent-color-dark);
 }
 
 .footer__container {
