@@ -6,6 +6,21 @@
   padding-top: var(--spacing-8);
   color: var(--neutral-white);
   border-top: 4px solid var(--accent-color-dark);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle background pattern */
+.footer::before {
+  content: '';
+  position: absolute;
+  bottom: -50px;
+  right: -50px;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(255,127,65,0.03) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
 }
 
 .footer__container {
@@ -13,6 +28,8 @@
   grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
   gap: var(--spacing-6);
   padding-bottom: var(--spacing-8);
+  position: relative;
+  z-index: 2;
 }
 
 /* =====================================================
@@ -22,6 +39,18 @@
   display: flex;
   flex-direction: column;
   gap: var(--spacing-3);
+  align-items: flex-start; /* Force left alignment */
+  text-align: left;
+}
+
+.footer__logo {
+  display: inline-block;
+  transition: var(--transition);
+}
+
+.footer__logo:hover {
+  transform: scale(1.02);
+  opacity: 0.9;
 }
 
 .footer__description {
@@ -29,6 +58,7 @@
   line-height: 1.7;
   color: rgba(255, 255, 255, 0.6);
   max-width: 320px;
+  text-align: left;
 }
 
 .footer__social {
@@ -60,6 +90,13 @@
 /* =====================================================
    COLUMNS & LINKS
 ===================================================== */
+.footer__column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
 .footer__title {
   color: var(--neutral-white);
   font-size: 0.85rem;
@@ -68,6 +105,8 @@
   letter-spacing: 2px;
   margin-bottom: var(--spacing-5);
   position: relative;
+  width: 100%;
+  text-align: left;
 }
 
 .footer__title::after {
@@ -84,15 +123,18 @@
   display: flex;
   flex-direction: column;
   gap: 14px;
+  width: 100%;
 }
 
 .footer__link {
   color: rgba(255, 255, 255, 0.7);
   font-size: var(--font-size-sm);
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 8px;
   transition: all 0.3s ease;
+  width: fit-content;
+  text-decoration: none;
 }
 
 .footer__link svg {
@@ -114,7 +156,7 @@
 }
 
 /* =====================================================
-   CONTACT INFO
+   CONTACT INFO - NFC STYLE
 ===================================================== */
 .footer__contact-item {
   display: flex;
@@ -122,17 +164,41 @@
   font-size: var(--font-size-sm);
   color: rgba(255, 255, 255, 0.7);
   line-height: 1.5;
+  transition: var(--transition);
+  position: relative;
+  width: 100%;
 }
 
 .footer__icon {
   color: var(--primary-color);
   flex-shrink: 0;
   font-size: 1.2rem;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+/* NFC Pulse animation on hover - matching header */
+@keyframes nfcPulse {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 2px var(--primary-color));
+  }
+  50% {
+    transform: scale(1.2);
+    filter: drop-shadow(0 0 10px var(--primary-color));
+  }
+}
+
+.footer__contact-item:hover .footer__icon {
+  animation: nfcPulse 1s ease infinite;
+  color: white;
 }
 
 .footer__contact-item a {
   color: inherit;
   transition: color 0.3s ease;
+  text-decoration: none;
+  word-break: break-word;
 }
 
 .footer__contact-item a:hover {
@@ -140,12 +206,14 @@
 }
 
 /* =====================================================
-   FOOTER BOTTOM
+   FOOTER BOTTOM (CENTERED ON ALL DEVICES)
 ===================================================== */
 .footer__bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.05);
   padding: var(--spacing-3) 0;
   background-color: var(--secondary-color-dark);
+  position: relative;
+  z-index: 2;
 }
 
 .footer__bottom-container {
@@ -164,10 +232,16 @@
 .footer__legal-links a {
   color: inherit;
   transition: color 0.3s ease;
+  text-decoration: none;
 }
 
 .footer__legal-links a:hover {
   color: var(--neutral-white);
+}
+
+.footer__copyright,
+.footer__credit {
+  margin: 0;
 }
 
 /* =====================================================
@@ -176,15 +250,22 @@
 @media screen and (max-width: 992px) {
   .footer__container {
     grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-5);
   }
+  
+  .footer__brand {
+    grid-column: span 2;
+    max-width: 500px;
+  }
+  
   .footer__logo-img {
-    width: 120px; /* 15 * 8 */
+    width: 120px;
   }
 }
 
 @media screen and (max-width: 768px) {
   .footer {
-    text-align: center;
+    text-align: left; /* Override any centering */
   }
 
   .footer__container {
@@ -192,35 +273,73 @@
     gap: var(--spacing-6);
   }
 
-  .footer__brand, 
+  .footer__brand {
+    grid-column: span 1;
+    align-items: flex-start; /* Keep left aligned */
+    text-align: left;
+    max-width: 100%;
+  }
+
   .footer__column {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
+    align-items: flex-start; /* Keep left aligned */
+    text-align: left;
+  }
+
+  .footer__title {
+    text-align: left;
   }
 
   .footer__title::after {
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0; /* Keep left aligned, not centered */
+    transform: none;
   }
 
   .footer__description {
     max-width: 100%;
+    text-align: left;
   }
 
-  /* --- FIX FOR SMALLER BOTTOM ON MOBILE --- */
+  .footer__social {
+    justify-content: flex-start; /* Left align social icons */
+  }
+
   .footer__bottom {
-    padding: var(--spacing-2) 0; /* Reduced from spacing-3 */
+    padding: var(--spacing-2) 0;
   }
 
   .footer__bottom-container {
     flex-direction: column;
-    gap: 8px; /* Tightened gap between lines */
+    gap: 8px;
     text-align: center;
+    align-items: center; /* Center the bottom container */
+    justify-content: center;
   }
 
   .footer__legal-links {
-    gap: var(--spacing-2); /* Narrower gap between Privacy/Terms */
+    gap: var(--spacing-2);
     margin-bottom: 4px;
+    justify-content: center; /* Center the legal links */
+  }
+  
+  .footer__copyright,
+  .footer__credit {
+    text-align: center;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .footer__contact-item {
+    flex-wrap: wrap;
+    word-break: break-word;
+  }
+  
+  .footer__logo-img {
+    width: 120px;
+  }
+  
+  .footer__social-link {
+    width: 36px;
+    height: 36px;
   }
 }
