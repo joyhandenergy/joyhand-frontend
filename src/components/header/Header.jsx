@@ -39,7 +39,6 @@ export default function Header() {
   
   const pathName = usePathname();
 
-  // Handle scroll effect for glassmorphism
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
@@ -49,20 +48,17 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close menu when clicking a link
   const closeMenu = () => {
     setIsMenuOpen(false);
     setActiveDropdown(null);
   };
 
-  // Handle mobile dropdown
   const handleMobileDropdown = (name, e) => {
     e.preventDefault();
     e.stopPropagation();
     setActiveDropdown(activeDropdown === name ? null : name);
   };
 
-  // Close menu on escape key
   useEffect(() => {
     const handleEscape = (e) => {
       if (e.key === "Escape" && isMenuOpen) {
@@ -75,7 +71,6 @@ export default function Header() {
     return () => window.removeEventListener("keydown", handleEscape);
   }, [isMenuOpen]);
 
-  // Prevent body scroll when mobile menu is open
   useEffect(() => {
     if (isMenuOpen) {
       document.body.style.overflow = "hidden";
@@ -92,19 +87,28 @@ export default function Header() {
     <>
       <header className={`header ${scrolled ? "header--scrolled" : ""}`}>
         
-        {/* TOP BAR - Desktop only */}
+        {/* TOP BAR - Always visible, compact */}
         <div className="header__top">
           <div className="container header__top-container">
             <div className="header__contact">
               <a href="tel:+8613060850617" className="header__contact-item">
-                <PiPhone size={14} />
+                <PiPhone size={12} />
                 <span>+86 130 6085 0617</span>
               </a>
               <a href="mailto:info@joyhand.com" className="header__contact-item">
-                <PiEnvelopeSimple size={14} />
+                <PiEnvelopeSimple size={12} />
                 <span>info@joyhand.com</span>
               </a>
             </div>
+            
+            {/* Mobile Quote Button - Always visible */}
+            <button
+              className="header__top-quote"
+              onClick={() => setIsModalOpen(true)}
+              aria-label="Get a quote"
+            >
+              Get a Quote <PiArrowRight size={12} />
+            </button>
           </div>
         </div>
 
@@ -129,7 +133,7 @@ export default function Header() {
               />
             </Link>
 
-            {/* DESKTOP NAV (992px+) */}
+            {/* DESKTOP NAV */}
             <nav className="header__nav" aria-label="Desktop navigation">
               {links.map((link, idx) => (
                 <div key={idx} className="header__nav-item">
@@ -144,7 +148,7 @@ export default function Header() {
                   </Link>
 
                   {link.subLinks && (
-                    <ul className="header__dropdown" aria-label={`${link.name} submenu`}>
+                    <ul className="header__dropdown">
                       {link.subLinks.map((sub, sIdx) => (
                         <li key={sIdx}>
                           <Link
@@ -177,7 +181,7 @@ export default function Header() {
                 aria-label={isMenuOpen ? "Close menu" : "Open menu"}
                 aria-expanded={isMenuOpen}
               >
-                {isMenuOpen ? <PiX size={32} /> : <PiList size={32} />}
+                {isMenuOpen ? <PiX size={24} /> : <PiList size={24} />}
               </button>
             </div>
           </div>
@@ -188,7 +192,7 @@ export default function Header() {
           className={`header__mobile-menu ${isMenuOpen ? "header__mobile-menu--open" : ""}`}
           aria-hidden={!isMenuOpen}
         >
-          <nav className="header__mobile-nav" aria-label="Mobile navigation">
+          <nav className="header__mobile-nav">
             {links.map((link, idx) => (
               <div key={idx} className="header__mobile-item">
                 <div
@@ -216,7 +220,6 @@ export default function Header() {
                       className={`header__mobile-caret ${
                         activeDropdown === link.name ? "header__mobile-caret--open" : ""
                       }`}
-                      aria-hidden="true"
                     />
                   )}
                 </div>
@@ -226,7 +229,6 @@ export default function Header() {
                     className={`header__mobile-sub ${
                       activeDropdown === link.name ? "header__mobile-sub--open" : ""
                     }`}
-                    aria-label={`${link.name} submenu`}
                   >
                     {link.subLinks.map((sub, sIdx) => (
                       <li key={sIdx}>
@@ -247,24 +249,14 @@ export default function Header() {
             {/* Mobile Contact Info */}
             <div className="header__mobile-contact">
               <a href="tel:+8613060850617" className="header__mobile-contact-item">
-                <PiPhone size={18} />
+                <PiPhone size={16} />
                 <span>+86 130 6085 0617</span>
               </a>
               <a href="mailto:info@joyhand.com" className="header__mobile-contact-item">
-                <PiEnvelopeSimple size={18} />
+                <PiEnvelopeSimple size={16} />
                 <span>info@joyhand.com</span>
               </a>
             </div>
-
-            <button
-              className="btn btn--primary header__mobile-cta"
-              onClick={() => {
-                closeMenu();
-                setIsModalOpen(true);
-              }}
-            >
-              Get a Quote <PiArrowRight />
-            </button>
           </nav>
         </div>
       </header>
