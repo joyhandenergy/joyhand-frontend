@@ -1,7 +1,5 @@
-"use client";
-
-import React, { use } from "react";
 import { blogPosts } from "@/data";
+import { notFound } from "next/navigation";
 import Link from "next/link";
 import { 
   PiArrowLeft, 
@@ -9,53 +7,34 @@ import {
   PiUser, 
   PiArrowRight,
   PiFactory,
-  PiShieldCheck
+  PiShieldCheck,
+  PiClock
 } from "react-icons/pi";
-import { PortableText } from "@portabletext/react";
 import PageHeader from "@/components/pageHeader/PageHeader";
 import "../blog.css";
 
-/**
- * CUSTOM PORTABLE TEXT COMPONENTS
- */
-const blogContentComponents = {
-  block: {
-    h2: ({ children }) => <h2 className="blog-content__h2">{children}</h2>,
-    h3: ({ children }) => <h3 className="blog-content__h3">{children}</h3>,
-    normal: ({ children }) => <p className="blog-content__p">{children}</p>,
-  },
-  list: {
-    bullet: ({ children }) => <ul className="blog-content__ul">{children}</ul>,
-  },
-  listItem: {
-    bullet: ({ children }) => <li className="blog-content__li">{children}</li>,
-  },
-};
-
-export default function BlogDetailsPage({ params: paramsPromise }) {
-  const params = use(paramsPromise);
-  const { slug } = params;
+export default async function BlogDetailsPage({ params }) {
+  const { slug } = await params;
 
   const blogPost = blogPosts.find(
     (post) => post.slug.toLowerCase().trim() === slug.toLowerCase().trim()
   );
 
   if (!blogPost) {
-    return (
-      <main className="blog-details-notfound">
-        <div className="container">
-          <h1 className="blog-details-notfound__title">404</h1>
-          <h2 className="blog-details-notfound__subtitle">Article Not Found</h2>
-          <Link href="/blog" className="btn btn--secondary">Browse Sourcing Insights</Link>
-        </div>
-      </main>
-    );
+    notFound();
   }
 
-  // --- LOGIC TO PREVENT EMPTY CONTENT ---
-  const isPortableText = Array.isArray(blogPost.content) && 
-                         typeof blogPost.content[0] === 'object' && 
-                         blogPost.content[0] !== null;
+  // Find next and previous posts
+  const currentIndex = blogPosts.findIndex((p) => p.slug === slug);
+  const prevPost = currentIndex > 0 ? blogPosts[currentIndex - 1] : null;
+  const nextPost = currentIndex < blogPosts.length - 1 ? blogPosts[currentIndex + 1] : null;
+
+  // Format date
+  const formattedDate = new Date().toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
 
   return (
     <article className="blog-details">
@@ -66,10 +45,11 @@ export default function BlogDetailsPage({ params: paramsPromise }) {
 
       <div className="container blog-details__container">
         <Link href="/blog" className="blog-details__back">
-          <PiArrowLeft weight="bold" /> Back to Sourcing Insights
+          <PiArrowLeft weight="bold" /> Back to Insights
         </Link>
 
         <div className="blog-details__main-layout">
+          {/* Main Content */}
           <div className="blog-details__body">
             
             <div className="blog-details__meta-row">
@@ -77,30 +57,46 @@ export default function BlogDetailsPage({ params: paramsPromise }) {
                 <PiUser weight="bold" /> JoyHand Sourcing Team
               </span>
               <span className="blog-details__meta-item">
-                <PiCalendarBlank weight="bold" /> {new Date().toLocaleDateString()}
+                <PiCalendarBlank weight="bold" /> {formattedDate}
               </span>
-              {blogPost.category && (
-                <span className="blog-details__category-badge">{blogPost.category}</span>
-              )}
+              <span className="blog-details__meta-item">
+                <PiClock weight="bold" /> {blogPost.readTime || "5 min read"}
+              </span>
             </div>
 
             <div className="blog-details__content">
-              {/* Conditional Rendering: 
-                  If data is PortableText (from CMS), use the component.
-                  If data is simple strings (from local data), map them. */}
-              {isPortableText ? (
-                <PortableText 
-                  value={blogPost.content} 
-                  components={blogContentComponents} 
-                />
-              ) : (
-                blogPost.content.map((paragraph, index) => (
-                  <p key={index} className="blog-content__p">{paragraph}</p>
-                ))
-              )}
+              {blogPost.content.map((paragraph, index) => (
+                <p key={index} className="blog-content__p">{paragraph}</p>
+              ))}
             </div>
+
+            {/* Post Navigation - Integrated beautifully */}
+            {(prevPost || nextPost) && (
+              <div className="blog-details__navigation">
+                {prevPost && (
+                  <Link href={`/blog/${prevPost.slug}`} className="blog-details__nav-link blog-details__nav-link--prev">
+                    <PiArrowLeft className="blog-details__nav-icon" />
+                    <div className="blog-details__nav-content">
+                      <span className="blog-details__nav-label">Previous Article</span>
+                      <span className="blog-details__nav-title">{prevPost.title}</span>
+                    </div>
+                  </Link>
+                )}
+                
+                {nextPost && (
+                  <Link href={`/blog/${nextPost.slug}`} className="blog-details__nav-link blog-details__nav-link--next">
+                    <div className="blog-details__nav-content">
+                      <span className="blog-details__nav-label">Next Article</span>
+                      <span className="blog-details__nav-title">{nextPost.title}</span>
+                    </div>
+                    <PiArrowRight className="blog-details__nav-icon" />
+                  </Link>
+                )}
+              </div>
+            )}
           </div>
 
+          {/* Sidebar - Your original design */}
           <aside className="blog-details__sidebar">
             <div className="sidebar-card sidebar-card--cta">
               <div className="sidebar-card__icon">

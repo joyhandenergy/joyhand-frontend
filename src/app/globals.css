@@ -591,6 +591,24 @@ img {
   }
 }
 
+
+/* =====================================================
+   SIMPLE MOBILE TEXT BOOST
+===================================================== */
+@media screen and (max-width: 768px) {
+  /* Increase ALL text by 15% on mobile */
+  html {
+    font-size: 17px; /* Bigger base size */
+  }
+  
+  /* Ensure buttons are touch-friendly */
+  .btn {
+    padding: 14px 24px;
+    font-size: 1rem;
+  }
+}
+
+
 /* =====================================================
    NOT FOUND PAGE
 ===================================================== */

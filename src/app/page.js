@@ -13,8 +13,7 @@ export default function Home() {
       <BusinessModel />
       <InnovationShowcase />
       <EnergyPlatforms />
-      <CtaBanner />  
-      <HomeBlogSection/>    
+      <CtaBanner />     
       
     </>
   );

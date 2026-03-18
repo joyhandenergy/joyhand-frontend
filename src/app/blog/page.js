@@ -8,27 +8,22 @@ export default function BlogPage() {
   return (
     <main className="blog-page">
       <PageHeader 
-        title="Industry Insights" 
+        title="Industry Insights"
+        subtitle="Expert knowledge for energy professionals"
         pageImage="/images/solarImg/panel.home.jpg" 
       />
       
       <section className="blog-section">
         <div className="container">
           <SectionHeader 
-            badge="Stay Updated"
-            title="Latest in Solar Tech"
-            subtitle="Expert analysis on renewable energy, battery storage, and OEM manufacturing trends."
+            badge="Knowledge Hub"
+            title="Solar & Energy Storage Insights"
+            subtitle="Technical guides, market trends, and best practices for solar professionals"
           />
           
-          <div className="blog-page__content">
+          <div className="blog-grid">
             {blogPosts.map((post) => (
-              <BlogCard
-                key={post.id}
-                title={post.title}
-                image={post.image}
-                description={post.excerpt}
-                slug={post.slug}
-              />
+              <BlogCard key={post.id} post={post} />
             ))}
           </div>
         </div>

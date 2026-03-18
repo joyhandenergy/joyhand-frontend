@@ -7,9 +7,9 @@ export const blogPosts = [
     id: "1",
     title: "How to Choose the Right Solar Power System for Your Home",
     slug: "choose-right-solar-system",
-    excerpt:
-      "Switching to solar is a smart investment. Learn how to choose the right solar power system based on your energy needs and budget.",
+    excerpt: "Switching to solar is a smart investment. Learn how to choose the right solar power system based on your energy needs and budget.",
     image: "/images/solarImg/panel.home.jpg",
+    readTime: "5 min read",
     content: [
       "Choosing the right solar system starts with understanding your daily energy consumption. Review your electricity bills to determine your average monthly usage.",
       "Roof size and orientation are key factors. South-facing roofs with minimal shading generate maximum solar output.",
@@ -21,9 +21,9 @@ export const blogPosts = [
     id: "2",
     title: "Top Benefits of Installing a Solar Power Station",
     slug: "benefits-of-solar-power-station",
-    excerpt:
-      "Solar power stations reduce electricity costs and provide energy independence. Discover the long-term benefits of going solar.",
+    excerpt: "Solar power stations reduce electricity costs and provide energy independence. Discover the long-term benefits of going solar.",
     image: "/images/solarImg/panel.home.jpg",
+    readTime: "4 min read",
     content: [
       "Installing a solar power station significantly reduces your monthly electricity bills.",
       "Solar energy is renewable and environmentally friendly, reducing carbon emissions.",
@@ -35,9 +35,9 @@ export const blogPosts = [
     id: "3",
     title: "How Solar Battery Storage Works",
     slug: "how-solar-battery-storage-works",
-    excerpt:
-      "Solar batteries store excess energy generated during the day for use at night or during outages. Learn how battery storage systems function.",
+    excerpt: "Solar batteries store excess energy generated during the day for use at night or during outages. Learn how battery storage systems function.",
     image: "/images/solarImg/panel.home.jpg",
+    readTime: "6 min read",
     content: [
       "Solar panels generate electricity during daylight hours, often producing more energy than is immediately needed.",
       "A battery storage system captures excess energy and stores it for later use.",
@@ -49,9 +49,9 @@ export const blogPosts = [
     id: "4",
     title: "Lithium vs. Lead-Acid Solar Batteries: Which Is Better?",
     slug: "lithium-vs-lead-acid-batteries",
-    excerpt:
-      "Choosing the right battery type is crucial. Compare lithium and lead-acid batteries to find the best fit for your solar system.",
+    excerpt: "Choosing the right battery type is crucial. Compare lithium and lead-acid batteries to find the best fit for your solar system.",
     image: "/images/solarImg/panel.home.jpg",
+    readTime: "7 min read",
     content: [
       "Lithium batteries offer longer lifespan, higher efficiency, and lower maintenance compared to lead-acid batteries.",
       "Lead-acid batteries are more affordable upfront but require regular maintenance.",
@@ -63,9 +63,9 @@ export const blogPosts = [
     id: "5",
     title: "Understanding Solar Inverters and Their Importance",
     slug: "understanding-solar-inverters",
-    excerpt:
-      "Solar inverters are the heart of your solar system. Learn how they convert and manage power efficiently.",
+    excerpt: "Solar inverters are the heart of your solar system. Learn how they convert and manage power efficiently.",
     image: "/images/solarImg/panel.home.jpg",
+    readTime: "5 min read",
     content: [
       "Solar panels produce direct current (DC) electricity, but homes use alternating current (AC).",
       "Inverters convert DC power into usable AC power for your appliances.",
@@ -77,9 +77,9 @@ export const blogPosts = [
     id: "6",
     title: "Off-Grid vs. Hybrid Solar Systems Explained",
     slug: "off-grid-vs-hybrid-solar",
-    excerpt:
-      "Not sure which solar setup is right for you? Understand the differences between off-grid and hybrid systems.",
+    excerpt: "Not sure which solar setup is right for you? Understand the differences between off-grid and hybrid systems.",
     image: "/images/solarImg/panel.home.jpg",
+    readTime: "6 min read",
     content: [
       "Off-grid systems operate independently from the utility grid and rely entirely on solar panels and battery storage.",
       "Hybrid systems combine solar energy with grid connectivity for maximum reliability.",
@@ -91,12 +91,12 @@ export const blogPosts = [
     id: "7",
     title: "How to Maintain Your Solar Power System",
     slug: "maintain-solar-power-system",
-    excerpt:
-      "Proper maintenance ensures your solar power system operates efficiently for decades. Learn essential care tips.",
+    excerpt: "Proper maintenance ensures your solar power system operates efficiently for decades. Learn essential care tips.",
     image: "/images/solarImg/panel.home.jpg",
+    readTime: "4 min read",
     content: [
       "Clean your solar panels periodically to remove dust and debris that can reduce efficiency.",
-      "Monitor your system’s performance using smart tracking apps.",
+      "Monitor your system's performance using smart tracking apps.",
       "Inspect wiring and mounting structures annually for safety and stability.",
       "Schedule professional maintenance checks to maximize system lifespan.",
     ],
@@ -105,9 +105,9 @@ export const blogPosts = [
     id: "8",
     title: "Why Solar Energy Is the Future of Power Generation",
     slug: "future-of-solar-energy",
-    excerpt:
-      "Solar energy is transforming global power systems. Discover why it is becoming the leading renewable energy source worldwide.",
+    excerpt: "Solar energy is transforming global power systems. Discover why it is becoming the leading renewable energy source worldwide.",
     image: "/images/solarImg/panel.home.jpg",
+    readTime: "5 min read",
     content: [
       "Solar technology continues to advance, making systems more affordable and efficient.",
       "Energy storage innovations are solving reliability challenges.",
