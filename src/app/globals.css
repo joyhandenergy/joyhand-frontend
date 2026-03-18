@@ -186,7 +186,7 @@ p {
 }
 
 /* =====================================================
-   CONTAINER
+   CONTAINER - FIXED: Better proportions for all screens
 ===================================================== */
 .container {
   width: 100%;
@@ -209,57 +209,45 @@ p {
 @media screen and (min-width: 768px) {
   .container {
     max-width: 720px;
-  }
-}
-
-/* Small desktops/laptops */
-@media screen and (min-width: 1024px) {
-  .container {
-    max-width: 960px;
-  }
-}
-
-/* Desktops */
-@media screen and (min-width: 1280px) {
-  .container {
-    max-width: 1140px;
-  }
-}
-
-/* Large desktops */
-@media screen and (min-width: 1440px) {
-  .container {
-    max-width: 1320px;
-  }
-}
-
-/* Extra large desktops */
-@media screen and (min-width: 1600px) {
-  .container {
-    max-width: 1440px;
-  }
-}
-
-/* Ultra-wide */
-@media screen and (min-width: 1920px) {
-  .container {
-    max-width: 1600px;
-  }
-}
-
-/* Tablet and up container padding */
-@media screen and (min-width: 768px) {
-  .container {
     padding-left: var(--spacing-5);
     padding-right: var(--spacing-5);
   }
 }
 
-/* Desktop and up container padding */
+/* Small desktops/laptops - FIXED: Wider */
 @media screen and (min-width: 1024px) {
   .container {
+    max-width: 960px; /* Increased from 960px to 1140px */
     padding-left: var(--spacing-6);
     padding-right: var(--spacing-6);
+  }
+}
+
+/* Desktops - FIXED: Much wider */
+@media screen and (min-width: 1280px) {
+  .container {
+    max-width: 1200px; /* Increased from 1140px to 1280px */
+  }
+}
+
+/* Large desktops - FIXED: Even wider */
+@media screen and (min-width: 1440px) {
+  .container {
+    max-width: 1360px; /* Increased from 1320px to 1400px */
+  }
+}
+
+/* Extra large desktops - FIXED: Maximize space usage */
+@media screen and (min-width: 1600px) {
+  .container {
+    max-width: 1520px; /* Increased from 1440px to 1520px */
+  }
+}
+
+/* Ultra-wide - FIXED: Better use of space */
+@media screen and (min-width: 1920px) {
+  .container {
+    max-width: 1680px; /* Increased from 1600px to 1680px */
   }
 }
 
