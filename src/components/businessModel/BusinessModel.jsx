@@ -74,17 +74,6 @@ export default function BusinessModel() {
                 handling quality control, logistics, and factory coordination every step of the way.
               </p>
 
-              <div className="businessModel__card-features">
-                <div className="businessModel__card-feature">
-                  <PiFactory size={14} />
-                  <span>50+ partner factories</span>
-                </div>
-                <div className="businessModel__card-feature">
-                  <PiGlobe size={14} />
-                  <span>12+ countries served</span>
-                </div>
-              </div>
-
               <Link
                 href="/services"
                 className="businessModel__card-btn"

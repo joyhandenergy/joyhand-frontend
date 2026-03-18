@@ -2,36 +2,36 @@
    ENERGY PLATFORMS SECTION - Mobile First
 ======================================== */
 .energy-platforms {
-  padding: var(--spacing-5) 0; /* Smaller on mobile */
+  padding: var(--spacing-4) 0; /* Reduced padding */
   background-color: var(--accent-color-light);
   overflow: hidden;
 }
 
 @media screen and (min-width: 768px) {
   .energy-platforms {
-    padding: var(--spacing-8) 0;
+    padding: var(--spacing-6) 0; /* Reduced from spacing-8 */
   }
 }
 
 .energy-platforms__grid {
   display: grid;
-  grid-template-columns: 1fr; /* Single column on mobile */
-  gap: var(--spacing-3);
-  margin-top: var(--spacing-4);
+  grid-template-columns: 1fr;
+  gap: var(--spacing-3); /* Reduced gap */
+  margin-top: var(--spacing-3); /* Reduced margin */
 }
 
 @media screen and (min-width: 640px) {
   .energy-platforms__grid {
-    gap: var(--spacing-4);
-    margin-top: var(--spacing-5);
+    gap: var(--spacing-3);
+    margin-top: var(--spacing-4);
   }
 }
 
 @media screen and (min-width: 768px) {
   .energy-platforms__grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-    margin-top: var(--spacing-6);
+    gap: var(--spacing-4); /* Reduced from 24px */
+    margin-top: var(--spacing-5);
   }
 }
 
@@ -43,11 +43,11 @@
 }
 
 /* ========================================
-   PLATFORM CARD - Mobile First
+   PLATFORM CARD - Mobile First (REDUCED HEIGHT)
 ======================================== */
 .platform-card {
   position: relative;
-  height: 380px; /* Smaller on mobile */
+  height: 320px; /* Reduced from 380px */
   border-radius: var(--spacing-2);
   overflow: hidden;
   isolation: isolate;
@@ -66,25 +66,25 @@
 
 @media screen and (min-width: 480px) {
   .platform-card {
-    height: 400px;
+    height: 340px; /* Reduced from 400px */
   }
 }
 
 @media screen and (min-width: 640px) {
   .platform-card {
-    height: 420px;
+    height: 360px; /* Reduced from 420px */
   }
 }
 
 @media screen and (min-width: 768px) {
   .platform-card {
-    height: 440px;
+    height: 380px; /* Reduced from 440px */
   }
 }
 
 @media screen and (min-width: 1200px) {
   .platform-card {
-    height: 460px;
+    height: 400px; /* Reduced from 460px */
   }
 }
 
@@ -131,13 +131,13 @@
 }
 
 /* ========================================
-   CONTENT - Mobile First
+   CONTENT - Mobile First (TIGHTER SPACING)
 ======================================== */
 .platform-card__content {
   position: relative;
   z-index: 3;
   height: 100%;
-  padding: var(--spacing-3); /* Smaller on mobile */
+  padding: var(--spacing-3); /* Keep as is */
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -145,13 +145,19 @@
 
 @media screen and (min-width: 480px) {
   .platform-card__content {
+    padding: var(--spacing-3); /* Keep consistent */
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .platform-card__content {
     padding: var(--spacing-4);
   }
 }
 
 .platform-card__title {
   color: var(--neutral-white);
-  font-size: 1.3rem; /* Smaller on mobile */
+  font-size: 1.2rem; /* Slightly smaller */
   margin-bottom: 4px;
   font-weight: 700;
   line-height: 1.2;
@@ -159,37 +165,42 @@
 
 @media screen and (min-width: 480px) {
   .platform-card__title {
-    font-size: 1.5rem;
-    margin-bottom: var(--spacing-1);
+    font-size: 1.3rem;
   }
 }
 
 @media screen and (min-width: 768px) {
   .platform-card__title {
-    font-size: 1.75rem;
+    font-size: 1.4rem; /* Reduced from 1.75rem */
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .platform-card__title {
+    font-size: 1.5rem;
   }
 }
 
 .platform-card__description {
   color: rgba(255, 255, 255, 0.9);
-  font-size: 0.9rem; /* Smaller on mobile */
-  line-height: 1.4;
-  margin-bottom: var(--spacing-2);
+  font-size: 0.8rem; /* Smaller */
+  line-height: 1.3; /* Tighter */
+  margin-bottom: var(--spacing-1); /* Reduced margin */
   max-width: 100%;
+  overflow: hidden;
 }
 
 @media screen and (min-width: 480px) {
   .platform-card__description {
-    font-size: 0.95rem;
+    font-size: 0.85rem;
     margin-bottom: var(--spacing-2);
-    max-width: 90%;
   }
 }
 
 @media screen and (min-width: 768px) {
   .platform-card__description {
-    font-size: 1rem;
-    margin-bottom: var(--spacing-3);
+    font-size: 0.9rem;
+    margin-bottom: var(--spacing-2);
   }
 }
 
@@ -197,10 +208,10 @@
 .platform-card__source-note {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 4px; /* Smaller gap */
   background: rgba(255,255,255,0.1);
   backdrop-filter: blur(5px);
-  padding: 6px 12px; /* Smaller on mobile */
+  padding: 4px 10px; /* Smaller padding */
   border-radius: 50px;
   width: fit-content;
   margin-bottom: var(--spacing-2);
@@ -212,8 +223,8 @@
 
 @media screen and (min-width: 480px) {
   .platform-card__source-note {
-    padding: 8px 16px;
-    margin-bottom: var(--spacing-3);
+    padding: 6px 12px;
+    margin-bottom: var(--spacing-2);
   }
 }
 
@@ -225,35 +236,44 @@
 
 .platform-card__source-note svg {
   color: var(--primary-color);
+  width: 12px;
+  height: 12px;
 }
 
 .platform-card__source-note span {
   color: white;
-  font-size: 0.7rem; /* Smaller on mobile */
+  font-size: 0.65rem; /* Smaller */
   font-weight: 500;
 }
 
 @media screen and (min-width: 480px) {
   .platform-card__source-note span {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .platform-card__source-note span {
+    font-size: 0.75rem;
   }
 }
 
 /* ========================================
-   FOOTER - Mobile First
+   FOOTER - Mobile First (TIGHTER)
 ======================================== */
 .platform-card__footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: var(--spacing-2); /* Smaller on mobile */
+  padding-top: var(--spacing-2);
   border-top: 1px solid rgba(255, 255, 255, 0.15);
   transition: border-color 0.3s ease;
+  margin-top: auto;
 }
 
 @media screen and (min-width: 480px) {
   .platform-card__footer {
-    padding-top: var(--spacing-3);
+    padding-top: var(--spacing-2);
   }
 }
 
@@ -263,7 +283,7 @@
 }
 
 .platform-card__cta {
-  font-size: 0.8rem; /* Smaller on mobile */
+  font-size: 0.7rem; /* Smaller */
   font-weight: 600;
   color: var(--neutral-white);
   transition: transform 0.3s ease;
@@ -272,13 +292,13 @@
 
 @media screen and (min-width: 480px) {
   .platform-card__cta {
-    font-size: 0.85rem;
+    font-size: 0.75rem;
   }
 }
 
 @media screen and (min-width: 768px) {
   .platform-card__cta {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
 }
 
@@ -288,11 +308,11 @@
 }
 
 .platform-card__icon-wrapper {
-  width: 36px; /* Smaller on mobile */
-  height: 36px;
+  width: 32px; /* Smaller */
+  height: 32px;
   background-color: var(--primary-color);
   color: var(--neutral-white);
-  border-radius: 8px;
+  border-radius: 6px; /* Smaller radius */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -302,20 +322,25 @@
 
 @media screen and (min-width: 480px) {
   .platform-card__icon-wrapper {
-    width: 40px;
-    height: 40px;
+    width: 34px;
+    height: 34px;
   }
 }
 
 @media screen and (min-width: 768px) {
   .platform-card__icon-wrapper {
-    width: 44px;
-    height: 44px;
+    width: 36px;
+    height: 36px;
   }
 }
 
+.platform-card__icon-wrapper svg {
+  width: 16px;
+  height: 16px;
+}
+
 /* ========================================
-   HOVER STATES - Mobile First
+   HOVER STATES
 ======================================== */
 .platform-card:hover .platform-card__image,
 .platform-card:active .platform-card__image {
@@ -341,26 +366,81 @@
 }
 
 /* ========================================
-   SMALL MOBILE (480px and below)
+   SMALL MOBILE (480px and below) - FIXED SPACING
 ======================================== */
 @media screen and (max-width: 480px) {
   .energy-platforms {
-    padding: var(--spacing-4) var(--spacing-2);
+    padding: var(--spacing-3) var(--spacing-2); /* Tighter padding */
   }
   
   .energy-platforms__grid {
-    gap: var(--spacing-3);
+    gap: var(--spacing-2); /* Tighter gap */
     max-width: 100%;
     margin-left: 0;
     margin-right: 0;
   }
   
   .platform-card {
-    height: 340px;
+    height: 280px; /* Much shorter on mobile */
   }
   
   .platform-card__content {
-    padding: 20px;
+    padding: 16px; /* Tighter padding */
+  }
+  
+  .platform-card__title {
+    font-size: 1.1rem;
+    margin-bottom: 2px;
+  }
+  
+  .platform-card__description {
+    font-size: 0.7rem;
+    margin-bottom: 8px;
+  }
+  
+  .platform-card__source-note {
+    padding: 3px 8px;
+    margin-bottom: 8px;
+  }
+  
+  .platform-card__source-note span {
+    font-size: 0.6rem;
+  }
+  
+  .platform-card__source-note svg {
+    width: 10px;
+    height: 10px;
+  }
+  
+  .platform-card__footer {
+    padding-top: 8px;
+  }
+  
+  .platform-card__icon-wrapper {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .platform-card__icon-wrapper svg {
+    width: 14px;
+    height: 14px;
+  }
+  
+  .platform-card__cta {
+    font-size: 0.65rem;
+  }
+}
+
+/* ========================================
+   MEDIUM MOBILE (481px - 640px)
+======================================== */
+@media screen and (min-width: 481px) and (max-width: 639px) {
+  .platform-card {
+    height: 300px;
+  }
+  
+  .platform-card__content {
+    padding: 18px;
   }
   
   .platform-card__title {
@@ -368,30 +448,7 @@
   }
   
   .platform-card__description {
-    font-size: 0.8rem;
-    margin-bottom: var(--spacing-2);
-  }
-  
-  .platform-card__source-note {
-    padding: 4px 10px;
-  }
-  
-  .platform-card__source-note span {
-    font-size: 0.65rem;
-  }
-  
-  .platform-card__icon-wrapper {
-    width: 32px;
-    height: 32px;
-  }
-  
-  .platform-card__cta {
     font-size: 0.75rem;
-  }
-  
-  .platform-card__source-note svg {
-    width: 12px;
-    height: 12px;
   }
 }
 

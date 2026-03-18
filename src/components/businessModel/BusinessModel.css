@@ -179,51 +179,6 @@
   font-weight: 700;
 }
 
-/* Card Features */
-.businessModel__card-features {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-2);
-  margin-bottom: var(--spacing-4);
-  flex-wrap: wrap;
-}
-
-@media screen and (min-width: 480px) {
-  .businessModel__card-features {
-    flex-direction: row;
-    align-items: center;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .businessModel__card-features {
-    gap: var(--spacing-3);
-    margin-bottom: var(--spacing-4);
-  }
-}
-
-.businessModel__card-feature {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(255,255,255,0.1);
-  padding: 6px 12px;
-  border-radius: 50px;
-  font-size: 0.7rem;
-  color: rgba(255,255,255,0.8);
-  width: fit-content;
-}
-
-@media screen and (min-width: 768px) {
-  .businessModel__card-feature {
-    font-size: 0.75rem;
-    padding: 4px 12px;
-  }
-}
-
-.businessModel__card-feature svg {
-  color: var(--primary-color);
-}
 
 /* Card Button - Mobile Optimized */
 .businessModel__card-btn {

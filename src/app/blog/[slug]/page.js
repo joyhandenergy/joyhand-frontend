@@ -1,6 +1,7 @@
 import { blogPosts } from "@/data";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { 
   PiArrowLeft, 
   PiCalendarBlank, 
@@ -12,6 +13,18 @@ import {
 } from "react-icons/pi";
 import PageHeader from "@/components/pageHeader/PageHeader";
 import "../blog.css";
+
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const post = blogPosts.find(p => p.slug === slug);
+  
+  if (!post) return { title: "Article Not Found" };
+  
+  return {
+    title: `${post.title} | JoyHand Insights`,
+    description: post.excerpt,
+  };
+}
 
 export default async function BlogDetailsPage({ params }) {
   const { slug } = await params;
@@ -44,40 +57,39 @@ export default async function BlogDetailsPage({ params }) {
       />
 
       <div className="container blog-details__container">
-        <Link href="/blog" className="blog-details__back">
-          <PiArrowLeft weight="bold" /> Back to Insights
+        <Link href="/blog" className="blog-details__back-link">
+          <PiArrowLeft size={16} /> Back to Insights
         </Link>
 
-        <div className="blog-details__main-layout">
+        <div className="blog-details__grid">
           {/* Main Content */}
-          <div className="blog-details__body">
-            
-            <div className="blog-details__meta-row">
+          <div className="blog-details__main">
+            <div className="blog-details__meta">
               <span className="blog-details__meta-item">
-                <PiUser weight="bold" /> JoyHand Sourcing Team
+                <PiUser size={14} /> JoyHand Sourcing Team
               </span>
               <span className="blog-details__meta-item">
-                <PiCalendarBlank weight="bold" /> {formattedDate}
+                <PiCalendarBlank size={14} /> {formattedDate}
               </span>
               <span className="blog-details__meta-item">
-                <PiClock weight="bold" /> {blogPost.readTime || "5 min read"}
+                <PiClock size={14} /> {blogPost.readTime || "5 min read"}
               </span>
             </div>
 
             <div className="blog-details__content">
               {blogPost.content.map((paragraph, index) => (
-                <p key={index} className="blog-content__p">{paragraph}</p>
+                <p key={index} className="blog-details__paragraph">{paragraph}</p>
               ))}
             </div>
 
-            {/* Post Navigation - Integrated beautifully */}
+            {/* Post Navigation */}
             {(prevPost || nextPost) && (
               <div className="blog-details__navigation">
                 {prevPost && (
                   <Link href={`/blog/${prevPost.slug}`} className="blog-details__nav-link blog-details__nav-link--prev">
                     <PiArrowLeft className="blog-details__nav-icon" />
                     <div className="blog-details__nav-content">
-                      <span className="blog-details__nav-label">Previous Article</span>
+                      <span className="blog-details__nav-label">Previous</span>
                       <span className="blog-details__nav-title">{prevPost.title}</span>
                     </div>
                   </Link>
@@ -86,7 +98,7 @@ export default async function BlogDetailsPage({ params }) {
                 {nextPost && (
                   <Link href={`/blog/${nextPost.slug}`} className="blog-details__nav-link blog-details__nav-link--next">
                     <div className="blog-details__nav-content">
-                      <span className="blog-details__nav-label">Next Article</span>
+                      <span className="blog-details__nav-label">Next</span>
                       <span className="blog-details__nav-title">{nextPost.title}</span>
                     </div>
                     <PiArrowRight className="blog-details__nav-icon" />
@@ -96,7 +108,7 @@ export default async function BlogDetailsPage({ params }) {
             )}
           </div>
 
-          {/* Sidebar - Your original design */}
+          {/* Sidebar */}
           <aside className="blog-details__sidebar">
             <div className="sidebar-card sidebar-card--cta">
               <div className="sidebar-card__icon">
@@ -107,7 +119,7 @@ export default async function BlogDetailsPage({ params }) {
                 Connect with our team to find vetted manufacturers for your specific product requirements.
               </p>
               <Link href="/contact" className="btn btn--primary sidebar-card__btn">
-                Talk to a Sourcing Expert <PiArrowRight weight="bold" />
+                Talk to an Expert <PiArrowRight size={16} />
               </Link>
             </div>
 
