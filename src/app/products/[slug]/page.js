@@ -4,7 +4,7 @@ import Link from "next/link";
 import { PiArrowLeft, PiFileText, PiChatCenteredDots, PiCaretLeft, PiCaretRight } from "react-icons/pi";
 import { productData } from "@/data";
 import ProductGallery from "./ProductGallery";
-import "../products.css";
+import "../../products/products.css";
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
