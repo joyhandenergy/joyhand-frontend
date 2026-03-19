@@ -1,0 +1,151 @@
+/* =====================================================
+   PAGE LOADER - Modern with JoyHand Logo
+===================================================== */
+.page-loader {
+  position: fixed;
+  inset: 0;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: loaderFadeOut 0.3s ease forwards;
+  animation-delay: 0.7s; /* Starts fading before removal */
+  opacity: 1;
+}
+
+@keyframes loaderFadeOut {
+  to {
+    opacity: 0;
+  }
+}
+
+.page-loader__container {
+  text-align: center;
+  padding: var(--spacing-4);
+  max-width: 90%;
+}
+
+/* Logo Animation */
+.page-loader__logo-wrapper {
+  margin-bottom: var(--spacing-5);
+  animation: logoPulse 2s ease-in-out infinite;
+}
+
+@keyframes logoPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+
+.page-loader__logo {
+  width: 180px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  filter: brightness(1);
+}
+
+/* Modern Loading Bar */
+.page-loader__bar-container {
+  width: 250px;
+  height: 3px;
+  background: var(--neutral-light);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 0 auto var(--spacing-3);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+}
+
+.page-loader__bar {
+  height: 100%;
+  width: 40%;
+  background: linear-gradient(90deg, var(--primary-color-light), var(--primary-color), var(--primary-color-dark));
+  border-radius: 10px;
+  animation: loadingProgress 1.5s ease-in-out infinite;
+  box-shadow: 0 0 10px rgba(255,127,65,0.3);
+}
+
+@keyframes loadingProgress {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(300%);
+  }
+}
+
+/* Loading Text */
+.page-loader__text {
+  color: var(--neutral-medium);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  animation: textFade 1.5s ease-in-out infinite;
+  margin-top: var(--spacing-3);
+}
+
+@keyframes textFade {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* =====================================================
+   MOBILE RESPONSIVE
+===================================================== */
+@media screen and (max-width: 768px) {
+  .page-loader__logo {
+    width: 150px;
+  }
+  
+  .page-loader__bar-container {
+    width: 200px;
+  }
+  
+  .page-loader__text {
+    font-size: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .page-loader__logo {
+    width: 130px;
+  }
+  
+  .page-loader__bar-container {
+    width: 180px;
+  }
+  
+  .page-loader__text {
+    font-size: 0.7rem;
+  }
+}
+
+/* =====================================================
+   REDUCED MOTION
+===================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .page-loader__logo-wrapper,
+  .page-loader__bar,
+  .page-loader__text {
+    animation: none !important;
+  }
+  
+  .page-loader__bar {
+    width: 60%;
+    transform: none;
+  }
+}
