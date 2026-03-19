@@ -2,22 +2,26 @@
    ENERGY PLATFORMS SECTION - Mobile First
 ======================================== */
 .energy-platforms {
-  padding: var(--spacing-4) 0; /* Reduced padding */
+  padding: var(--spacing-4) 0;
   background-color: var(--accent-color-light);
   overflow: hidden;
+  width: 100%;
 }
 
 @media screen and (min-width: 768px) {
   .energy-platforms {
-    padding: var(--spacing-6) 0; /* Reduced from spacing-8 */
+    padding: var(--spacing-6) 0;
   }
 }
+
+/* Container is now inside, so we don't need container styles here */
 
 .energy-platforms__grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--spacing-3); /* Reduced gap */
-  margin-top: var(--spacing-3); /* Reduced margin */
+  gap: var(--spacing-3);
+  margin-top: var(--spacing-3);
+  width: 100%;
 }
 
 @media screen and (min-width: 640px) {
@@ -30,7 +34,7 @@
 @media screen and (min-width: 768px) {
   .energy-platforms__grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: var(--spacing-4); /* Reduced from 24px */
+    gap: var(--spacing-4);
     margin-top: var(--spacing-5);
   }
 }
@@ -43,11 +47,11 @@
 }
 
 /* ========================================
-   PLATFORM CARD - Mobile First (REDUCED HEIGHT)
+   PLATFORM CARD - Mobile First
 ======================================== */
 .platform-card {
   position: relative;
-  height: 320px; /* Reduced from 380px */
+  height: 320px;
   border-radius: var(--spacing-2);
   overflow: hidden;
   isolation: isolate;
@@ -66,25 +70,25 @@
 
 @media screen and (min-width: 480px) {
   .platform-card {
-    height: 340px; /* Reduced from 400px */
+    height: 340px;
   }
 }
 
 @media screen and (min-width: 640px) {
   .platform-card {
-    height: 360px; /* Reduced from 420px */
+    height: 360px;
   }
 }
 
 @media screen and (min-width: 768px) {
   .platform-card {
-    height: 380px; /* Reduced from 440px */
+    height: 380px;
   }
 }
 
 @media screen and (min-width: 1200px) {
   .platform-card {
-    height: 400px; /* Reduced from 460px */
+    height: 400px;
   }
 }
 
@@ -104,7 +108,7 @@
 }
 
 /* ========================================
-   IMAGE & OVERLAY - Mobile First
+   IMAGE & OVERLAY
 ======================================== */
 .platform-card__image-wrapper {
   position: absolute;
@@ -115,6 +119,7 @@
 .platform-card__image {
   object-fit: cover;
   transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 0; /* Ensure no border radius */
 }
 
 .platform-card__overlay {
@@ -131,13 +136,13 @@
 }
 
 /* ========================================
-   CONTENT - Mobile First (TIGHTER SPACING)
+   CONTENT - Tighter spacing
 ======================================== */
 .platform-card__content {
   position: relative;
   z-index: 3;
   height: 100%;
-  padding: var(--spacing-3); /* Keep as is */
+  padding: var(--spacing-3);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -145,7 +150,7 @@
 
 @media screen and (min-width: 480px) {
   .platform-card__content {
-    padding: var(--spacing-3); /* Keep consistent */
+    padding: var(--spacing-3);
   }
 }
 
@@ -157,7 +162,7 @@
 
 .platform-card__title {
   color: var(--neutral-white);
-  font-size: 1.2rem; /* Slightly smaller */
+  font-size: 1.2rem;
   margin-bottom: 4px;
   font-weight: 700;
   line-height: 1.2;
@@ -171,7 +176,7 @@
 
 @media screen and (min-width: 768px) {
   .platform-card__title {
-    font-size: 1.4rem; /* Reduced from 1.75rem */
+    font-size: 1.4rem;
   }
 }
 
@@ -183,17 +188,19 @@
 
 .platform-card__description {
   color: rgba(255, 255, 255, 0.9);
-  font-size: 0.8rem; /* Smaller */
-  line-height: 1.3; /* Tighter */
-  margin-bottom: var(--spacing-1); /* Reduced margin */
+  font-size: 0.8rem;
+  line-height: 1.3;
+  margin-bottom: var(--spacing-1);
   max-width: 100%;
   overflow: hidden;
+  max-height: 2.6em; /* 2 lines */
 }
 
 @media screen and (min-width: 480px) {
   .platform-card__description {
     font-size: 0.85rem;
     margin-bottom: var(--spacing-2);
+    max-height: 2.6em;
   }
 }
 
@@ -201,6 +208,7 @@
   .platform-card__description {
     font-size: 0.9rem;
     margin-bottom: var(--spacing-2);
+    max-height: 2.7em;
   }
 }
 
@@ -208,10 +216,10 @@
 .platform-card__source-note {
   display: flex;
   align-items: center;
-  gap: 4px; /* Smaller gap */
+  gap: 4px;
   background: rgba(255,255,255,0.1);
   backdrop-filter: blur(5px);
-  padding: 4px 10px; /* Smaller padding */
+  padding: 4px 10px;
   border-radius: 50px;
   width: fit-content;
   margin-bottom: var(--spacing-2);
@@ -242,7 +250,7 @@
 
 .platform-card__source-note span {
   color: white;
-  font-size: 0.65rem; /* Smaller */
+  font-size: 0.65rem;
   font-weight: 500;
 }
 
@@ -259,7 +267,7 @@
 }
 
 /* ========================================
-   FOOTER - Mobile First (TIGHTER)
+   FOOTER - Tighter spacing
 ======================================== */
 .platform-card__footer {
   display: flex;
@@ -283,7 +291,7 @@
 }
 
 .platform-card__cta {
-  font-size: 0.7rem; /* Smaller */
+  font-size: 0.7rem;
   font-weight: 600;
   color: var(--neutral-white);
   transition: transform 0.3s ease;
@@ -308,11 +316,11 @@
 }
 
 .platform-card__icon-wrapper {
-  width: 32px; /* Smaller */
+  width: 32px;
   height: 32px;
   background-color: var(--primary-color);
   color: var(--neutral-white);
-  border-radius: 6px; /* Smaller radius */
+  border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -366,26 +374,23 @@
 }
 
 /* ========================================
-   SMALL MOBILE (480px and below) - FIXED SPACING
+   SMALL MOBILE (480px and below)
 ======================================== */
 @media screen and (max-width: 480px) {
   .energy-platforms {
-    padding: var(--spacing-3) var(--spacing-2); /* Tighter padding */
+    padding: var(--spacing-3) var(--spacing-2);
   }
   
   .energy-platforms__grid {
-    gap: var(--spacing-2); /* Tighter gap */
-    max-width: 100%;
-    margin-left: 0;
-    margin-right: 0;
+    gap: var(--spacing-2);
   }
   
   .platform-card {
-    height: 280px; /* Much shorter on mobile */
+    height: 280px;
   }
   
   .platform-card__content {
-    padding: 16px; /* Tighter padding */
+    padding: 16px;
   }
   
   .platform-card__title {
@@ -396,6 +401,7 @@
   .platform-card__description {
     font-size: 0.7rem;
     margin-bottom: 8px;
+    max-height: 2.6em;
   }
   
   .platform-card__source-note {

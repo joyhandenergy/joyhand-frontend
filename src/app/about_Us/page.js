@@ -437,25 +437,23 @@ export default function AboutPage() {
       </section>
 
       {/* ================= CTA ================= */}
-
-      <section className="cta-banner">
-        <div className="container">
-          <div className="cta-banner__wrapper">
-            <div className="cta-banner__text">
-              <h4 className="cta-banner__title">
-                Expand Your Distribution Hub
-              </h4>
-              <p className="cta-banner__subtitle">
-                Partner with JoyHand for reliable sourcing and factory-direct quality control.
-              </p>
-            </div>
-            <Link href="/contact" className="btn btn--secondary cta-banner__btn">
-              Apply for Partnership <PiArrowRight />
-            </Link>
+    <section className="cta-banner">
+      <div className="container"> {/* Container inside section */}
+        <div className="cta-banner__wrapper">
+          <div className="cta-banner__text">
+            <h4 className="cta-banner__title">
+              Expand Your Distribution Hub
+            </h4>
+            <p className="cta-banner__subtitle">
+              Partner with JoyHand for reliable sourcing and factory-direct quality control.
+            </p>
           </div>
+          <Link href="/contact" className="btn btn--secondary cta-banner__btn">
+            Apply for Partnership <PiArrowRight />
+          </Link>
         </div>
-      </section>
-
+      </div>
+    </section>
     </main>
   );
 }

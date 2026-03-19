@@ -2,7 +2,8 @@
    CTA BANNER SECTION - Mobile First
 ======================================== */
 .cta-section {
-  padding: var(--spacing-4) 0; /* Smaller on mobile */
+  padding: var(--spacing-4) 0;
+  width: 100%;
 }
 
 @media screen and (min-width: 768px) {
@@ -19,13 +20,14 @@
 
 .cta-banner {
   background-color: var(--secondary-color);
-  border-radius: 24px; /* Smaller on mobile */
-  padding: var(--spacing-5) var(--spacing-3); /* Smaller on mobile */
+  border-radius: 24px;
+  padding: var(--spacing-5) var(--spacing-3);
   text-align: center;
   position: relative;
   overflow: hidden;
   z-index: 1;
   box-shadow: 0 20px 40px rgba(18, 27, 45, 0.2);
+  width: 100%;
 }
 
 @media screen and (min-width: 768px) {
@@ -47,7 +49,7 @@
   position: absolute;
   inset: 0;
   background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-  background-size: 20px 20px; /* Smaller on mobile */
+  background-size: 20px 20px;
   z-index: -1;
   opacity: 0.5;
 }
@@ -58,7 +60,7 @@
   }
 }
 
-/* Decorative Glows - Smaller on mobile */
+/* Decorative Glows */
 .cta-banner::before {
   content: "";
   position: absolute;
@@ -124,7 +126,7 @@
 .cta-banner__badge {
   display: inline-block;
   color: var(--primary-color);
-  font-size: 0.65rem; /* Smaller on mobile */
+  font-size: 0.65rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -147,7 +149,7 @@
 /* Title */
 .cta-banner__title {
   color: var(--neutral-white);
-  font-size: clamp(1.5rem, 5vw, 1.8rem); /* Smaller on mobile */
+  font-size: clamp(1.5rem, 5vw, 1.8rem);
   margin-bottom: var(--spacing-2);
   line-height: 1.2;
   font-weight: 700;
@@ -168,7 +170,7 @@
 /* Description */
 .cta-banner__description {
   color: rgba(255, 255, 255, 0.9);
-  font-size: 0.9rem; /* Smaller on mobile */
+  font-size: 0.9rem;
   margin-bottom: var(--spacing-3);
   max-width: 100%;
   margin-left: auto;
@@ -192,10 +194,10 @@
   }
 }
 
-/* Actions - Mobile First */
+/* Actions */
 .cta-banner__actions {
   display: flex;
-  flex-direction: column; /* Stack on mobile */
+  flex-direction: column;
   gap: var(--spacing-2);
   justify-content: center;
   align-items: center;
@@ -215,7 +217,7 @@
 .cta-banner__button {
   background-color: var(--neutral-white);
   color: var(--secondary-color);
-  padding: 12px 20px; /* Smaller on mobile */
+  padding: 12px 20px;
   border-radius: 50px;
   font-weight: 700;
   transition: var(--transition);
@@ -226,7 +228,7 @@
   border: none;
   cursor: pointer;
   text-decoration: none;
-  width: 100%; /* Full width on mobile */
+  width: 100%;
   font-size: 0.85rem;
 }
 
@@ -268,7 +270,7 @@
   background-color: transparent;
   color: var(--neutral-white);
   border: 2px solid rgba(255, 255, 255, 0.3);
-  padding: 12px 20px; /* Smaller on mobile */
+  padding: 12px 20px;
   border-radius: 50px;
   font-weight: 600;
   transition: var(--transition);
@@ -276,7 +278,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 100%; /* Full width on mobile */
+  width: 100%;
   font-size: 0.85rem;
 }
 
@@ -307,7 +309,7 @@
 ======================================== */
 @media screen and (max-width: 480px) {
   .cta-section {
-    padding: var(--spacing-3) var(--spacing-2);
+    padding: var(--spacing-3) 0;
   }
   
   .cta-banner {
