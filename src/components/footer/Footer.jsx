@@ -8,12 +8,44 @@ import {
   PiLinkedinLogo, 
   PiEnvelopeSimple, 
   PiPhone, 
-  PiMapPin
+  PiMapPin,
+  PiGlobe,
+  PiFactory,
+  PiBuilding
 } from "react-icons/pi";
 import "./Footer.css";
 
 export default function Footer() {
   const year = new Date().getFullYear();
+
+  // Global offices data - matches contact page
+  const globalOffices = [
+    {
+      name: "USA - Headquarters",
+      location: "Montgomery, AL",
+      icon: <PiBuilding size={14} />,
+      link: "https://maps.google.com"
+    },
+    {
+      name: "China - Sourcing Hub",
+      location: "Guangzhou",
+      icon: <PiFactory size={14} />,
+      link: "https://maps.google.com",
+      featured: true
+    },
+    {
+      name: "Australia - Pacific Office",
+      location: "Melbourne",
+      icon: <PiGlobe size={14} />,
+      link: "https://maps.google.com"
+    },
+    {
+      name: "Nigeria - Africa Office",
+      location: "Lagos",
+      icon: <PiGlobe size={14} />,
+      link: "https://maps.google.com"
+    }
+  ];
 
   return (
     <footer className="footer">
@@ -46,14 +78,14 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* SOLUTIONS COLUMN */}
+        {/* SOLUTIONS COLUMN - Updated with correct links */}
         <div className="footer__column">
-          <h4 className="footer__title">Platforms</h4>
+          <h4 className="footer__title">Solutions</h4>
           <ul className="footer__list">
-            <li><Link href="/products?cat=storage" className="footer__link">Storage Batteries</Link></li>
-            <li><Link href="/products?cat=inverters" className="footer__link">Solar Inverters</Link></li>
-            <li><Link href="/products?cat=portable" className="footer__link">Portable Power</Link></li>
-            <li><Link href="/services" className="footer__link">OEM/ODM Services</Link></li>
+            <li><Link href="/products/solutions/storage-batteries" className="footer__link">Storage Batteries</Link></li>
+            <li><Link href="/products/solutions/solar-inverters" className="footer__link">Solar Inverters</Link></li>
+            <li><Link href="/products/solutions/portable-power-stations" className="footer__link">Portable Power Stations</Link></li>
+            <li><Link href="/products/solutions/electric-mobility" className="footer__link">Electric Mobility</Link></li>
           </ul>
         </div>
 
@@ -61,29 +93,28 @@ export default function Footer() {
         <div className="footer__column">
           <h4 className="footer__title">Company</h4>
           <ul className="footer__list">
-            <li><Link href="/about" className="footer__link">Our Factory Network</Link></li>
-            <li><Link href="/partnership" className="footer__link">Partnership Hub</Link></li>
-            <li><Link href="/insights" className="footer__link">Sourcing Insights</Link></li>
-            <li><Link href="/contact" className="footer__link">Contact Support</Link></li>
+            <li><Link href="/about" className="footer__link">About Us</Link></li>
+            <li><Link href="/services" className="footer__link">Sourcing Services</Link></li>
+            <li><Link href="/blog" className="footer__link">Sourcing Insights</Link></li>
+            <li><Link href="/contact" className="footer__link">Contact Us</Link></li>
           </ul>
         </div>
 
-        {/* GLOBAL OFFICE */}
+        {/* GLOBAL OFFICES COLUMN - New */}
         <div className="footer__column">
-          <h4 className="footer__title">Global Office</h4>
+          <h4 className="footer__title">Global Offices</h4>
           <ul className="footer__list">
-            <li className="footer__contact-item">
-              <PiMapPin className="footer__icon" />
-              <span>Shenzhen Tech Park, China / AL, USA</span>
-            </li>
-            <li className="footer__contact-item">
-              <PiEnvelopeSimple className="footer__icon" />
-              <a href="mailto:partnership@joyhand.com">partnership@joyhand.com</a>
-            </li>
-            <li className="footer__contact-item">
-              <PiPhone className="footer__icon" />
-              <a href="tel:+8613060850617">+86 130 6085 0617</a>
-            </li>
+            {globalOffices.map((office, idx) => (
+              <li key={idx} className="footer__global-office">
+                <a href={office.link} className="footer__global-link" target="_blank" rel="noopener noreferrer">
+                  <span className="footer__global-icon">{office.icon}</span>
+                  <div>
+                    <strong className="footer__global-name">{office.name}</strong>
+                    <span className="footer__global-location">{office.location}</span>
+                  </div>
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
@@ -97,7 +128,7 @@ export default function Footer() {
           </div>
           <p className="footer__copyright">© {year} JOYHAND Energy. All Rights Reserved.</p>
           <p className="footer__credit">
-            Design by <a href="#" className="footer__credit-link">Beraki Digital</a>
+            Global Sourcing Partner | USA | China | Australia | Nigeria
           </p>
         </div>
       </div>
