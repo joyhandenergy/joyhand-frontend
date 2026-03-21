@@ -18,32 +18,36 @@ import "./Footer.css";
 export default function Footer() {
   const year = new Date().getFullYear();
 
-  // Global offices data - matches contact page
+  // Global offices data - matches contact page with correct addresses
   const globalOffices = [
     {
       name: "USA - Headquarters",
       location: "Montgomery, AL",
+      address: "2530 E South Blvd, Montgomery, AL 36116",
       icon: <PiBuilding size={14} />,
-      link: "https://maps.google.com"
+      link: "https://maps.google.com/?q=2530+E+South+Blvd+Montgomery+AL+36116"
     },
     {
       name: "China - Sourcing Hub",
-      location: "Guangzhou",
+      location: "Guangzhou, Guangdong",
+      address: "No. 7 Nansha District, Guangzhou 511400",
       icon: <PiFactory size={14} />,
-      link: "https://maps.google.com",
+      link: "https://maps.google.com/?q=Nansha+District+Guangzhou+511400+China",
       featured: true
     },
     {
       name: "Australia - Pacific Office",
-      location: "Melbourne",
+      location: "Melbourne, VIC",
+      address: "157 A'Beckett Street, Melbourne VIC 3000",
       icon: <PiGlobe size={14} />,
-      link: "https://maps.google.com"
+      link: "https://maps.google.com/?q=157+A%27Beckett+Street+Melbourne+VIC+3000"
     },
     {
       name: "Nigeria - Africa Office",
-      location: "Lagos",
+      location: "Lagos, Nigeria",
+      address: "New Mandilas International Market, Trade Fair, Ojo, Lagos",
       icon: <PiGlobe size={14} />,
-      link: "https://maps.google.com"
+      link: "https://maps.google.com/?q=Trade+Fair+Ojo+Lagos+Nigeria"
     }
   ];
 
@@ -78,7 +82,7 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* SOLUTIONS COLUMN - Updated with correct links */}
+        {/* SOLUTIONS COLUMN */}
         <div className="footer__column">
           <h4 className="footer__title">Solutions</h4>
           <ul className="footer__list">
@@ -100,13 +104,19 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* GLOBAL OFFICES COLUMN - New */}
+        {/* GLOBAL OFFICES COLUMN */}
         <div className="footer__column">
           <h4 className="footer__title">Global Offices</h4>
           <ul className="footer__list">
             {globalOffices.map((office, idx) => (
               <li key={idx} className="footer__global-office">
-                <a href={office.link} className="footer__global-link" target="_blank" rel="noopener noreferrer">
+                <a 
+                  href={office.link} 
+                  className="footer__global-link" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  aria-label={`${office.name} - ${office.address}`}
+                >
                   <span className="footer__global-icon">{office.icon}</span>
                   <div>
                     <strong className="footer__global-name">{office.name}</strong>
