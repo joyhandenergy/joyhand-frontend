@@ -21,9 +21,10 @@ const links = [
     name: "Products",
     href: "/products",
     subLinks: [
-      { name: "Electric Mobility", href: "/products?category=Electric%20Mobility" },
-      { name: "Storage Battery", href: "/products?category=Storage%20Battery" },
-      { name: "Solar Inverters", href: "/products?category=Solar%20Inverters" }
+      { name: "Storage Batteries", href: "/products/solutions/storage-batteries" },
+      { name: "Solar Inverters", href: "/products/solutions/solar-inverters" },
+      { name: "Portable Power Stations", href: "/products/solutions/portable-power-stations" },
+      { name: "Electric Mobility", href: "/products/solutions/electric-mobility" }
     ]
   },
   { name: "Services", href: "/services" },

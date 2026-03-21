@@ -1,46 +1,64 @@
 import { Suspense } from "react";
-import { productData, getCategories } from "@/data";
+import { productData } from "@/data";
 import ProductCard from "@/components/productCard/ProductCard";
 import PageHeader from "@/components/pageHeader/PageHeader";
-import ProductsFilter from "./ProductsFilter";
+import Link from "next/link";
 import "./Products.css";
 
 export const metadata = {
-  title: "Energy Solutions | Batteries & Inverters | JoyHand",
-  description: "Explore JoyHand's range of LFP batteries, hybrid inverters, and energy storage solutions for residential and commercial applications. OEM/ODM sourcing available.",
-  keywords: "solar batteries, lithium battery, hybrid inverter, energy storage, LFP battery, solar inverter",
+  title: "All Energy Products | Batteries, Inverters & More | JoyHand",
+  description: "Explore JoyHand's complete range of LFP batteries, hybrid inverters, and energy storage solutions. OEM/ODM sourcing available from vetted manufacturers.",
+  keywords: "energy products, solar batteries, lithium battery, hybrid inverter, portable power, e-motorcycle",
 };
 
-// Add this at the top of your product page - THAT'S IT!
-export const revalidate = 3600; // Revalidate every hour
+export const revalidate = 3600;
 
-async function ProductsContent({ category }) {
-  const filteredProducts = category && category !== "all"
-    ? productData.filter(p => p.category === category)
-    : productData;
+// Solution navigation links - SEO-friendly URLs
+const solutionLinks = [
+  { slug: "storage-batteries", name: "Storage Batteries" },
+  { slug: "solar-inverters", name: "Solar Inverters" },
+  { slug: "portable-power-stations", name: "Portable Power" },
+  { slug: "electric-mobility", name: "Electric Mobility" },
+];
 
+async function ProductsContent() {
   return (
     <main className="products-page">
-     <PageHeader 
-      title={category && category !== "all" 
-        ? `${category.charAt(0).toUpperCase() + category.slice(1)} Solutions` 
-        : "Solar & Energy Products"}
-      subtitle="LFP batteries, inverters, portable power, and EV infrastructure from vetted manufacturers"
-      pageImage="/images/pageHeadImg/pageheader2.jpg" 
-    />
+      <PageHeader 
+        title="All Energy Products"
+        subtitle="LFP batteries, solar inverters, portable power, and electric mobility solutions from vetted manufacturers"
+        pageImage="/images/pageHeadImg/pageheader2.jpg" 
+      />
 
       <section className="products-page__section">
         <div className="container">
-          <ProductsFilter categories={getCategories()} activeCategory={category} />
+          {/* Solution Navigation */}
+          <div className="products-page__category-nav">
+            <Link
+              href="/products"
+              className="products-page__category-link products-page__category-link--active"
+            >
+              All Products
+            </Link>
+            {solutionLinks.map((cat) => (
+              <Link
+                key={cat.slug}
+                href={`/products/solutions/${cat.slug}`}
+                className="products-page__category-link"
+              >
+                {cat.name}
+              </Link>
+            ))}
+          </div>
           
           <div className="products-page__grid">
-            {filteredProducts.length > 0 ? (
-              filteredProducts.map((product) => (
+            {productData.length > 0 ? (
+              productData.map((product) => (
                 <ProductCard key={product.id} product={product} />
               ))
             ) : (
               <div className="products-page__empty text-center">
-                <p>No products found in this category</p>
+                <p>No products found</p>
               </div>
             )}
           </div>
@@ -50,12 +68,10 @@ async function ProductsContent({ category }) {
   );
 }
 
-export default async function ProductsPage({ searchParams }) {
-  const { category } = await searchParams;
-  
+export default async function ProductsPage() {
   return (
-    <Suspense fallback={<div className="container mt-3">Loading solutions...</div>}>
-      <ProductsContent category={category} />
+    <Suspense fallback={<div className="container mt-3">Loading products...</div>}>
+      <ProductsContent />
     </Suspense>
   );
 }

@@ -45,7 +45,7 @@ export default function Hero() {
             <h1 className="hero__title">
 
               <span className="hero__title-line">
-                Source Custom Energy &
+              Custom Energy &
               </span>
 
               <span className="hero__title-line hero__title-line--highlight">

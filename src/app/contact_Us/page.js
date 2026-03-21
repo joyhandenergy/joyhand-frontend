@@ -5,7 +5,6 @@ import PageHeader from "@/components/pageHeader/PageHeader";
 import SectionHeader from "@/components/sectionHeader/SectionHeader";
 import SimpleContactForm from "@/components/contactForm/SimpleContactForm";
 import { 
-  MapPin, 
   Phone, 
   Mail, 
   Clock, 
@@ -15,36 +14,74 @@ import {
   Factory,
   Handshake,
   ClipboardCheck,
-  MessageCircle
+  MessageCircle,
+  Building2,
+  Award
 } from "lucide-react";
 import "./contact.css";
 
-const contactDetails = [
+// Updated contact details with 4 global offices (no phone/email)
+const globalOffices = [
   {
-    icon: <MapPin size={22} />,
-    title: "Sourcing Hub",
-    content: "Shenzhen Tech Park, China / AL, USA",
-    link: "https://maps.google.com"
+    icon: <Building2 size={22} />,
+    title: "USA - Headquarters",
+    content: "Montgomery, AL, USA",
+    address: "2530 E South Blvd, Montgomery, AL 36116, United States",
+    link: "https://maps.google.com",
+    isOffice: true,
+    region: "Americas"
   },
   {
-    icon: <Phone size={22} />,
-    title: "Partnership Support",
-    content: "+86 130 6085 0617",
-    link: "tel:+8613060850617"
+    icon: <Factory size={22} />,
+    title: "China - Sourcing Hub",
+    content: "Guangzhou, Guangdong, China",
+    address: "No. 7 Nansha District, Guangzhou 511400, Guangdong, China",
+    link: "https://maps.google.com",
+    isOffice: true,
+    region: "Asia Pacific",
+    featured: true
   },
   {
-    icon: <Mail size={22} />,
-    title: "Sourcing Inquiries",
-    content: "partnership@joyhand.com",
-    link: "mailto:partnership@joyhand.com"
+  icon: <Globe size={22} />,
+  title: "Australia - Pacific Office",
+  content: "Melbourne, VIC, Australia",
+  address: "157 A'Beckett Street, Melbourne VIC 3000, Australia",
+  link: "https://maps.google.com",
+  isOffice: true,
+  region: "Oceania"
   },
   {
-    icon: <Clock size={22} />,
-    title: "Response Hours",
-    content: "Mon - Fri: 9am - 6pm (GMT+8)",
-    isText: true
+    icon: <Award size={22} />,
+    title: "Nigeria - Africa Office",
+    content: "Lagos, Nigeria",
+    address: "New Mandilas International Market, Trade Fair, Ojo, Lagos",
+    link: "https://maps.google.com",
+    isOffice: true,
+    region: "Africa"
   }
 ];
+
+// Global support contact (unified)
+const globalSupport = {
+  icon: <Phone size={22} />,
+  title: "Global Support",
+  content: "+86 130 6085 0617",
+  link: "tel:+8613060850617"
+};
+
+const sourcingInquiries = {
+  icon: <Mail size={22} />,
+  title: "Sourcing Inquiries",
+  content: "sales@joyhand.com",
+  link: "mailto:sales@joyhand.com"
+};
+
+const responseHours = {
+  icon: <Clock size={22} />,
+  title: "Response Hours",
+  content: "24/7 Global Support | Office Hours: Mon-Fri 9am-6pm (Local Time)",
+  isText: true
+};
 
 export default function ContactPage() {
   return (
@@ -124,35 +161,78 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* ================= CONTACT CARDS (NFC STYLE) ================= */}
+      {/* ================= GLOBAL OFFICES SECTION ================= */}
+      <section className="global-offices">
+        <div className="container">
+          <SectionHeader 
+            badge="Our Global Presence" 
+            title="Offices Around the World" 
+            subtitle="Serving distributors across four continents with local expertise and global reach"
+            center 
+          />
+          
+          <div className="global-offices__grid">
+            {globalOffices.map((office, index) => (
+              <div key={index} className={`office-card ${office.featured ? "office-card--featured" : ""}`}>
+                <div className="office-card__icon">{office.icon}</div>
+                <h3 className="office-card__title">{office.title}</h3>
+                <p className="office-card__location">{office.content}</p>
+                <p className="office-card__address">{office.address}</p>
+                <span className="office-card__region">{office.region}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ================= CONTACT CARDS (NFC STYLE) - Support & Inquiries ================= */}
       <section className="contact-info">
         <div className="container">
           <SectionHeader 
-            badge="Global Sourcing Hubs" 
-            title="Reach Our Partnership Team" 
+            badge="Get in Touch" 
+            title="Global Support & Inquiries" 
             center 
           />
           <div className="contact-info__grid">
-            {contactDetails.map((item, index) => (
-              <div key={index} className="contact-card">
-                <div className="contact-card__nfc-wrapper">
-                  <div className="contact-card__ring"></div>
-                  <div className="contact-card__icon">
-                    {item.icon}
-                  </div>
+            {/* Global Support Card */}
+            <div className="contact-card">
+              <div className="contact-card__nfc-wrapper">
+                <div className="contact-card__ring"></div>
+                <div className="contact-card__icon">
+                  {globalSupport.icon}
                 </div>
-
-                <h4 className="contact-card__title">{item.title}</h4>
-
-                {item.isText ? (
-                  <p className="contact-card__content">{item.content}</p>
-                ) : (
-                  <a href={item.link} className="contact-card__link">
-                    {item.content}
-                  </a>
-                )}
               </div>
-            ))}
+              <h4 className="contact-card__title">{globalSupport.title}</h4>
+              <a href={globalSupport.link} className="contact-card__link">
+                {globalSupport.content}
+              </a>
+            </div>
+
+            {/* Sourcing Inquiries Card */}
+            <div className="contact-card">
+              <div className="contact-card__nfc-wrapper">
+                <div className="contact-card__ring"></div>
+                <div className="contact-card__icon">
+                  {sourcingInquiries.icon}
+                </div>
+              </div>
+              <h4 className="contact-card__title">{sourcingInquiries.title}</h4>
+              <a href={sourcingInquiries.link} className="contact-card__link">
+                {sourcingInquiries.content}
+              </a>
+            </div>
+
+            {/* Response Hours Card */}
+            <div className="contact-card">
+              <div className="contact-card__nfc-wrapper">
+                <div className="contact-card__ring"></div>
+                <div className="contact-card__icon">
+                  {responseHours.icon}
+                </div>
+              </div>
+              <h4 className="contact-card__title">{responseHours.title}</h4>
+              <p className="contact-card__content">{responseHours.content}</p>
+            </div>
           </div>
 
           {/* ADDITIONAL TRUST SIGNAL */}
@@ -165,21 +245,21 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* ================= MAP SECTION ================= */}
+      {/* ================= MAP SECTION - Updated with Multiple Locations ================= */}
       <section className="contact-map">
         <div className="contact-map__overlay">
           <div className="contact-map__content">
-            <span className="contact-map__badge">Global Sourcing Hub</span>
-            <h3 className="contact-map__title">Shenzhen Tech Park</h3>
+            <span className="contact-map__badge">Global Sourcing Network</span>
+            <h3 className="contact-map__title">Four Continents. One Partner.</h3>
             <p className="contact-map__text">
-              Our sourcing operations center, connecting distributors with 
-              manufacturing partners across Asia since 1998.
+              Our offices in USA (HQ), China (Sourcing Hub), Australia, and Nigeria 
+              connect distributors with manufacturing partners across Asia, Americas, Oceania, and Africa.
             </p>
           </div>
         </div>
         <iframe
-          title="JoyHand Sourcing Hub Location"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3672.7381375100404!2d113.32627807386486!3d22.9966549172976!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x340253812b5d13e5%3A0xd8ff7029ec3354bd!2sChimelong%20Paradise!1m0!5e0!3m2!1sen!2sus!4v1773151558148!5m2!1sen!2sus"
+          title="JoyHand Global Locations"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2000000!2d-100!3d35!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzXCsDAwJzAwLjAiTiAxMDXCsDAwJzAwLjAiVw!5e0!3m2!1sen!2sus!4v1640000000000!5m2!1sen!2sus"
           width="100%"
           height="500"
           style={{ border: 0, filter: "grayscale(100%) invert(90%) contrast(1.2)" }}
@@ -196,7 +276,7 @@ export default function ContactPage() {
             <div className="contact-faq__item">
               <h4 className="contact-faq__question">What happens after I submit this form?</h4>
               <p className="contact-faq__answer">
-                Our sourcing team reviews your requirements within 24 hours. We will contact you to 
+                Our global sourcing team reviews your requirements within 24 hours. We will contact you from your nearest regional office to 
                 discuss specifications, volume, and introduce relevant factory partners from our network.
               </p>
             </div>
@@ -210,7 +290,7 @@ export default function ContactPage() {
             <div className="contact-faq__item">
               <h4 className="contact-faq__question">How do you verify factory quality?</h4>
               <p className="contact-faq__answer">
-                Every factory in our network undergoes on-site audits. We verify certifications, 
+                Every factory in our network undergoes on-site audits by our China sourcing hub team. We verify certifications, 
                 production lines, and quality control processes before any partnership begins.
               </p>
             </div>
@@ -226,7 +306,7 @@ export default function ContactPage() {
               <MessageCircle size={32} className="contact-bottom-cta__icon" />
               <h3 className="contact-bottom-cta__title">Prefer to talk?</h3>
               <p className="contact-bottom-cta__text">
-                Call us directly at <a href="tel:+8613060850617" className="contact-bottom-cta__phone">+86 130 6085 0617</a>
+                Call our global support line at <a href="tel:+8613060850617" className="contact-bottom-cta__phone">+86 130 6085 0617</a>
               </p>
             </div>
           </div>

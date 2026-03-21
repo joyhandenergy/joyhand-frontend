@@ -377,7 +377,7 @@ export const productData = [
       "Telecom applications",
       "Industrial control systems"
     ],
-    image: "/images/productImg/battery5.jpg",
+    image: "/images/productImg/s-battery1.png",
     gallery: [],
     datasheet: "/datasheets/GW-51.2-100-B.pdf",
     certifications: ["CE", "IEC"],
@@ -416,11 +416,130 @@ export const productData = [
       "Telecom infrastructure",
       "Industrial backup"
     ],
-    image: "/images/productImg/battery6.jpg",
+    image: "/images/productImg/s-battery2.png",
     gallery: [],
     datasheet: "/datasheets/GW-51.2-300-B.pdf",
     certifications: ["CE", "IEC"],
     warranty: "5 years",
+    inStock: true
+  },
+  
+  {
+    id: "bat-007",
+    slug: "lithium-battery-51-2v-100ah",
+    name: "Lithium Battery Pack",
+    model: "51.2V100AH",
+    category: "battery",
+    type: "solar-storage",
+    description:
+      "Compact 5.12kWh LiFePO4 battery designed for residential and small solar energy storage applications.",
+    specifications: {
+      nominalVoltage: "51.2V",
+      capacity: "100Ah",
+      energy: "5.12kWh",
+      bms: "50A charge / 100A discharge",
+      cellType: "LiFePO4",
+      chargeCurrent: "50A",
+      dischargeCurrent: "100A"
+    },
+    features: [
+      "Compact and lightweight design",
+      "Long lifespan LiFePO4 chemistry",
+      "Stable performance for solar systems",
+      "Integrated BMS protection",
+      "Easy installation"
+    ],
+    applications: [
+      "Home solar systems",
+      "Small energy storage setups",
+      "Backup power",
+      "Off-grid solutions"
+    ],
+    image: "/images/productImg/inverter4.jpg",
+    gallery: [],
+    datasheet: "",
+    certifications: ["CE", "UN38.3"],
+    warranty: "3 years",
+    inStock: true
+  },
+
+  {
+    id: "bat-008",
+    slug: "lithium-battery-51-2v-200ah",
+    name: "Lithium Battery Pack",
+    model: "51.2V200AH",
+    category: "battery",
+    type: "solar-storage",
+    description:
+      "Mid-capacity 10.24kWh LiFePO4 battery suitable for residential and commercial solar storage systems.",
+    specifications: {
+      nominalVoltage: "51.2V",
+      capacity: "200Ah",
+      energy: "10.24kWh",
+      bms: "100A charge / 200A discharge",
+      cellType: "LiFePO4",
+      chargeCurrent: "100A",
+      dischargeCurrent: "200A"
+    },
+    features: [
+      "High energy density",
+      "Reliable LiFePO4 chemistry",
+      "Advanced BMS protection",
+      "Expandable for larger systems",
+      "Long cycle life"
+    ],
+    applications: [
+      "Residential solar storage",
+      "Commercial backup systems",
+      "Off-grid installations",
+      "Energy storage solutions"
+    ],
+    image: "/images/productImg/inverter5.jpg",
+    gallery: [],
+    datasheet: "",
+    certifications: ["CE", "UN38.3"],
+    warranty: "3 years",
+    inStock: true
+  },
+
+  {
+    id: "bat-009",
+    slug: "lithium-battery-51-2v-314ah",
+    name: "Lithium Battery Pack",
+    model: "51.2V314AH",
+    category: "battery",
+    type: "solar-storage",
+    description:
+      "High-capacity 16.08kWh LiFePO4 battery built for demanding solar storage and industrial energy applications.",
+    specifications: {
+      nominalVoltage: "51.2V",
+      capacity: "314Ah",
+      energy: "16.08kWh",
+      bms: "200A charge / 200A discharge",
+      cellType: "LiFePO4",
+      chargeCurrent: "200A",
+      dischargeCurrent: "200A",
+      chargeCutoff: "58.4V",
+      dischargeCutoff: "40V"
+    },
+    features: [
+      "High capacity for large systems",
+      "Industrial-grade BMS",
+      "Safe and stable LiFePO4 chemistry",
+      "Long lifecycle performance",
+      "Suitable for heavy-duty usage"
+    ],
+    applications: [
+      "Large solar storage systems",
+      "Industrial energy storage",
+      "Backup power systems",
+      "Off-grid power solutions"
+    ],
+    image: "/images/productImg/inverter6.jpg",
+    gallery: [],
+    datasheet: "",
+    certifications: ["CE", "UN38.3"],
+    warranty: "3 years",
     inStock: true
   },
 
@@ -461,7 +580,7 @@ export const productData = [
       "Home backup power",
       "Self-consumption optimization"
     ],
-    image: "/images/productImg/inverter1.png",
+    image: "/images/productImg/inverter1.jpg",
     gallery: [],
     datasheet: "/datasheets/HF-6.2KW-48V.pdf",
     certifications: ["CE", "IEC 62109"],
@@ -505,7 +624,7 @@ export const productData = [
       "Large home installations",
       "Small business backup"
     ],
-    image: "/images/productImg/inverter2.png",
+    image: "/images/productImg/inverter2.jpg",
     gallery: [],
     datasheet: "/datasheets/HF-12KW-48V.pdf",
     certifications: ["CE", "IEC 62109"],
@@ -584,7 +703,7 @@ export const productData = [
       "Residential installations",
       "Space-constrained locations"
     ],
-    image: "/images/productImg/inverter4.jpg",
+    image: "/images/productImg/battery5.jpg",
     gallery: [],
     datasheet: "/datasheets/EM6200-48L.pdf",
     certifications: ["CE"],
@@ -623,7 +742,7 @@ export const productData = [
       "Scalable residential systems",
       "Growing energy needs"
     ],
-    image: "/images/productImg/inverter5.jpg",
+    image: "/images/productImg/battery6.jpg",
     gallery: [],
     datasheet: "/datasheets/M6200-48PL.pdf",
     certifications: ["CE"],
@@ -662,7 +781,7 @@ export const productData = [
       "Large residential systems",
       "Small commercial installations"
     ],
-    image: "/images/productImg/inverter6.jpg",
+    image: "/images/productImg/battery7.jpg",
     gallery: [],
     datasheet: "/datasheets/EM11000-48L.pdf",
     certifications: ["CE"],
@@ -698,7 +817,7 @@ export const productData = [
       "Scalable commercial systems",
       "High demand installations"
     ],
-    image: "/images/productImg/inverter7.jpg",
+    image: "/images/productImg/battery8.jpg",
     gallery: [],
     datasheet: "/datasheets/EM11000-48L-P.pdf",
     certifications: ["CE"],

@@ -11,7 +11,7 @@ const FEATURED_CATEGORIES = [
   {
     id: 1,
     title: "Storage Batteries",
-    slug: "batteries",
+    slug: "storage-batteries",
     image: "/images/homeProImg/homepro4.jpg",
     desc: "LFP battery systems for residential & industrial",
     sourceNote: "Sourced from ISO-certified factories"
@@ -19,7 +19,7 @@ const FEATURED_CATEGORIES = [
   {
     id: 2,
     title: "Solar Inverters",
-    slug: "inverters",
+    slug: "solar-inverters",
     image: "/images/homeProImg/homepro2.jpg",
     desc: "High-efficiency pure sine wave inverters",
     sourceNote: "Tier-1 component suppliers"
@@ -27,7 +27,7 @@ const FEATURED_CATEGORIES = [
   {
     id: 3,
     title: "Portable Power Stations",
-    slug: "portable",
+    slug: "portable-power-stations",
     image: "/images/homeProImg/homepro3.jpg",
     desc: "Rugged units for emergency & off-grid",
     sourceNote: "OEM branding available"
@@ -35,10 +35,10 @@ const FEATURED_CATEGORIES = [
   {
     id: 4,
     title: "Electric Mobility",
-    slug: "mobility",
+    slug: "electric-mobility",
     image: "/images/homeProImg/homepro1.jpg",
-    desc: "Battery platforms for e-bikes & scooters",
-    sourceNote: "Long cycle life cells"
+    desc: "Electric motorcycles, scooters & e-bikes",
+    sourceNote: "Sustainable urban mobility"
   },
 ];
 
@@ -66,7 +66,7 @@ const EnergyPlatforms = () => {
       className="energy-platforms"
       aria-labelledby="platforms-heading"
     >
-      <div className="container"> {/* Container inside section */}
+      <div className="container">
         <SectionHeader
           badge="Sourcing Excellence"
           title="Energy Platforms We Source"
@@ -81,7 +81,7 @@ const EnergyPlatforms = () => {
               className="platform-card"
             >
               <Link
-                href={`/products?category=${platform.slug}`}
+                href={`/products/solutions/${platform.slug}`}
                 className="platform-card__link"
                 aria-label={`Explore our ${platform.title} solutions`}
               >

@@ -253,7 +253,7 @@
 }
 
 /* =====================================================
-   FORM BODY - Ensure form elements stretch
+   FORM BODY
 ===================================================== */
 .form-terminal__body {
   padding: var(--spacing-4);
@@ -319,7 +319,7 @@
 }
 
 /* =====================================================
-   COOLDOWN STATUS STYLES (ADDED)
+   COOLDOWN STATUS STYLES
 ===================================================== */
 .modal__status--cooldown {
   background: rgba(255, 127, 65, 0.1);
@@ -327,12 +327,10 @@
   border-left: 3px solid var(--primary-color);
 }
 
-/* Ensure the modal form inside terminal uses correct spacing */
 .form-terminal__body .modal__status {
   margin: var(--spacing-3) 0;
 }
 
-/* Responsive adjustments for cooldown */
 @media screen and (max-width: 480px) {
   .modal__status--cooldown {
     font-size: 0.75rem;
@@ -341,7 +339,142 @@
 }
 
 /* =====================================================
-   CONTACT CARDS (NFC STYLE) - Mobile First
+   GLOBAL OFFICES SECTION
+===================================================== */
+.global-offices {
+  padding: var(--spacing-5) 0;
+  background: linear-gradient(135deg, var(--neutral-light) 0%, var(--neutral-white) 100%);
+  position: relative;
+}
+
+@media screen and (min-width: 768px) {
+  .global-offices {
+    padding: var(--spacing-8) 0;
+  }
+}
+
+.global-offices::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(255, 127, 65, 0.03) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.global-offices__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-4);
+  margin-top: var(--spacing-5);
+  position: relative;
+  z-index: 2;
+}
+
+@media screen and (min-width: 640px) {
+  .global-offices__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-4);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .global-offices__grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-5);
+  }
+}
+
+.office-card {
+  background: white;
+  padding: var(--spacing-5);
+  border-radius: 24px;
+  text-align: center;
+  transition: var(--transition);
+  border: 1px solid rgba(18, 27, 45, 0.05);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.office-card--featured {
+  border: 2px solid var(--primary-color);
+  background: linear-gradient(135deg, white 0%, var(--accent-color-light) 100%);
+  transform: scale(1.02);
+}
+
+.office-card--featured::before {
+  content: '★';
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  color: var(--primary-color);
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.office-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary-color-light);
+}
+
+.office-card__icon {
+  width: 56px;
+  height: 56px;
+  background: var(--accent-color-light);
+  color: var(--primary-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--spacing-3);
+  font-size: 1.8rem;
+  transition: var(--transition);
+}
+
+.office-card:hover .office-card__icon {
+  background: var(--primary-color);
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.office-card__title {
+  color: var(--secondary-color);
+  font-size: 1.2rem;
+  margin-bottom: var(--spacing-2);
+  font-weight: 700;
+}
+
+.office-card__location {
+  color: var(--primary-color);
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.office-card__address {
+  color: var(--neutral-medium);
+  font-size: 0.8rem;
+  line-height: 1.4;
+  margin-bottom: var(--spacing-3);
+}
+
+.office-card__region {
+  display: inline-block;
+  background: var(--neutral-light);
+  color: var(--neutral-medium);
+  padding: 4px 12px;
+  border-radius: 50px;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+/* =====================================================
+   CONTACT CARDS (NFC STYLE)
 ===================================================== */
 .contact-info {
   padding: var(--spacing-5) 0;
@@ -370,9 +503,10 @@
 
 @media screen and (min-width: 1024px) {
   .contact-info__grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: var(--spacing-5);
     margin-top: var(--spacing-6);
+    
   }
 }
 
@@ -589,7 +723,7 @@
 }
 
 /* =====================================================
-   MAP SECTION - Mobile First
+   MAP SECTION
 ===================================================== */
 .contact-map {
   position: relative;
@@ -732,7 +866,7 @@
 }
 
 /* =====================================================
-   FAQ SNIPPET - Mobile First
+   FAQ SNIPPET
 ===================================================== */
 .contact-faq {
   padding: var(--spacing-5) 0;
@@ -964,6 +1098,28 @@
     font-size: 0.6rem;
   }
   
+  .global-offices__grid {
+    gap: var(--spacing-3);
+  }
+  
+  .office-card {
+    padding: var(--spacing-4);
+  }
+  
+  .office-card__icon {
+    width: 48px;
+    height: 48px;
+    font-size: 1.5rem;
+  }
+  
+  .office-card__title {
+    font-size: 1rem;
+  }
+  
+  .office-card__address {
+    font-size: 0.75rem;
+  }
+  
   .contact-card {
     padding: var(--spacing-3);
   }
@@ -1038,7 +1194,6 @@
     margin-left: 0;
   }
   
-  /* Cooldown responsive adjustments */
   .modal__status--cooldown {
     font-size: 0.75rem;
     padding: 10px 12px;
@@ -1052,7 +1207,8 @@
 .contact-card,
 .contact-faq__item,
 .form-terminal,
-.contact-bottom-cta__icon {
+.contact-bottom-cta__icon,
+.office-card {
   will-change: transform;
 }
 
@@ -1063,14 +1219,16 @@
   .form-terminal,
   .contact-card__ring,
   .form-terminal__dot,
-  .contact-bottom-cta__icon {
+  .contact-bottom-cta__icon,
+  .office-card {
     animation: none !important;
     transition: none !important;
   }
   
   .contact-feature-card:hover,
   .contact-card:hover,
-  .contact-faq__item:hover {
+  .contact-faq__item:hover,
+  .office-card:hover {
     transform: none;
   }
   
