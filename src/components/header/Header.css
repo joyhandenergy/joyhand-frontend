@@ -129,7 +129,7 @@
 }
 
 /* =====================================================
-   MOBILE MENU - IMPROVED DROPDOWN VISIBILITY
+   MOBILE MENU - OPTIMIZED FOR VIEWPORT
 ===================================================== */
 .header__mobile-menu {
   position: fixed;
@@ -139,7 +139,7 @@
   height: calc(100dvh - var(--header-height) - 1px);
   background: var(--neutral-white);
   z-index: var(--z-modal);
-  padding: var(--spacing-4) var(--spacing-3);
+  padding: var(--spacing-3) var(--spacing-3) var(--spacing-4) var(--spacing-3);
   transform: translateX(100%);
   transition: transform 0.3s ease;
   box-shadow: var(--shadow-lg);
@@ -153,12 +153,12 @@
   transform: translateX(0);
 }
 
-/* Mobile Navigation */
+/* Mobile Navigation - Scrollable area */
 .header__mobile-nav {
   display: flex;
   flex-direction: column;
   flex: 1;
-  gap: var(--spacing-1);
+  gap: 4px;
 }
 
 /* Remove all bullets */
@@ -168,7 +168,7 @@ ul, li {
   margin: 0;
 }
 
-/* Mobile Items - Larger tap targets */
+/* Mobile Items - Compact but tappable */
 .header__mobile-item {
   border-bottom: 1px solid var(--neutral-light);
 }
@@ -177,13 +177,13 @@ ul, li {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 0; /* Increased padding for better tap target */
+  padding: 12px 0;
   cursor: pointer;
-  min-height: 56px; /* Minimum tap target height */
+  min-height: 48px;
 }
 
 .header__mobile-link {
-  font-size: 1.1rem; /* Slightly larger */
+  font-size: 1rem;
   font-weight: 700;
   color: var(--secondary-color);
   transition: var(--transition-fast);
@@ -195,13 +195,13 @@ ul, li {
   color: var(--primary-color);
 }
 
-/* Mobile Caret - Larger touch area */
+/* Mobile Caret */
 .header__mobile-caret {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: var(--primary-color);
   transition: transform 0.3s ease;
-  padding: 8px;
-  margin: -8px; /* Offset padding for click area */
+  padding: 6px;
+  margin: -6px;
   cursor: pointer;
 }
 
@@ -209,28 +209,28 @@ ul, li {
   transform: rotate(180deg);
 }
 
-/* Mobile Submenu - Always visible when open */
+/* Mobile Submenu - Compact */
 .header__mobile-sub {
   max-height: 0;
   opacity: 0;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  padding-left: 20px;
+  padding-left: 16px;
   transition: all 0.3s ease;
 }
 
 .header__mobile-sub--open {
-  max-height: 300px; /* Increased for better visibility */
+  max-height: 250px;
   opacity: 1;
-  padding-bottom: 12px;
+  padding-bottom: 8px;
 }
 
 .header__mobile-sub-link {
   color: var(--neutral-medium);
-  font-size: 1rem; /* Larger for better readability */
+  font-size: 0.9rem;
   font-weight: 500;
-  padding: 12px 0; /* Larger tap target */
+  padding: 8px 0;
   display: block;
   transition: var(--transition-fast);
   text-decoration: none;
@@ -238,35 +238,37 @@ ul, li {
 
 .header__mobile-sub-link:active {
   color: var(--primary-color);
-  transform: translateX(8px);
+  transform: translateX(6px);
 }
 
-/* Mobile Contact - Larger tap targets */
+/* =====================================================
+   MOBILE CONTACT - COMPACT (MOVED ABOVE CTA)
+===================================================== */
 .header__mobile-contact {
   margin-top: auto;
-  padding: 20px 0 16px 0;
+  padding: 12px 0 8px 0;
   border-top: 1px solid var(--neutral-light);
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 6px;
 }
 
 .header__mobile-contact-item {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   color: var(--neutral-medium);
-  font-size: 1rem;
+  font-size: 0.85rem;
   text-decoration: none;
   transition: var(--transition-fast);
-  padding: 8px 0;
-  min-height: 48px;
+  padding: 4px 0;
+  min-height: 36px;
 }
 
 .header__mobile-contact-item svg {
   color: var(--primary-color);
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
   animation: headerPulse 2s ease-in-out infinite;
 }
 
@@ -279,17 +281,19 @@ ul, li {
   transform: translateX(4px);
 }
 
-/* Mobile CTA Button - Prominent and easy to tap */
+/* =====================================================
+   MOBILE CTA BUTTON - VISIBLE WITHOUT SCROLLING
+===================================================== */
 .header__mobile-cta {
   width: 100%;
-  margin-top: 16px;
-  margin-bottom: 8px;
+  margin-top: 8px;
+  margin-bottom: 4px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  padding: 14px !important;
-  font-size: 1rem !important;
+  padding: 12px !important;
+  font-size: 0.95rem !important;
   font-weight: 700;
   flex-shrink: 0;
   border-radius: 50px;
@@ -298,7 +302,7 @@ ul, li {
   border: none;
   cursor: pointer;
   transition: var(--transition);
-  min-height: 52px;
+  min-height: 48px;
 }
 
 .header__mobile-cta:active {
@@ -307,8 +311,8 @@ ul, li {
 }
 
 .header__mobile-cta svg {
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   transition: transform 0.2s ease;
 }
 
@@ -320,7 +324,6 @@ ul, li {
    DESKTOP (992px+)
 ===================================================== */
 @media screen and (min-width: 992px) {
-  /* Show top bar */
   .header__top {
     display: block;
     background-color: var(--secondary-color);
@@ -362,7 +365,6 @@ ul, li {
     animation-delay: 0.5s;
   }
   
-  /* Show desktop navigation */
   .header__nav {
     display: flex;
     gap: var(--spacing-3);
@@ -463,7 +465,6 @@ ul, li {
     margin-left: var(--spacing-2);
   }
   
-  /* Hide mobile elements */
   .header__mobile-toggle,
   .header__mobile-menu {
     display: none !important;
@@ -483,42 +484,44 @@ ul, li {
 ===================================================== */
 @media screen and (max-width: 480px) {
   .header__logo-img {
-    width: 95px;
+    width: 90px;
   }
   
   .header__mobile-menu {
-    padding: var(--spacing-3) var(--spacing-2) var(--spacing-5) var(--spacing-2);
+    padding: var(--spacing-2) var(--spacing-2) var(--spacing-4) var(--spacing-2);
   }
   
   .header__mobile-link-wrapper {
-    padding: 14px 0;
+    padding: 10px 0;
+    min-height: 44px;
   }
   
   .header__mobile-link {
-    font-size: 1rem;
+    font-size: 0.95rem;
   }
   
   .header__mobile-sub-link {
-    font-size: 0.9rem;
-    padding: 10px 0;
-  }
-  
-  .header__mobile-contact-item {
-    font-size: 0.9rem;
-    gap: 12px;
+    font-size: 0.85rem;
     padding: 6px 0;
   }
   
+  .header__mobile-contact-item {
+    font-size: 0.8rem;
+    gap: 8px;
+    padding: 3px 0;
+    min-height: 32px;
+  }
+  
   .header__mobile-contact-item svg {
-    width: 18px;
-    height: 18px;
+    width: 14px;
+    height: 14px;
   }
   
   .header__mobile-cta {
-    padding: 12px !important;
-    font-size: 0.9rem !important;
-    margin-top: 12px;
-    min-height: 48px;
+    padding: 10px !important;
+    font-size: 0.85rem !important;
+    margin-top: 6px;
+    min-height: 44px;
   }
 }
 
