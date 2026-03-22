@@ -173,7 +173,7 @@ export default function AboutPage() {
               <div className="nfc-scanner__ring nfc-scanner__ring--delayed"></div>
               <div className="about-intro__image-wrapper">
                 <Image
-                  src="/images/solarImg/panel.home.jpg"
+                  src="/images/abtImg/factory-photo1.jpg"
                   alt="QC Verification"
                   fill
                   className="about-intro__img"

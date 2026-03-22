@@ -1,17 +1,19 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { PiShieldCheckFill, PiFactory, PiGlobe, PiHandshake } from "react-icons/pi";
 import "./BusinessModel.css";
 
 export default function BusinessModel() {
-
   const sectionRef = useRef(null);
+  const [imagesLoaded, setImagesLoaded] = useState({
+    small: false,
+    large: false
+  });
 
   useEffect(() => {
-
     const section = sectionRef.current;
 
     const observer = new IntersectionObserver(
@@ -31,39 +33,33 @@ export default function BusinessModel() {
     return () => {
       if (section) observer.unobserve(section);
     };
-
   }, []);
 
-  return (
+  const handleImageLoad = (type) => {
+    setImagesLoaded(prev => ({ ...prev, [type]: true }));
+  };
 
+  return (
     <section
       ref={sectionRef}
       className="businessModel"
       aria-labelledby="business-model-heading"
     >
-
       <div className="container businessModel__container">
 
         {/* LEFT VISUAL GRID */}
-
         <div className="businessModel__visual-grid">
-
           <div className="businessModel__top-row">
 
             {/* SOURCING PARTNER CARD */}
-
             <div className="businessModel__card">
-
               <div className="businessModel__card-header">
-
                 <div className="businessModel__card-icon">
                   <PiHandshake size={20} />
                 </div>
-
                 <span className="businessModel__card-brand">
                   TRUSTED SOURCING NETWORK
                 </span>
-
               </div>
 
               <p className="businessModel__quote">
@@ -80,57 +76,48 @@ export default function BusinessModel() {
               >
                 Explore Sourcing Services
               </Link>
-
             </div>
 
-
             {/* SMALL IMAGE – E MOTORCYCLE */}
-
-            <div className="businessModel__img-wrapper businessModel__img-wrapper--small">
-
+            <div className={`businessModel__img-wrapper businessModel__img-wrapper--small ${imagesLoaded.small ? 'businessModel__img-wrapper--loaded' : ''}`}>
               <Image
                 src="/images/factoryImg/factory2.jpg"
                 alt="Electric motorcycle mobility platform sourced from partner factories"
                 fill
                 className="businessModel__image"
-                sizes="(max-width:768px) 100vw, 50vw"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                quality={85}
                 priority
+                placeholder="blur"
+                blurDataURL="/images/factoryImg/factory2-blur.jpg"
+                onLoad={() => handleImageLoad('small')}
               />
-
             </div>
-
           </div>
 
-
           {/* LARGE IMAGE – SOLAR */}
-
-          <div className="businessModel__img-wrapper businessModel__img-wrapper--large">
-
+          <div className={`businessModel__img-wrapper businessModel__img-wrapper--large ${imagesLoaded.large ? 'businessModel__img-wrapper--loaded' : ''}`}>
             <Image
               src="/images/factoryImg/factory1.jpg"
               alt="Industrial solar power installation and lithium battery storage systems from vetted manufacturers"
               fill
               className="businessModel__image"
-              sizes="(max-width:768px) 100vw, 50vw"
+              sizes="(max-width: 768px) 100vw, 50vw"
+              quality={85}
+              loading="lazy"
+              placeholder="blur"
+              blurDataURL="/images/factoryImg/factory1-blur.jpg"
+              onLoad={() => handleImageLoad('large')}
             />
-
           </div>
-
         </div>
 
-
         {/* RIGHT CONTENT */}
-
         <div className="businessModel__content">
-
           <div className="businessModel__tag">
-
             <span className="businessModel__tag-square"></span>
-
             YOUR SOURCING PARTNER
-
           </div>
-
 
           <h2
             id="business-model-heading"
@@ -139,57 +126,38 @@ export default function BusinessModel() {
             Bridging Distributors and World-Class Manufacturers
           </h2>
 
-
           <p className="businessModel__description">
-
             JoyHand partners with distributors, infrastructure developers, and emerging 
             energy brands worldwide. Through our network of certified factories, dedicated 
             engineering support, and streamlined global logistics, we help companies source, 
             customize, and scale reliable clean energy technologies for international markets — 
             without the risk of dealing with unknown suppliers.
-
           </p>
 
-
           <ul className="businessModel__list">
-
             <li><strong>Factory Matching:</strong> We connect you with specialized manufacturers based on your specifications</li>
-
             <li><strong>Quality Assurance:</strong> On-site audits and inspections before any product leaves the facility</li>
-
             <li><strong>Logistics Managed:</strong> Container consolidation, shipping, and customs clearance handled end-to-end</li>
-
             <li><strong>Engineering Bridge:</strong> Technical liaison between your requirements and factory capabilities</li>
-
             <li><strong>Scalable Partnerships:</strong> From pilot orders to full container loads, we grow with you</li>
-
           </ul>
 
-
           <div className="businessModel__actions">
-
             <Link
               href="/contact"
-              className="btn"
+              className="btn businessModel__btn"
             >
               START SOURCING
             </Link>
-
             <Link
               href="/products"
-              className="btn btn--secondary"
+              className="btn btn--secondary businessModel__btn"
             >
               VIEW PRODUCT CATALOG
             </Link>
-
           </div>
-
         </div>
-
       </div>
-
     </section>
-
   );
-
 }

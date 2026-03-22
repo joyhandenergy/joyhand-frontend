@@ -597,4 +597,59 @@
   .footer__global-link:hover {
     transform: none;
   }
+}/* =====================================================
+   ADDITIONAL PERFORMANCE OPTIMIZATIONS
+   (Add this to the end of your Footer.css file)
+===================================================== */
+
+/* Footer performance optimizations */
+.footer {
+  will-change: transform;
+}
+
+.footer__logo-img {
+  content-visibility: auto;
+  contain: paint;
+  background-color: rgba(255, 255, 255, 0.05);
+  transition: opacity 0.2s ease;
+}
+
+.footer__social-link,
+.footer__link,
+.footer__global-link {
+  will-change: transform;
+}
+
+/* Optimize hover animations only on devices that support hover */
+@media (hover: hover) {
+  .footer__social-link:hover {
+    transform: translateY(-2px);
+  }
+}
+
+/* Prevent layout shift */
+.footer img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .footer__link,
+  .footer__social-link,
+  .footer__global-link,
+  .footer__global-icon,
+  .footer__logo,
+  .footer__title::after,
+  .footer__legal-links a::after {
+    transition: none !important;
+    animation: none !important;
+  }
+  
+  .footer__link:hover,
+  .footer__global-link:hover,
+  .footer__logo:hover {
+    transform: none;
+  }
 }

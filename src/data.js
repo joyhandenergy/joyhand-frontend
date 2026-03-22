@@ -823,6 +823,147 @@ export const productData = [
     certifications: ["CE"],
     warranty: "2 years",
     inStock: true
+  },
+
+  // ===== ELECTRIC MOBILITY =====
+  {
+    id: "em-001",
+    slug: "electric-motorcycle-sy-t500",
+    name: "Electric Motorcycle",
+    model: "SY-T500",
+    category: "electric-mobility",
+    type: "motorcycle",
+    description: "High-performance electric motorcycle with 3000W mid-drive motor and 72V 45AH lithium battery. Perfect for urban commuting and delivery services.",
+    specifications: {
+      modelNo: "SY-T500",
+      dimension: "1960×560×1150mm",
+      motor: "3000W PMS/M mid-drive motor",
+      battery: "72V 45AH Lithium battery",
+      chargingTime: "4-5 hours",
+      brake: "CBS (Combined Braking System)",
+      tyre: "100/80 120/80 16\"",
+      maxSpeed: "80 km/h",
+      mileage: "110-130 km",
+      weight: "167 KG (with battery)",
+      packageDimension: "1960×560×1150mm",
+      containerLoading: "48 pcs per 40\"HQ container"
+    },
+    features: [
+      "Powerful 3000W mid-drive motor for excellent torque",
+      "Long-range 72V 45AH lithium battery (110-130km range)",
+      "CBS braking system for enhanced safety",
+      "16\" tubeless tires for better grip",
+      "80km/h top speed for highway-capable commuting",
+      "Efficient 4-5 hour charging time"
+    ],
+    applications: [
+      "Urban commuting",
+      "Delivery services",
+      "Fleet operations",
+      "Personal transportation"
+    ],
+    image: "/images/productImg/em1.jpg",
+    gallery: [
+      "/images/productImg/em2.jpg",
+      "/images/productImg/em2.jpg",
+    ],
+    datasheet: "/datasheets/SY-T500.pdf",
+    certifications: ["CE", "EEC"],
+    warranty: "2 years",
+    inStock: true,
+    containerCapacity: {
+      "40HQ": "48 pcs",
+      "20GP": "24 pcs"
+    }
+  },
+
+  {
+    id: "em-002",
+    slug: "electric-scooter-m-vspa3",
+    name: "Electric Scooter",
+    model: "M-VSPA3",
+    category: "electric-mobility",
+    type: "scooter",
+    description: "Compact and efficient electric scooter with 1000W brushless DC motor. Perfect for city commuting and last-mile delivery.",
+    specifications: {
+      modelNo: "M-VSPA3",
+      motor: "1000W Brushless DC motor",
+      battery: "72V lead-acid / Lithium battery (optional)",
+      rechargeTime: "6-8 hours",
+      batteryChargerInput: "100-240V",
+      brake: "Disc / Disc",
+      tyres: "90/90-12 Tubeless",
+      topSpeed: "50-55 km/h",
+      maxRange: "65-70 km",
+      maxClimbing: "12°",
+      maxLoading: "200 KGS",
+      containerLoading: {
+        "40HQ": "150 pcs (CKD) / 80 pcs (SKD)",
+        "20GP": "65 pcs (CKD) / 26 pcs (SKD)"
+      }
+    },
+    features: [
+      "1000W brushless DC motor for quiet operation",
+      "Available in lead-acid or lithium battery options",
+      "Tubeless tires for puncture resistance",
+      "Disc brakes front and rear for reliable stopping",
+      "Compact design for easy parking and maneuverability",
+      "CKD/SKD shipping options available for assembly partners"
+    ],
+    applications: [
+      "City commuting",
+      "Last-mile delivery",
+      "Campus transportation",
+      "Fleet sharing programs"
+    ],
+    image: "/images/productImg/em2.jpg",
+    gallery: [
+      "/images/productImg/em2.jpg",
+      "/images/productImg/em2.jpg"
+    ],
+    datasheet: "/datasheets/M-VSPA3.pdf",
+    certifications: ["CE"],
+    warranty: "1 year",
+    inStock: true,
+    assemblyOptions: ["CKD (Completely Knocked Down)", "SKD (Semi Knocked Down)"]
+  },
+
+  {
+    id: "em-003",
+    slug: "electric-scooter-e-bike-500",
+    name: "Electric Scooter",
+    model: "E-BIKE-500",
+    category: "electric-mobility",
+    type: "scooter",
+    description: "Lightweight electric scooter for urban mobility and recreational use.",
+    specifications: {
+      motor: "500W Brushless hub motor",
+      battery: "48V 20AH Lithium battery",
+      maxSpeed: "45 km/h",
+      range: "50-60 km",
+      chargingTime: "4-5 hours",
+      weight: "45 kg",
+      maxLoad: "120 kg",
+      tyre: "10\" tubeless"
+    },
+    features: [
+      "Lightweight and portable design",
+      "Foldable for easy storage",
+      "LED display with speed and battery indicators",
+      "Regenerative braking",
+      "App connectivity (optional)"
+    ],
+    applications: [
+      "Last-mile commuting",
+      "Campus transport",
+      "Recreational use"
+    ],
+    image: "/images/productImg/em3.jpg",
+    gallery: [],
+    datasheet: "/datasheets/E-BIKE-500.pdf",
+    certifications: ["CE"],
+    warranty: "1 year",
+    inStock: true
   }
 ];
 
@@ -831,7 +972,7 @@ export const productData = [
 // =====================================================
 
 /**
- * Get products by category (e.g., 'battery' or 'inverter')
+ * Get products by category (e.g., 'battery', 'inverter', 'electric-mobility')
  */
 export const getProductsByCategory = (category) => {
   return productData.filter((product) => product.category === category);
@@ -873,4 +1014,41 @@ export const getCategories = () => {
  */
 export const getTypes = () => {
   return [...new Set(productData.map((product) => product.type))];
+};
+
+/**
+ * Get electric mobility products
+ */
+export const getElectricMobilityProducts = () => {
+  return productData.filter((product) => product.category === "electric-mobility");
+};
+
+/**
+ * Get electric motorcycles
+ */
+export const getElectricMotorcycles = () => {
+  return productData.filter((product) => product.category === "electric-mobility" && product.type === "motorcycle");
+};
+
+/**
+ * Get electric scooters
+ */
+export const getElectricScooters = () => {
+  return productData.filter((product) => product.category === "electric-mobility" && product.type === "scooter");
+};
+
+/**
+ * Get featured products by category (first 3 from each category)
+ */
+export const getFeaturedProducts = () => {
+  const categories = getCategories();
+  const featured = {};
+  
+  categories.forEach(category => {
+    featured[category] = productData
+      .filter(p => p.category === category)
+      .slice(0, 3);
+  });
+  
+  return featured;
 };

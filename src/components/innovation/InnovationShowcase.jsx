@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   PiFactory,
   PiMagnifyingGlass,
@@ -16,6 +17,7 @@ import "./InnovationShowcase.css";
 const InnovationShowcase = () => {
   const sectionRef = useRef(null);
   const [isMobile, setIsMobile] = useState(false);
+  const [videoLoaded, setVideoLoaded] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -82,8 +84,30 @@ const InnovationShowcase = () => {
   return (
     <section ref={sectionRef} className="innovation-section">
       <div className="innovation-section__hero">
-        <video autoPlay loop muted playsInline className="innovation-section__video">
-          <source src="/videos/heroImg/factory3.mp4" type="video/mp4" />
+        {/* Video poster - shows instantly while video loads */}
+        <div 
+          className={`innovation-section__poster ${videoLoaded ? 'innovation-section__poster--hidden' : ''}`}
+          style={{
+            backgroundImage: "url('/videos/heroImg/factory3-poster.webp')",
+            backgroundSize: "cover",
+            backgroundPosition: "center"
+          }}
+        />
+        
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          className={`innovation-section__video ${videoLoaded ? 'innovation-section__video--loaded' : ''}`}
+          poster="/videos/heroImg/factory3-poster.jpg"
+          onCanPlayThrough={() => setVideoLoaded(true)}
+        >
+          <source
+            src="/videos/heroImg/factory3.mp4"
+            type="video/mp4"
+          />
         </video>
 
         <div className="innovation-section__overlay">
@@ -108,7 +132,7 @@ const InnovationShowcase = () => {
             <div
               key={index}
               className="innovation-card"
-             
+              style={{ '--delay': `${index * 0.1}s` }}
             >
               <div className="innovation-card__main">
                 <div className="innovation-card__icon">{item.icon}</div>

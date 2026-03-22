@@ -22,6 +22,7 @@ export default function Hero() {
             playsInline
             preload="auto"
             className="hero__video"
+            poster="/videos/heroImg/joyhand-hero-poster.jpg" // Add a poster image
           >
             <source
               src="/videos/heroImg/joyhand-hero-video.mp4"

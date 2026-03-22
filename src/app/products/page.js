@@ -21,7 +21,7 @@ const solutionLinks = [
   { slug: "electric-mobility", name: "Electric Mobility" },
 ];
 
-async function ProductsContent() {
+function ProductsContent() {
   return (
     <main className="products-page">
       <PageHeader 
@@ -68,7 +68,7 @@ async function ProductsContent() {
   );
 }
 
-export default async function ProductsPage() {
+export default function ProductsPage() {
   return (
     <Suspense fallback={<div className="container mt-3">Loading products...</div>}>
       <ProductsContent />

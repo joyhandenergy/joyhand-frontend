@@ -2,7 +2,7 @@
    ENERGY PLATFORMS SECTION - Mobile First
 ======================================== */
 .energy-platforms {
-  padding: var(--spacing-4) 0; /* Vertical padding only */
+  padding: var(--spacing-4) 0;
   background-color: var(--accent-color-light);
   overflow: hidden;
   width: 100%;
@@ -17,7 +17,7 @@
   margin-right: auto;
 }
 
-/* Desktop container padding - RESTORED exactly as before */
+/* Desktop container padding */
 @media screen and (min-width: 768px) {
   .energy-platforms .container {
     padding-left: var(--spacing-5);
@@ -124,18 +124,43 @@
 }
 
 /* ========================================
-   IMAGE & OVERLAY
+   IMAGE & OVERLAY - OPTIMIZED
 ======================================== */
 .platform-card__image-wrapper {
   position: absolute;
   inset: 0;
   z-index: 1;
+  background-color: var(--secondary-color-dark);
 }
 
+/* Blur placeholder - loads instantly */
+.platform-card__blur-placeholder {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-size: cover;
+  background-position: center;
+  filter: blur(20px);
+  transform: scale(1.1);
+  transition: opacity 0.3s ease;
+}
+
+/* Main image */
 .platform-card__image {
   object-fit: cover;
-  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
   border-radius: 0;
+  opacity: 0;
+  z-index: 2;
+}
+
+.platform-card__image--loaded {
+  opacity: 1;
+}
+
+/* Hide blur placeholder when main image loads */
+.platform-card--image-loaded .platform-card__blur-placeholder {
+  opacity: 0;
 }
 
 .platform-card__overlay {
@@ -148,7 +173,7 @@
     transparent 100%
   );
   transition: all 0.4s ease;
-  z-index: 2;
+  z-index: 3;
 }
 
 /* ========================================
@@ -156,7 +181,7 @@
 ======================================== */
 .platform-card__content {
   position: relative;
-  z-index: 3;
+  z-index: 4;
   height: 100%;
   padding: var(--spacing-3);
   display: flex;
@@ -390,15 +415,13 @@
 }
 
 /* ========================================
-   SMALL MOBILE (480px and below) - FIXED
+   SMALL MOBILE (480px and below)
 ======================================== */
 @media screen and (max-width: 480px) {
-  /* Section has only vertical padding */
   .energy-platforms {
     padding: var(--spacing-3) 0;
   }
   
-  /* Container handles mobile horizontal padding */
   .energy-platforms .container {
     padding-left: var(--spacing-2);
     padding-right: var(--spacing-2);
@@ -490,12 +513,27 @@
   will-change: transform;
 }
 
+.platform-card__blur-placeholder {
+  will-change: opacity;
+}
+
+/* Prevent layout shift */
+.platform-card__image-wrapper img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* ========================================
+   REDUCED MOTION PREFERENCES
+======================================== */
 @media (prefers-reduced-motion: reduce) {
   .platform-card,
   .platform-card__image,
   .platform-card__icon-wrapper,
   .platform-card__source-note,
-  .platform-card__cta {
+  .platform-card__cta,
+  .platform-card__blur-placeholder {
     animation: none !important;
     transition: none !important;
   }
@@ -508,5 +546,13 @@
   .platform-card:hover .platform-card__icon-wrapper,
   .platform-card:active .platform-card__icon-wrapper {
     transform: none;
+  }
+  
+  .platform-card__image {
+    opacity: 1 !important;
+  }
+  
+  .platform-card__blur-placeholder {
+    display: none;
   }
 }

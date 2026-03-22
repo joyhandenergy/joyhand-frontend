@@ -32,12 +32,15 @@ const TrustSignals = () => {
               {scrollingPartners.map((partner, index) => (
                 <div key={`${partner.id}-${index}`} className="trust__logo-item">
                   <div className="trust__logo-wrapper">
-                    <Image
+                   <Image
                       src={partner.logo}
                       alt={partner.alt || "Energy partner logo"}
                       fill
                       sizes="140px"
                       className="trust__logo"
+                      priority // 🔥 loads immediately (above-the-fold images)
+                      placeholder="blur" // 🔥 prevents flash
+                      blurDataURL="/images/placeholder-blur.png" // lightweight tiny image
                     />
                   </div>
                 </div>

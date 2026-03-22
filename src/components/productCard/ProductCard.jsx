@@ -3,20 +3,49 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { PiBatteryHigh, PiLightning } from "react-icons/pi";
+import { PiBatteryHigh, PiLightning, PiMotorcycle } from "react-icons/pi";
 
 const ProductCard = ({ product }) => {
-  const { name, slug, description, image, category, specifications } = product;
+  const { name, slug, description, image, category, specifications, model } = product;
+  
+  // Get category icon based on product category
+  const getCategoryIcon = () => {
+    if (category === "battery") return <PiBatteryHigh className="product-card__category-icon" />;
+    if (category === "inverter") return <PiLightning className="product-card__category-icon" />;
+    if (category === "electric-mobility") return <PiMotorcycle className="product-card__category-icon" />;
+    return <PiLightning className="product-card__category-icon" />;
+  };
+  
+  // Get category display name
+  const getCategoryName = () => {
+    if (category === "battery") return "Battery";
+    if (category === "inverter") return "Inverter";
+    if (category === "electric-mobility") return "Electric Mobility";
+    return category;
+  };
   
   // Get first two specs for preview
   const previewSpecs = [];
   if (specifications) {
+    // For batteries
     if (specifications.power) previewSpecs.push({ label: "Power", value: specifications.power });
     else if (specifications.energy) previewSpecs.push({ label: "Capacity", value: specifications.energy });
     else if (specifications.capacity) previewSpecs.push({ label: "Capacity", value: specifications.capacity });
     
-    if (specifications.nominalVoltage) previewSpecs.push({ label: "Voltage", value: specifications.nominalVoltage });
-    else if (specifications.dcInput) previewSpecs.push({ label: "Input", value: specifications.dcInput });
+    // For electric mobility
+    if (category === "electric-mobility") {
+      if (specifications.maxSpeed || specifications.topSpeed) {
+        previewSpecs.push({ label: "Top Speed", value: specifications.maxSpeed || specifications.topSpeed });
+      }
+      if (specifications.motor) {
+        previewSpecs.push({ label: "Motor", value: specifications.motor });
+      }
+    } 
+    // For inverters and batteries
+    else {
+      if (specifications.nominalVoltage) previewSpecs.push({ label: "Voltage", value: specifications.nominalVoltage });
+      else if (specifications.dcInput) previewSpecs.push({ label: "Input", value: specifications.dcInput });
+    }
   }
 
   return (
@@ -36,8 +65,8 @@ const ProductCard = ({ product }) => {
 
         <div className="product-card__content">
           <div className="product-card__category">
-            {category === "battery" ? <PiBatteryHigh className="product-card__category-icon" /> : <PiLightning className="product-card__category-icon" />}
-            <span className="product-card__category-text">{category}</span>
+            {getCategoryIcon()}
+            <span className="product-card__category-text">{getCategoryName()}</span>
           </div>
 
           <h3 className="product-card__title" itemProp="name">{name}</h3>

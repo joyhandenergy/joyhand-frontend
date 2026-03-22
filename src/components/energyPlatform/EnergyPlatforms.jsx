@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { PiArrowUpRightBold, PiFactory } from "react-icons/pi";
@@ -13,6 +13,7 @@ const FEATURED_CATEGORIES = [
     title: "Storage Batteries",
     slug: "storage-batteries",
     image: "/images/homeProImg/homepro4.jpg",
+    blurImage: "/images/homeProImg/homepro4-blur.jpg",
     desc: "LFP battery systems for residential & industrial",
     sourceNote: "Sourced from ISO-certified factories"
   },
@@ -21,6 +22,7 @@ const FEATURED_CATEGORIES = [
     title: "Solar Inverters",
     slug: "solar-inverters",
     image: "/images/homeProImg/homepro2.jpg",
+    blurImage: "/images/homeProImg/homepro2-blur.jpg",
     desc: "High-efficiency pure sine wave inverters",
     sourceNote: "Tier-1 component suppliers"
   },
@@ -29,6 +31,7 @@ const FEATURED_CATEGORIES = [
     title: "Portable Power Stations",
     slug: "portable-power-stations",
     image: "/images/homeProImg/homepro3.jpg",
+    blurImage: "/images/homeProImg/homepro3-blur.jpg",
     desc: "Rugged units for emergency & off-grid",
     sourceNote: "OEM branding available"
   },
@@ -37,6 +40,7 @@ const FEATURED_CATEGORIES = [
     title: "Electric Mobility",
     slug: "electric-mobility",
     image: "/images/homeProImg/homepro1.jpg",
+    blurImage: "/images/homeProImg/homepro1-blur.jpg",
     desc: "Electric motorcycles, scooters & e-bikes",
     sourceNote: "Sustainable urban mobility"
   },
@@ -44,6 +48,7 @@ const FEATURED_CATEGORIES = [
 
 const EnergyPlatforms = () => {
   const sectionRef = useRef(null);
+  const [loadedImages, setLoadedImages] = useState({});
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -59,6 +64,10 @@ const EnergyPlatforms = () => {
 
     return () => observer.disconnect();
   }, []);
+
+  const handleImageLoad = (id) => {
+    setLoadedImages(prev => ({ ...prev, [id]: true }));
+  };
 
   return (
     <section
@@ -78,7 +87,8 @@ const EnergyPlatforms = () => {
           {FEATURED_CATEGORIES.map((platform, index) => (
             <article
               key={platform.id}
-              className="platform-card"
+              className={`platform-card ${loadedImages[platform.id] ? 'platform-card--image-loaded' : ''}`}
+              style={{ '--delay': `${index * 0.1}s` }}
             >
               <Link
                 href={`/products/solutions/${platform.slug}`}
@@ -86,14 +96,29 @@ const EnergyPlatforms = () => {
                 aria-label={`Explore our ${platform.title} solutions`}
               >
                 <div className="platform-card__image-wrapper">
+                  {/* Blur placeholder - loads first */}
+                  <div 
+                    className="platform-card__blur-placeholder"
+                    style={{
+                      backgroundImage: `url(${platform.blurImage})`,
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'center'
+                    }}
+                  />
+                  
+                  {/* Main image with Next.js optimization */}
                   <Image
                     src={platform.image}
                     alt={`${platform.title} sourcing solutions from partner factories`}
                     fill
-                    className="platform-card__image"
+                    className={`platform-card__image ${loadedImages[platform.id] ? 'platform-card__image--loaded' : ''}`}
                     sizes="(max-width: 480px) 100vw, (max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                     priority={index < 2}
+                    quality={85}
+                    loading={index < 2 ? "eager" : "lazy"}
+                    onLoad={() => handleImageLoad(platform.id)}
                   />
+                  
                   <div className="platform-card__overlay"></div>
                 </div>
 

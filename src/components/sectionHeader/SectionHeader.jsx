@@ -1,12 +1,12 @@
 import "./SectionHeader.css";
-import { Zap } from "lucide-react";
+import { PiLightning } from "react-icons/pi";
 
 const SectionHeader = ({ badge, title, subtitle, center = false }) => {
   return (
     <div className={`section-header ${center ? "section-header--center" : ""}`}>
       {badge && (
         <span className="solar-badge">
-          <Zap size={14} className="solar-badge__icon" />
+          <PiLightning size={14} className="solar-badge__icon" />
           {badge}
         </span>
       )}

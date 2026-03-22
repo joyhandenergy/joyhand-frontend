@@ -23,6 +23,7 @@
   min-height: 350px;
   overflow: hidden;
   width: 100%;
+  background-color: var(--secondary-color);
 }
 
 @media screen and (min-width: 768px) {
@@ -32,10 +33,33 @@
   }
 }
 
+/* Poster image - shows instantly */
+.innovation-section__poster {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: opacity 0.5s ease;
+}
+
+.innovation-section__poster--hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Video */
 .innovation-section__video {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.innovation-section__video--loaded {
+  opacity: 1;
 }
 
 .innovation-section__overlay {
@@ -45,6 +69,7 @@
   display: flex;
   align-items: center;
   text-align: center;
+  z-index: 2;
 }
 
 .innovation-section__hero-content {
@@ -164,12 +189,13 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  will-change: transform, box-shadow;
   
   /* Entrance Animation */
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.3s ease;
-  transition-delay: var(--delay);
+  transition-delay: var(--delay, 0s);
 }
 
 @media screen and (min-width: 480px) {
@@ -219,6 +245,7 @@
   margin-bottom: 12px;
   transition: all 0.2s ease;
   flex-shrink: 0;
+  will-change: transform;
 }
 
 @media screen and (min-width: 768px) {
@@ -298,7 +325,7 @@
   margin: 0;
   font-style: italic;
   overflow: hidden;
-  max-height: 2.8em; /* 2 lines * 1.4 line-height */
+  max-height: 2.8em;
 }
 
 @media screen and (min-width: 768px) {
@@ -355,7 +382,7 @@
   }
   
   .innovation-card:hover .innovation-card__hover-content {
-    top: 70px; /* Moves up to where title was, but stays below icon */
+    top: 70px;
   }
 }
 
@@ -409,7 +436,7 @@
   color: var(--neutral-medium);
   font-size: 0.6rem;
   opacity: 0.7;
-  transition: opacity 0.2s ease;
+  transition: opacity 0.2s ease, transform 0.2s ease;
   z-index: 20;
   background: rgba(255,255,255,0.9);
   padding: 4px 8px;
@@ -459,6 +486,7 @@
   transform: scaleX(0);
   transition: transform 0.3s ease;
   transform-origin: left;
+  will-change: transform;
 }
 
 .innovation-card:hover .innovation-card__glow,
@@ -636,13 +664,23 @@
   will-change: transform;
 }
 
+/* Prevent layout shift */
+.innovation-section__video,
+.innovation-section__poster {
+  will-change: opacity;
+}
+
+/* =====================================================
+   REDUCED MOTION PREFERENCES
+===================================================== */
 @media (prefers-reduced-motion: reduce) {
   .innovation-card,
   .innovation-card__icon,
   .innovation-card__glow,
   .innovation-card__preview,
   .innovation-card__hover-content,
-  .innovation-card__hint {
+  .innovation-card__hint,
+  .innovation-section__hero-content {
     animation: none !important;
     transition: none !important;
   }
@@ -654,5 +692,13 @@
   
   .innovation-card:hover .innovation-card__icon {
     transform: none;
+  }
+  
+  .innovation-section__video {
+    opacity: 1 !important;
+  }
+  
+  .innovation-section__poster {
+    display: none;
   }
 }

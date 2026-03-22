@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { productData, getProductsByCategory } from "@/data";
+import { productData, getProductsByCategory, getElectricMobilityProducts } from "@/data";
 import ProductCard from "@/components/productCard/ProductCard";
 import PageHeader from "@/components/pageHeader/PageHeader";
 import Link from "next/link";
@@ -26,7 +26,8 @@ const solutionConfig = {
     title: "Portable Power Stations",
     filterCategory: "portable-power",
     description: "Rugged portable power stations for camping, emergency backup, and off-grid adventures. Solar-ready with multiple output options.",
-    keywords: "portable power station, solar generator, backup power, camping power, emergency power"
+    keywords: "portable power station, solar generator, backup power, camping power, emergency power",
+    comingSoon: true // Mark as coming soon
   },
   "electric-mobility": {
     title: "Electric Mobility",
@@ -59,6 +60,24 @@ export async function generateStaticParams() {
   }));
 }
 
+// Helper function to get products by category
+function getProductsForCategory(filterCategory) {
+  if (filterCategory === "battery") {
+    return getProductsByCategory("battery");
+  }
+  if (filterCategory === "inverter") {
+    return getProductsByCategory("inverter");
+  }
+  if (filterCategory === "electric-mobility") {
+    return getProductsByCategory("electric-mobility");
+  }
+  if (filterCategory === "portable-power") {
+    // Return empty array - coming soon
+    return [];
+  }
+  return [];
+}
+
 async function SolutionContent({ slug }) {
   const config = solutionConfig[slug];
   
@@ -66,9 +85,8 @@ async function SolutionContent({ slug }) {
     notFound();
   }
   
-  const products = config.filterCategory === "battery" || config.filterCategory === "inverter"
-    ? getProductsByCategory(config.filterCategory)
-    : [];
+  const products = getProductsForCategory(config.filterCategory);
+  const isComingSoon = config.comingSoon || (config.filterCategory === "portable-power");
   
   const solutionLinks = [
     { slug: "storage-batteries", name: "Storage Batteries" },
@@ -91,7 +109,10 @@ async function SolutionContent({ slug }) {
         <div className="container">
           {/* Solution Navigation */}
           <div className="products-page__category-nav">
-            <Link href="/products" className="products-page__category-link">
+            <Link 
+              href="/products" 
+              className="products-page__category-link"
+            >
               All Products
             </Link>
             {solutionLinks.map((cat) => (
@@ -107,7 +128,20 @@ async function SolutionContent({ slug }) {
             ))}
           </div>
           
-          {hasProducts ? (
+          {isComingSoon ? (
+            <div className="products-page__coming-soon">
+              <div className="products-page__coming-soon-content">
+                <h3 className="products-page__coming-soon-title">Coming Soon</h3>
+                <p className="products-page__coming-soon-text">
+                  We are currently building our {config.title.toLowerCase()} solutions catalog. 
+                  Check back soon or contact our sourcing team for early access.
+                </p>
+                <Link href="/contact" className="btn btn--primary">
+                  Contact Sourcing Team
+                </Link>
+              </div>
+            </div>
+          ) : hasProducts ? (
             <div className="products-page__grid">
               {products.map((product) => (
                 <ProductCard key={product.id} product={product} />
@@ -116,10 +150,9 @@ async function SolutionContent({ slug }) {
           ) : (
             <div className="products-page__coming-soon">
               <div className="products-page__coming-soon-content">
-                <h3 className="products-page__coming-soon-title">Coming Soon</h3>
+                <h3 className="products-page__coming-soon-title">No Products Found</h3>
                 <p className="products-page__coming-soon-text">
-                  We are currently building our {config.title.toLowerCase()} solutions catalog. 
-                  Check back soon or contact our sourcing team for early access.
+                  No products available in this category yet. Please check back soon.
                 </p>
                 <Link href="/contact" className="btn btn--primary">
                   Contact Sourcing Team

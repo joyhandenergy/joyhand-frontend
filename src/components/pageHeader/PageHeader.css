@@ -3,15 +3,13 @@
 ===================================================== */
 .page-header {
   position: relative;
-  height: 35vh; /* Smaller on mobile */
-  min-height: 280px; /* Smaller on mobile */
+  height: 35vh;
+  min-height: 280px;
   display: flex;
   align-items: center;
-  padding: var(--spacing-4) 0; /* Smaller on mobile */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  padding: var(--spacing-4) 0;
   overflow: hidden;
+  background-color: var(--secondary-color);
   animation: fadeInHeader 0.8s ease-out;
 }
 
@@ -21,6 +19,26 @@
     min-height: 320px;
     padding: var(--spacing-6) 0;
   }
+}
+
+/* =====================================================
+   BACKGROUND IMAGE WRAPPER
+===================================================== */
+.page-header__bg-wrapper {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+/* Main image */
+.page-header__bg {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.page-header__bg--loaded {
+  opacity: 1;
 }
 
 /* =====================================================
@@ -38,7 +56,7 @@
 }
 
 /* =====================================================
-   HERO MATCHED OVERLAY
+   OVERLAY
 ===================================================== */
 .page-header__overlay {
   position: absolute;
@@ -54,14 +72,14 @@
 }
 
 /* =====================================================
-   SOLAR ENERGY GLOW - Mobile First
+   GLOW
 ===================================================== */
 .page-header__glow {
   position: absolute;
-  right: -80px; /* Smaller on mobile */
+  right: -80px;
   top: 50%;
   transform: translateY(-50%);
-  width: 260px; /* Smaller on mobile */
+  width: 260px;
   height: 260px;
   border-radius: 50%;
   background: radial-gradient(
@@ -92,7 +110,7 @@
 }
 
 /* =====================================================
-   CONTENT - Mobile First
+   CONTENT
 ===================================================== */
 .page-header__container {
   position: relative;
@@ -111,15 +129,15 @@
 }
 
 /* =====================================================
-   BREADCRUMB - Mobile First
+   BREADCRUMB
 ===================================================== */
 .page-header__breadcrumb {
   display: flex;
   align-items: center;
-  justify-content: center; /* Centered on mobile */
-  gap: 6px; /* Smaller on mobile */
+  justify-content: center;
+  gap: 6px;
   margin-bottom: var(--spacing-2);
-  font-size: 0.7rem; /* Smaller on mobile */
+  font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 1px;
   flex-wrap: wrap;
@@ -127,7 +145,7 @@
 
 @media screen and (min-width: 768px) {
   .page-header__breadcrumb {
-    justify-content: flex-start; /* Left aligned on desktop */
+    justify-content: flex-start;
     gap: var(--spacing-1);
     font-size: var(--font-size-sm);
     letter-spacing: 1.5px;
@@ -141,8 +159,7 @@
   text-decoration: none;
 }
 
-.page-header__breadcrumb-link:hover,
-.page-header__breadcrumb-link:active {
+.page-header__breadcrumb-link:hover {
   color: var(--neutral-white);
   text-decoration: underline;
 }
@@ -157,7 +174,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 160px; /* Smaller on mobile */
+  max-width: 160px;
 }
 
 @media screen and (min-width: 768px) {
@@ -167,16 +184,16 @@
 }
 
 /* =====================================================
-   TITLE - Mobile First
+   TITLE
 ===================================================== */
 .page-header__title {
   color: var(--neutral-white) !important;
-  font-size: clamp(1.8rem, 6vw, 2.2rem); /* Smaller on mobile */
+  font-size: clamp(1.8rem, 6vw, 2.2rem);
   margin-bottom: var(--spacing-1);
   line-height: 1.2;
   text-transform: capitalize;
   text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-  text-align: center; /* Centered on mobile */
+  text-align: center;
 }
 
 @media screen and (min-width: 768px) {
@@ -184,20 +201,20 @@
     font-size: clamp(2.2rem, 5vw, 3.2rem);
     margin-bottom: var(--spacing-2);
     line-height: 1.15;
-    text-align: left; /* Left aligned on desktop */
+    text-align: left;
   }
 }
 
 /* =====================================================
-   DESCRIPTION - Mobile First
+   DESCRIPTION
 ===================================================== */
 .page-header__description {
   color: var(--neutral-light);
-  font-size: 0.9rem; /* Smaller on mobile */
+  font-size: 0.9rem;
   margin-bottom: var(--spacing-2);
   max-width: 100%;
   text-shadow: 0 1px 5px rgba(0,0,0,0.2);
-  text-align: center; /* Centered on mobile */
+  text-align: center;
 }
 
 @media screen and (min-width: 768px) {
@@ -205,12 +222,12 @@
     font-size: var(--font-size-md);
     margin-bottom: var(--spacing-3);
     max-width: 600px;
-    text-align: left; /* Left aligned on desktop */
+    text-align: left;
   }
 }
 
 /* =====================================================
-   SMALL MOBILE (480px and below)
+   SMALL MOBILE
 ===================================================== */
 @media screen and (max-width: 480px) {
   .page-header {
@@ -218,27 +235,27 @@
     min-height: 240px;
     padding: var(--spacing-3) 0;
   }
-  
+
   .page-header__glow {
     width: 200px;
     height: 200px;
     right: -60px;
     opacity: 0.5;
   }
-  
+
   .page-header__breadcrumb {
     font-size: 0.65rem;
     gap: 4px;
   }
-  
+
   .page-header__breadcrumb-current {
     max-width: 120px;
   }
-  
+
   .page-header__title {
     font-size: 1.6rem;
   }
-  
+
   .page-header__description {
     font-size: 0.8rem;
   }
@@ -247,20 +264,28 @@
 /* =====================================================
    PERFORMANCE OPTIMIZATIONS
 ===================================================== */
-.page-header {
-  will-change: transform, opacity;
-}
-
+.page-header,
+.page-header__bg,
 .page-header__glow {
-  will-change: transform, opacity;
+  will-change: opacity, transform;
 }
 
+/* Prevent layout shift */
+.page-header__bg-wrapper span {
+  display: block !important;
+}
+
+/* =====================================================
+   REDUCED MOTION PREFERENCES
+===================================================== */
 @media (prefers-reduced-motion: reduce) {
-  .page-header {
-    animation: none;
+  .page-header,
+  .page-header__bg {
+    animation: none !important;
+    transition: none !important;
   }
   
-  .page-header__glow {
-    animation: none;
+  .page-header__bg {
+    opacity: 1 !important;
   }
 }
