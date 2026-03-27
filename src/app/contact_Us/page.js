@@ -4,6 +4,7 @@ import React from "react";
 import PageHeader from "@/components/pageHeader/PageHeader";
 import SectionHeader from "@/components/sectionHeader/SectionHeader";
 import SimpleContactForm from "@/components/contactForm/SimpleContactForm";
+import SectionDecor from "@/components/sectionDecor/SectionDecor";
 import { 
   Phone, 
   Mail, 
@@ -13,14 +14,14 @@ import {
   Globe, 
   Factory,
   Handshake,
-  ClipboardCheck,
   MessageCircle,
   Building2,
-  Award
+  Award,
+  CheckCircle
 } from "lucide-react";
 import "./contact.css";
 
-// Updated contact details with 4 global offices (no phone/email)
+// Updated global offices – manufacturing facility highlighted
 const globalOffices = [
   {
     icon: <Building2 size={22} />,
@@ -33,7 +34,7 @@ const globalOffices = [
   },
   {
     icon: <Factory size={22} />,
-    title: "China - Sourcing Hub",
+    title: "China - Manufacturing Facility",
     content: "Guangzhou, Guangdong, China",
     address: "No. 7 Nansha District, Guangzhou 511400, Guangdong, China",
     link: "https://maps.google.com",
@@ -69,9 +70,9 @@ const globalSupport = {
   link: "tel:+8613060850617"
 };
 
-const sourcingInquiries = {
+const manufacturingInquiries = {
   icon: <Mail size={22} />,
-  title: "Sourcing Inquiries",
+  title: "Manufacturing Inquiries",
   content: "sales@joyhand.com",
   link: "mailto:sales@joyhand.com"
 };
@@ -87,64 +88,65 @@ export default function ContactPage() {
   return (
     <main className="contact-page">
       <PageHeader
-        title="Let's Talk Sourcing"
+        title="Let's Talk Manufacturing"
         subtitle="24-hour response. Global reach."
-        pageImage="/images/pageHeadImg/pageheader3.jpg"
+        pageImage="/images/pageHeadImg/pageheader-contact.jpg"
       />
 
-      {/* ================= INQUIRY TERMINAL SECTION ================= */}
+      {/* ================= INQUIRY SECTION ================= */}
       <section className="contact-form-section">
+        <SectionDecor type="accent" count={8} />
         <div className="container contact-form-section__grid">
           
           <div className="contact-form-section__content">
             <SectionHeader
               badge="Start Here"
-              title="Tell Us What You're Looking For"
-              subtitle="Share your requirements and we'll connect you with the right factory partners — usually within 24 hours."
+              title="Tell Us About Your Project"
+              subtitle="Share your requirements and we'll prepare a manufacturing proposal — usually within 24 hours."
             />
 
-            {/* Feature Cards linked to the Form's purpose */}
+            {/* Feature Cards reflecting direct manufacturing capabilities */}
             <div className="contact-features">
               <div className="contact-feature-card">
                 <div className="contact-feature-card__icon"><Factory size={22} /></div>
                 <div className="contact-feature-card__info">
-                   <h5 className="contact-feature-card__label">Factory Matching</h5>
-                   <p className="contact-feature-card__subtext">We will find specialized manufacturers that fit your product specs.</p>
+                   <h5 className="contact-feature-card__label">Custom Manufacturing</h5>
+                   <p className="contact-feature-card__subtext">We produce to your specifications – from battery packs to complete systems.</p>
                 </div>
               </div>
 
               <div className="contact-feature-card">
-                <div className="contact-feature-card__icon"><ClipboardCheck size={22} /></div>
+                <div className="contact-feature-card__icon"><ShieldCheck size={22} /></div>
                 <div className="contact-feature-card__info">
-                   <h5 className="contact-feature-card__label">Quality Verification</h5>
-                   <p className="contact-feature-card__subtext">Every factory is audited. Every shipment is inspected before leaving.</p>
+                   <h5 className="contact-feature-card__label">In‑House Quality Control</h5>
+                   <p className="contact-feature-card__subtext">100% inspection at our facility. Every product is tested before shipment.</p>
                 </div>
               </div>
 
               <div className="contact-feature-card">
                 <div className="contact-feature-card__icon"><Handshake size={22} /></div>
                 <div className="contact-feature-card__info">
-                   <h5 className="contact-feature-card__label">Partnership Roadmap</h5>
-                   <p className="contact-feature-card__subtext">Clear timeline from sample verification to container delivery.</p>
+                   <h5 className="contact-feature-card__label">Engineering Support</h5>
+                   <p className="contact-feature-card__subtext">Work directly with our R&D team to customize designs and firmware.</p>
                 </div>
               </div>
 
               <div className="contact-feature-card">
-                <div className="contact-feature-card__icon"><Globe size={22} /></div>
+                <div className="contact-feature-card__icon"><CheckCircle size={22} /></div>
                 <div className="contact-feature-card__info">
-                   <h5 className="contact-feature-card__label">Compliance Guidance</h5>
-                   <p className="contact-feature-card__subtext">We verify ISO, CE, UL certifications directly with factory partners.</p>
+                   <h5 className="contact-feature-card__label">Certification Assistance</h5>
+                   <p className="contact-feature-card__subtext">We help you navigate CE, UL, UN38.3, and other market requirements.</p>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* THE TECH FORM TERMINAL */}
+          {/* THE FORM TERMINAL */}
           <div className="form-terminal">
             <div className="form-terminal__header">
               <div className="form-terminal__status">
                 <span className="form-terminal__dot"></span>
-                SOURCING INTAKE ACTIVE
+                MANUFACTURING INTAKE
               </div>
               <Zap size={16} className="form-terminal__bolt" />
             </div>
@@ -185,7 +187,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* ================= CONTACT CARDS (NFC STYLE) - Support & Inquiries ================= */}
+      {/* ================= CONTACT CARDS (NFC STYLE) ================= */}
       <section className="contact-info">
         <div className="container">
           <SectionHeader 
@@ -208,17 +210,17 @@ export default function ContactPage() {
               </a>
             </div>
 
-            {/* Sourcing Inquiries Card */}
+            {/* Manufacturing Inquiries Card */}
             <div className="contact-card">
               <div className="contact-card__nfc-wrapper">
                 <div className="contact-card__ring"></div>
                 <div className="contact-card__icon">
-                  {sourcingInquiries.icon}
+                  {manufacturingInquiries.icon}
                 </div>
               </div>
-              <h4 className="contact-card__title">{sourcingInquiries.title}</h4>
-              <a href={sourcingInquiries.link} className="contact-card__link">
-                {sourcingInquiries.content}
+              <h4 className="contact-card__title">{manufacturingInquiries.title}</h4>
+              <a href={manufacturingInquiries.link} className="contact-card__link">
+                {manufacturingInquiries.content}
               </a>
             </div>
 
@@ -245,15 +247,15 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* ================= MAP SECTION - Updated with Multiple Locations ================= */}
+      {/* ================= MAP SECTION ================= */}
       <section className="contact-map">
         <div className="contact-map__overlay">
           <div className="contact-map__content">
-            <span className="contact-map__badge">Global Sourcing Network</span>
-            <h3 className="contact-map__title">Four Continents. One Partner.</h3>
+            <span className="contact-map__badge">Global Manufacturing Network</span>
+            <h3 className="contact-map__title">Four Continents. One Factory Partner.</h3>
             <p className="contact-map__text">
-              Our offices in USA (HQ), China (Sourcing Hub), Australia, and Nigeria 
-              connect distributors with manufacturing partners across Asia, Americas, Oceania, and Africa.
+              Our headquarters in the USA, manufacturing facility in Guangzhou, and regional offices in Australia and Nigeria 
+              give you direct access to JoyHand production line and engineering support worldwide.
             </p>
           </div>
         </div>
@@ -276,22 +278,22 @@ export default function ContactPage() {
             <div className="contact-faq__item">
               <h4 className="contact-faq__question">What happens after I submit this form?</h4>
               <p className="contact-faq__answer">
-                Our global sourcing team reviews your requirements within 24 hours. We will contact you from your nearest regional office to 
-                discuss specifications, volume, and introduce relevant factory partners from our network.
+                Our manufacturing team reviews your requirements within 24 hours. We will contact you from your nearest regional office 
+                to discuss specifications, volume, and provide a detailed manufacturing proposal.
               </p>
             </div>
             <div className="contact-faq__item">
               <h4 className="contact-faq__question">Do you work with new distributors?</h4>
               <p className="contact-faq__answer">
-                Absolutely. We partner with distributors of all sizes, from emerging brands to established 
-                players. Minimums vary by factory — we will find one that fits your needs.
+                Absolutely. We partner with distributors of all sizes, from emerging brands to established players. Minimum order quantities vary 
+                by product – we will help you find a configuration that fits your needs.
               </p>
             </div>
             <div className="contact-faq__item">
-              <h4 className="contact-faq__question">How do you verify factory quality?</h4>
+              <h4 className="contact-faq__question">How do you ensure quality?</h4>
               <p className="contact-faq__answer">
-                Every factory in our network undergoes on-site audits by our China sourcing hub team. We verify certifications, 
-                production lines, and quality control processes before any partnership begins.
+                We control production entirely in our ISO 9001:2025 certified facility. Every product undergoes in‑process inspections, final 
+                testing, and full documentation before shipping. Certifications (CE, UL, UN38.3) are validated on‑site.
               </p>
             </div>
           </div>

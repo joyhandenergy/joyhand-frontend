@@ -13,6 +13,8 @@
   width: 100%;
   padding-left: var(--spacing-3);
   padding-right: var(--spacing-3);
+  padding-top: var(--spacing-4);
+  padding-bottom: var(--spacing-4);
   margin-left: auto;
   margin-right: auto;
 }
@@ -166,14 +168,28 @@
 .platform-card__overlay {
   position: absolute;
   inset: 0;
+
+  /* NEW: softer default gradient */
   background: linear-gradient(
     to top,
-    rgba(18, 27, 45, 0.98) 5%,
-    rgba(18, 27, 45, 0.6) 40%,
-    transparent 100%
+    rgba(18, 27, 45, 0.75) 10%,
+    rgba(18, 27, 45, 0.35) 50%,
+    rgba(18, 27, 45, 0.1) 100%
   );
+
   transition: all 0.4s ease;
   z-index: 3;
+}
+
+
+.platform-card:hover .platform-card__overlay,
+.platform-card:active .platform-card__overlay {
+  background: linear-gradient(
+    to top,
+    rgba(255, 127, 65, 0.92) 0%,
+    rgba(18, 27, 45, 0.85) 65%,
+    rgba(18, 27, 45, 0.4) 100%
+  );
 }
 
 /* ========================================
@@ -257,17 +273,19 @@
 .platform-card__source-note {
   display: flex;
   align-items: center;
-  gap: 4px;
-  background: rgba(255,255,255,0.1);
-  backdrop-filter: blur(5px);
-  padding: 4px 10px;
+  gap: 6px;
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(6px);
+  padding: 6px 12px;
   border-radius: 50px;
   width: fit-content;
   margin-bottom: var(--spacing-2);
-  opacity: 0;
-  transform: translateY(10px);
-  transition: all 0.3s ease;
-  border: 1px solid rgba(255,255,255,0.15);
+
+  /* ALWAYS VISIBLE */
+  opacity: 1;
+  transform: translateY(0);
+
+  border: 1px solid rgba(255,255,255,0.2);
 }
 
 @media screen and (min-width: 480px) {
@@ -277,11 +295,6 @@
   }
 }
 
-.platform-card:hover .platform-card__source-note,
-.platform-card:active .platform-card__source-note {
-  opacity: 1;
-  transform: translateY(0);
-}
 
 .platform-card__source-note svg {
   color: var(--primary-color);
@@ -357,16 +370,18 @@
 }
 
 .platform-card__icon-wrapper {
-  width: 32px;
-  height: 32px;
+  width: 44px;
+  height: 44px;
   background-color: var(--primary-color);
   color: var(--neutral-white);
-  border-radius: 6px;
+  border-radius: 10px;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(255,127,65,0.3);
+
+  transition: all 0.35s ease;
+  box-shadow: 0 6px 18px rgba(255,127,65,0.35);
 }
 
 @media screen and (min-width: 480px) {
@@ -384,8 +399,8 @@
 }
 
 .platform-card__icon-wrapper svg {
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
 }
 
 /* ========================================

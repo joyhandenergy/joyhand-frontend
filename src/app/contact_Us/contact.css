@@ -9,8 +9,9 @@
    CONTACT FORM SECTION - Mobile First
 ===================================================== */
 .contact-form-section {
+  position: relative;
   padding: var(--spacing-5) 0;
-  background-color: var(--neutral-white);
+  
 }
 
 @media screen and (min-width: 768px) {

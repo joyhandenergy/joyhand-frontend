@@ -1,121 +1,491 @@
 // ==============================
-// BLOG POSTS DATA
+// BLOG POSTS DATA (Portable Text)
 // ==============================
 
 export const blogPosts = [
   {
     id: "1",
-    title: "How to Choose the Right Solar Power System for Your Home",
-    slug: "choose-right-solar-system",
-    excerpt: "Switching to solar is a smart investment. Learn how to choose the right solar power system based on your energy needs and budget.",
+    title: "LFP Battery Manufacturing: How Grade-A Cells & Smart BMS Define Performance",
+    slug: "lfp-battery-manufacturing-grade-a-cells-bms",
+    excerpt: "Discover the engineering behind Lithium Iron Phosphate batteries – from prismatic cell selection to advanced BMS design – and how it ensures safety, cycle life, and reliability for OEM customers.",
     image: "/images/solarImg/panel.home.jpg",
-    readTime: "5 min read",
+    readTime: "8 min read",
     content: [
-      "Choosing the right solar system starts with understanding your daily energy consumption. Review your electricity bills to determine your average monthly usage.",
-      "Roof size and orientation are key factors. South-facing roofs with minimal shading generate maximum solar output.",
-      "Consider whether you want a grid-tied, off-grid, or hybrid solar system. Each setup has different advantages depending on your location.",
-      "Work with certified solar installers to ensure proper system sizing, inverter compatibility, and long-term reliability.",
-    ],
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text: "Lithium Iron Phosphate (LFP) has become the chemistry of choice for energy storage systems due to its superior thermal stability, long cycle life, and environmental safety. But not all LFP cells are created equal. Grade‑A prismatic cells, manufactured with consistent quality, are essential for achieving the rated capacity and longevity."
+          }
+        ]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text: "At JoyHand, we source only Grade‑A cells from top‑tier suppliers and perform incoming inspection on every batch. Our automated assembly lines then laser‑weld busbars, integrate BMS boards, and test each module under rigorous conditions."
+          }
+        ]
+      },
+      {
+        _type: "block",
+        style: "h3",
+        children: [
+          {
+            _type: "span",
+            text: "The Role of BMS in Battery Safety"
+          }
+        ]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text: "The Battery Management System (BMS) is the intelligence behind every pack. Our in‑house developed BMS firmware monitors cell voltage, temperature, and current in real‑time, enabling active balancing, over‑charge/discharge protection, and communication with inverters or monitoring platforms. This level of control ensures that JoyHand batteries consistently deliver 6000+ cycles at full depth of discharge."
+          }
+        ]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text: "For OEM partners, the ability to customize BMS parameters – such as charge/discharge limits, communication protocols (CAN, RS485, Bluetooth), and pre‑set operating modes – provides a distinct market advantage. We work with clients to tailor the BMS to their specific applications, whether for residential storage, commercial peak shaving, or off‑grid telecom."
+          }
+        ]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text: "Understanding these manufacturing details helps distributors select a reliable supplier and communicate the true value of the products they sell. In an industry where safety and longevity are paramount, the combination of Grade‑A cells and a purpose‑built BMS is what separates premium manufacturers from the rest."
+          }
+        ]
+      }
+    ]
   },
   {
     id: "2",
-    title: "Top Benefits of Installing a Solar Power Station",
-    slug: "benefits-of-solar-power-station",
-    excerpt: "Solar power stations reduce electricity costs and provide energy independence. Discover the long-term benefits of going solar.",
-    image: "/images/solarImg/panel.home.jpg",
-    readTime: "4 min read",
-    content: [
-      "Installing a solar power station significantly reduces your monthly electricity bills.",
-      "Solar energy is renewable and environmentally friendly, reducing carbon emissions.",
-      "Modern solar systems increase property value and improve energy security.",
-      "Government incentives and tax benefits can further lower installation costs.",
-    ],
-  },
-  {
-    id: "3",
-    title: "How Solar Battery Storage Works",
-    slug: "how-solar-battery-storage-works",
-    excerpt: "Solar batteries store excess energy generated during the day for use at night or during outages. Learn how battery storage systems function.",
-    image: "/images/solarImg/panel.home.jpg",
-    readTime: "6 min read",
-    content: [
-      "Solar panels generate electricity during daylight hours, often producing more energy than is immediately needed.",
-      "A battery storage system captures excess energy and stores it for later use.",
-      "During nighttime or power outages, stored energy automatically powers your home.",
-      "Advanced battery systems include smart monitoring features for efficient energy management.",
-    ],
-  },
-  {
-    id: "4",
-    title: "Lithium vs. Lead-Acid Solar Batteries: Which Is Better?",
-    slug: "lithium-vs-lead-acid-batteries",
-    excerpt: "Choosing the right battery type is crucial. Compare lithium and lead-acid batteries to find the best fit for your solar system.",
+    title: "OEM vs. ODM: Choosing the Right Manufacturing Partner for Your Energy Brand",
+    slug: "oem-vs-odm-manufacturing-partner",
+    excerpt: "For distributors and brands looking to launch their own energy products, understanding the difference between OEM and ODM services is critical. This guide explains the two models and how to choose the best fit for your business.",
     image: "/images/solarImg/panel.home.jpg",
     readTime: "7 min read",
     content: [
-      "Lithium batteries offer longer lifespan, higher efficiency, and lower maintenance compared to lead-acid batteries.",
-      "Lead-acid batteries are more affordable upfront but require regular maintenance.",
-      "Lithium batteries are lighter, compact, and ideal for modern home systems.",
-      "Your choice depends on budget, energy needs, and long-term performance expectations.",
-    ],
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text: "When entering the energy storage or e‑mobility market, you have two main manufacturing pathways: Original Equipment Manufacturing (OEM) and Original Design Manufacturing (ODM). Each offers distinct advantages depending on your product strategy."
+          }
+        ]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text: "OEM manufacturing is ideal when you have a proven product design and simply need a factory to produce it under your brand. JoyHand’s OEM service takes your bill of materials, schematics, and specifications and handles sourcing, assembly, testing, and certification. You retain full control over the product while leveraging our production capacity and quality systems."
+          }
+        ]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text: "ODM manufacturing, on the other hand, is for brands that want a custom product but lack in‑house engineering resources. Our engineering team works with you from concept to production: we develop the electrical architecture, mechanical design, BMS firmware, and thermal management. The result is an exclusive product tailored to your market requirements, protected by your IP."
+          }
+        ]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text: "Which model is right for you? If you already have a proven design and want to scale quickly, OEM is the fastest route. If you need differentiation and are willing to invest in development, ODM offers long‑term competitive advantage. Many of our partners start with OEM to test the market, then transition to ODM as they grow."
+          }
+        ]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text: "No matter which path you choose, working with an ISO 9001:2025 certified manufacturer like JoyHand ensures consistent quality, documented processes, and full certification support – giving you the confidence to bring reliable products to market."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: "3",
+    title: "Quality Control in Energy Storage: From Cell to Container",
+    slug: "quality-control-energy-storage",
+    excerpt: "A behind‑the‑scenes look at how rigorous quality assurance protocols ensure every battery, inverter, and e‑mobility component leaves the factory defect‑free and ready for global distribution.",
+    image: "/images/solarImg/panel.home.jpg",
+    readTime: "9 min read",
+    content: [
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text: "Quality control in energy storage is not a single step – it’s a system that spans the entire production cycle. At JoyHand, we implement a multi‑stage QC process that begins with incoming materials and ends with final pre‑shipment verification."
+          }
+        ]
+      },
+      {
+        _type: "block",
+        style: "h3",
+        children: [
+          {
+            _type: "span",
+            text: "Incoming Inspection"
+          }
+        ]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text: "Every batch of battery cells, PCBs, and components is tested against manufacturer specifications. For cells, we measure internal resistance, capacity, and voltage to ensure they fall within strict tolerance bands. Any cells outside these limits are rejected before they ever reach the assembly line."
+          }
+        ]
+      },
+      {
+        _type: "block",
+        style: "h3",
+        children: [
+          {
+            _type: "span",
+            text: "In‑Process Inspection"
+          }
+        ]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text: "During assembly, automated systems monitor weld quality, screw torque, and insulation resistance. Operators perform visual checks and functional tests at critical points. Data from each station is logged, enabling full traceability."
+          }
+        ]
+      },
+      {
+        _type: "block",
+        style: "h3",
+        children: [
+          {
+            _type: "span",
+            text: "Final Testing"
+          }
+        ]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text: "Completed products undergo a series of rigorous tests: charge/discharge cycles, thermal stress, vibration, and electrical safety checks. Our QC lab is equipped with thermal chambers, battery cyclers, and insulation testers to simulate real‑world conditions. Every unit is tested; we do not use statistical sampling."
+          }
+        ]
+      },
+      {
+        _type: "block",
+        style: "h3",
+        children: [
+          {
+            _type: "span",
+            text: "Pre‑Shipment Audit"
+          }
+        ]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text: "Before container loading, a final inspection confirms that packaging, labeling, and documentation meet customer requirements. We also conduct random functional tests to ensure no performance degradation occurred during final assembly."
+          }
+        ]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text: "This comprehensive approach, backed by ISO 9001:2025 certification, gives our distributor partners the confidence to sell products that consistently meet or exceed market expectations."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: "4",
+    title: "The Future of E‑Mobility: Manufacturing Trends & Opportunities",
+    slug: "future-e-mobility-manufacturing-trends",
+    excerpt: "Electric motorcycles, scooters, and light EVs are reshaping urban transportation. This article explores the latest manufacturing trends, battery innovations, and opportunities for OEM partners.",
+    image: "/images/solarImg/panel.home.jpg",
+    readTime: "8 min read",
+    content: [
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text: "The e‑mobility market is experiencing explosive growth, driven by urbanization, sustainability goals, and advancements in battery technology. For manufacturers and distributors, understanding the key trends is essential to capture this opportunity."
+          }
+        ]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text: "One major trend is the shift toward high‑voltage platforms (72V and above) that enable faster charging and better performance. JoyHand’s e‑mobility battery packs are designed to handle these higher voltages while maintaining safety through proprietary BMS and reinforced cell connections."
+          }
+        ]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text: "Another trend is the integration of smart connectivity. Modern e‑mobility vehicles increasingly feature IoT capabilities – GPS tracking, remote diagnostics, and over‑the‑air updates. Our BMS platforms can be configured to interface with such systems, providing valuable data to fleet operators."
+          }
+        ]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text: "From a manufacturing perspective, modular designs are gaining popularity. Modular battery packs allow for easier serviceability and capacity upgrades, reducing total cost of ownership for end users. Our engineering team specializes in creating modular systems that can be adapted to different vehicle platforms."
+          }
+        ]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text: "For OEM partners, the opportunity lies in customizing powertrains and battery packs for specific markets – be it last‑mile delivery, recreational vehicles, or urban commuting. By collaborating with a manufacturer that understands both production scalability and engineering flexibility, brands can quickly bring differentiated products to market."
+          }
+        ]
+      }
+    ]
   },
   {
     id: "5",
-    title: "Understanding Solar Inverters and Their Importance",
-    slug: "understanding-solar-inverters",
-    excerpt: "Solar inverters are the heart of your solar system. Learn how they convert and manage power efficiently.",
+    title: "Navigating Global Certifications for Lithium Batteries: CE, UL, UN38.3 & More",
+    slug: "global-certifications-lithium-batteries",
+    excerpt: "Exporting lithium batteries requires compliance with a complex set of regulations. This guide explains the key certifications and how JoyHand ensures every product meets international standards.",
     image: "/images/solarImg/panel.home.jpg",
-    readTime: "5 min read",
+    readTime: "10 min read",
     content: [
-      "Solar panels produce direct current (DC) electricity, but homes use alternating current (AC).",
-      "Inverters convert DC power into usable AC power for your appliances.",
-      "There are string inverters, microinverters, and hybrid inverters — each suited for different system designs.",
-      "Choosing a high-quality inverter ensures system efficiency and long-term durability.",
-    ],
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text: "For any manufacturer or distributor of lithium batteries, navigating the web of global certifications is a critical part of market entry. Certifications are not just bureaucratic hurdles – they ensure safety, reliability, and legal compliance."
+          }
+        ]
+      },
+      {
+        _type: "block",
+        style: "h3",
+        children: [
+          {
+            _type: "span",
+            text: "CE Marking"
+          }
+        ]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text: "Required for products sold in the European Economic Area. It indicates compliance with EU safety, health, and environmental protection standards. For battery systems, this includes electromagnetic compatibility (EMC) and low voltage directives. JoyHand maintains CE certification for all standard products and can assist with documentation for custom projects."
+          }
+        ]
+      },
+      {
+        _type: "block",
+        style: "h3",
+        children: [
+          {
+            _type: "span",
+            text: "UL Certification"
+          }
+        ]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text: "In North America, UL 1973 and UL 9540 are the gold standards for stationary storage and battery systems. Our manufacturing processes and design are UL‑compliant, and we work with accredited labs to test new designs before mass production."
+          }
+        ]
+      },
+      {
+        _type: "block",
+        style: "h3",
+        children: [
+          {
+            _type: "span",
+            text: "UN38.3"
+          }
+        ]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text: "This is the United Nations standard for transport of lithium batteries. It involves a series of tests – altitude simulation, thermal cycling, vibration, shock, external short circuit, and impact/overcharge. Every shipment from JoyHand is UN38.3 certified, ensuring safe transport by air or sea."
+          }
+        ]
+      },
+      {
+        _type: "block",
+        style: "h3",
+        children: [
+          {
+            _type: "span",
+            text: "IEC 62109"
+          }
+        ]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text: "For solar inverters and power electronics, this standard covers safety requirements. Our inverter production line is fully compliant, and we can provide certification documentation for each product."
+          }
+        ]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text: "Having a manufacturing partner that already holds these certifications significantly reduces time‑to‑market for distributors. We can also help clients navigate country‑specific requirements, such as PSE in Japan or KC in Korea, ensuring that your products reach global customers without delays."
+          }
+        ]
+      }
+    ]
   },
   {
     id: "6",
-    title: "Off-Grid vs. Hybrid Solar Systems Explained",
-    slug: "off-grid-vs-hybrid-solar",
-    excerpt: "Not sure which solar setup is right for you? Understand the differences between off-grid and hybrid systems.",
+    title: "Optimizing Supply Chains with Direct Factory Partnerships",
+    slug: "optimizing-supply-chains-factory-partnerships",
+    excerpt: "In a volatile global market, working directly with a manufacturer offers stability, cost savings, and agility. Learn how vertical integration and factory‑direct relationships can transform your supply chain.",
     image: "/images/solarImg/panel.home.jpg",
-    readTime: "6 min read",
+    readTime: "7 min read",
     content: [
-      "Off-grid systems operate independently from the utility grid and rely entirely on solar panels and battery storage.",
-      "Hybrid systems combine solar energy with grid connectivity for maximum reliability.",
-      "Hybrid systems allow you to store excess energy while still having grid backup.",
-      "Your location, energy needs, and budget determine the best solution.",
-    ],
-  },
-  {
-    id: "7",
-    title: "How to Maintain Your Solar Power System",
-    slug: "maintain-solar-power-system",
-    excerpt: "Proper maintenance ensures your solar power system operates efficiently for decades. Learn essential care tips.",
-    image: "/images/solarImg/panel.home.jpg",
-    readTime: "4 min read",
-    content: [
-      "Clean your solar panels periodically to remove dust and debris that can reduce efficiency.",
-      "Monitor your system's performance using smart tracking apps.",
-      "Inspect wiring and mounting structures annually for safety and stability.",
-      "Schedule professional maintenance checks to maximize system lifespan.",
-    ],
-  },
-  {
-    id: "8",
-    title: "Why Solar Energy Is the Future of Power Generation",
-    slug: "future-of-solar-energy",
-    excerpt: "Solar energy is transforming global power systems. Discover why it is becoming the leading renewable energy source worldwide.",
-    image: "/images/solarImg/panel.home.jpg",
-    readTime: "5 min read",
-    content: [
-      "Solar technology continues to advance, making systems more affordable and efficient.",
-      "Energy storage innovations are solving reliability challenges.",
-      "Governments worldwide are investing heavily in renewable infrastructure.",
-      "Solar energy reduces dependence on fossil fuels and promotes sustainable development.",
-    ],
-  },
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text: "Global supply chains have faced unprecedented disruptions in recent years – from raw material shortages to shipping delays. For energy distributors, relying on intermediaries often compounds these risks. A direct factory partnership can be the solution."
+          }
+        ]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text: "When you work directly with a manufacturer like JoyHand, you eliminate the layers of middlemen that add cost and complexity. This direct relationship means you have full visibility into production schedules, raw material sourcing, and quality assurance."
+          }
+        ]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text: "Vertical integration is a key advantage. By controlling cell sourcing, BMS design, assembly, and testing in‑house, we can respond quickly to changes in demand or material availability. This agility is critical in a fast‑moving market."
+          }
+        ]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text: "Cost savings are another benefit. Factory‑direct pricing eliminates distributor markups and reduces logistics costs through consolidated container shipments. We also offer flexible payment terms and volume‑based discounts to support your growth."
+          }
+        ]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text: "Finally, direct partnerships enable better collaboration. Our engineering team can work alongside your product managers to optimize designs for manufacturability, reducing time‑to‑market and ensuring seamless integration with your existing product lines."
+          }
+        ]
+      },
+      {
+        _type: "block",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            text: "Whether you are a growing distributor or an established brand, moving to a factory‑direct model provides the resilience and competitive edge needed to thrive in the energy transition."
+          }
+        ]
+      }
+    ]
+  }
 ];
+
+
 
 // ==============================
 // TRUSTED PARTNERS DATA
@@ -135,7 +505,7 @@ export const partners = [
   {
     id: 3,
     name: "Monevo",
-    logo: "/images/trusteeImg/Interswitch_logo.svg",
+    logo: "/images/trusteeImg/mangtech-logo.png",
   },
   {
     id: 4,
@@ -150,7 +520,7 @@ export const partners = [
   {
     id: 6,
     name: "Monevo",
-    logo: "/images/trusteeImg/Interswitch_logo.svg",
+    logo: "/images/trusteeImg/mangtech-logo.png",
   },
   
 ];

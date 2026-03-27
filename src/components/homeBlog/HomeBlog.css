@@ -1,6 +1,9 @@
 .home-blog {
   padding: var(--spacing-8) 0;
   background: var(--neutral-white);
+  position: relative;
+  isolation: isolate;
+  z-index: 1;
 }
 
 .home-blog__carousel {
@@ -72,7 +75,7 @@
   font-weight: 600;
   text-decoration: none;
   padding: 12px 28px;
-  border: 1px solid rgba(255,127,65,0.2);
+  border: 2px solid var(--primary-color-light);
   border-radius: 50px;
   transition: var(--transition);
 }
@@ -82,4 +85,55 @@
   color: white;
   gap: 12px;
   border-color: var(--primary-color);
+}
+
+/* =====================================================
+   ARTISTIC CIRCLE PATTERN (same as Trust section)
+===================================================== */
+.home-blog::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: 
+    radial-gradient(
+      circle at 15% 20%,
+      rgba(255,127,65,0.03) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 85% 70%,
+      rgba(46,196,182,0.03) 0%,
+      transparent 60%
+    ),
+    repeating-radial-gradient(
+      circle at 30% 40%,
+      rgba(255,127,65,0.02) 0px,
+      rgba(255,127,65,0.02) 2px,
+      transparent 2px,
+      transparent 24px
+    );
+  background-blend-mode: overlay;
+  background-size: 100% 100%, 100% 100%, 28px 28px;
+  background-position: 0 0, 0 0, 0 0;
+}
+
+/* Subtle movement on hover (optional, respects reduced motion) */
+@media (prefers-reduced-motion: no-preference) {
+  .home-blog::before {
+    transition: background-position 0.4s ease;
+  }
+  .home-blog:hover::before {
+    background-position: 0 0, 0 0, 8px 8px;
+  }
+}
+
+/* Ensure content stays above pattern */
+.home-blog .container,
+.home-blog__carousel,
+.home-blog__dots,
+.home-blog__footer {
+  position: relative;
+  z-index: 2;
 }

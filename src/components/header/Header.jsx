@@ -27,7 +27,7 @@ const links = [
       { name: "Electric Mobility", href: "/products/solutions/electric-mobility" }
     ]
   },
-  { name: "Services", href: "/services" },
+  { name: "Manufacturing", href: "/services" }, // renamed
   { name: "Contact Us", href: "/contact_Us" },
   { name: "Blog", href: "/blog" }
 ];
@@ -40,30 +40,25 @@ export default function Header() {
   
   const pathName = usePathname();
 
-  // Handle scroll effect for glassmorphism
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
-    
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close menu when clicking a link
   const closeMenu = () => {
     setIsMenuOpen(false);
     setActiveDropdown(null);
   };
 
-  // Handle mobile dropdown
   const handleMobileDropdown = (name, e) => {
     e.preventDefault();
     e.stopPropagation();
     setActiveDropdown(activeDropdown === name ? null : name);
   };
 
-  // Close menu on escape key
   useEffect(() => {
     const handleEscape = (e) => {
       if (e.key === "Escape" && isMenuOpen) {
@@ -71,19 +66,16 @@ export default function Header() {
         setActiveDropdown(null);
       }
     };
-    
     window.addEventListener("keydown", handleEscape);
     return () => window.removeEventListener("keydown", handleEscape);
   }, [isMenuOpen]);
 
-  // Prevent body scroll when mobile menu is open
   useEffect(() => {
     if (isMenuOpen) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "unset";
     }
-    
     return () => {
       document.body.style.overflow = "unset";
     };
@@ -96,6 +88,11 @@ export default function Header() {
         {/* TOP BAR - Desktop only */}
         <div className="header__top">
           <div className="container header__top-container">
+            {/* ISO Trust Badge (added) */}
+            <div className="header__trust-badge">
+              <span className="header__trust-badge-text">ISO 9001:2025 Certified</span>
+            </div>
+
             <div className="header__contact">
               <a href="tel:+8613060850617" className="header__contact-item">
                 <PiPhone size={14} />
@@ -118,11 +115,11 @@ export default function Header() {
               href="/" 
               className="header__logo" 
               onClick={closeMenu}
-              aria-label="JoyHand Home"
+              aria-label="JoyHand Energy - Manufacturer"
             >
               <Image
-                src="/logos/joyhand-logo.png"
-                alt="JOYHAND Energy - Global Sourcing Partner"
+                src="/images/logos/joyhandLogo.png"
+                alt="JoyHand Energy – Premium Energy & E‑Mobility Manufacturer"
                 width={150}
                 height={50}
                 className="header__logo-img"

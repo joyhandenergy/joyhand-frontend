@@ -7,6 +7,7 @@ import SectionHeader from "@/components/sectionHeader/SectionHeader";
 import Link from "next/link";
 import { PiArrowRight } from "react-icons/pi";
 import "./HomeBlog.css";
+import SectionDecor from "../sectionDecor/SectionDecor";
 
 const HomeBlogSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -18,7 +19,7 @@ const HomeBlogSection = () => {
     const slider = sliderRef.current;
     if (!slider) return;
 
-    const cardWidth = 320; // safer than hardcoding inline
+    const cardWidth = 320;
     const updateIndex = () => {
       const index = Math.round(slider.scrollLeft / cardWidth);
       setCurrentIndex(index);
@@ -30,11 +31,14 @@ const HomeBlogSection = () => {
 
   return (
     <section className="home-blog">
+  
+        <SectionDecor type="secondary" count={8} />
+      
       <div className="container">
         <SectionHeader
-          badge="Insights"
-          title="Latest from Our Blog"
-          subtitle="Expert knowledge for energy professionals"
+          badge="Industry Insights"
+          title="Expert Knowledge for Energy Professionals"
+          subtitle="Manufacturing best practices, market trends, and technical guides to help you succeed in the energy transition."
           center
         />
 
@@ -73,7 +77,7 @@ const HomeBlogSection = () => {
 
         <div className="home-blog__footer">
           <Link href="/blog" className="home-blog__link">
-            Browse All Articles <PiArrowRight />
+            Read More Insights <PiArrowRight />
           </Link>
         </div>
       </div>

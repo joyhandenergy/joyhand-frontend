@@ -3,8 +3,7 @@
 ===================================================== */
 .page-header {
   position: relative;
-  height: 35vh;
-  min-height: 280px;
+  min-height: 40vh;          /* slightly taller on mobile */
   display: flex;
   align-items: center;
   padding: var(--spacing-4) 0;
@@ -15,8 +14,7 @@
 
 @media screen and (min-width: 768px) {
   .page-header {
-    height: 45vh;
-    min-height: 320px;
+    min-height: 50vh;        /* taller on tablet/desktop */
     padding: var(--spacing-6) 0;
   }
 }
@@ -116,6 +114,7 @@
   position: relative;
   z-index: 2;
   width: 100%;
+  padding-top: var(--spacing-3);
 }
 
 .page-header__content {

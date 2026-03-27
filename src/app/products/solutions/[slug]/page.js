@@ -13,26 +13,26 @@ const solutionConfig = {
   "storage-batteries": {
     title: "Storage Batteries",
     filterCategory: "battery",
-    description: "Wall-mounted, mobile, and rack-mounted LFP batteries for residential and commercial energy storage applications.",
+    description: "Wall‑mounted, mobile & rack‑mounted LFP batteries.",
     keywords: "lithium battery, LFP battery, energy storage, solar battery, battery storage system"
   },
   "solar-inverters": {
     title: "Solar Inverters",
     filterCategory: "inverter",
-    description: "High-efficiency hybrid and wall-mounted inverters with MPPT technology for residential and commercial solar systems.",
+    description: "High‑efficiency hybrid & wall‑mounted inverters.",
     keywords: "solar inverter, hybrid inverter, off-grid inverter, MPPT inverter, power inverter"
   },
   "portable-power-stations": {
     title: "Portable Power Stations",
     filterCategory: "portable-power",
-    description: "Rugged portable power stations for camping, emergency backup, and off-grid adventures. Solar-ready with multiple output options.",
+    description: "Rugged, solar‑ready units for emergency & off‑grid.",
     keywords: "portable power station, solar generator, backup power, camping power, emergency power",
     comingSoon: true // Mark as coming soon
   },
   "electric-mobility": {
     title: "Electric Mobility",
     filterCategory: "electric-mobility",
-    description: "Electric motorcycles, scooters, and e-bikes for sustainable urban mobility. Sourced from vetted manufacturing partners.",
+    description: "Electric motorcycles, scooters & e‑bikes.",
     keywords: "electric motorcycle, e-motorcycle, electric scooter, e-bike, electric mobility"
   }
 };

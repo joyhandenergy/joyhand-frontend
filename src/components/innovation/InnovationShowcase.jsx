@@ -2,38 +2,23 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import {
-  PiFactory,
-  PiMagnifyingGlass,
-  PiFlask,
-  PiClipboardText,
+  PiCertificate,
+  PiShieldCheck,
+  PiTestTube,
+  PiGlobe,
   PiArrowRight,
-  PiHandTap,
-  PiMouse
 } from "react-icons/pi";
 import "./InnovationShowcase.css";
 
 const InnovationShowcase = () => {
   const sectionRef = useRef(null);
-  const [isMobile, setIsMobile] = useState(false);
   const [videoLoaded, setVideoLoaded] = useState(false);
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
+  const videoRef = useRef(null);
 
   useEffect(() => {
     const section = sectionRef.current;
     if (!section) return;
-
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -44,64 +29,61 @@ const InnovationShowcase = () => {
       },
       { threshold: 0.15 }
     );
-
     observer.observe(section);
-
     return () => observer.unobserve(section);
   }, []);
 
   const pillars = [
     {
-      title: "OEM Factory Matching",
-      icon: <PiFactory />,
-      preview: "Connect with specialized manufacturers",
-      content:
-        "We connect you with specialized manufacturers for custom-engineered battery storage systems from specification to production oversight."
+      title: "ISO 9001:2025",
+      icon: <PiCertificate />,
+      preview: "Quality management system",
+      description:
+        "ISO 9001:2025 certified. Documented, audited processes ensure consistent, reliable products."
     },
     {
-      title: "ODM Product Development",
-      icon: <PiFlask />,
-      preview: "Bridge specs with factory R&D",
-      content:
-        "Bridge your product requirements with factory R&D teams. We facilitate design, prototyping, and certification for rapid market entry."
+      title: "CE & UL Certified",
+      icon: <PiShieldCheck />,
+      preview: "Global compliance",
+      description:
+        "CE & UL certified. Rigorous testing for electrical safety and market compliance."
     },
     {
-      title: "Independent Quality Control",
-      icon: <PiMagnifyingGlass />,
-      preview: "On-site factory audits",
-      content:
-        "Our engineers perform on-site factory audits and pre-shipment inspections. If it doesn't pass, it doesn't ship."
+      title: "UN38.3 Testing",
+      icon: <PiTestTube />,
+      preview: "Lithium battery safety",
+      description:
+        "UN38.3 tested for safe transport. Vibration, thermal shock, and short circuit tests passed."
     },
     {
-      title: "Factory Certification Verification",
-      icon: <PiClipboardText />,
-      preview: "ISO, CE, UL validation",
-      content:
-        "We verify ISO, CE, UL, and other certifications directly with manufacturing partners before any partnership begins."
+      title: "Global Certifications",
+      icon: <PiGlobe />,
+      preview: "Market‑ready compliance",
+      description:
+        "CE (Europe), UL (North America), UN38.3 (transport), IEC 62109 (inverters). Full documentation."
     }
   ];
 
   return (
     <section ref={sectionRef} className="innovation-section">
       <div className="innovation-section__hero">
-        {/* Video poster - shows instantly while video loads */}
         <div 
           className={`innovation-section__poster ${videoLoaded ? 'innovation-section__poster--hidden' : ''}`}
           style={{
-            backgroundImage: "url('/videos/heroImg/factory3-poster.webp')",
+            backgroundImage: "url('/videos/heroImg/factory-poster.png')",
             backgroundSize: "cover",
             backgroundPosition: "center"
           }}
         />
-        
         <video
+          ref={videoRef}
           autoPlay
           muted
           loop
           playsInline
           preload="metadata"
           className={`innovation-section__video ${videoLoaded ? 'innovation-section__video--loaded' : ''}`}
-          poster="/videos/heroImg/factory3-poster.jpg"
+          poster="/videos/heroImg/factory-poster.png"
           onCanPlayThrough={() => setVideoLoaded(true)}
         >
           <source
@@ -109,18 +91,15 @@ const InnovationShowcase = () => {
             type="video/mp4"
           />
         </video>
-
         <div className="innovation-section__overlay">
           <div className="container innovation-section__hero-content">
-            <span className="innovation-section__badge">
-              Why Distributors Trust Us
-            </span>
+            <span className="innovation-section__badge">Certified Quality</span>
             <h2 className="innovation-section__title">
-              Your Bridge to Vetted Manufacturing Partners
+              Trust Built on Verified Standards
             </h2>
             <p className="innovation-section__subtitle">
-              From factory selection to final delivery, JoyHand gives energy companies the confidence to scale.
-              We stand behind every shipment with rigorous quality control.
+              Every product leaves our factory with full certification and rigorous testing.
+              From battery cells to complete systems, we document quality at every stage.
             </p>
           </div>
         </div>
@@ -143,13 +122,8 @@ const InnovationShowcase = () => {
                 <p className="innovation-card__preview-text">{item.preview}</p>
               </div>
 
-              <div className="innovation-card__hover-content">
-                <p className="innovation-card__description">{item.content}</p>
-              </div>
-
-              <div className="innovation-card__hint">
-                {isMobile ? <PiHandTap size={12} /> : <PiMouse size={12} />}
-                <span>{isMobile ? "Tap" : "Hover"}</span>
+              <div className="innovation-card__description">
+                <p className="innovation-card__description-text">{item.description}</p>
               </div>
 
               <div className="innovation-card__glow"></div>
@@ -160,9 +134,9 @@ const InnovationShowcase = () => {
 
         <div className="innovation-section__footer">
           <p className="innovation-section__footer-text">
-            Every factory partnership begins with a comprehensive audit.
+            Need certified products for your market?
             <Link href="/contact" className="innovation-section__footer-link">
-              Request factory list <PiArrowRight />
+              Request certification package <PiArrowRight />
             </Link>
           </p>
         </div>

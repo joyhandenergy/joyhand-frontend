@@ -558,3 +558,32 @@ ul, li {
     animation: none !important;
   }
 }
+
+
+/* =====================================================
+   HEADER TRUST BADGE (Desktop only)
+===================================================== */
+.header__trust-badge {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(46, 196, 182, 0.15);
+  padding: 4px 12px;
+  border-radius: 50px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  color: var(--accent-color-dark);
+  border: 1px solid rgba(46, 196, 182, 0.3);
+  transition: all 0.2s ease;
+}
+
+.header__trust-badge-text {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Position the badge on the left side of the top bar */
+.header__top-container {
+  justify-content: space-between;
+}

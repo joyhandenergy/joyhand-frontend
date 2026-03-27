@@ -197,8 +197,9 @@
 }
 
 .products-page__section {
+  position: relative;
   padding: var(--spacing-6) 0;
-  background-color: var(--neutral-white);
+  
 }
 
 @media screen and (min-width: 768px) {

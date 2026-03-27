@@ -6,9 +6,9 @@ import Link from "next/link";
 import "./Products.css";
 
 export const metadata = {
-  title: "All Energy Products | Batteries, Inverters & More | JoyHand",
-  description: "Explore JoyHand's complete range of LFP batteries, hybrid inverters, and energy storage solutions. OEM/ODM sourcing available from vetted manufacturers.",
-  keywords: "energy products, solar batteries, lithium battery, hybrid inverter, portable power, e-motorcycle",
+  title: "Energy Products We Manufacture | Batteries, Inverters & More | JoyHand",
+  description: "JoyHand manufactures premium LFP batteries, hybrid inverters, portable power stations, and electric mobility solutions. OEM/ODM services from ISO 9001:2025 certified facility.",
+  keywords: "energy products, solar batteries, lithium battery, hybrid inverter, portable power, e-motorcycle, OEM manufacturing, ODM services",
 };
 
 export const revalidate = 3600;
@@ -25,9 +25,9 @@ function ProductsContent() {
   return (
     <main className="products-page">
       <PageHeader 
-        title="All Energy Products"
-        subtitle="LFP batteries, solar inverters, portable power, and electric mobility solutions from vetted manufacturers"
-        pageImage="/images/pageHeadImg/pageheader2.jpg" 
+        title="Products We Manufacture"
+        subtitle="LFP batteries, solar inverters, portable power & e‑mobility."
+        pageImage="/images/pageHeadImg/pageheader-products.jpg"  // update to a factory or product assembly image
       />
 
       <section className="products-page__section">

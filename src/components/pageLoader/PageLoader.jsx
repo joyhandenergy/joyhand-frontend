@@ -23,7 +23,7 @@ export default function PageLoader({ children }) {
           {/* Animated Logo */}
           <div className="page-loader__logo-wrapper">
             <Image
-              src="/logos/joyhand-logo.png"
+              src="/images/logos/joyhandLogo.png"
               alt="JoyHand Energy"
               width={200}
               height={67}

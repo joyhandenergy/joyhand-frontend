@@ -9,6 +9,7 @@
    SERVICES INTRO - Mobile First
 ===================================================== */
 .services-intro {
+  position: relative;
   padding: var(--spacing-5) 0; /* Smaller on mobile */
 }
 
@@ -183,8 +184,9 @@
   right: var(--spacing-4);
   font-size: 0.65rem; /* Smaller on mobile */
   font-weight: 800;
-  color: var(--primary-color);
-  background: rgba(255, 127, 65, 0.1);
+  color: var(--accent-color-dark);
+  background: rgba(46,196,182,0.1);
+  border-color: rgba(46,196,182,0.2);
   padding: 4px 10px;
   border-radius: 100px;
   text-transform: uppercase;
@@ -505,6 +507,7 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
   transition: var(--transition);
   text-align: left; /* Left aligned even on mobile */
+  
 }
 
 @media screen and (min-width: 768px) {
@@ -530,7 +533,7 @@
 .why-item__number {
   font-size: 2.5rem; /* Smaller on mobile */
   font-weight: 900;
-  color: var(--primary-color);
+   color: var(--accent-color-dark);
   opacity: 0.3;
   line-height: 1;
   margin-bottom: var(--spacing-1);
@@ -881,6 +884,49 @@
   }
 }
 
+
+.partner-facilities .btn {
+  background-color: var(--neutral-white);
+  color: var(--secondary-color);
+  padding: 12px 20px;
+  border-radius: 50px;
+  font-weight: 700;
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  width: 100%;
+  font-size: 0.85rem;
+}
+
+@media screen and (min-width: 640px) {
+  .partner-facilities .btn {
+    width: auto;
+    padding: var(--spacing-2) var(--spacing-5);
+    font-size: 0.9rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .partner-facilities .btn {
+    padding: var(--spacing-2) var(--spacing-6);
+    font-size: var(--font-size-md);
+    gap: 8px;
+  }
+}
+
+.partner-facilities .btn:hover,
+.partner-facilities:active {
+  background-color: var(--primary-color);
+  color: var(--neutral-white);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(255, 127, 65, 0.4);
+}
+
 /* =====================================================
    CTA BANNER - Mobile First
 ===================================================== */
@@ -895,7 +941,7 @@
 }
 
 .services-cta__banner {
-  background: linear-gradient(rgba(18, 27, 45, 0.95), rgba(18, 27, 45, 0.95)), url('/images/solarImg/panel.home.jpg');
+  background: linear-gradient(rgba(18, 27, 45, 0.70), rgba(18, 27, 45, 0.70)), url('/assets/joyhand-team.png');
   background-size: cover;
   background-position: center;
   padding: var(--spacing-5) var(--spacing-3); /* Smaller on mobile */
@@ -985,17 +1031,41 @@
 }
 
 .services-cta .btn {
-  position: relative;
-  z-index: 2;
-  width: 100%; /* Full width on mobile */
-  max-width: 300px;
-  margin: 0 auto;
+  background-color: transparent;
+  color: var(--neutral-white);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  padding: 12px 20px;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: var(--transition);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  font-size: 0.85rem;
 }
 
-@media screen and (min-width: 480px) {
+@media screen and (min-width: 640px) {
   .services-cta .btn {
     width: auto;
+    padding: var(--spacing-2) var(--spacing-5);
+    font-size: 0.9rem;
   }
+}
+
+@media screen and (min-width: 768px) {
+  .services-cta .btn {
+    padding: var(--spacing-2) var(--spacing-6);
+    font-size: var(--font-size-md);
+  }
+}
+
+.services-cta .btn:hover,
+.services-cta .btn:active {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: var(--primary-color);
+  transform: translateY(-2px);
 }
 
 /* =====================================================

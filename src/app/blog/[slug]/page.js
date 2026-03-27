@@ -2,6 +2,7 @@ import { blogPosts } from "@/data";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
+import { PortableText } from "@portabletext/react";
 import { 
   PiArrowLeft, 
   PiCalendarBlank, 
@@ -14,12 +15,29 @@ import {
 import PageHeader from "@/components/pageHeader/PageHeader";
 import "../blog.css";
 
+// Custom serializer to map Portable Text blocks to your existing CSS classes
+const components = {
+  block: {
+    normal: ({ children }) => <p className="blog-details__paragraph">{children}</p>,
+    h2: ({ children }) => <h2 className="blog-details__heading h2">{children}</h2>,
+    h3: ({ children }) => <h3 className="blog-details__heading h3">{children}</h3>,
+    // You can add h4 if needed
+  },
+  list: {
+    bullet: ({ children }) => <ul className="blog-details__list">{children}</ul>,
+    number: ({ children }) => <ol className="blog-details__list">{children}</ol>,
+  },
+  listItem: {
+    bullet: ({ children }) => <li className="blog-details__list-item">{children}</li>,
+    number: ({ children }) => <li className="blog-details__list-item">{children}</li>,
+  },
+  // If you want to add custom marks (bold, italic) they are handled automatically.
+};
+
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const post = blogPosts.find(p => p.slug === slug);
-  
   if (!post) return { title: "Article Not Found" };
-  
   return {
     title: `${post.title} | JoyHand Insights`,
     description: post.excerpt,
@@ -53,7 +71,7 @@ export default async function BlogDetailsPage({ params }) {
     <article className="blog-details">
       <PageHeader 
         title={blogPost.title} 
-        pageImage={blogPost.image || "/images/solarImg/panel.home.jpg"} 
+        pageImage={blogPost.image || "/images/pageHeadImg/factory-blog.jpg"} 
       />
 
       <div className="container blog-details__container">
@@ -66,7 +84,7 @@ export default async function BlogDetailsPage({ params }) {
           <div className="blog-details__main">
             <div className="blog-details__meta">
               <span className="blog-details__meta-item">
-                <PiUser size={14} /> JoyHand Sourcing Team
+                <PiUser size={14} /> JoyHand Manufacturing Team
               </span>
               <span className="blog-details__meta-item">
                 <PiCalendarBlank size={14} /> {formattedDate}
@@ -77,9 +95,7 @@ export default async function BlogDetailsPage({ params }) {
             </div>
 
             <div className="blog-details__content">
-              {blogPost.content.map((paragraph, index) => (
-                <p key={index} className="blog-details__paragraph">{paragraph}</p>
-              ))}
+              <PortableText value={blogPost.content} components={components} />
             </div>
 
             {/* Post Navigation */}
@@ -114,12 +130,12 @@ export default async function BlogDetailsPage({ params }) {
               <div className="sidebar-card__icon">
                 <PiFactory size={24} />
               </div>
-              <h4 className="sidebar-card__title">Need Help Sourcing?</h4>
+              <h4 className="sidebar-card__title">Start Your OEM Project</h4>
               <p className="sidebar-card__text">
-                Connect with our team to find vetted manufacturers for your specific product requirements.
+                Partner with JoyHand for direct factory access, engineering support, and full certification assistance.
               </p>
               <Link href="/contact" className="btn btn--primary sidebar-card__btn">
-                Talk to an Expert <PiArrowRight size={16} />
+                Contact Manufacturing Team <PiArrowRight size={16} />
               </Link>
             </div>
 
@@ -127,11 +143,11 @@ export default async function BlogDetailsPage({ params }) {
               <div className="sidebar-card__icon">
                 <PiShieldCheck size={24} />
               </div>
-              <h4 className="sidebar-card__title">Sourcing Categories</h4>
+              <h4 className="sidebar-card__title">Key Manufacturing Services</h4>
               <ul className="sidebar-card__list">
-                <li>Battery Storage Systems</li>
-                <li>Solar Inverters</li>
-                <li>EV Charging Infrastructure</li>
+                <li>OEM/ODM Battery Packs</li>
+                <li>Solar Inverter Assembly</li>
+                <li>E‑Mobility Powertrains</li>
                 <li>Portable Power Stations</li>
               </ul>
             </div>

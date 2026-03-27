@@ -6,25 +6,29 @@ import './CtaBanner.css';
 const CtaBanner = () => {
   return (
     <section className="cta-section">
-      <div className="container"> {/* Container inside, not on section */}
+      <div className="container">
         <div className="cta-banner">
-          {/* Subtle engineering grid background for a tech feel */}
+          {/* Central glow circle */}
+          <div className="cta-banner__circle-glow"></div>
+          
           <div className="cta-banner__grid-overlay"></div>
           
           <div className="cta-banner__content">
-            <span className="cta-banner__badge">Sourcing & Supply Chain Partnership</span>
-            <h2 className="cta-banner__title">Scale Your Energy Brand Through Our Partner Network</h2>
+            <span className="cta-banner__badge">OEM / ODM Manufacturing Partner</span>
+            <h2 className="cta-banner__title">Launch Your Energy Products with Direct Factory Supply</h2>
             <p className="cta-banner__description">
-              Partner with JoyHand to source and customize next-generation energy solutions through our network of vetted manufacturing partners. 
-              From concept to global distribution, we provide the OEM/ODM excellence your brand requires — without the factory risk.
+              From initial design to final delivery, JoyHand streamlines your product journey. 
+              We combine decades of manufacturing experience with agile production lines to bring 
+              your energy storage, solar inverter, or e‑mobility concepts to market faster. 
+              Full certification support and global logistics – all under one roof.
             </p>
             
             <div className="cta-banner__actions">
               <Link href="/contact" className="cta-banner__button btn">
-                Start Your Sourcing Project <PiArrowRight />
+                Start Your OEM Project <PiArrowRight />
               </Link>
-              <Link href="/services" className="cta-banner__button--outline btn">
-                View Sourcing Services
+              <Link href="/manufacturing" className="cta-banner__button--outline btn">
+                Explore Manufacturing Capabilities
               </Link>
             </div>
           </div>

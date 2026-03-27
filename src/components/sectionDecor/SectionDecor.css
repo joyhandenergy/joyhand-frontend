@@ -1,0 +1,180 @@
+/* =====================================================
+   SECTION DECOR SYSTEM (Optimized)
+===================================================== */
+.section-decor {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: var(--z-below);
+  opacity: 0.6;
+}
+
+/* Base shape */
+.section-decor__shape {
+  position: absolute;
+  filter: blur(clamp(30px, 6vw, 60px));
+  will-change: transform;
+  transform: translate3d(0, 0, 0); /* GPU boost */
+}
+
+/* =====================================================
+   PRIMARY (Perfect Circles - No Oval Ever)
+===================================================== */
+.section-decor--primary .section-decor__shape {
+  background: var(--primary-color);
+  border-radius: 50%;
+  opacity: 0.15;
+
+  width: clamp(180px, 28vw, 500px);
+  aspect-ratio: 1 / 1;
+
+  animation: floatBubble 20s infinite ease-in-out;
+}
+
+/* =====================================================
+   SECONDARY (Controlled Ovals - Responsive)
+===================================================== */
+.section-decor--secondary .section-decor__shape {
+  background: var(--secondary-color-light);
+  opacity: 0.1;
+
+  width: clamp(220px, 35vw, 600px);
+  aspect-ratio: 3 / 2; /* keeps oval consistent */
+
+  border-radius: 50%;
+
+  animation: morphOval 25s infinite ease-in-out;
+}
+
+/* =====================================================
+   ACCENT (Organic Shapes - Scaled)
+===================================================== */
+.section-decor--accent .section-decor__shape {
+  background: var(--accent-color-dark);
+  opacity: 0.12;
+
+  width: clamp(100px, 12vw, 180px);
+  aspect-ratio: 3 / 4;
+
+  border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+
+  animation: driftEgg 15s infinite linear;
+}
+
+
+/* =====================================================
+   ANIMATIONS (GPU FRIENDLY)
+===================================================== */
+@keyframes floatBubble {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  33% { transform: translate3d(10%, -15%, 0) scale(1.1); }
+  66% { transform: translate3d(-5%, 10%, 0) scale(0.9); }
+}
+
+@keyframes morphOval {
+  0%, 100% {
+    border-radius: 50%;
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    border-radius: 30% 70% 70% 30% / 50%;
+    transform: rotate(15deg) scale(1.05);
+  }
+}
+
+@keyframes driftEgg {
+  from {
+    transform: translate3d(0, 100%, 0) rotate(0deg);
+    opacity: 0;
+  }
+  20%, 80% {
+    opacity: 0.12;
+  }
+  to {
+    transform: translate3d(0, -100%, 0) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+
+/* =====================================================
+   SMART POSITIONING (Responsive Safe)
+===================================================== */
+.section-decor__shape:nth-child(1) {
+  top: 10%;
+  left: -10%;
+  animation-delay: 0s;
+}
+
+.section-decor__shape:nth-child(2) {
+  bottom: 10%;
+  right: -5%;
+  animation-delay: -5s;
+}
+
+.section-decor__shape:nth-child(3) {
+  top: 40%;
+  left: 60%;
+  animation-delay: -10s;
+}
+
+
+/* =====================================================
+   MOBILE OPTIMIZATION
+===================================================== */
+@media (max-width: 768px) {
+  .section-decor {
+    opacity: 0.4; /* reduce visual noise */
+  }
+
+  .section-decor__shape {
+    filter: blur(30px);
+  }
+
+  /* reposition for better layout */
+  .section-decor__shape:nth-child(1) {
+    top: 5%;
+    left: -20%;
+  }
+
+  .section-decor__shape:nth-child(2) {
+    bottom: 5%;
+    right: -15%;
+  }
+
+  .section-decor__shape:nth-child(3) {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+
+/* =====================================================
+   SMALL DEVICES (Extra Tight Control)
+===================================================== */
+@media (max-width: 480px) {
+  .section-decor {
+    opacity: 0.3;
+  }
+
+  .section-decor--primary .section-decor__shape,
+  .section-decor--secondary .section-decor__shape {
+    width: clamp(120px, 35vw, 250px);
+  }
+
+  .section-decor--accent .section-decor__shape {
+    width: clamp(80px, 20vw, 140px);
+  }
+}
+
+
+/* =====================================================
+   ACCESSIBILITY
+===================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .section-decor__shape {
+    animation: none !important;
+  }
+}

@@ -2,56 +2,54 @@
 
 import {
   PiGear,
-  PiLightbulb,
-  PiTruck,
   PiArrowRight,
-  PiBatteryCharging,
   PiShieldCheck,
-  PiGlobe,
   PiCheckCircleFill,
   PiSealCheckFill,
   PiMagnifyingGlass,
   PiHandshake,
   PiClipboardText,
-  PiBoat
+  PiBoat,
+  PiFactory
 } from "react-icons/pi";
 import PageHeader from "@/components/pageHeader/PageHeader";
 import SectionHeader from "@/components/sectionHeader/SectionHeader";
+import SectionDecor from "@/components/sectionDecor/SectionDecor";
 import Link from "next/link";
 import "./services.css";
 
 export default function ServicesPage() {
   const services = [
     {
-      title: "OEM Energy Storage",
-      desc: "Connect with specialized lithium battery factories for custom-engineered storage systems. We handle factory vetting, quality audits, and specification matching.",
-      icon: <PiBatteryCharging weight="duotone" />,
-      tag: "Sourcing"
+      title: "OEM Manufacturing",
+      desc: "We produce certified solar inverters, storage batteries, and portable power stations under your brand. Custom labeling, packaging, and firmware – all from our factory.",
+      icon: <PiFactory weight="duotone" />,
+      tag: "OEM"
     },
     {
-      title: "ODM Solar Solutions",
-      desc: "Ready-to-market solar inverters and storage systems from certified manufacturing partners. We bridge your requirements with factory capabilities.",
-      icon: <PiLightbulb weight="duotone" />,
-      tag: "Partnership"
+      title: "ODM Engineering",
+      desc: "Full custom design and development of energy storage systems and e-mobility powertrains. Our engineers handle PCB layout, BMS tuning, and mechanical integration.",
+      icon: <PiGear weight="duotone" />,
+      tag: "ODM"
     },
     {
-      title: "Electric Mobility",
-      desc: "Sourced battery platforms for e-bikes, scooters, and mobility vehicles. Our factory partners deliver long cycle life cells with rigorous verification.",
-      icon: <PiTruck weight="duotone" />,
-      tag: "Mobility"
+      title: "Quality Assurance",
+      desc: "100% in-process inspection and final testing. Our QC lab performs thermal shock, vibration, and cycle life testing on every production batch.",
+      icon: <PiShieldCheck weight="duotone" />,
+      tag: "Quality"
     },
     {
       title: "Global Logistics",
-      desc: "International logistics and factory coordination. We manage shipping, customs, and container consolidation from partner facilities to your door.",
-      icon: <PiGlobe weight="duotone" />,
+      desc: "We handle container consolidation, dangerous goods documentation, and customs clearance – delivering your products to warehouses worldwide.",
+      icon: <PiBoat weight="duotone" />,
       tag: "Logistics"
     }
   ];
 
   const qcProtocols = [
     {
-      title: "Factory Audits",
-      desc: "On-site verification before any partnership begins.",
+      title: "In-Process Inspection",
+      desc: "Continuous monitoring during assembly; every cell and PCB is tested inline.",
       icon: <PiClipboardText />
     },
     {
@@ -60,13 +58,13 @@ export default function ServicesPage() {
       icon: <PiMagnifyingGlass />
     },
     {
-      title: "Certification Verification",
-      desc: "We validate ISO, CE, UL, and other certifications directly with issuing bodies.",
+      title: "Certification Validation",
+      desc: "We maintain CE, UL, UN38.3, and IEC certifications – validated on-site.",
       icon: <PiSealCheckFill />
     },
     {
-      title: "Container Inspection",
-      desc: "Final quality check during container loading at partner facilities.",
+      title: "Pre‑Shipment Audit",
+      desc: "Final quality check during container loading; 100% of shipments inspected.",
       icon: <PiShieldCheck />
     }
   ];
@@ -75,14 +73,14 @@ export default function ServicesPage() {
     {
       step: "01",
       title: "Consultation",
-      desc: "We discuss your specifications, volume needs, and target markets to identify ideal factory partners.",
+      desc: "We discuss your specifications, target markets, and volume requirements.",
       icon: <PiHandshake />
     },
     {
       step: "02",
-      title: "Factory Matching",
-      desc: "We match you with vetted manufacturers and perform initial quality audits.",
-      icon: <PiClipboardText />
+      title: "Engineering & Prototyping",
+      desc: "Our engineers create CAD designs, BOMs, and prototypes for your approval.",
+      icon: <PiGear />
     },
     {
       step: "03",
@@ -93,13 +91,13 @@ export default function ServicesPage() {
     {
       step: "04",
       title: "Production Oversight",
-      desc: "Our engineers monitor production and conduct random in-line inspections.",
-      icon: <PiGear />
+      desc: "Our QC team monitors production and conducts random in-line inspections.",
+      icon: <PiFactory />
     },
     {
       step: "05",
-      title: "Pre-shipment Inspection",
-      desc: "Final QC check before container loading at partner facility.",
+      title: "Pre‑shipment Inspection",
+      desc: "Final QC check before container loading at our facility.",
       icon: <PiShieldCheck />
     },
     {
@@ -113,26 +111,27 @@ export default function ServicesPage() {
   return (
     <main className="services-page">
       <PageHeader
-        title="What We Do Best"
-        subtitle="Factory sourcing. Quality control. Global logistics."
-        pageImage="/images/solarImg/panel.home.jpg"
+        title="Manufacturing Capabilities"
+        subtitle="From engineering to global delivery."
+        pageImage="/images/pageHeadImg/pageheader-services.jpg"
       />
 
       {/* ================= INTRO ================= */}
       <section className="services-intro">
+        <SectionDecor type="accent" count={8} />
         <div className="container">
           <div className="services-intro__grid">
             <div className="services-intro__header">
               <SectionHeader 
-                badge="Industrial Sourcing Partner" 
-                title="Your Bridge to Vetted Manufacturers" 
+                badge="Direct Manufacturing" 
+                title="Your End‑to‑End Production Partner" 
               />
             </div>
             <div className="services-intro__content">
               <p className="services-intro__desc">
-                Since 1998, we have built relationships with factories you can trust. 
-                Through our partner network, we deliver high-performance solutions 
-                trusted by global distributors — without the risk of unknown suppliers.
+                Since 1998, JoyHand has designed, engineered, and manufactured energy solutions. 
+                Today, we offer complete OEM/ODM services, quality control, and global logistics – 
+                giving distributors a single, reliable partner for the entire product lifecycle.
               </p>
             </div>
           </div>
@@ -171,8 +170,8 @@ export default function ServicesPage() {
       <section className="qc-protocols">
         <div className="container">
           <SectionHeader 
-            badge="Your Quality Shield" 
-            title="Every Shipment. Every Factory. Verified." 
+            badge="Our Quality Standards" 
+            title="Every Product. Every Batch. Verified." 
             center
           />
           <div className="qc-protocols__grid">
@@ -198,34 +197,34 @@ export default function ServicesPage() {
             <div className="why-distributors__grid">
               <div className="why-item">
                 <div className="why-item__number">01</div>
-                <h4 className="why-item__title">Zero Factory Risk</h4>
-                <p className="why-item__text">We have already vetted, audited, and built relationships with manufacturing partners. You skip the trial and error.</p>
+                <h4 className="why-item__title">Direct Factory Access</h4>
+                <p className="why-item__text">You skip the middleman. We manufacture, so you get the best pricing and full traceability.</p>
               </div>
               <div className="why-item">
                 <div className="why-item__number">02</div>
                 <h4 className="why-item__title">Quality Guaranteed</h4>
-                <p className="why-item__text">On-site inspections before any product leaves. If it does not pass, it does not ship.</p>
+                <p className="why-item__text">On-site inspections at every stage. If it doesn’t pass, it doesn’t ship.</p>
               </div>
               <div className="why-item">
                 <div className="why-item__number">03</div>
-                <h4 className="why-item__title">Logistics Handled</h4>
-                <p className="why-item__text">From container consolidation to customs clearance — we manage the complexity so you dont have to.</p>
+                <h4 className="why-item__title">Logistics Managed</h4>
+                <p className="why-item__text">From container consolidation to customs clearance – we handle the complexity.</p>
               </div>
               <div className="why-item">
                 <div className="why-item__number">04</div>
                 <h4 className="why-item__title">Scale With Us</h4>
-                <p className="why-item__text">Whether you need one container or hundreds, our factory network grows with you.</p>
+                <p className="why-item__text">Whether you need one container or hundreds, our production lines grow with you.</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ================= OUR SOURCING PROCESS ================= */}
+      {/* ================= OUR MANUFACTURING PROCESS ================= */}
       <section className="sourcing-process">
         <div className="container">
           <SectionHeader 
-            badge="How It Works" 
+            badge="How We Work" 
             title="From Your Specs to Your Warehouse" 
             center
           />
@@ -244,43 +243,42 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* ================= PARTNER FACILITIES ================= */}
+      {/* ================= OUR FACILITY ================= */}
       <section className="partner-facilities">
         <div className="container">
           <div className="partner-facilities__box">
             <div className="partner-facilities__content">
               <SectionHeader 
-                badge="Our Network" 
-                title="Vetted Manufacturing Partners"
+                badge="Our Factory" 
+                title="Manufacturing Hub in Guangzhou"
                 light
               />
               <p className="partner-facilities__text">
-                We work exclusively with factories holding automotive-grade certifications. 
-                Our partners specialize in:
+                50,000 m² ISO 9001:2025 certified facility. We specialize in:
               </p>
               <ul className="partner-facilities__list">
-                <li><PiCheckCircleFill /> LFP battery production (ISO/TS16949)</li>
-                <li><PiCheckCircleFill /> Solar inverter assembly (Tier-1 components)</li>
-                <li><PiCheckCircleFill /> EV charging infrastructure</li>
+                <li><PiCheckCircleFill /> LFP battery assembly (Grade-A prismatic cells)</li>
+                <li><PiCheckCircleFill /> Solar inverter production (Tier-1 components)</li>
+                <li><PiCheckCircleFill /> EV charging infrastructure & e‑mobility platforms</li>
                 <li><PiCheckCircleFill /> Portable power station manufacturing</li>
               </ul>
               <Link href="/contact" className="btn btn--secondary">
-                Request Factory List
+                Request Factory Tour
               </Link>
             </div>
             <div className="partner-facilities__visual">
               <div className="facility-stats">
                 <div className="facility-stats__item">
-                  <span className="facility-stats__number">12+</span>
-                  <span className="facility-stats__label">Vetted Factories</span>
+                  <span className="facility-stats__number">50,000</span>
+                  <span className="facility-stats__label">m² Facility</span>
                 </div>
                 <div className="facility-stats__item">
                   <span className="facility-stats__number">100%</span>
-                  <span className="facility-stats__label">On-site Audited</span>
+                  <span className="facility-stats__label">In‑Process QC</span>
                 </div>
                 <div className="facility-stats__item">
-                  <span className="facility-stats__number">8</span>
-                  <span className="facility-stats__label">Years Avg. Experience</span>
+                  <span className="facility-stats__number">30+</span>
+                  <span className="facility-stats__label">R&D Engineers</span>
                 </div>
               </div>
             </div>
@@ -294,10 +292,10 @@ export default function ServicesPage() {
           <div className="services-cta__banner">
             <div className="services-cta__content">
               <PiSealCheckFill className="services-cta__icon" />
-              <h2 className="services-cta__title">Ready to Source With Confidence?</h2>
-              <p className="services-cta__subtitle">Partner with JoyHand for factory-direct quality without the factory risk.</p>
+              <h2 className="services-cta__title">Ready to Manufacture With Confidence?</h2>
+              <p className="services-cta__subtitle">Partner with JoyHand for direct factory quality and engineering support.</p>
               <Link href="/contact" className="btn btn--secondary">
-                Contact Our Sourcing Team
+                Contact Our Manufacturing Team
               </Link>
             </div>
           </div>

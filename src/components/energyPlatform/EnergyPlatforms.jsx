@@ -13,34 +13,34 @@ const FEATURED_CATEGORIES = [
     title: "Storage Batteries",
     slug: "storage-batteries",
     image: "/images/homeProImg/homepro4.jpg",
-    blurImage: "/images/homeProImg/homepro4-blur.jpg",
+    blurImage: "/images/homeProImg/homepro4.jpg",
     desc: "LFP battery systems for residential & industrial",
-    sourceNote: "Sourced from ISO-certified factories"
+    sourceNote: "Manufactured in‑house"
   },
   {
     id: 2,
     title: "Solar Inverters",
     slug: "solar-inverters",
     image: "/images/homeProImg/homepro2.jpg",
-    blurImage: "/images/homeProImg/homepro2-blur.jpg",
+    blurImage: "/images/homeProImg/homepro2.jpg",
     desc: "High-efficiency pure sine wave inverters",
-    sourceNote: "Tier-1 component suppliers"
+    sourceNote: "Tier‑1 components"
   },
   {
     id: 3,
     title: "Portable Power Stations",
     slug: "portable-power-stations",
     image: "/images/homeProImg/homepro3.jpg",
-    blurImage: "/images/homeProImg/homepro3-blur.jpg",
+    blurImage: "/images/homeProImg/homepro3.jpg",
     desc: "Rugged units for emergency & off-grid",
-    sourceNote: "OEM branding available"
+    sourceNote: "OEM/ODM ready"
   },
   {
     id: 4,
     title: "Electric Mobility",
     slug: "electric-mobility",
     image: "/images/homeProImg/homepro1.jpg",
-    blurImage: "/images/homeProImg/homepro1-blur.jpg",
+    blurImage: "/images/homeProImg/homepro1.jpg",
     desc: "Electric motorcycles, scooters & e-bikes",
     sourceNote: "Sustainable urban mobility"
   },
@@ -51,16 +51,33 @@ const EnergyPlatforms = () => {
   const [loadedImages, setLoadedImages] = useState({});
 
   useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    // Check if already visible (above the fold)
+    const checkVisibility = () => {
+      const rect = section.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      if (rect.top < windowHeight - 100) {
+        section.classList.add("energy-platforms--is-visible");
+        return true;
+      }
+      return false;
+    };
+
+    if (checkVisibility()) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          sectionRef.current?.classList.add("energy-platforms--is-visible");
+          section.classList.add("energy-platforms--is-visible");
+          observer.disconnect();
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
     );
 
-    if (sectionRef.current) observer.observe(sectionRef.current);
+    observer.observe(section);
 
     return () => observer.disconnect();
   }, []);
@@ -77,9 +94,9 @@ const EnergyPlatforms = () => {
     >
       <div className="container">
         <SectionHeader
-          badge="Sourcing Excellence"
-          title="Energy Platforms We Source"
-          subtitle="Precision-engineered storage and power solutions sourced from vetted manufacturing partners for international brands and distributors seeking OEM/ODM excellence."
+          badge="Our Manufacturing Range"
+          title="Products We Manufacture"
+          subtitle="Precision‑engineered storage and power solutions directly from our ISO 9001:2025 certified facility. Fully customizable for OEM/ODM partners."
           id="platforms-heading"
         />
 
@@ -109,7 +126,7 @@ const EnergyPlatforms = () => {
                   {/* Main image with Next.js optimization */}
                   <Image
                     src={platform.image}
-                    alt={`${platform.title} sourcing solutions from partner factories`}
+                    alt={`${platform.title} manufactured by JoyHand`}
                     fill
                     className={`platform-card__image ${loadedImages[platform.id] ? 'platform-card__image--loaded' : ''}`}
                     sizes="(max-width: 480px) 100vw, (max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
@@ -140,7 +157,7 @@ const EnergyPlatforms = () => {
 
                   <div className="platform-card__footer">
                     <span className="platform-card__cta">
-                      Request Sourcing Info
+                      Request Info
                     </span>
 
                     <div className="platform-card__icon-wrapper">

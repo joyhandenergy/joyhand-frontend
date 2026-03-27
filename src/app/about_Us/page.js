@@ -1,172 +1,177 @@
 "use client";
 
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
   PiLinkedinLogo,
   PiArrowRight,
   PiCheckCircleFill,
-  PiTruck,
+  PiGear,
   PiShieldCheck,
-  PiHandshake,
   PiGlobe,
-  PiUsers,
   PiFactory,
-  PiChartLineUp
+  PiChartLineUp,
+  PiQuotesFill,
+  PiBatteryHigh,
+  PiLightning,
+  PiMotorcycle
 } from "react-icons/pi";
 
 import PageHeader from "@/components/pageHeader/PageHeader";
 import SectionHeader from "@/components/sectionHeader/SectionHeader";
 
 import "./about.css";
+import SectionDecor from "@/components/sectionDecor/SectionDecor";
+import SuperRing from "@/components/superRing/SuperRing";
 
 export default function AboutPage() {
-
   const team = [
     {
       name: "Michael Zhang",
-      title: "Chief Executive Officer",
-      image: "/images/solarImg/panel.home.jpg",
-      bio: "Michael leads JoyHand's global strategy, building partnerships with Tier-1 manufacturers and connecting them with distributors worldwide."
+      title: "CEO & Founder",
+      image: "/images/abtImg/michael.jpg",
+      bio: "Michael leads JoyHand's manufacturing strategy, driving vertical integration and sustainable scaling for global energy markets."
     },
     {
       name: "Sarah Chen",
-      title: "Head of Engineering",
-      image: "/images/solarImg/panel.home.jpg",
-      bio: "Sarah bridges client specifications with factory capabilities, ensuring technical requirements and quality standards across all sourced products."
+      title: "Chief Technical Officer",
+      image: "/images/abtImg/sarah.jpg",
+      bio: "Sarah oversees our 30+ in-house engineers, ensuring every product meets international safety certifications and performance benchmarks."
     }
   ];
 
   const values = [
     {
-      icon: <PiShieldCheck size={32} />,
-      title: "Quality Assured",
-      description: "Every shipment undergoes rigorous on-site factory audits before leaving for your destination."
+      icon: <PiFactory size={32} />,
+      title: "Direct Manufacturing",
+      description: "We own our assembly lines. No middlemen – you get factory-direct pricing, quality oversight, and full traceability."
     },
     {
-      icon: <PiHandshake size={32} />,
-      title: "Partnership First",
-      description: "We succeed only when our distributors succeed—long-term relationships over transactions."
+      icon: <PiGear size={32} />,
+      title: "In-House R&D",
+      description: "Our engineers develop proprietary BMS firmware, thermal management, and cell-level safety systems for every LFP pack."
+    },
+    {
+      icon: <PiShieldCheck size={32} />,
+      title: "Certified QC Lab",
+      description: "On-site testing facility conducts thermal shock, vibration, and 72-hour aging tests on 100% of our production batches."
     },
     {
       icon: <PiGlobe size={32} />,
-      title: "Global Reach",
-      description: "Logistics mastery enabling seamless container delivery to 12+ countries worldwide."
+      title: "Global Export Mastery",
+      description: "We manage complex international logistics for lithium batteries and EVs, delivering to over 12 countries with full customs compliance."
+    }
+  ];
+
+  const energySectors = [
+    {
+      title: "LFP Battery Manufacturing",
+      desc: "We produce high-performance Lithium Iron Phosphate storage using Grade-A prismatic cells. Our batteries power residential, commercial, and industrial backup systems.",
+      features: ["Grade-A Prismatic Cells", "6000+ Cycle Lifespan", "Automotive-Grade Assembly"],
+      img: "/images/solarImg/panel.home.jpg",
+      tag: "Energy Storage"
     },
     {
-      icon: <PiFactory size={32} />,
-      title: "Factory Expertise",
-      description: "Deep manufacturing roots mean we speak the language of production—fluently."
+      title: "Solar Inverter Production",
+      desc: "Our pure sine wave inverters are built with Tier-1 components for superior grid-tie and off-grid reliability. 98% peak efficiency and smart grid switching.",
+      features: ["98% Peak Efficiency", "Pure Sine Wave Tech", "Smart Grid Switching"],
+      img: "/images/solarImg/panel.home.jpg",
+      tag: "Power Electronics"
+    },
+    {
+      title: "Portable Power Stations",
+      desc: "Production-ready portable energy solutions for global brands. Engineered with fast-charge technology and multi-region outlet configurations.",
+      features: ["Fast-Charge Capability", "OEM/ODM Branding", "Multi-Output Design"],
+      img: "/images/solarImg/panel.home.jpg",
+      tag: "Portable Energy"
+    },
+    {
+      title: "E-Mobility Engineering",
+      desc: "Specialized assembly of electric motorcycles and scooters. Reinforced chassis engineering and weatherproof motor controllers for commercial use.",
+      features: ["Reinforced EV Frames", "IP65 Weatherproof Motors", "Custom Motor Controllers"],
+      img: "/images/solarImg/panel.home.jpg",
+      tag: "Electric Mobility"
     }
   ];
 
   const timeline = [
-    {
-      year: "1998",
-      title: "Founded",
-      description: "Started with deep roots in EV manufacturing and battery technology.",
-      icon: <PiFactory />
+    { 
+      year: "1998", 
+      title: "The Production Roots", 
+      description: "Founded as a specialized facility for electric vehicle components and chassis engineering.", 
+      icon: <PiFactory /> 
     },
-    {
-      year: "2003",
-      title: "Evolved",
-      description: "Expanded into full-service sourcing platform connecting distributors with vetted factories.",
-      icon: <PiUsers />
+    { 
+      year: "2010", 
+      title: "E-Mobility Leadership", 
+      description: "Reached 5,000+ electric motorcycles produced annually for international export.", 
+      icon: <PiChartLineUp /> 
     },
-    {
-      year: "2010",
-      title: "Scaled",
-      description: "Reached 5,000+ e-motorcycles supplied globally across 12 countries.",
-      icon: <PiChartLineUp />
+    { 
+      year: "2018", 
+      title: "Energy Storage Pivot", 
+      description: "Integrated our battery expertise into residential LFP storage and high-efficiency inverter lines.", 
+      icon: <PiLightning /> 
     },
-    {
-      year: "2018",
-      title: "Expanded",
-      description: "50+ active distributor partnerships and 15MW+ solar capacity delivered.",
-      icon: <PiGlobe />
-    },
-    {
-      year: "2025",
-      title: "Today",
-      description: "Trusted sourcing partner for global energy brands and distributors.",
-      icon: <PiShieldCheck />
+    { 
+      year: "2026", 
+      title: "JoyHand Global", 
+      description: "Operating a fully integrated manufacturing hub for next-generation renewable energy infrastructure.", 
+      icon: <PiShieldCheck /> 
     }
   ];
 
   const testimonials = [
     {
-      quote: "JoyHand handles everything—factory communication, quality checks, shipping. We just receive the container and sell.",
+      quote: "Working directly with JoyHand's engineering team allowed us to customize the BMS for our specific climate. Their manufacturing transparency is a massive competitive advantage.",
       author: "Ahmed Ibrahim",
       company: "GreenTech Distributors, Nigeria",
-      image: "/images/solarImg/panel.home.jpg"
+      image: "/images/abtImg/testimonial1.jpg"
     },
     {
-      quote: "Finally a sourcing partner who understands both manufacturing AND our market needs. Their QC protocols saved us countless headaches.",
+      quote: "The build quality of their factory-direct LFP packs is significantly higher than the generic units we sourced before. Their QC protocols saved us from field failures.",
       author: "Carlos Mendez",
       company: "SolEnergy Latin America",
-      image: "/images/solarImg/panel.home.jpg"
+      image: "/images/abtImg/testimonial2.jpg"
     }
   ];
 
   return (
     <main className="about-page">
-
       <PageHeader
-        title="Who We Are"
-        subtitle="Manufacturing roots. Sourcing expertise."
+        title="Direct Manufacturing Excellence"
+        subtitle="Since 1998, we've built the technology that powers global energy markets."
         pageImage="/images/pageHeadImg/pageheader1.jpg"
       />
 
-      {/* ================= INTRO + MISSION ================= */}
+      {/* ================= INTRO ================= */}
       <section className="about-intro">
+
+        <SectionDecor type="accent" count={8} />
+
         <div className="container about-intro__container">
           <div className="about-intro__content">
             <SectionHeader 
-              badge="OUR EVOLUTION"
-              title="From Factory Floors to Global Markets"
+              badge="OWNING THE FLOOR"
+              title="A Factory-First Approach to Renewable Energy"
             />
 
             <div className="about-intro__description">
               <p>
-                Founded in 1998, JoyHand began on EV manufacturing lines. Today, we have transformed that hands-on experience into a 
-                <strong> premier global sourcing platform</strong> that tackles the two biggest challenges distributors face:
-                <strong> Quality Assurance</strong> and
-                <strong> Supply Chain Liquidity</strong>.
+                JoyHand was born on the factory floor. We are engineers and builders first. 
+                By maintaining <strong>direct control over our assembly lines</strong>, we ensure that every cell and circuit board meets the rigorous demands of professional distributors worldwide.
               </p>
 
               <div className="mission-statement">
-                <h4 className="mission-statement__title">Our Mission</h4>
+                <h4 className="mission-statement__title">Our Manufacturing Promise</h4>
                 <p className="mission-statement__text">
-                  We believe distributors should focus on growing their markets, not worrying about factory reliability. 
-                  JoyHand exists to remove the risk, complexity, and uncertainty from international sourcing.
+                  To eliminate the risk of the energy supply chain by providing importers with direct access to high-performance hardware, built and tested in our own factory.
                 </p>
-              </div>
-
-              <div className="about-intro__highlights">
-                <div className="highlight-tag">
-                  <span className="highlight-tag__icon"><PiTruck /></span>
-                  <div>
-                    <strong>Logistics Mastery</strong>
-                    <p>
-                      We manage complex shipping and customs for container-load delivery.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="highlight-tag">
-                  <span className="highlight-tag__icon"><PiShieldCheck /></span>
-                  <div>
-                    <strong>QC Protocols</strong>
-                    <p>
-                      On-site factory audits before any product leaves for your destination.
-                    </p>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
 
-          {/* NFC SCANNER VISUAL */}
           <div className="about-intro__visual">
             <div className="nfc-scanner">
               <div className="nfc-scanner__ring"></div>
@@ -174,14 +179,14 @@ export default function AboutPage() {
               <div className="about-intro__image-wrapper">
                 <Image
                   src="/images/abtImg/factory-photo1.jpg"
-                  alt="QC Verification"
+                  alt="JoyHand Automated Factory Line"
                   fill
                   className="about-intro__img"
                   priority
                 />
                 <div className="nfc-status">
                   <div className="nfc-status__dot"></div>
-                  <span>Batch Quality Verified</span>
+                  <span>Direct Factory Output</span>
                 </div>
               </div>
             </div>
@@ -193,11 +198,10 @@ export default function AboutPage() {
       <section className="timeline-section">
         <div className="container">
           <SectionHeader
-            badge="Our Journey"
-            title="1998 — 2025"
+            badge="OUR HERITAGE"
+            title="Over 26 Years of Engineering"
             center
           />
-
           <div className="timeline">
             {timeline.map((item, index) => (
               <div key={index} className="timeline__item">
@@ -214,15 +218,14 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ================= CORE VALUES ================= */}
+      {/* ================= PILLARS ================= */}
       <section className="values-section">
         <div className="container">
           <SectionHeader
-            badge="How We Work"
-            title="Four Pillars. One Purpose."
+            badge="THE JOYHAND STANDARD"
+            title="The 4 Pillars of Production"
             center
           />
-
           <div className="values-grid">
             {values.map((value, index) => (
               <div key={index} className="value-card">
@@ -235,121 +238,69 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ================= MARKETS WE SERVE ================= */}
+      {/* ================= ENERGY SOLUTIONS (4 CARDS) ================= */}
       <section className="markets-section">
+        <SectionDecor type="accent" count={8} />
+            {/* CENTER RING */}
+       <SuperRing
+        type="primary"
+        size="1400px"
+        thickness="40px"
+        top="50%"
+        left="50%"
+        translateX="-50%"
+        translateY="-50%"
+        opacity={0.06}
+      />
+
+      <SuperRing
+        type="secondary"
+        size="900px"
+        thickness="40px"
+        top="15%"
+        left="70%"
+        translateX="-50%"
+        translateY="-50%"
+        opacity={0.05}
+      />
+
+      <SuperRing
+        type="accent"
+        size="900px"
+        thickness="40px"
+        top="85%"
+        left="30%"
+        translateX="-50%"
+        translateY="-50%"
+        opacity={0.05}
+      />
         <div className="container">
           <SectionHeader
-            badge="Markets We Serve"
-            title="Energy Sectors We Support"
+            badge="CORE PRODUCTION"
+            title="Energy Infrastructure We Manufacture"
             center
           />
-
-          {/* MARKET 1 - Residential & Industrial Storage */}
-          <div className="market-row">
-            <div className="market-image">
-              <Image
-                src="/images/solarImg/panel.home.jpg"
-                alt="Battery Storage Market"
-                fill
-              />
-              <div className="market-badge">Storage</div>
-            </div>
-            <div className="market-text">
-              <h3>Residential & Industrial Storage</h3>
-              <p>
-                We connect distributors with LFP battery factories serving homes and grid projects. 
-                Our engineers verify cycle life claims before any shipment leaves.
-              </p>
-              <ul className="market-list">
-                <li><PiCheckCircleFill /> 6,000+ cycle LFP batteries</li>
-                <li><PiCheckCircleFill /> Automotive-grade cell suppliers</li>
-                <li><PiCheckCircleFill /> Modular, scalable designs</li>
-              </ul>
-              <Link href="/services" className="btn-link">
-                Explore Storage Sourcing <PiArrowRight />
-              </Link>
-            </div>
-          </div>
-
-          {/* MARKET 2 - Commercial EV Infrastructure */}
-          <div className="market-row market-row--reverse">
-            <div className="market-image">
-              <Image
-                src="/images/solarImg/panel.home.jpg"
-                alt="EV Infrastructure Market"
-                fill
-              />
-              <div className="market-badge">E-Mobility</div>
-            </div>
-            <div className="market-text">
-              <h3>Commercial EV Infrastructure</h3>
-              <p>
-                Sourcing partners for developers and municipalities. We connect you with manufacturers 
-                producing weatherproof EV charging systems.
-              </p>
-              <ul className="market-list">
-                <li><PiCheckCircleFill /> Universal connector compatibility</li>
-                <li><PiCheckCircleFill /> IP65 weatherproof certified</li>
-                <li><PiCheckCircleFill /> Smart monitoring & load balancing</li>
-              </ul>
-              <Link href="/services" className="btn-link">
-                Explore EV Sourcing <PiArrowRight />
-              </Link>
-            </div>
-          </div>
-
-          {/* MARKET 3 - Solar Integration */}
-          <div className="market-row">
-            <div className="market-image">
-              <Image
-                src="/images/solarImg/panel.home.jpg"
-                alt="Solar Integration Market"
-                fill
-              />
-              <div className="market-badge">Solar</div>
-            </div>
-            <div className="market-text">
-              <h3>Solar Integration Partnerships</h3>
-              <p>
-                Bridging inverter manufacturers with energy installers worldwide. We source 
-                high-efficiency pure sine wave inverters from Tier-1 component suppliers.
-              </p>
-              <ul className="market-list">
-                <li><PiCheckCircleFill /> 98% peak efficiency</li>
-                <li><PiCheckCircleFill /> Smart grid switching</li>
-                <li><PiCheckCircleFill /> Tier-1 component sourcing</li>
-              </ul>
-              <Link href="/services" className="btn-link">
-                Explore Inverter Sourcing <PiArrowRight />
-              </Link>
-            </div>
-          </div>
-
-          {/* MARKET 4 - Emergency & Off-Grid */}
-          <div className="market-row market-row--reverse">
-            <div className="market-image">
-              <Image
-                src="/images/solarImg/panel.home.jpg"
-                alt="Portable Power Market"
-                fill
-              />
-              <div className="market-badge">Portable</div>
-            </div>
-            <div className="market-text">
-              <h3>Emergency & Off-Grid</h3>
-              <p>
-                Custom rugged portable stations for disaster relief and remote energy independence. 
-                Fast-charge technology and OEM branding available.
-              </p>
-              <ul className="market-list">
-                <li><PiCheckCircleFill /> Fast-charge capable</li>
-                <li><PiCheckCircleFill /> Multiple output configurations</li>
-                <li><PiCheckCircleFill /> Full OEM branding available</li>
-              </ul>
-              <Link href="/services" className="btn-link">
-                Explore Portable Sourcing <PiArrowRight />
-              </Link>
-            </div>
+          <div className="markets-grid">
+            {energySectors.map((sector, index) => (
+              <div key={index} className={`market-row ${index % 2 !== 0 ? 'market-row--reverse' : ''}`}>
+                <div className="market-image">
+                  <Image src={sector.img} alt={sector.title} fill />
+                  <div className="market-badge">{sector.tag}</div>
+                </div>
+                <div className="market-text">
+                  <h3>{sector.title}</h3>
+                  <p>{sector.desc}</p>
+                  <ul className="market-list">
+                    {sector.features.map((feature, i) => (
+                      <li key={i}><PiCheckCircleFill /> {feature}</li>
+                    ))}
+                  </ul>
+                  <Link href="/contact" className="btn-link">
+                    Inquire for Wholesale <PiArrowRight />
+                  </Link>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -358,27 +309,22 @@ export default function AboutPage() {
       <section className="testimonials-section">
         <div className="container">
           <SectionHeader
-            badge="Partner Stories"
-            title="Trusted by Distributors Worldwide"
+            badge="PARTNER SUCCESS"
+            title="Trusted by Professional Importers"
             center
           />
-
           <div className="testimonials-grid">
-            {testimonials.map((testimonial, index) => (
+            {testimonials.map((t, index) => (
               <div key={index} className="testimonial-card">
-                <div className="testimonial-card__quote">&quot;</div>
-                <p className="testimonial-card__text">{testimonial.quote}</p>
+                <PiQuotesFill className="testimonial-card__quote-icon" size={40} />
+                <p className="testimonial-card__text">{t.quote}</p>
                 <div className="testimonial-card__author">
                   <div className="testimonial-card__author-image">
-                    <Image
-                      src={testimonial.image}
-                      alt={testimonial.author}
-                      fill
-                    />
+                    <Image src={t.image} alt={t.author} fill />
                   </div>
                   <div>
-                    <h5>{testimonial.author}</h5>
-                    <span>{testimonial.company}</span>
+                    <h5>{t.author}</h5>
+                    <span>{t.company}</span>
                   </div>
                 </div>
               </div>
@@ -387,30 +333,23 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ================= TEAM ================= */}
+      {/* ================= LEADERSHIP ================= */}
       <section className="team-section">
+        <SectionDecor type="primary" count={5} />
         <div className="container">
           <SectionHeader
-            badge="Leadership"
-            title="The Team Behind Your Supply Chain"
+            badge="TECHNICAL LEADERSHIP"
+            title="The Minds Behind Your Supply Chain"
             center
           />
-
           <div className="team-section__grid">
             {team.map((member, index) => (
               <div key={index} className="team-card">
                 <div className="team-card__visual-container">
                   <div className="team-card__visual">
-                    <Image
-                      src={member.image}
-                      alt={member.name}
-                      fill
-                      className="team-card__img"
-                    />
+                    <Image src={member.image} alt={member.name} fill className="team-card__img" />
                   </div>
-                  <a href="#" className="team-card__linkedin">
-                    <PiLinkedinLogo size={24} />
-                  </a>
+                  <a href="#" className="team-card__linkedin"><PiLinkedinLogo size={24} /></a>
                 </div>
                 <h4 className="team-card__name">{member.name}</h4>
                 <span className="team-card__role">{member.title}</span>
@@ -426,11 +365,9 @@ export default function AboutPage() {
         <div className="container">
           <div className="abtCta-banner__wrapper">
             <div className="abtCta-banner__text">
-              <h4 className="abtCta-banner__title">
-                Ready to Scale?
-              </h4>
+              <h4 className="abtCta-banner__title">Scale Your Distribution With a Real Manufacturer</h4>
               <p className="abtCta-banner__subtitle">
-                Partner with JoyHand for reliable sourcing and quality control.
+                Access direct factory pricing, technical support, and OEM/ODM engineering services.
               </p>
             </div>
             <Link href="/contact" className="btn btn--secondary abtCta-banner__btn">

@@ -4,11 +4,9 @@ import Link from "next/link";
 import { 
   PiXLogo, 
   PiFacebookLogo, 
-  PiInstagramLogo, 
   PiLinkedinLogo, 
   PiEnvelopeSimple, 
   PiPhone, 
-  PiMapPin,
   PiGlobe,
   PiFactory,
   PiBuilding
@@ -18,7 +16,6 @@ import "./Footer.css";
 export default function Footer() {
   const year = new Date().getFullYear();
 
-  // Global offices data - matches contact page with correct addresses
   const globalOffices = [
     {
       name: "USA - Headquarters",
@@ -28,7 +25,7 @@ export default function Footer() {
       link: "https://maps.google.com/?q=2530+E+South+Blvd+Montgomery+AL+36116"
     },
     {
-      name: "China - Sourcing Hub",
+      name: "China - Manufacturing Facility",
       location: "Guangzhou, Guangdong",
       address: "No. 7 Nansha District, Guangzhou 511400",
       icon: <PiFactory size={14} />,
@@ -56,11 +53,11 @@ export default function Footer() {
       <div className="container footer__container">
         {/* BRAND SECTION */}
         <div className="footer__brand">
-          <Link href="/" className="footer__logo" aria-label="JoyHand Home">
+          <Link href="/" className="footer__logo" aria-label="JoyHand Energy – Manufacturer">
             <Image 
-              src="/logos/joyhand-logo.png" 
+              src="/images/logos/joyhandLogo.png" 
               className="footer__logo-img"
-              alt="JOYHAND Energy - Global Sourcing Partner" 
+              alt="JoyHand Energy – Premium Battery & E‑Mobility Manufacturer"
               width={150} 
               height={50} 
               priority 
@@ -72,8 +69,9 @@ export default function Footer() {
             />
           </Link>
           <p className="footer__description">
-            Your global partner in sustainable energy. Specializing in OEM/ODM sourcing of 
-            Tier-1 solar storage and e-mobility solutions from vetted manufacturing partners.
+            ISO 9001:2025 certified manufacturer of premium energy storage systems, 
+            solar inverters, and electric mobility solutions. Direct OEM/ODM supply 
+            for global distributors.
           </p>
           <div className="footer__social">
             <a href="#" className="footer__social-link" aria-label="LinkedIn"><PiLinkedinLogo size={18} /></a>
@@ -98,15 +96,15 @@ export default function Footer() {
           <h4 className="footer__title">Company</h4>
           <ul className="footer__list">
             <li><Link href="/about" className="footer__link">About Us</Link></li>
-            <li><Link href="/services" className="footer__link">Sourcing Services</Link></li>
-            <li><Link href="/blog" className="footer__link">Sourcing Insights</Link></li>
+            <li><Link href="/manufacturing" className="footer__link">Manufacturing Capabilities</Link></li>
+            <li><Link href="/blog" className="footer__link">Industry Insights</Link></li>
             <li><Link href="/contact" className="footer__link">Contact Us</Link></li>
           </ul>
         </div>
 
         {/* GLOBAL OFFICES COLUMN */}
         <div className="footer__column">
-          <h4 className="footer__title">Global Offices</h4>
+          <h4 className="footer__title">Global Presence</h4>
           <ul className="footer__list">
             {globalOffices.map((office, idx) => (
               <li key={idx} className="footer__global-office">
@@ -136,9 +134,9 @@ export default function Footer() {
             <Link href="/privacy">Privacy Policy</Link>
             <Link href="/terms">Terms of Service</Link>
           </div>
-          <p className="footer__copyright">© {year} JOYHAND Energy. All Rights Reserved.</p>
+          <p className="footer__copyright">© {year} JoyHand Energy. All Rights Reserved.</p>
           <p className="footer__credit">
-            Global Sourcing Partner | USA | China | Australia | Nigeria
+            ISO 9001:2025 Certified Manufacturer | USA | China | Australia | Nigeria
           </p>
         </div>
       </div>

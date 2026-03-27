@@ -8,18 +8,18 @@ export default function BlogPage() {
   return (
     <main className="blog-page">
       <PageHeader 
-          title="Sourcing & Industry News"
-          subtitle="Expert knowledge for energy professionals"
-          pageImage="/images/solarImg/panel.home.jpg" 
-        />
+        title="Manufacturing & Industry Insights"
+        subtitle="Expert knowledge for energy professionals."
+        pageImage="/images/pageHeadImg/pageheader-blog.jpg"  // update to a factory or lab image
+      />
       
       <section className="blog-section">
         <div className="container">
           <SectionHeader 
-          badge="Industry Insights"  // ← This is the first subheading
-          title="Solar & Energy Storage Insights"
-          subtitle="Technical guides, market trends, and best practices for solar professionals"
-/>
+            badge="Manufacturing Insights"
+            title="From Factory Floor to Global Markets"
+            subtitle="Learn how we engineer, test, and deliver high-performance energy solutions – direct from our ISO 9001:2025 certified facility."
+          />
           
           <div className="blog-grid">
             {blogPosts.map((post) => (
