@@ -137,6 +137,8 @@
   animation: fadeInUp 0.8s ease 0.2s both;
   margin-left: auto;
   margin-right: auto;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 .hero__desc strong {

@@ -277,7 +277,8 @@
   color: var(--neutral-medium);
   line-height: 1.5;
   margin-bottom: var(--spacing-1);
-  text-align: left;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 @media screen and (min-width: 768px) {
@@ -288,6 +289,7 @@
     font-size: var(--font-size-md);
     line-height: 1.6;
     text-align: justify;
+  text-justify: inter-word;
   }
   .businessModel__extra {
     margin-bottom: var(--spacing-3);
@@ -359,7 +361,7 @@
 }
 
 .businessModel__btn {
-  padding: 1.2rem 4rem;
+  padding: 1rem 3rem;
   font-size: var(--font-size-sm);
   font-weight: 700;
   text-transform: uppercase;

@@ -90,7 +90,7 @@ export default function ContactPage() {
       <PageHeader
         title="Let's Talk Manufacturing"
         subtitle="24-hour response. Global reach."
-        pageImage="/images/pageHeadImg/pageheader-contact.jpg"
+        pageImage="/pageHeadImg/pageheader-contact.jpg"
       />
 
       {/* ================= INQUIRY SECTION ================= */}

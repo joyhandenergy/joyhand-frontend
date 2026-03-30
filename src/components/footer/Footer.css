@@ -68,6 +68,8 @@
   max-width: 100%;
   text-align: left;
   margin-bottom: var(--spacing-1);
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 /* Social Icons - Smaller on mobile */

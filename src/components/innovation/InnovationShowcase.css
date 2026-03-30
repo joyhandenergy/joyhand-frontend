@@ -291,6 +291,7 @@
   padding-left: 12px;
   margin: 0;
   font-style: italic;
+  
 }
 
 @media screen and (min-width: 768px) {
@@ -314,6 +315,8 @@
   color: var(--neutral-medium);
   line-height: 1.5;
   margin: 0;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 @media screen and (min-width: 768px) {

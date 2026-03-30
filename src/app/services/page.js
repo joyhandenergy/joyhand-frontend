@@ -113,7 +113,7 @@ export default function ServicesPage() {
       <PageHeader
         title="Manufacturing Capabilities"
         subtitle="From engineering to global delivery."
-        pageImage="/images/pageHeadImg/pageheader-services.jpg"
+        pageImage="/pageHeadImg/pageheader-services.jpg"
       />
 
       {/* ================= INTRO ================= */}

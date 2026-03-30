@@ -3,18 +3,19 @@
 ===================================================== */
 .page-header {
   position: relative;
-  min-height: 40vh;          /* slightly taller on mobile */
+  min-height: 40vh; /* slightly taller on mobile */
   display: flex;
   align-items: center;
   padding: var(--spacing-4) 0;
   overflow: hidden;
   background-color: var(--secondary-color);
   animation: fadeInHeader 0.8s ease-out;
+  z-index: 1;
 }
 
 @media screen and (min-width: 768px) {
   .page-header {
-    min-height: 50vh;        /* taller on tablet/desktop */
+    min-height: 50vh; /* taller on tablet/desktop */
     padding: var(--spacing-6) 0;
   }
 }
@@ -25,14 +26,14 @@
 .page-header__bg-wrapper {
   position: absolute;
   inset: 0;
-  z-index: 0;
+  z-index: -2; /* Pushed behind everything */
   overflow: hidden;
 }
 
 /* Main image */
 .page-header__bg {
   opacity: 0;
-  transition: opacity 0.5s ease;
+  transition: opacity 0.6s ease-in-out;
 }
 
 .page-header__bg--loaded {
@@ -40,21 +41,7 @@
 }
 
 /* =====================================================
-   FADE ANIMATION
-===================================================== */
-@keyframes fadeInHeader {
-  from {
-    opacity: 0;
-    transform: scale(1.05);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-/* =====================================================
-   OVERLAY
+   OVERLAY & GLOW
 ===================================================== */
 .page-header__overlay {
   position: absolute;
@@ -66,12 +53,9 @@
     rgba(18, 27, 45, 0.5) 70%,
     rgba(18, 27, 45, 0.2) 100%
   );
-  z-index: 1;
+  z-index: -1;
 }
 
-/* =====================================================
-   GLOW
-===================================================== */
 .page-header__glow {
   position: absolute;
   right: -80px;
@@ -86,7 +70,7 @@
     transparent 70%
   );
   pointer-events: none;
-  z-index: 1;
+  z-index: -1;
   opacity: 0.6;
 }
 
@@ -112,7 +96,7 @@
 ===================================================== */
 .page-header__container {
   position: relative;
-  z-index: 2;
+  z-index: 2; /* Content on top */
   width: 100%;
   padding-top: var(--spacing-3);
 }
@@ -165,6 +149,7 @@
 
 .page-header__breadcrumb-separator {
   color: var(--neutral-medium);
+  margin: 0 4px;
 }
 
 .page-header__breadcrumb-current {
@@ -205,7 +190,7 @@
 }
 
 /* =====================================================
-   DESCRIPTION
+   DESCRIPTION (SUBTITLE)
 ===================================================== */
 .page-header__description {
   color: var(--neutral-light);
@@ -226,37 +211,16 @@
 }
 
 /* =====================================================
-   SMALL MOBILE
+   FADE ANIMATION
 ===================================================== */
-@media screen and (max-width: 480px) {
-  .page-header {
-    height: 30vh;
-    min-height: 240px;
-    padding: var(--spacing-3) 0;
+@keyframes fadeInHeader {
+  from {
+    opacity: 0;
+    transform: scale(1.02);
   }
-
-  .page-header__glow {
-    width: 200px;
-    height: 200px;
-    right: -60px;
-    opacity: 0.5;
-  }
-
-  .page-header__breadcrumb {
-    font-size: 0.65rem;
-    gap: 4px;
-  }
-
-  .page-header__breadcrumb-current {
-    max-width: 120px;
-  }
-
-  .page-header__title {
-    font-size: 1.6rem;
-  }
-
-  .page-header__description {
-    font-size: 0.8rem;
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 
@@ -269,22 +233,11 @@
   will-change: opacity, transform;
 }
 
-/* Prevent layout shift */
-.page-header__bg-wrapper span {
-  display: block !important;
-}
-
-/* =====================================================
-   REDUCED MOTION PREFERENCES
-===================================================== */
+/* Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
-  .page-header,
-  .page-header__bg {
+  .page-header, .page-header__bg {
     animation: none !important;
     transition: none !important;
   }
-  
-  .page-header__bg {
-    opacity: 1 !important;
-  }
+  .page-header__bg { opacity: 1 !important; }
 }

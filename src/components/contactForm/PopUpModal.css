@@ -25,7 +25,7 @@
 .modal-container {
   background: var(--neutral-white);
   width: 100%;
-  max-width: 500px;
+  max-width: 400px;
   border-radius: 32px;
   padding: var(--spacing-6);
   position: relative;
@@ -156,7 +156,7 @@
   width: 100%;
   padding: 14px 18px;
   background: #f8fafc;
-  border: 1px solid rgba(18, 27, 45, 0.1);
+  border: 1px solid rgba(18, 27, 45, 0.2);
   border-radius: 12px;
   font-family: var(--font-family-base);
   font-size: 0.95rem;
@@ -195,35 +195,39 @@
   min-height: 100px;
 }
 
-.modal__error {
-  position: absolute;
-  bottom: -18px;
-  left: 12px;
-  font-size: 0.7rem;
-  color: var(--error-color);
-  font-weight: 500;
-  animation: errorFadeIn 0.2s ease;
-}
-
-@keyframes errorFadeIn {
-  from { opacity: 0; transform: translateY(-5px); }
-  to { opacity: 1; transform: translateY(0); }
+/* Fixed height container for error messages – prevents layout shift */
+.modal__error-container {
+  min-height: 70px;
+  margin-bottom: var(--spacing-2);
 }
 
 .modal__status {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 8px;
   padding: 12px 16px;
   border-radius: 12px;
   font-size: 0.85rem;
   font-weight: 500;
-  margin: var(--spacing-1) 0;
+  margin-bottom: 0;
 }
 
 .modal__status--error {
   background: rgba(230, 57, 70, 0.1);
   color: var(--error-color);
+  border-left: 3px solid var(--error-color);
+}
+
+.modal__error-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.modal__error-list span {
+  font-size: 0.8rem;
+  line-height: 1.4;
 }
 
 .modal__status--success {
@@ -449,9 +453,12 @@
     padding: 14px;
   }
   
-  .modal__error {
-    font-size: 0.65rem;
-    bottom: -16px;
+  .modal__error-container {
+    min-height: 60px;
+  }
+  
+  .modal__error-list span {
+    font-size: 0.75rem;
   }
   
   /* Cooldown state mobile */
@@ -471,24 +478,25 @@
 
 /* ===================================================== 
    DESKTOP - HORIZONTAL LAYOUT (1024px+)
-   Form and header side by side
+   No scroll – content fits naturally
 ===================================================== */
 @media screen and (min-width: 1024px) {
   .modal-container {
-    max-width: 1000px;
-    padding: var(--spacing-6);
-    overflow-y: visible;
+    max-width: 900px;
+    padding: var(--spacing-4);
+    max-height: none;          /* Remove any height restriction */
+    overflow-y: visible;       /* No scroll */
   }
   
   /* Split into two columns */
   .modal__content-wrapper {
     display: grid;
-    grid-template-columns: 0.9fr 1.1fr;
-    gap: var(--spacing-6);
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: var(--spacing-5);
     align-items: start;
   }
   
-  /* Left Column - Header & NFC */
+  /* Left Column - Header & NFC (more compact) */
   .modal__header {
     text-align: left;
     margin-bottom: 0;
@@ -497,63 +505,123 @@
   }
   
   .modal__nfc-visual {
-    margin: 0 0 var(--spacing-4) 0;
-    width: 80px;
-    height: 80px;
+    margin: 0 0 var(--spacing-3) 0;
+    width: 70px;
+    height: 70px;
   }
   
   .modal__icon-box {
-    width: 56px;
-    height: 56px;
+    width: 48px;
+    height: 48px;
   }
   
   .modal__icon-box svg {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .modal__title {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-1);
+  }
+  
+  .modal__subtitle {
+    font-size: 0.85rem;
+    margin-bottom: var(--spacing-3);
+  }
+  
+  /* Right Column - Form (more compact) */
+  .modal__form {
+    gap: var(--spacing-2);
+  }
+  
+  .modal__grid {
+    gap: var(--spacing-2);
+  }
+  
+  .modal__input {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+  }
+  
+  .modal__textarea {
+    padding: 10px 12px;
+    min-height: 80px;
+  }
+  
+  .modal__select {
+    padding: 8px 32px 8px 12px;
+    background-position: right 12px center;
+    background-size: 14px;
+    padding-right: 32px;
+  }
+  
+  .modal__error-container {
+    min-height: 55px;
+    margin-bottom: var(--spacing-1);
+  }
+  
+  .modal__status {
+    padding: 8px 12px;
+    font-size: 0.75rem;
+  }
+  
+  .modal__error-list span {
+    font-size: 0.7rem;
+  }
+  
+  .modal__submit {
+    margin-top: var(--spacing-1);
+    padding: 10px 16px;
+    font-size: 0.85rem;
+  }
+  
+  .modal__footnote {
+    font-size: 0.65rem;
+    margin-top: var(--spacing-1);
+  }
+  
+  /* Adjust close button */
+  .modal__close {
+    top: 15px;
+    right: 15px;
     width: 32px;
     height: 32px;
   }
   
-  .modal__title {
-    font-size: 1.8rem;
+  .modal__close svg {
+    width: 18px;
+    height: 18px;
+  }
+  
+  /* Success & cooldown states */
+  .modal__success-state,
+  .modal__cooldown-state {
+    grid-column: span 2;
+    padding: var(--spacing-4);
+  }
+  
+  .modal__success-state h4,
+  .modal__cooldown-title {
+    font-size: 1.3rem;
+  }
+  
+  .modal__success-state p,
+  .modal__cooldown-text {
+    font-size: 0.85rem;
+  }
+  
+  .modal__cooldown-icon,
+  .modal__success-icon {
+    width: 50px;
+    height: 50px;
     margin-bottom: var(--spacing-2);
   }
   
-  .modal__subtitle {
-    max-width: 100%;
-    margin: 0 0 var(--spacing-4) 0;
-    font-size: 1rem;
-  }
-  
-  /* Right Column - Form */
-  .modal__form {
-    margin-top: 0;
-  }
-  
-  /* Hide mobile bottom sheet animation */
-  .modal-container {
-    animation: modalFadeIn 0.3s ease-out;
-  }
-  
-  /* Adjust close button position */
-  .modal__close {
-    top: 20px;
-    right: 20px;
-  }
-  
-  /* Make form fields slightly more compact */
-  .modal__input {
-    padding: 12px 16px;
-  }
-  
-  /* Success state centered in horizontal layout */
-  .modal__success-state {
-    grid-column: span 2;
-    padding: var(--spacing-6);
-  }
-  
-  /* Cooldown state centered in horizontal layout */
-  .modal__cooldown-state {
-    grid-column: span 2;
-    padding: var(--spacing-6);
+  .modal__cooldown-btn,
+  .modal__success-btn {
+    padding: 8px 20px;
+    font-size: 0.85rem;
   }
 }
 
@@ -562,19 +630,30 @@
 ===================================================== */
 @media screen and (min-width: 1440px) {
   .modal-container {
-    max-width: 1100px;
+    max-width: 1000px;
+    padding: var(--spacing-6);
   }
   
   .modal__content-wrapper {
-    gap: var(--spacing-8);
+    gap: var(--spacing-6);
   }
   
   .modal__title {
-    font-size: 2rem;
+    font-size: 1.75rem;
   }
   
   .modal__subtitle {
-    font-size: 1.1rem;
+    font-size: 0.95rem;
+  }
+  
+  .modal__input {
+    padding: 10px 14px;
+    font-size: 0.9rem;
+  }
+  
+  .modal__submit {
+    padding: 12px 18px;
+    font-size: 0.9rem;
   }
 }
 
@@ -610,6 +689,10 @@
   .modal__footnote {
     font-size: 0.65rem;
     flex-wrap: wrap;
+  }
+  
+  .modal__error-container {
+    min-height: 55px;
   }
   
   /* Cooldown state small mobile */

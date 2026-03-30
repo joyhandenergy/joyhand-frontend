@@ -10,7 +10,7 @@ export default function BlogPage() {
       <PageHeader 
         title="Manufacturing & Industry Insights"
         subtitle="Expert knowledge for energy professionals."
-        pageImage="/images/pageHeadImg/pageheader-blog.jpg"  // update to a factory or lab image
+        pageImage="/pageHeadImg/pageheader-blog.jpg"  // update to a factory or lab image
       />
       
       <section className="blog-section">

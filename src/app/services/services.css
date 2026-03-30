@@ -40,6 +40,8 @@
   border-left: 3px solid var(--primary-color); /* Thinner on mobile */
   padding-left: var(--spacing-3);
   margin-top: 0;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 @media screen and (min-width: 768px) {
@@ -220,6 +222,8 @@
   line-height: 1.6;
   margin-bottom: var(--spacing-4);
   font-size: 0.9rem; /* Smaller on mobile */
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 @media screen and (min-width: 768px) {
@@ -368,6 +372,7 @@
   font-size: 0.8rem; /* Smaller on mobile */
   line-height: 1.5;
   margin-bottom: 0;
+  
 }
 
 @media screen and (min-width: 768px) {
@@ -564,6 +569,7 @@
   font-size: 0.8rem; /* Smaller on mobile */
   line-height: 1.5;
   margin-bottom: 0;
+  
 }
 
 @media screen and (min-width: 768px) {

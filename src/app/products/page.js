@@ -27,7 +27,7 @@ function ProductsContent() {
       <PageHeader 
         title="Products We Manufacture"
         subtitle="LFP batteries, solar inverters, portable power & e‑mobility."
-        pageImage="/images/pageHeadImg/pageheader-products.jpg"  // update to a factory or product assembly image
+        pageImage="/pageHeadImg/pageheader-products.jpg"  // update to a factory or product assembly image
       />
 
       <section className="products-page__section">

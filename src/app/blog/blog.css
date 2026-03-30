@@ -71,6 +71,7 @@
   display: flex;
   flex-direction: column;
   flex: 1;
+  
 }
 
 @media screen and (min-width: 768px) {
@@ -146,6 +147,8 @@
   overflow: hidden;
   max-height: 2.8em; /* 2 lines * 1.4 line-height */
   flex: 1;
+  text-align: justify;
+  text-justify: inter-word
 }
 
 @media screen and (min-width: 768px) {
@@ -345,6 +348,8 @@
   line-height: 1.7;
   margin-bottom: var(--spacing-4);
   color: var(--neutral-dark);
+  text-align: justify;
+  text-justify: inter-word
 }
 
 @media screen and (min-width: 768px) {

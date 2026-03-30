@@ -42,6 +42,8 @@
   line-height: 1.6;
   color: var(--neutral-medium);
   margin-bottom: var(--spacing-3);
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 @media screen and (min-width: 768px) {
@@ -803,6 +805,8 @@
   margin-bottom: var(--spacing-3);
   font-size: 0.95rem;
   line-height: 1.6;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 @media screen and (min-width: 768px) {
@@ -984,6 +988,7 @@
   opacity: 0.5;
   margin-bottom: var(--spacing-1);
   font-family: serif;
+  
 }
 
 @media screen and (min-width: 768px) {
@@ -999,6 +1004,8 @@
   margin-bottom: var(--spacing-4);
   font-style: italic;
   color: rgba(255, 255, 255, 0.9);
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 @media screen and (min-width: 768px) {

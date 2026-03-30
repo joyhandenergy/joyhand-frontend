@@ -71,12 +71,11 @@ const PopUpModal = ({ isOpen, onClose, mode = "quote" }) => {
     return !error;
   }, []);
 
-  // Check for existing submissions from this email (local storage based)
   const checkSubmissionCooldown = (email) => {
     const lastSubmission = localStorage.getItem(`lastSubmission_${email}`);
     if (lastSubmission) {
       const timeSinceLast = Date.now() - parseInt(lastSubmission);
-      const cooldownMinutes = 5; // 5 minutes cooldown
+      const cooldownMinutes = 5;
       if (timeSinceLast < cooldownMinutes * 60 * 1000) {
         const remainingMinutes = Math.ceil((cooldownMinutes * 60 * 1000 - timeSinceLast) / 60000);
         setCooldownTimer(remainingMinutes);
@@ -160,7 +159,6 @@ const PopUpModal = ({ isOpen, onClose, mode = "quote" }) => {
       return;
     }
 
-    // Check cooldown
     if (checkSubmissionCooldown(formData.email)) {
       setStatus("cooldown");
       return;
@@ -169,7 +167,6 @@ const PopUpModal = ({ isOpen, onClose, mode = "quote" }) => {
     setStatus("loading");
 
     try {
-      // Prepare form data for Web3Forms
       const web3FormData = new FormData();
       web3FormData.append("access_key", "3301949a-20bb-40e5-a650-7845eb68a24f");
       web3FormData.append("name", `${formData.firstName} ${formData.lastName}`);
@@ -177,9 +174,7 @@ const PopUpModal = ({ isOpen, onClose, mode = "quote" }) => {
       web3FormData.append("message", formData.message);
       web3FormData.append("company_name", formData.companyName || "Not provided");
       web3FormData.append("order_volume", formData.orderVolume || "Not specified");
-      web3FormData.append("inquiry_type", isQuote ? "Quote Request" : "Technical Consultation");
-      
-      // Optional: Add honeypot for spam protection
+      web3FormData.append("inquiry_type", isQuote ? "Manufacturing Quote Request" : "Technical Consultation");
       web3FormData.append("botcheck", "");
 
       const response = await fetch("https://api.web3forms.com/submit", {
@@ -190,11 +185,8 @@ const PopUpModal = ({ isOpen, onClose, mode = "quote" }) => {
       const data = await response.json();
 
       if (data.success) {
-        // Store submission timestamp for cooldown
         localStorage.setItem(`lastSubmission_${formData.email}`, Date.now().toString());
         setStatus("success");
-        
-        // Reset form after success
         setTimeout(() => {
           handleClose();
         }, 3000);
@@ -216,6 +208,8 @@ const PopUpModal = ({ isOpen, onClose, mode = "quote" }) => {
     { value: "5000+", label: "5,000+ units (Volume Pricing)" },
   ];
 
+  const errorMessages = Object.values(errors).filter(Boolean);
+
   return (
     <div className="modal-overlay" onClick={handleClose}>
       <div className="modal-container" onClick={(e) => e.stopPropagation()}>
@@ -233,7 +227,7 @@ const PopUpModal = ({ isOpen, onClose, mode = "quote" }) => {
             <h4 className="modal__success-title">Request Received!</h4>
             <p className="modal__success-text">
               {isQuote
-                ? "Thank you! Our sourcing team will review your request and contact you within 24 hours."
+                ? "Thank you! Our manufacturing team will review your request and contact you within 24 hours."
                 : "Thank you! A technical specialist will contact you within 24 hours."}
             </p>
             <button
@@ -259,7 +253,6 @@ const PopUpModal = ({ isOpen, onClose, mode = "quote" }) => {
           </div>
         ) : (
           <div className="modal__content-wrapper">
-            {/* Header Section */}
             <header className="modal__header">
               <div className="modal__nfc-visual">
                 <div className="modal__nfc-ring"></div>
@@ -273,33 +266,43 @@ const PopUpModal = ({ isOpen, onClose, mode = "quote" }) => {
               </div>
 
               <h3 className="modal__title">
-                {isQuote ? "Request OEM / ODM Quote" : "Technical Consultation"}
+                {isQuote ? "Request Manufacturing Quote" : "Technical Consultation"}
               </h3>
 
               <p className="modal__subtitle">
                 {isQuote
-                  ? "Tell us about your requirements. We'll connect you with vetted manufacturing partners."
+                  ? "Tell us about your requirements. Our engineering team will prepare a manufacturing proposal."
                   : "Have technical questions? Our engineering team is ready to help."}
               </p>
             </header>
 
-            {/* Form Section */}
             <form className="modal__form" onSubmit={handleSubmit}>
+              {/* Fixed height container for error messages */}
+              <div className="modal__error-container">
+                {status === "error" && errorMessages.length > 0 && (
+                  <div className="modal__status modal__status--error">
+                    <PiWarningCircleFill size={18} />
+                    <div className="modal__error-list">
+                      {errorMessages.map((msg, idx) => (
+                        <span key={idx}>{msg}</span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+
               <div className="modal__grid">
                 <div className="modal__field">
                   <input
                     name="firstName"
                     placeholder="First Name *"
                     className={`modal__input ${
-                      touched.firstName && errors.firstName ? "modal__input--error" : ""
+                      errors.firstName ? "modal__input--error" : ""
                     }`}
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={formData.firstName}
                   />
-                  {touched.firstName && errors.firstName && (
-                    <span className="modal__error">{errors.firstName}</span>
-                  )}
                 </div>
 
                 <div className="modal__field">
@@ -307,15 +310,12 @@ const PopUpModal = ({ isOpen, onClose, mode = "quote" }) => {
                     name="lastName"
                     placeholder="Last Name *"
                     className={`modal__input ${
-                      touched.lastName && errors.lastName ? "modal__input--error" : ""
+                      errors.lastName ? "modal__input--error" : ""
                     }`}
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={formData.lastName}
                   />
-                  {touched.lastName && errors.lastName && (
-                    <span className="modal__error">{errors.lastName}</span>
-                  )}
                 </div>
               </div>
 
@@ -325,15 +325,12 @@ const PopUpModal = ({ isOpen, onClose, mode = "quote" }) => {
                   name="email"
                   placeholder="Business Email *"
                   className={`modal__input ${
-                    touched.email && errors.email ? "modal__input--error" : ""
+                    errors.email ? "modal__input--error" : ""
                   }`}
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={formData.email}
                 />
-                {touched.email && errors.email && (
-                  <span className="modal__error">{errors.email}</span>
-                )}
               </div>
 
               <div className="modal__grid">
@@ -342,15 +339,12 @@ const PopUpModal = ({ isOpen, onClose, mode = "quote" }) => {
                     name="companyName"
                     placeholder={isQuote ? "Company Name *" : "Company Name (Optional)"}
                     className={`modal__input ${
-                      touched.companyName && errors.companyName ? "modal__input--error" : ""
+                      errors.companyName ? "modal__input--error" : ""
                     }`}
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={formData.companyName}
                   />
-                  {touched.companyName && errors.companyName && (
-                    <span className="modal__error">{errors.companyName}</span>
-                  )}
                 </div>
 
                 <div className="modal__field">
@@ -360,7 +354,7 @@ const PopUpModal = ({ isOpen, onClose, mode = "quote" }) => {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     className={`modal__input modal__select ${
-                      touched.orderVolume && errors.orderVolume ? "modal__input--error" : ""
+                      errors.orderVolume ? "modal__input--error" : ""
                     }`}
                   >
                     {volumeOptions.map((option) => (
@@ -369,9 +363,6 @@ const PopUpModal = ({ isOpen, onClose, mode = "quote" }) => {
                       </option>
                     ))}
                   </select>
-                  {touched.orderVolume && errors.orderVolume && (
-                    <span className="modal__error">{errors.orderVolume}</span>
-                  )}
                 </div>
               </div>
 
@@ -385,23 +376,13 @@ const PopUpModal = ({ isOpen, onClose, mode = "quote" }) => {
                       : "Tell us about your project or questions... *"
                   }
                   className={`modal__input modal__textarea ${
-                    touched.message && errors.message ? "modal__input--error" : ""
+                    errors.message ? "modal__input--error" : ""
                   }`}
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={formData.message}
                 />
-                {touched.message && errors.message && (
-                  <span className="modal__error">{errors.message}</span>
-                )}
               </div>
-
-              {status === "error" && (
-                <div className="modal__status modal__status--error">
-                  <PiWarningCircleFill size={18} />
-                  <span>Please correct the highlighted fields and try again.</span>
-                </div>
-              )}
 
               <button
                 type="submit"

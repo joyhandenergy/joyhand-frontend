@@ -27,7 +27,7 @@ const links = [
       { name: "Electric Mobility", href: "/products/solutions/electric-mobility" }
     ]
   },
-  { name: "Manufacturing", href: "/services" }, // renamed
+  { name: "Manufacturing", href: "/services" },
   { name: "Contact Us", href: "/contact_Us" },
   { name: "Blog", href: "/blog" }
 ];
@@ -37,16 +37,47 @@ export default function Header() {
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isHeaderHidden, setIsHeaderHidden] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
   
   const pathName = usePathname();
 
+  // Scroll animation (hide on scroll down, show on scroll up)
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      const currentScrollY = window.scrollY;
+      const scrollThreshold = 10; // small threshold to avoid flicker at very top
+
+      setScrolled(currentScrollY > 50);
+
+      if (currentScrollY > scrollThreshold && currentScrollY > lastScrollY) {
+        // scrolling down – hide header
+        setIsHeaderHidden(true);
+      } else if (currentScrollY < lastScrollY) {
+        // scrolling up – show header
+        setIsHeaderHidden(false);
+      } else if (currentScrollY <= scrollThreshold) {
+        // at the top – always show
+        setIsHeaderHidden(false);
+      }
+      setLastScrollY(currentScrollY);
     };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+
+    // Use requestAnimationFrame for smoother updates
+    let ticking = false;
+    const onScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [lastScrollY]);
 
   const closeMenu = () => {
     setIsMenuOpen(false);
@@ -83,12 +114,11 @@ export default function Header() {
 
   return (
     <>
-      <header className={`header ${scrolled ? "header--scrolled" : ""}`}>
+      <header className={`header ${scrolled ? "header--scrolled" : ""} ${isHeaderHidden ? "header--hidden" : ""}`}>
         
         {/* TOP BAR - Desktop only */}
         <div className="header__top">
           <div className="container header__top-container">
-            {/* ISO Trust Badge (added) */}
             <div className="header__trust-badge">
               <span className="header__trust-badge-text">ISO 9001:2025 Certified</span>
             </div>
@@ -110,7 +140,6 @@ export default function Header() {
         <div className="header__main">
           <div className="container header__main-container">
             
-            {/* LOGO */}
             <Link 
               href="/" 
               className="header__logo" 
@@ -127,7 +156,6 @@ export default function Header() {
               />
             </Link>
 
-            {/* DESKTOP NAV (992px+) */}
             <nav className="header__nav" aria-label="Desktop navigation">
               {links.map((link, idx) => (
                 <div key={idx} className="header__nav-item">
@@ -159,7 +187,6 @@ export default function Header() {
               ))}
             </nav>
 
-            {/* ACTIONS */}
             <div className="header__actions">
               <button
                 className="btn btn--outline header__cta-desktop"
@@ -242,7 +269,6 @@ export default function Header() {
               </div>
             ))}
 
-            {/* Mobile Contact Info */}
             <div className="header__mobile-contact">
               <a href="tel:+8613060850617" className="header__mobile-contact-item">
                 <PiPhone size={18} />
