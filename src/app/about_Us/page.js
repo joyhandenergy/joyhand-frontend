@@ -127,13 +127,13 @@ export default function AboutPage() {
       quote: "Working directly with JoyHand's engineering team allowed us to customize the BMS for our specific climate. Their manufacturing transparency is a massive competitive advantage.",
       author: "Ahmed Ibrahim",
       company: "GreenTech Distributors, Nigeria",
-      image: "/images/abtImg/testimonial1.jpg"
+      image: "/aboutImg/aboutTestimonial1g.jpg"
     },
     {
       quote: "The build quality of their factory-direct LFP packs is significantly higher than the generic units we sourced before. Their QC protocols saved us from field failures.",
       author: "Carlos Mendez",
       company: "SolEnergy Latin America",
-      image: "/images/abtImg/testimonial2.jpg"
+      image: "/aboutImg/aboutTestimonial2.jpg"
     }
   ];
 
