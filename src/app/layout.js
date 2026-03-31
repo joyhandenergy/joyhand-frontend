@@ -3,7 +3,7 @@ import Footer from "@/components/footer/Footer";
 import Header from "@/components/header/Header";
 import ScrollToTop from "@/components/scrollTotop/ScrollToTop";
 import PageLoader from "@/components/pageLoader/PageLoader";
-import CookieConsent from "@/components/CookieConsent/CookieConsent"; // Import the component
+import CookieConsent from "@/components/cookieConsent/CookieConsent";
 
 // SEO Metadata - Currently set to private as requested
 export const metadata = {
