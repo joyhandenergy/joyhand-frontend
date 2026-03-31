@@ -17,6 +17,7 @@ import SectionHeader from "@/components/sectionHeader/SectionHeader";
 import SectionDecor from "@/components/sectionDecor/SectionDecor";
 import Link from "next/link";
 import "./services.css";
+import SuperRing from "@/components/superRing/SuperRing";
 
 export default function ServicesPage() {
   const services = [
@@ -140,6 +141,39 @@ export default function ServicesPage() {
 
       {/* ================= SERVICE CARDS ================= */}
       <section className="services-grid">
+          
+          
+            {/* Decorative rings */}
+          <SuperRing
+            type="primary"
+            size="1400px"
+            thickness="40px"
+            top="50%"
+            left="50%"
+            translateX="-50%"
+            translateY="-50%"
+            opacity={0.06}
+          />
+          <SuperRing
+            type="secondary"
+            size="900px"
+            thickness="40px"
+            top="15%"
+            left="70%"
+            translateX="-50%"
+            translateY="-50%"
+            opacity={0.05}
+          />
+          <SuperRing
+            type="accent"
+            size="900px"
+            thickness="40px"
+            top="85%"
+            left="30%"
+            translateX="-50%"
+            translateY="-50%"
+            opacity={0.05}
+          />
         <div className="container">
           <div className="services-grid__wrapper">
             {services.map((service, idx) => (
@@ -168,6 +202,7 @@ export default function ServicesPage() {
 
       {/* ================= QUALITY CONTROL PROTOCOLS ================= */}
       <section className="qc-protocols">
+          <SectionDecor type="primary" count={4} />
         <div className="container">
           <SectionHeader 
             badge="Our Quality Standards" 
@@ -222,6 +257,7 @@ export default function ServicesPage() {
 
       {/* ================= OUR MANUFACTURING PROCESS ================= */}
       <section className="sourcing-process">
+        <SectionDecor type="accent" count={8} />
         <div className="container">
           <SectionHeader 
             badge="How We Work" 

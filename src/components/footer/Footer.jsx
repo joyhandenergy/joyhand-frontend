@@ -95,10 +95,10 @@ export default function Footer() {
         <div className="footer__column">
           <h4 className="footer__title">Company</h4>
           <ul className="footer__list">
-            <li><Link href="/about" className="footer__link">About Us</Link></li>
-            <li><Link href="/manufacturing" className="footer__link">Manufacturing Capabilities</Link></li>
+            <li><Link href="/about-us" className="footer__link">About Us</Link></li>
+            <li><Link href="services" className="footer__link">Manufacturing Capabilities</Link></li>
             <li><Link href="/blog" className="footer__link">Industry Insights</Link></li>
-            <li><Link href="/contact" className="footer__link">Contact Us</Link></li>
+            <li><Link href="/contact-us" className="footer__link">Contact Us</Link></li>
           </ul>
         </div>
 

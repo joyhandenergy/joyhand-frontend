@@ -113,6 +113,9 @@ const InnovationShowcase = () => {
               className="innovation-card"
               style={{ '--delay': `${index * 0.1}s` }}
             >
+              {/* Side ring div */}
+              <div className="innovation-card__ring"></div>
+
               <div className="innovation-card__main">
                 <div className="innovation-card__icon">{item.icon}</div>
                 <h3 className="innovation-card__title">{item.title}</h3>

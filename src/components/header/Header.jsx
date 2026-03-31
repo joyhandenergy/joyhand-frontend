@@ -16,7 +16,7 @@ import PopUpModal from "../contactForm/PopUpModal";
 import "./Header.css";
 
 const links = [
-  { name: "About Us", href: "/about_Us" },
+  { name: "About Us", href: "/about-us" },
   {
     name: "Products",
     href: "/products",
@@ -28,7 +28,7 @@ const links = [
     ]
   },
   { name: "Manufacturing", href: "/services" },
-  { name: "Contact Us", href: "/contact_Us" },
+  { name: "Contact Us", href: "/contact-us" },
   { name: "Blog", href: "/blog" }
 ];
 
