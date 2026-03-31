@@ -1,18 +1,16 @@
 /* =====================================================
-   COOKIE CONSENT BANNER - JoyHand Branded
+   COOKIE BANNER - Simple & Professional
 ===================================================== */
 .cookie-banner {
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(18, 27, 45, 0.95);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: rgba(18, 27, 45, 0.96);
+  backdrop-filter: blur(12px);
+  z-index: 1100;
   padding: 1rem;
-  z-index: 9999;
-  font-family: var(--font-family-base, system-ui, sans-serif);
-  border-top: 1px solid rgba(255, 127, 65, 0.3);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   animation: slideUp 0.3s ease-out;
 }
 
@@ -25,8 +23,8 @@
   }
 }
 
-.cookie-banner-content {
-  max-width: 1400px;
+.cookie-banner__inner {
+  max-width: 1200px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -36,7 +34,7 @@
 }
 
 @media (min-width: 768px) {
-  .cookie-banner-content {
+  .cookie-banner__inner {
     flex-direction: row;
     justify-content: space-between;
     text-align: left;
@@ -44,87 +42,83 @@
   }
 }
 
-.cookie-text {
-  color: rgba(255, 255, 255, 0.9);
+.cookie-banner__text {
   font-size: 0.85rem;
   margin: 0;
+  color: rgba(255, 255, 255, 0.9);
   line-height: 1.5;
 }
 
 @media (min-width: 768px) {
-  .cookie-text {
+  .cookie-banner__text {
     font-size: 0.9rem;
     flex: 1;
   }
 }
 
-.cookie-buttons {
+.cookie-banner__actions {
   display: flex;
-  gap: 1rem;
   align-items: center;
+  gap: 1rem;
   flex-shrink: 0;
 }
 
-.cookie-link {
-  color: var(--primary-color-light, #ffad85);
+.cookie-banner__link {
+  color: #ffad85;
   font-size: 0.85rem;
   text-decoration: none;
-  transition: all 0.2s ease;
+  transition: color 0.2s;
   border-bottom: 1px solid transparent;
 }
 
-.cookie-link:hover {
+.cookie-banner__link:hover {
   color: white;
-  border-bottom-color: var(--primary-color, #ff7f41);
+  border-bottom-color: #ff7f41;
 }
 
-.cookie-button {
-  background: var(--primary-color, #ff7f41);
+.cookie-banner__button {
+  background: #ff7f41;
   border: none;
   color: white;
   padding: 0.5rem 1.5rem;
-  border-radius: 100px;
+  border-radius: 50px;
   font-size: 0.85rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.2s;
   box-shadow: 0 2px 8px rgba(255, 127, 65, 0.3);
 }
 
-.cookie-button:hover {
-  background: var(--primary-color-dark, #cc6534);
+.cookie-banner__button:hover {
+  background: #cc6534;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(255, 127, 65, 0.4);
 }
 
-/* =====================================================
-   SMALL MOBILE (≤480px)
-===================================================== */
+/* Small mobile */
 @media (max-width: 480px) {
   .cookie-banner {
     padding: 0.75rem;
   }
-  .cookie-text {
+  .cookie-banner__text {
     font-size: 0.75rem;
   }
-  .cookie-link,
-  .cookie-button {
+  .cookie-banner__link,
+  .cookie-banner__button {
     font-size: 0.75rem;
   }
-  .cookie-button {
+  .cookie-banner__button {
     padding: 0.4rem 1.2rem;
   }
 }
 
-/* =====================================================
-   REDUCED MOTION
-===================================================== */
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .cookie-banner {
     animation: none;
     transform: translateY(0);
   }
-  .cookie-button:hover {
+  .cookie-banner__button:hover {
     transform: none;
   }
 }
