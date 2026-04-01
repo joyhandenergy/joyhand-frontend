@@ -10,8 +10,8 @@
   left: 0;
   z-index: var(--z-sticky);
   box-shadow: var(--shadow-sm);
-  transition: transform 0.2s ease;  /* faster animation */
-  will-change: transform;
+  transition: background-color 0.2s ease, backdrop-filter 0.2s ease;
+  will-change: background-color, backdrop-filter;
 }
 
 /* Glassmorphism scroll state */
@@ -20,11 +20,6 @@
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   box-shadow: var(--shadow-md);
-}
-
-/* Scroll‑away state */
-.header--hidden {
-  transform: translateY(-100%);
 }
 
 /* =====================================================
@@ -577,7 +572,7 @@ ul, li {
    PERFORMANCE
 ===================================================== */
 .header {
-  will-change: transform, backdrop-filter;
+  will-change: background-color, backdrop-filter;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -591,9 +586,4 @@ ul, li {
     transition: none !important;
     animation: none !important;
   }
-  
-  .header--hidden {
-    transform: none;
-  }
 }
-  

@@ -37,47 +37,17 @@ export default function Header() {
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [isHeaderHidden, setIsHeaderHidden] = useState(false);
-  const [lastScrollY, setLastScrollY] = useState(0);
   
   const pathName = usePathname();
 
-  // Scroll animation (hide on scroll down, show on scroll up)
+  // Scroll effect for glassmorphism only
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      const scrollThreshold = 10; // small threshold to avoid flicker at very top
-
-      setScrolled(currentScrollY > 50);
-
-      if (currentScrollY > scrollThreshold && currentScrollY > lastScrollY) {
-        // scrolling down – hide header
-        setIsHeaderHidden(true);
-      } else if (currentScrollY < lastScrollY) {
-        // scrolling up – show header
-        setIsHeaderHidden(false);
-      } else if (currentScrollY <= scrollThreshold) {
-        // at the top – always show
-        setIsHeaderHidden(false);
-      }
-      setLastScrollY(currentScrollY);
+      setScrolled(window.scrollY > 50);
     };
-
-    // Use requestAnimationFrame for smoother updates
-    let ticking = false;
-    const onScroll = () => {
-      if (!ticking) {
-        requestAnimationFrame(() => {
-          handleScroll();
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [lastScrollY]);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const closeMenu = () => {
     setIsMenuOpen(false);
@@ -114,7 +84,7 @@ export default function Header() {
 
   return (
     <>
-      <header className={`header ${scrolled ? "header--scrolled" : ""} ${isHeaderHidden ? "header--hidden" : ""}`}>
+      <header className={`header ${scrolled ? "header--scrolled" : ""}`}>
         
         {/* TOP BAR - Desktop only */}
         <div className="header__top">
