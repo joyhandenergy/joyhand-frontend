@@ -19,8 +19,8 @@
   scrollbar-width: none;
   padding: 4px 0 20px;
   cursor: grab;
+  scroll-behavior: smooth; /* ✅ essential for smooth auto-slide */
 }
-
 .home-blog__track::-webkit-scrollbar {
   display: none;
 }
