@@ -1,10 +1,7 @@
 import { notFound } from "next/navigation";
-import Image from "next/image";
 import Link from "next/link";
 import { 
   PiArrowLeft, 
-  PiFileText, 
-  PiChatCenteredDots, 
   PiBatteryHigh, 
   PiLightning,
   PiMotorcycle, 
@@ -13,20 +10,10 @@ import {
 import { productData } from "@/data";
 import ProductGallery from "./ProductGallery";
 import ProductVideo from "./ProductVideo";
+import ProductActions from "./ProductActions";
 import "../Products.css";
 
-export async function generateMetadata({ params }) {
-  // ✅ await params (it's a Promise)
-  const { slug } = await params;
-  const product = productData.find(p => p.slug === slug);
-  if (!product) return { title: "Product Not Found" };
-  return {
-    title: `${product.name} ${product.model} | JoyHand Energy Solutions`,
-    description: product.description,
-  };
-}
-
-// Helper functions (same as before)
+// Helper functions
 function getCategoryIcon(category) {
   switch(category) {
     case "battery": return <PiBatteryHigh size={16} />;
@@ -207,18 +194,23 @@ function ProductWarranty({ warranty }) {
   );
 }
 
-// ✅ CORRECT: async component + await params
-export default async function ProductDetailsPage({ params }) {
-  // ✅ MUST await params in Next.js App Router
+// Server component with metadata
+export async function generateMetadata({ params }) {
   const { slug } = await params;
-  
-  // Debug: log to see if slug is correct (remove in production)
-  console.log("Looking for product with slug:", slug);
-  
+  const product = productData.find(p => p.slug === slug);
+  if (!product) return { title: "Product Not Found" };
+  return {
+    title: `${product.name} ${product.model} | JoyHand Energy Solutions`,
+    description: product.description,
+  };
+}
+
+// Main server component
+export default async function ProductDetailsPage({ params }) {
+  const { slug } = await params;
   const product = productData.find(p => p.slug === slug);
   
   if (!product) {
-    console.log("Product not found for slug:", slug);
     notFound();
   }
 
@@ -226,8 +218,6 @@ export default async function ProductDetailsPage({ params }) {
   const categoryDisplay = getCategoryDisplay(product.category);
   const categoryIcon = getCategoryIcon(product.category);
   const typeDisplay = getTypeDisplay(product.type);
-  
-  // ✅ Use the youtubeVideoId from product data
   const videoId = product.youtubeVideoId || null;
 
   return (
@@ -238,18 +228,15 @@ export default async function ProductDetailsPage({ params }) {
         </Link>
 
         <div className="product-details__grid">
-          {/* Gallery Section */}
           <section className="product-details__gallery">
             <ProductGallery images={images} productName={product.name} />
-            {/* ✅ Pass videoId and productName */}
             <ProductVideo videoId={videoId} productName={product.name} />
           </section>
 
-          {/* Info Section */}
           <section className="product-details__info">
             <div className="product-details__meta">
               <span className="product-details__badge">
-                {getCategoryIcon(product.category)} {getCategoryDisplay(product.category)}
+                {categoryIcon} {categoryDisplay}
               </span>
               <span className="product-details__type">{typeDisplay}</span>
               {product.model && (
@@ -269,14 +256,8 @@ export default async function ProductDetailsPage({ params }) {
               <ProductWarranty warranty={product.warranty} />
             </div>
 
-            <div className="product-details__actions">
-              <button className="btn btn--primary product-details__cta">
-                <PiFileText size={20} /> Request Datasheet
-              </button>
-              <button className="btn btn--secondary product-details__cta">
-                <PiChatCenteredDots size={20} /> Bulk Inquiry
-              </button>
-            </div>
+            {/* Client component for interactive buttons */}
+            <ProductActions category={product.category} />
           </section>
         </div>
       </div>

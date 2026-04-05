@@ -1286,7 +1286,7 @@ export const productData = [
 {
   id: "em-005",
   slug: "youqo-14-inch-scooter-650w",
-  name: "YOUQO 14-Inch Electric Scooter",
+  name: "14-Inch Electric Scooter",
   model: "YOUQO-14",
   category: "electric-mobility",
   type: "scooter",
@@ -1295,7 +1295,7 @@ export const productData = [
     modelNo: "YOUQO-14",
     topSpeed: "45 – 50 km/h",
     maxRange: "60 – 80 km",
-    motor: "650W high-torque brushless hub motor (24×2.0 magnet)",
+    motor: "650W  hub motor",
     battery: "72V 20Ah lead-acid (6 x 12V 20Ah)",
     controller: "Heavy-duty 12-tube controller",
     braking: "Dual hydraulic disc brakes (front & rear)",
