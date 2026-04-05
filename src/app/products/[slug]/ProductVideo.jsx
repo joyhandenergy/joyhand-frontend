@@ -2,12 +2,34 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { PiPlayCircle } from "react-icons/pi";
+import Link from "next/link";
+import { PiPlayCircle, PiYoutubeLogo, PiArrowRight } from "react-icons/pi";
 
-export default function ProductVideo({ videoId }) {
+export default function ProductVideo({ videoId, productName = "this product" }) {
   const [isPlaying, setIsPlaying] = useState(false);
 
-  if (!videoId) return null;
+  // If no video ID provided, show a fallback CTA
+  if (!videoId) {
+    return (
+      <div className="product-details__video-fallback">
+        <div className="product-details__video-fallback-content">
+          <PiYoutubeLogo size={48} className="product-details__video-fallback-icon" />
+          <h4 className="product-details__video-fallback-title">Video Coming Soon</h4>
+          <p className="product-details__video-fallback-text">
+            We are preparing a detailed walkthrough for {productName}.
+          </p>
+          <Link
+            href="https://www.youtube.com/@JoyHandEnergy"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="product-details__video-fallback-link"
+          >
+            Watch other product videos <PiArrowRight />
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
   const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
 
@@ -20,7 +42,7 @@ export default function ProductVideo({ videoId }) {
         >
           <Image
             src={thumbnailUrl}
-            alt="Product video thumbnail"
+            alt={`${productName} video thumbnail`}
             fill
             className="product-details__video-thumb-img"
             unoptimized
@@ -33,7 +55,7 @@ export default function ProductVideo({ videoId }) {
         <div className="product-details__video-embed">
           <iframe
             src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
-            title="Product video"
+            title={`${productName} product video`}
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen

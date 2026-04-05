@@ -256,7 +256,7 @@
    FORM BODY
 ===================================================== */
 .form-terminal__body {
-  padding: var(--spacing-4);
+  padding: var(--spacing-2);
   background: var(--secondary-color);
   width: 100%;
 }

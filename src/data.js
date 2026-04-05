@@ -568,15 +568,17 @@ export const productData = [
       "UPS applications",
       "Peak shaving"
     ],
-    image: "/images/productImg/battery1.jpg",
+    image: "/productImg/s-battery/solarbattery01.jpg",
     gallery: [
-      "/images/products/batteries/wall-mounted-200ah-1.jpg",
-      "/images/products/batteries/wall-mounted-200ah-2.jpg"
+      "/productImg/s-battery/solarbattery01a.jpg",
+      "/productImg/s-battery/solarbattery01b.jpg",
+      "/productImg/s-battery/solarbattery01.jpg",
     ],
     datasheet: "/datasheets/51.2V200AH.pdf",
     certifications: ["CE", "UL", "IEC", "UN38.3"],
     warranty: "5 years",
-    inStock: true
+    inStock: true,
+    youtubeVideoId: null
   },
 
   {
@@ -614,16 +616,75 @@ export const productData = [
       "Large solar installations",
       "Industrial backup power"
     ],
-    image: "/images/productImg/battery2.jpg",
-    gallery: [],
+    image: "/productImg/s-battery/solarbattery2.jpg",
+    gallery: [
+
+      "/productImg/s-battery/solarbattery02a.jpg",
+      "/productImg/s-battery/solarbattery02b.jpg",
+      "/productImg/s-battery/solarbattery02c.jpg",
+      "/productImg/s-battery/solarbattery2.jpg",
+
+    ],
     datasheet: "/datasheets/51.2V300AH.pdf",
     certifications: ["CE", "IEC"],
     warranty: "5 years",
-    inStock: true
+    inStock: true,
+    youtubeVideoId: null
   },
 
   {
     id: "bat-003",
+    slug: "mobile-battery-pack-51-2v-400ah-ls",
+    name: "Mobile Battery Pack",
+    model: "51.2V400AH-LS",
+    category: "battery",
+    type: "mobile",
+    description: "20kW wheeled battery pack with smart BMS and WiFi/Bluetooth monitoring.",
+    specifications: {
+      nominalVoltage: "51.2V",
+      capacity: "400Ah",
+      energy: "20.48kWh",
+      bms: "16S 200A with WiFi/Bluetooth touch screen",
+      cellType: "LFP 3.2V400AH",
+      dimensions: "670 × 300 × 800mm",
+      weight: "133kg",
+      grossWeight: "150kg",
+      chargeCurrent: "200A",
+      dischargeCurrent: "200A",
+      cycleLife: "6000+ cycles"
+    },
+    features: [
+      "Mobile design with heavy-duty wheels",
+      "Smart BMS with touchscreen display",
+      "WiFi & Bluetooth monitoring via mobile app",
+      "Ultra high capacity",
+      "Industrial grade construction"
+    ],
+    applications: [
+      "Large mobile power stations",
+      "Event power supply",
+      "Remote construction sites",
+      "Emergency response"
+    ],
+    image: "/productImg/s-battery/solarbattery03.jpg",
+    gallery: [
+
+      "/productImg/s-battery/solarbattery03a.jpg",
+      "/productImg/s-battery/solarbattery03b.jpg",
+
+
+
+    ],
+    datasheet: "/datasheets/51.2V400AH-LS.pdf",
+    certifications: ["CE"],
+    warranty: "3 years",
+    inStock: true,
+    youtubeVideoId: null
+  },
+
+
+  {
+    id: "bat-004",
     slug: "mobile-battery-pack-51-2v-314ah",
     name: "Mobile Battery Pack",
     model: "51.2V314AH",
@@ -663,50 +724,11 @@ export const productData = [
     datasheet: "/datasheets/51.2V314AH.pdf",
     certifications: ["CE", "UN38.3"],
     warranty: "3 years",
-    inStock: true
+    inStock: true,
+    youtubeVideoId: null
   },
 
-  {
-    id: "bat-004",
-    slug: "mobile-battery-pack-51-2v-400ah-ls",
-    name: "Mobile Battery Pack",
-    model: "51.2V400AH-LS",
-    category: "battery",
-    type: "mobile",
-    description: "20kW wheeled battery pack with smart BMS and WiFi/Bluetooth monitoring.",
-    specifications: {
-      nominalVoltage: "51.2V",
-      capacity: "400Ah",
-      energy: "20.48kWh",
-      bms: "16S 200A with WiFi/Bluetooth touch screen",
-      cellType: "LFP 3.2V400AH",
-      dimensions: "670 × 300 × 800mm",
-      weight: "133kg",
-      grossWeight: "150kg",
-      chargeCurrent: "200A",
-      dischargeCurrent: "200A",
-      cycleLife: "6000+ cycles"
-    },
-    features: [
-      "Mobile design with heavy-duty wheels",
-      "Smart BMS with touchscreen display",
-      "WiFi & Bluetooth monitoring via mobile app",
-      "Ultra high capacity",
-      "Industrial grade construction"
-    ],
-    applications: [
-      "Large mobile power stations",
-      "Event power supply",
-      "Remote construction sites",
-      "Emergency response"
-    ],
-    image: "/images/productImg/battery4.jpg",
-    gallery: [],
-    datasheet: "/datasheets/51.2V400AH-LS.pdf",
-    certifications: ["CE"],
-    warranty: "3 years",
-    inStock: true
-  },
+
 
   {
     id: "bat-005",
@@ -752,7 +774,8 @@ export const productData = [
     datasheet: "/datasheets/GW-51.2-100-B.pdf",
     certifications: ["CE", "IEC"],
     warranty: "5 years",
-    inStock: true
+    inStock: true,
+    youtubeVideoId: null
   },
 
   {
@@ -791,7 +814,8 @@ export const productData = [
     datasheet: "/datasheets/GW-51.2-300-B.pdf",
     certifications: ["CE", "IEC"],
     warranty: "5 years",
-    inStock: true
+    inStock: true,
+    youtubeVideoId: null
   },
   
   {
@@ -830,7 +854,8 @@ export const productData = [
     datasheet: "",
     certifications: ["CE", "UN38.3"],
     warranty: "3 years",
-    inStock: true
+    inStock: true,
+    youtubeVideoId: null
   },
 
   {
@@ -869,7 +894,8 @@ export const productData = [
     datasheet: "",
     certifications: ["CE", "UN38.3"],
     warranty: "3 years",
-    inStock: true
+    inStock: true,
+    youtubeVideoId: null
   },
 
   {
@@ -910,7 +936,8 @@ export const productData = [
     datasheet: "",
     certifications: ["CE", "UN38.3"],
     warranty: "3 years",
-    inStock: true
+    inStock: true,
+    youtubeVideoId: null
   },
 
   // ===== HYBRID INVERTERS =====
@@ -955,7 +982,8 @@ export const productData = [
     datasheet: "/datasheets/HF-6.2KW-48V.pdf",
     certifications: ["CE", "IEC 62109"],
     warranty: "2 years",
-    inStock: true
+    inStock: true,
+    youtubeVideoId: null
   },
 
   {
@@ -999,7 +1027,8 @@ export const productData = [
     datasheet: "/datasheets/HF-12KW-48V.pdf",
     certifications: ["CE", "IEC 62109"],
     warranty: "2 years",
-    inStock: true
+    inStock: true,
+    youtubeVideoId: null
   },
 
   {
@@ -1038,7 +1067,8 @@ export const productData = [
     datasheet: "/datasheets/HF-12KW-48V-IP54.pdf",
     certifications: ["CE", "IP54", "IEC 62109"],
     warranty: "2 years",
-    inStock: true
+    inStock: true,
+    youtubeVideoId: null
   },
 
   // ===== WALL MOUNTED INVERTERS =====
@@ -1078,7 +1108,8 @@ export const productData = [
     datasheet: "/datasheets/EM6200-48L.pdf",
     certifications: ["CE"],
     warranty: "2 years",
-    inStock: true
+    inStock: true,
+    youtubeVideoId: null
   },
 
   {
@@ -1117,7 +1148,8 @@ export const productData = [
     datasheet: "/datasheets/M6200-48PL.pdf",
     certifications: ["CE"],
     warranty: "2 years",
-    inStock: true
+    inStock: true,
+    youtubeVideoId: null
   },
 
   {
@@ -1156,7 +1188,8 @@ export const productData = [
     datasheet: "/datasheets/EM11000-48L.pdf",
     certifications: ["CE"],
     warranty: "2 years",
-    inStock: true
+    inStock: true,
+    youtubeVideoId: null
   },
 
   {
@@ -1192,149 +1225,548 @@ export const productData = [
     datasheet: "/datasheets/EM11000-48L-P.pdf",
     certifications: ["CE"],
     warranty: "2 years",
-    inStock: true
-  },
-
-  // ===== ELECTRIC MOBILITY =====
-  {
-    id: "em-001",
-    slug: "electric-motorcycle-sy-t500",
-    name: "Electric Motorcycle",
-    model: "SY-T500",
-    category: "electric-mobility",
-    type: "motorcycle",
-    description: "High-performance electric motorcycle with 3000W mid-drive motor and 72V 45AH lithium battery. Perfect for urban commuting and delivery services.",
-    specifications: {
-      modelNo: "SY-T500",
-      dimension: "1960×560×1150mm",
-      motor: "3000W PMS/M mid-drive motor",
-      battery: "72V 45AH Lithium battery",
-      chargingTime: "4-5 hours",
-      brake: "CBS (Combined Braking System)",
-      tyre: "100/80 120/80 16\"",
-      maxSpeed: "80 km/h",
-      mileage: "110-130 km",
-      weight: "167 KG (with battery)",
-      packageDimension: "1960×560×1150mm",
-      containerLoading: "48 pcs per 40\"HQ container"
-    },
-    features: [
-      "Powerful 3000W mid-drive motor for excellent torque",
-      "Long-range 72V 45AH lithium battery (110-130km range)",
-      "CBS braking system for enhanced safety",
-      "16\" tubeless tires for better grip",
-      "80km/h top speed for highway-capable commuting",
-      "Efficient 4-5 hour charging time"
-    ],
-    applications: [
-      "Urban commuting",
-      "Delivery services",
-      "Fleet operations",
-      "Personal transportation"
-    ],
-    image: "/images/productImg/em1.jpg",
-    gallery: [
-      "/images/productImg/em2.jpg",
-      "/images/productImg/em2.jpg",
-    ],
-    datasheet: "/datasheets/SY-T500.pdf",
-    certifications: ["CE", "EEC"],
-    warranty: "2 years",
     inStock: true,
-    containerCapacity: {
-      "40HQ": "48 pcs",
-      "20GP": "24 pcs"
-    }
+    youtubeVideoId: null
   },
 
-  {
-    id: "em-002",
-    slug: "electric-scooter-m-vspa3",
-    name: "Electric Scooter",
-    model: "M-VSPA3",
-    category: "electric-mobility",
-    type: "scooter",
-    description: "Compact and efficient electric scooter with 1000W brushless DC motor. Perfect for city commuting and last-mile delivery.",
-    specifications: {
-      modelNo: "M-VSPA3",
-      motor: "1000W Brushless DC motor",
-      battery: "72V lead-acid / Lithium battery (optional)",
-      rechargeTime: "6-8 hours",
-      batteryChargerInput: "100-240V",
-      brake: "Disc / Disc",
-      tyres: "90/90-12 Tubeless",
-      topSpeed: "50-55 km/h",
-      maxRange: "65-70 km",
-      maxClimbing: "12°",
-      maxLoading: "200 KGS",
-      containerLoading: {
-        "40HQ": "150 pcs (CKD) / 80 pcs (SKD)",
-        "20GP": "65 pcs (CKD) / 26 pcs (SKD)"
-      }
-    },
-    features: [
-      "1000W brushless DC motor for quiet operation",
-      "Available in lead-acid or lithium battery options",
-      "Tubeless tires for puncture resistance",
-      "Disc brakes front and rear for reliable stopping",
-      "Compact design for easy parking and maneuverability",
-      "CKD/SKD shipping options available for assembly partners"
-    ],
-    applications: [
-      "City commuting",
-      "Last-mile delivery",
-      "Campus transportation",
-      "Fleet sharing programs"
-    ],
-    image: "/images/productImg/em2.jpg",
-    gallery: [
-      "/images/productImg/em2.jpg",
-      "/images/productImg/em2.jpg"
-    ],
-    datasheet: "/datasheets/M-VSPA3.pdf",
-    certifications: ["CE"],
-    warranty: "1 year",
-    inStock: true,
-    assemblyOptions: ["CKD (Completely Knocked Down)", "SKD (Semi Knocked Down)"]
+  // ===== ELECTRIC MOBILITY (New Products) =====
+{
+  id: "em-004",
+  slug: "lead-acid-scooter-72v-20ah-500w",
+  name: "Lead-Acid Electric Scooter",
+  model: "Scooter-500W",
+  category: "electric-mobility",
+  type: "scooter",
+  description: "Reliable electric scooter with 500W motor and 72V 20Ah lead-acid battery. Ideal for daily commuting and local deliveries with 80-100km range.",
+  specifications: {
+    modelNo: "Scooter-500W",
+    netWeight: "36.8 kg",
+    grossWeight: "42.38 kg",
+    packagingSize: "1280 × 330 × 730 mm",
+    battery: "72V 20Ah (6 lead-acid batteries)",
+    maxSpeed: "25 – 40 km/h",
+    maxRange: "80 – 100 km",
+    ratedPower: "500W (18×1.6 magnetic steel)",
+    controller: "12-tube controller",
+    alarm: "Dual remote alarm",
+    dashboard: "Common dashboard",
+    frontFork: "Hydraulic front fork",
+    tires: "3.00-10 tubeless",
+    containerLoading: "210 units per 40HQ"
   },
+  features: [
+    "Reliable 500W motor for consistent performance",
+    "Long 80-100km range on full charge",
+    "Hydraulic front fork for smooth ride",
+    "Dual remote anti-theft alarm",
+    "Tubeless tires for puncture resistance"
+  ],
+  applications: [
+    "Daily urban commuting",
+    "Local delivery services",
+    "Campus transportation"
+  ],
+  image: "/productImg/e-mobility/emobilitymoto06.jpg",
+  gallery: [
 
-  {
-    id: "em-003",
-    slug: "electric-scooter-e-bike-500",
-    name: "Electric Scooter",
-    model: "E-BIKE-500",
-    category: "electric-mobility",
-    type: "scooter",
-    description: "Lightweight electric scooter for urban mobility and recreational use.",
-    specifications: {
-      motor: "500W Brushless hub motor",
-      battery: "48V 20AH Lithium battery",
-      maxSpeed: "45 km/h",
-      range: "50-60 km",
-      chargingTime: "4-5 hours",
-      weight: "45 kg",
-      maxLoad: "120 kg",
-      tyre: "10\" tubeless"
-    },
-    features: [
-      "Lightweight and portable design",
-      "Foldable for easy storage",
-      "LED display with speed and battery indicators",
-      "Regenerative braking",
-      "App connectivity (optional)"
-    ],
-    applications: [
-      "Last-mile commuting",
-      "Campus transport",
-      "Recreational use"
-    ],
-    image: "/images/productImg/em3.jpg",
-    gallery: [],
-    datasheet: "/datasheets/E-BIKE-500.pdf",
-    certifications: ["CE"],
-    warranty: "1 year",
-    inStock: true
-  }
+    "/productImg/e-mobility/emobilitymoto06a.jpg",
+    "/productImg/e-mobility/emobilitymoto06.jpg",
+
+  ],
+  datasheet: "",
+  certifications: ["CE"],
+  warranty: "1 year",
+  inStock: true,
+  containerCapacity: {
+    "40HQ": "210 pcs"
+  },
+  youtubeVideoId: null
+},
+
+{
+  id: "em-005",
+  slug: "youqo-14-inch-scooter-650w",
+  name: "YOUQO 14-Inch Electric Scooter",
+  model: "YOUQO-14",
+  category: "electric-mobility",
+  type: "scooter",
+  description: "Powerful 650W electric scooter with NFC color display and dual disc brakes. Built for comfort and security with hydraulic suspension and tubeless tires.",
+  specifications: {
+    modelNo: "YOUQO-14",
+    topSpeed: "45 – 50 km/h",
+    maxRange: "60 – 80 km",
+    motor: "650W high-torque brushless hub motor (24×2.0 magnet)",
+    battery: "72V 20Ah lead-acid (6 x 12V 20Ah)",
+    controller: "Heavy-duty 12-tube controller",
+    braking: "Dual hydraulic disc brakes (front & rear)",
+    dashboard: "NFC-enabled digital color display",
+    security: "Dual remote anti-theft alarm",
+    frontSuspension: "Hydraulic telescopic forks",
+    tires: "3.00-10 tubeless all-terrain",
+    cargo: "Front steel basket + rear cargo rack",
+    netWeight: "52.7 kg",
+    grossWeight: "56.2 kg",
+    packagingSize: "1680 × 310 × 730 mm (light installed) / 1640 × 310 × 730 mm (light removed)",
+    containerLoading: "165 units per 40HQ"
+  },
+  features: [
+    "650W high-torque motor for hills and heavy loads",
+    "NFC digital dashboard with keyless start",
+    "Dual hydraulic disc brakes for safe stopping",
+    "Hydraulic front forks for bump absorption",
+    "Integrated front basket and rear cargo rack",
+    "Dual remote anti-theft alarm system"
+  ],
+  applications: [
+    "Heavy-duty commuting",
+    "Last-mile delivery with cargo",
+    "Urban fleet operations"
+  ],
+  image: "/productImg/e-mobility/emobilitymoto03.jpg",
+  gallery: [
+
+    "/productImg/e-mobility/emobilitymoto03a.jpg",
+    "/productImg/e-mobility/emobilitymoto03.jpg",
+    
+  ],
+  datasheet: "",
+  certifications: ["CE"],
+  warranty: "1 year",
+  inStock: true,
+  containerCapacity: {
+    "40HQ": "165 pcs"
+  },
+  youtubeVideoId: null
+},
+
+{
+  id: "em-006",
+  slug: "small-folding-ebike-350w",
+  name: "Small Folding E-Bike",
+  model: "Folding-350W",
+  category: "electric-mobility",
+  type: "scooter",
+  description: "Compact folding electric bike with 6 shocks and 350W motor. Lightweight and portable – perfect for mixed-mode commuting and easy storage.",
+  specifications: {
+    modelNo: "小折叠 6减震 前后鼓刹",
+    netWeight: "25.6 kg",
+    grossWeight: "29.2 kg",
+    packagingSize: "1290 × 200 × 640 mm",
+    battery: "48V 12Ah lithium battery (optional)",
+    maxSpeed: "25 – 35 km/h",
+    maxRange: "25 – 30 km",
+    ratedPower: "350 W",
+    controller: "Big 6-tube controller",
+    alarm: "Dual remote alarm",
+    dashboard: "Common dashboard",
+    frontFork: "38-tube front fork",
+    tires: "14 × 2.5 inch",
+    containerLoading: "400 units per 40HQ"
+  },
+  features: [
+    "Folding design for easy transport and storage",
+    "6-shock suspension system for comfort",
+    "Lightweight at only 25.6kg",
+    "Dual remote anti-theft alarm",
+    "Removable lithium battery option"
+  ],
+  applications: [
+    "Mixed-mode commuting (bike + train/bus)",
+    "Campus travel",
+    "Recreational riding",
+    "Apartment storage"
+  ],
+  image: "/productImg/e-mobility/emobilitybike01.jpg",
+  gallery: [
+
+    "/productImg/e-mobility/emobilitybike01a.jpg",
+    "/productImg/e-mobility/emobilitybike01.jpg",
+
+
+  ],
+  datasheet: "",
+  certifications: ["CE"],
+  warranty: "1 year",
+  inStock: true,
+  containerCapacity: {
+    "40HQ": "400 pcs"
+  },
+  youtubeVideoId: null
+},
+
+{
+  id: "em-007",
+  slug: "war-horse-electric-motorcycle-800w",
+  name: "War Horse Electric Motorcycle",
+  model: "War Horse",
+  category: "electric-mobility",
+  type: "motorcycle",
+  description: "Aggressive War Horse electric motorcycle with 800W motor and 72V 20Ah lead-acid battery. High torque and long range for demanding riders.",
+  specifications: {
+    modelNo: "War Horse",
+    netWeight: "64.5 kg",
+    grossWeight: "66.5 kg",
+    packagingSize: "1520 × 380 × 850 mm",
+    battery: "72V 20Ah (6 lead-acid batteries)",
+    maxSpeed: "25 – 60 km/h",
+    maxRange: "100 – 110 km",
+    ratedPower: "800W motor",
+    controller: "12-tube controller",
+    alarm: "Dual remote alarm",
+    dashboard: "Digital card reader + NFC",
+    frontFork: "Hydraulic front fork",
+    tires: "3.00-10 tubeless",
+    containerLoading: "136 units per 40HQ"
+  },
+  features: [
+    "800W motor for strong acceleration",
+    "Long 100-110km range",
+    "NFC digital dashboard with keyless start",
+    "Hydraulic front fork for stability",
+    "Tubeless tires for puncture safety",
+    "Dual remote anti-theft alarm"
+  ],
+  applications: [
+    "Long-distance commuting",
+    "Delivery services",
+    "Rural transportation"
+  ],
+  image: "/productImg/e-mobility/emobilitymoto04.jpg",
+  gallery: [
+
+    "/productImg/e-mobility/emobilitymoto04a.jpg",
+    "/productImg/e-mobility/emobilitymoto04.jpg",
+
+  ],
+  datasheet: "",
+  certifications: ["CE"],
+  warranty: "2 years",
+  inStock: true,
+  containerCapacity: {
+    "40HQ": "136 pcs"
+  },
+  youtubeVideoId: null
+},
+
+{
+  id: "em-008",
+  slug: "big-tank-electric-motorcycle-800w",
+  name: "Big Tank Electric Motorcycle",
+  model: "Big Tank",
+  category: "electric-mobility",
+  type: "motorcycle",
+  description: "Sturdy Big Tank electric motorcycle with 800W motor and 72V 20Ah lead-acid battery. Built for durability and comfortable long rides.",
+  specifications: {
+    modelNo: "大坦克 / Big Tank",
+    netWeight: "62.38 kg",
+    grossWeight: "64.78 kg",
+    packagingSize: "1500 × 350 × 850 mm",
+    battery: "72V 20Ah (6 lead-acid batteries)",
+    maxSpeed: "25 – 60 km/h",
+    maxRange: "60 – 80 km",
+    ratedPower: "800W motor",
+    controller: "12-tube controller",
+    alarm: "Dual remote alarm",
+    dashboard: "Digital display + NFC",
+    frontFork: "Hydraulic front fork",
+    tires: "163.0 tubeless tires",
+    containerLoading: "136 units per 40HQ"
+  },
+  features: [
+    "800W motor for reliable power",
+    "NFC digital dashboard",
+    "Hydraulic front fork for smooth ride",
+    "Dual remote anti-theft system",
+    "Tubeless tires for puncture resistance"
+  ],
+  applications: [
+    "Daily commuting",
+    "Light cargo delivery",
+    "Urban transportation"
+  ],
+  image: "/productImg/e-mobility/emobilitymoto05.jpg",
+  gallery: [
+
+    "/productImg/e-mobility/emobilitymoto05a.jpg",
+    "/productImg/e-mobility/emobilitymoto05.jpg",
+
+  ],
+  datasheet: "",
+  certifications: ["CE"],
+  warranty: "2 years",
+  inStock: true,
+  containerCapacity: {
+    "40HQ": "136 pcs"
+  },
+  youtubeVideoId: null
+},
+
+{
+  id: "em-009",
+  slug: "large-folding-ebike-350w",
+  name: "Large Folding Electric Bike",
+  model: "Large Folder",
+  category: "electric-mobility",
+  type: "scooter",
+  description: "Large folding e-bike with 350W motor and removable lithium battery. Fat tires and AK LCD display make it versatile for city and light off-road.",
+  specifications: {
+    modelNo: "大折叠 (Large Folder)",
+    netWeight: "36.5 kg",
+    grossWeight: "38.5 kg",
+    packagingSize: "1410 × 280 × 650 mm",
+    battery: "48V 12Ah removable lithium battery",
+    maxSpeed: "25 – 40 km/h",
+    maxRange: "30 – 35 km",
+    ratedPower: "350 W",
+    controller: "Big 10-tube controller",
+    alarm: "Dual remote control alarm",
+    dashboard: "AK LCD instrument (5-speed electronic shifting)",
+    frontFork: "38-tube front fork with front & rear disc brakes",
+    tires: "20\" × 4.0 all-terrain snow tires",
+    containerLoading: "256 units per 40HQ"
+  },
+  features: [
+    "Large folding frame for easy storage",
+    "Removable lithium battery for convenient charging",
+    "AK LCD display with 5-speed electronic shifting",
+    "Fat 4.0\" all-terrain tires for grip",
+    "Front and rear disc brakes for safety",
+    "Dual remote alarm system"
+  ],
+  applications: [
+    "Mixed commuting (folding for public transit)",
+    "Light off-road and snow riding",
+    "Recreational cruising"
+  ],
+  image: "/productImg/e-mobility/emobilitybike02.jpg",
+  gallery: [
+
+    "/productImg/e-mobility/emobilitybike02a.jpg",
+    "/productImg/e-mobility/emobilitybike02.jpg",
+
+  ],
+  datasheet: "",
+  certifications: ["CE"],
+  warranty: "1 year",
+  inStock: true,
+  containerCapacity: {
+    "40HQ": "256 pcs"
+  },
+  youtubeVideoId: null
+},
+
+{
+  id: "em-010",
+  slug: "hongtu-electric-motorcycle-800w",
+  name: "HongTu Electric Motorcycle",
+  model: "HongTu (Hongyun)",
+  category: "electric-mobility",
+  type: "motorcycle",
+  description: "HongTu electric motorcycle with 800W motor and 72V 20Ah lead-acid battery. Lockable pedals and disc brakes for versatile use.",
+  specifications: {
+    modelNo: "HongTu (Hongyun)",
+    features: "Lockable pedals, front and rear disc brakes",
+    netWeight: "51.02 kg",
+    grossWeight: "54.52 kg",
+    packagingSize: "1440 × 330 × 760 mm",
+    battery: "72V 20Ah (6 lead-acid batteries)",
+    maxSpeed: "45 – 60 km/h",
+    maxRange: "60 – 80 km",
+    ratedPower: "800W (27×2.0 magnet steel) 16-inch half-disk motor",
+    controller: "12-tube controller",
+    alarm: "Dual remote alarm",
+    dashboard: "Digital dashboard",
+    frontFork: "Hydraulic front fork",
+    tires: "16 × 3.0 vacuum tire",
+    containerLoading: "160 units per 40HQ"
+  },
+  features: [
+    "Lockable pedals for electric + pedal operation",
+    "800W motor with high-torque magnets",
+    "Front and rear disc brakes",
+    "Hydraulic front fork for comfort",
+    "Dual remote anti-theft alarm"
+  ],
+  applications: [
+    "Urban commuting with pedal assist option",
+    "Delivery services",
+    "Areas with ebike regulations"
+  ],
+  image: "/productImg/e-mobility/emobilitymoto01a.jpg",
+  gallery: [
+
+    "/productImg/e-mobility/emobilitymoto01.jpg",
+    "/productImg/e-mobility/emobilitymoto01a.jpg",
+
+  ],
+  datasheet: "",
+  certifications: ["CE"],
+  warranty: "2 years",
+  inStock: true,
+  containerCapacity: {
+    "40HQ": "160 pcs"
+  },
+  youtubeVideoId: null
+},
+
+
+{
+  id: "em-011",
+  slug: "kugou-electric-scooter-72v-20ah",
+  name: "KuGou Electric Scooter",
+  model: "KuGou (酷狗)",
+  category: "electric-mobility",
+  type: "scooter",
+  description: "Sporty KuGou electric scooter with 72V 20Ah lead-acid battery and 12-tube controller. NFC dashboard and hydraulic front fork for modern riding.",
+  specifications: {
+    modelNo: "KuGou (酷狗)",
+    braking: "Front and rear disc brakes",
+    maxSpeed: "50 – 60 km/h",
+    maxRange: "60 – 70 km",
+    netWeight: "54 kg",
+    grossWeight: "59 kg",
+    packagingSize: "1380 × 300 × 770 mm",
+    battery: "72V 20Ah lead-acid (6 units)",
+    controller: "12-tube controller",
+    dashboard: "Digital display with NFC",
+    security: "Dual remote alarm",
+    frontSuspension: "Hydraulic front fork",
+    tires: "90/90-12",
+    containerLoading: "195 units per 40HQ"
+  },
+  features: [
+    "NFC digital dashboard for keyless start",
+    "Dual disc brakes for reliable stopping",
+    "Hydraulic front fork absorbs bumps",
+    "Sporty 50-60km/h top speed",
+    "Dual remote anti-theft alarm"
+  ],
+  applications: [
+    "Fast urban commuting",
+    "Delivery services",
+    "Youth transportation"
+  ],
+  image: "/productImg/e-mobility/emobilitymoto02.jpg",
+  gallery: [
+
+    "/productImg/e-mobility/emobilitymoto02a.jpg",
+    "/productImg/e-mobility/emobilitymoto02b.jpg",
+    "/productImg/e-mobility/emobilitymoto02.jpg",
+
+
+  ],
+  datasheet: "",
+  certifications: ["CE"],
+  warranty: "1 year",
+  inStock: true,
+  containerCapacity: {
+    "40HQ": "195 pcs"
+  },
+  youtubeVideoId: null
+},
+
+{
+  id: "em-012",
+  slug: "v6-pedal-electric-scooter-800w",
+  name: "V6 Pedal Electric Scooter",
+  model: "V6 Pedal",
+  category: "electric-mobility",
+  type: "scooter",
+  description: "Heavy-duty V6 Pedal scooter with 800W motor and 60V 30Ah battery. High load capacity (200kg) and strong climbing ability.",
+  specifications: {
+    modelNo: "V6 Pedal",
+    topSpeed: "45 km/h",
+    motor: "800W rated output",
+    climbingAbility: "≤ 15 degrees",
+    maxLoad: "200 kg",
+    battery: "60V 30Ah",
+    charger: "60V 20A",
+    chargingVoltage: "220V",
+    chargingTime: "6-8 hours",
+    productDimensions: "1660 × 720 × 1060 mm",
+    netWeight: "84 kg",
+    tires: "300-10",
+    brakes: "Front disc / Rear drum"
+  },
+  features: [
+    "800W motor with strong climbing (15° incline)",
+    "200kg max load capacity",
+    "60V 30Ah large battery for extended use",
+    "Front disc + rear drum brakes",
+    "Heavy-duty construction"
+  ],
+  applications: [
+    "Heavy rider / cargo transport",
+    "Commercial delivery",
+    "Hilly terrain commuting"
+  ],
+  image: "/productImg/e-mobility/emobilitymoto07.jpg",
+  gallery: [
+
+      "/productImg/e-mobility/emobilitymoto07a.jpg",
+      "/productImg/e-mobility/emobilitymoto07.jpg",
+
+  ],
+  datasheet: "",
+  certifications: ["CE"],
+  warranty: "1 year",
+  inStock: true,
+  containerCapacity: {
+    "40HQ": "Please contact sales"
+  },
+  youtubeVideoId: null
+},
+
+{
+  id: "em-013",
+  slug: "v6-pedal-60v-30ah-version",
+  name: "V6 Pedal Electric Scooter (60V 30Ah)",
+  model: "V6 Pedal (60V30Ah)",
+  category: "electric-mobility",
+  type: "scooter",
+  description: "High-capacity V6 Pedal scooter with 800W motor, 60V 30Ah battery and 200kg load limit. Ideal for commercial or heavy-duty use.",
+  specifications: {
+    topSpeed: "45 km/h",
+    motor: "800W rated",
+    climbingAbility: "≤ 15°",
+    maxLoad: "200 kg",
+    battery: "60V 30Ah",
+    charger: "60V 20A",
+    chargingVoltage: "220V",
+    chargingTime: "6-8 hours",
+    dimensions: "1660 × 720 × 1060 mm",
+    netWeight: "84 kg",
+    tires: "300-10",
+    brakes: "Front disc / Rear drum"
+  },
+  features: [
+    "800W motor for power and reliability",
+    "60V 30Ah battery for longer runtime",
+    "200kg payload capacity",
+    "15-degree hill climbing",
+    "Front disc brake for safety"
+  ],
+  applications: [
+    "Heavy-duty commuting",
+    "Commercial cargo delivery",
+    "Industrial campus transport"
+  ],
+  image: "/productImg/e-mobility/emobilitymoto08a.jpg",
+  gallery: [
+
+    "/productImg/e-mobility/emobilitymoto08a.jpg",
+    "/productImg/e-mobility/emobilitymoto08.jpg",
+
+  ],
+  datasheet: "",
+  certifications: ["CE"],
+  warranty: "1 year",
+  inStock: true,
+  containerCapacity: {
+    "40HQ": "Please contact sales"
+  },
+  youtubeVideoId: null
+}
 ];
 
 // =====================================================

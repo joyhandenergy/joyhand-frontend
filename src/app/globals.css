@@ -503,7 +503,7 @@ img {
   align-items: center;
   justify-content: center;
   padding: var(--spacing-2) var(--spacing-5);
-  background: var(--secondary-color);
+  background: var(--primary-color);
   color: var(--neutral-white);
   border-radius: 50px;
   text-decoration: none;

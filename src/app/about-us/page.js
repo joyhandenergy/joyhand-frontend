@@ -1,8 +1,8 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
+
 import {
   PiLinkedinLogo,
   PiArrowRight,
@@ -18,12 +18,24 @@ import {
 
 import PageHeader from "@/components/pageHeader/PageHeader";
 import SectionHeader from "@/components/sectionHeader/SectionHeader";
-
-import "./about.css";
 import SectionDecor from "@/components/sectionDecor/SectionDecor";
 import SuperRing from "@/components/superRing/SuperRing";
+import PopUpModal from "@/components/contactForm/PopUpModal";
+
+import "./about.css";
 
 export default function AboutPage() {
+  // Modal state
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalMode, setModalMode] = useState("quote"); // "quote" or "consultation"
+
+  const openModal = (mode = "quote") => {
+    setModalMode(mode);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => setIsModalOpen(false);
+
   const team = [
     {
       name: "Winper Du",
@@ -145,22 +157,18 @@ export default function AboutPage() {
 
       {/* ================= INTRO ================= */}
       <section className="about-intro">
-
         <SectionDecor type="accent" count={8} />
-
         <div className="container about-intro__container">
           <div className="about-intro__content">
             <SectionHeader 
               badge="OWNING THE FLOOR"
               title="A Factory-First Approach to Renewable Energy"
             />
-
             <div className="about-intro__description">
               <p>
                 JoyHand was born on the factory floor. We are engineers and builders first. 
                 By maintaining <strong>direct control over our assembly lines</strong>, we ensure that every cell and circuit board meets the rigorous demands of professional distributors worldwide.
               </p>
-
               <div className="mission-statement">
                 <h4 className="mission-statement__title">Our Manufacturing Promise</h4>
                 <p className="mission-statement__text">
@@ -169,7 +177,6 @@ export default function AboutPage() {
               </div>
             </div>
           </div>
-
           <div className="about-intro__visual">
             <div className="nfc-scanner">
               <div className="nfc-scanner__ring"></div>
@@ -239,39 +246,36 @@ export default function AboutPage() {
       {/* ================= ENERGY SOLUTIONS (4 CARDS) ================= */}
       <section className="markets-section">
         <SectionDecor type="accent" count={8} />
-            {/* CENTER RING */}
-       <SuperRing
-        type="primary"
-        size="1400px"
-        thickness="40px"
-        top="50%"
-        left="50%"
-        translateX="-50%"
-        translateY="-50%"
-        opacity={0.06}
-      />
-
-      <SuperRing
-        type="secondary"
-        size="900px"
-        thickness="40px"
-        top="15%"
-        left="70%"
-        translateX="-50%"
-        translateY="-50%"
-        opacity={0.05}
-      />
-
-      <SuperRing
-        type="accent"
-        size="900px"
-        thickness="40px"
-        top="85%"
-        left="30%"
-        translateX="-50%"
-        translateY="-50%"
-        opacity={0.05}
-      />
+        <SuperRing
+          type="primary"
+          size="1400px"
+          thickness="40px"
+          top="50%"
+          left="50%"
+          translateX="-50%"
+          translateY="-50%"
+          opacity={0.06}
+        />
+        <SuperRing
+          type="secondary"
+          size="900px"
+          thickness="40px"
+          top="15%"
+          left="70%"
+          translateX="-50%"
+          translateY="-50%"
+          opacity={0.05}
+        />
+        <SuperRing
+          type="accent"
+          size="900px"
+          thickness="40px"
+          top="85%"
+          left="30%"
+          translateX="-50%"
+          translateY="-50%"
+          opacity={0.05}
+        />
         <div className="container">
           <SectionHeader
             badge="CORE PRODUCTION"
@@ -293,9 +297,14 @@ export default function AboutPage() {
                       <li key={i}><PiCheckCircleFill /> {feature}</li>
                     ))}
                   </ul>
-                  <Link href="/contact" className="btn-link">
+                  {/* Inquire for Wholesale link now opens modal */}
+                  <button 
+                    className="btn-link" 
+                    onClick={() => openModal("quote")}
+                    style={{ background: "none", border: "none", cursor: "pointer", padding: 0 }}
+                  >
                     Inquire for Wholesale <PiArrowRight />
-                  </Link>
+                  </button>
                 </div>
               </div>
             ))}
@@ -368,12 +377,22 @@ export default function AboutPage() {
                 Access direct factory pricing, technical support, and OEM/ODM engineering services.
               </p>
             </div>
-            <Link href="/contact" className="btn btn--secondary abtCta-banner__btn">
+            <button 
+              className="btn btn--secondary abtCta-banner__btn" 
+              onClick={() => openModal("quote")}
+            >
               Apply for Partnership <PiArrowRight />
-            </Link>
+            </button>
           </div>
         </div>
       </section>
+
+      {/* Modal Component */}
+      <PopUpModal 
+        isOpen={isModalOpen} 
+        onClose={closeModal} 
+        mode={modalMode} 
+      />
     </main>
   );
 }

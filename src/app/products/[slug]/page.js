@@ -16,17 +16,17 @@ import ProductVideo from "./ProductVideo";
 import "../Products.css";
 
 export async function generateMetadata({ params }) {
+  // ✅ await params (it's a Promise)
   const { slug } = await params;
   const product = productData.find(p => p.slug === slug);
   if (!product) return { title: "Product Not Found" };
   return {
     title: `${product.name} ${product.model} | JoyHand Energy Solutions`,
     description: product.description,
-    keywords: `${product.category}, ${product.model}, ${product.name}, energy storage, solar battery, hybrid inverter, electric mobility`,
   };
 }
 
-// Helper functions
+// Helper functions (same as before)
 function getCategoryIcon(category) {
   switch(category) {
     case "battery": return <PiBatteryHigh size={16} />;
@@ -207,16 +207,28 @@ function ProductWarranty({ warranty }) {
   );
 }
 
+// ✅ CORRECT: async component + await params
 export default async function ProductDetailsPage({ params }) {
+  // ✅ MUST await params in Next.js App Router
   const { slug } = await params;
+  
+  // Debug: log to see if slug is correct (remove in production)
+  console.log("Looking for product with slug:", slug);
+  
   const product = productData.find(p => p.slug === slug);
-  if (!product) notFound();
+  
+  if (!product) {
+    console.log("Product not found for slug:", slug);
+    notFound();
+  }
 
   const images = product.gallery?.length ? product.gallery : [product.image];
   const categoryDisplay = getCategoryDisplay(product.category);
   const categoryIcon = getCategoryIcon(product.category);
   const typeDisplay = getTypeDisplay(product.type);
-  const videoId = "dQw4w9WgXcQ"; // replace with actual per‑product video ID
+  
+  // ✅ Use the youtubeVideoId from product data
+  const videoId = product.youtubeVideoId || null;
 
   return (
     <main className="product-details">
@@ -229,14 +241,15 @@ export default async function ProductDetailsPage({ params }) {
           {/* Gallery Section */}
           <section className="product-details__gallery">
             <ProductGallery images={images} productName={product.name} />
-            {videoId && <ProductVideo videoId={videoId} />}
+            {/* ✅ Pass videoId and productName */}
+            <ProductVideo videoId={videoId} productName={product.name} />
           </section>
 
           {/* Info Section */}
           <section className="product-details__info">
             <div className="product-details__meta">
               <span className="product-details__badge">
-                {categoryIcon} {categoryDisplay}
+                {getCategoryIcon(product.category)} {getCategoryDisplay(product.category)}
               </span>
               <span className="product-details__type">{typeDisplay}</span>
               {product.model && (
@@ -247,29 +260,13 @@ export default async function ProductDetailsPage({ params }) {
             <h1 className="product-details__title">{product.name}</h1>
             <p className="product-details__description">{product.description}</p>
 
-            {/* Features */}
-            {product.features && product.features.length > 0 && (
-              <ProductFeatures features={product.features} />
-            )}
+            <ProductFeatures features={product.features} />
+            <ProductSpecs product={product} />
+            <ProductApplications applications={product.applications} />
             
-            {/* Specifications */}
-            {product.specifications && (
-              <ProductSpecs product={product} />
-            )}
-
-            {/* Applications */}
-            {product.applications && product.applications.length > 0 && (
-              <ProductApplications applications={product.applications} />
-            )}
-
-            {/* Certifications & Warranty */}
             <div className="product-details__footer-info">
-              {product.certifications && product.certifications.length > 0 && (
-                <ProductCertifications certifications={product.certifications} />
-              )}
-              {product.warranty && (
-                <ProductWarranty warranty={product.warranty} />
-              )}
+              <ProductCertifications certifications={product.certifications} />
+              <ProductWarranty warranty={product.warranty} />
             </div>
 
             <div className="product-details__actions">

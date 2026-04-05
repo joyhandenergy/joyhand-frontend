@@ -12,6 +12,7 @@ export const revalidate = 3600;
 const solutionConfig = {
   "storage-batteries": {
     title: "Storage Batteries",
+    image: "/homeImg/energyPlatformImage1.png",
     filterCategory: "battery",
     description: "Wall‑mounted, mobile & rack‑mounted LFP batteries.",
     keywords: "lithium battery, LFP battery, energy storage, solar battery, battery storage system"
@@ -19,12 +20,14 @@ const solutionConfig = {
   "solar-inverters": {
     title: "Solar Inverters",
     filterCategory: "inverter",
+    image: "/homeImg/energyPlatformImage2.png",
     description: "High‑efficiency hybrid & wall‑mounted inverters.",
     keywords: "solar inverter, hybrid inverter, off-grid inverter, MPPT inverter, power inverter"
   },
   "portable-power-stations": {
     title: "Portable Power Stations",
     filterCategory: "portable-power",
+    image: "/homeImg/energyPlatformImage3.png",
     description: "Rugged, solar‑ready units for emergency & off‑grid.",
     keywords: "portable power station, solar generator, backup power, camping power, emergency power",
     comingSoon: true
@@ -32,6 +35,7 @@ const solutionConfig = {
   "electric-mobility": {
     title: "Electric Mobility",
     filterCategory: "electric-mobility",
+    image: "/homeImg/energyPlatformImage4.png",
     description: "Electric motorcycles, scooters & e‑bikes.",
     keywords: "electric motorcycle, e-motorcycle, electric scooter, e-bike, electric mobility"
   }
@@ -86,7 +90,7 @@ async function SolutionContent({ slug, searchParams }) {
       <PageHeader 
         title={`${config.title} Solutions`}
         subtitle={config.description}
-        pageImage="/images/pageHeadImg/pageheader2.jpg" 
+        pageImage={config.image}
       />
 
       <section className="products-page__section">

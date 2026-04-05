@@ -40,7 +40,7 @@ const CtaBanner = () => {
                   href="/products" 
                   className="cta-banner__button--outline btn"
                 >
-                  View Products Deck <PiArrowRight />
+                  View Product Deck <PiArrowRight />
                 </Link>
               </div>
             </div>
