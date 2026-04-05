@@ -138,7 +138,7 @@ const InnovationShowcase = () => {
         <div className="innovation-section__footer">
           <p className="innovation-section__footer-text">
             Need certified products for your market?
-            <Link href="/contact" className="innovation-section__footer-link">
+            <Link href="/contact-us" className="innovation-section__footer-link">
               Request certification package <PiArrowRight />
             </Link>
           </p>

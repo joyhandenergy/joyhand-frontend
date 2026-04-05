@@ -6,6 +6,7 @@ import Link from "next/link";
 import { PiArrowUpRightBold, PiFactory } from "react-icons/pi";
 import SectionHeader from "../sectionHeader/SectionHeader";
 import "./EnergyPlatforms.css";
+import SectionDecor from "../sectionDecor/SectionDecor";
 
 const FEATURED_CATEGORIES = [
   {
@@ -92,6 +93,9 @@ const EnergyPlatforms = () => {
       className="energy-platforms"
       aria-labelledby="platforms-heading"
     >
+
+    <SectionDecor type="accent" count={8} />
+
       <div className="container">
         <SectionHeader
           badge="Our Manufacturing Range"

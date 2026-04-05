@@ -1,6 +1,7 @@
 /* =====================================================
    BLOG CARD - Consistent with Product Cards
 ===================================================== */
+
 .blog-card {
   display: flex;
   flex-direction: column;
@@ -32,6 +33,7 @@
 
 /* =====================================================
    IMAGE SECTION - FIXED: No padding on any device
+   Added line-height/font-size reset for mobile gap fix
 ===================================================== */
 .blog-card__image-wrapper {
   position: relative;
@@ -42,6 +44,10 @@
   /* NO PADDING WHATSOEVER */
   padding: 0 !important;
   margin: 0 !important;
+  /* FIX: removes extra whitespace on mobile */
+  display: block;
+  line-height: 0;
+  font-size: 0;
 }
 
 .blog-card__image {
@@ -56,6 +62,10 @@
   left: 0;
   right: 0;
   bottom: 0;
+  /* FIX: additional reset for mobile */
+  display: block;
+  margin: 0;
+  padding: 0;
 }
 
 .blog-card:hover .blog-card__image,
@@ -71,7 +81,6 @@
   display: flex;
   flex-direction: column;
   flex: 1;
-  
 }
 
 @media screen and (min-width: 768px) {
@@ -148,7 +157,7 @@
   max-height: 2.8em; /* 2 lines * 1.4 line-height */
   flex: 1;
   text-align: justify;
-  text-justify: inter-word
+  text-justify: inter-word;
 }
 
 @media screen and (min-width: 768px) {
@@ -194,6 +203,24 @@
 .blog-card:hover .blog-card__cta-icon,
 .blog-card:active .blog-card__cta-icon {
   transform: translateX(4px);
+}
+
+/* =====================================================
+   MOBILE-SPECIFIC EXTRA RESET - ensures no gap on small screens
+===================================================== */
+@media screen and (max-width: 767px) {
+  .blog-card,
+  .blog-card__link,
+  .blog-card__image-wrapper {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .blog-card__image-wrapper {
+    line-height: 0;
+    font-size: 0;
+    display: block;
+  }
 }
 
 /* =====================================================

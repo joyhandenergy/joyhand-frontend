@@ -60,7 +60,7 @@
   }
 }
 
-/* Top‑left glow (optional, can be removed if not wanted) */
+/* Top‑left glow */
 .cta-banner::before {
   content: "";
   position: absolute;
@@ -74,7 +74,7 @@
   animation: glowPulse 8s ease-in-out infinite;
 }
 
-/* Top‑right glow (replaces bottom‑right) */
+/* Top‑right glow */
 .cta-banner::after {
   content: "";
   position: absolute;
@@ -149,7 +149,6 @@
   }
 }
 
-/* Adjust central circle for smaller screens */
 @media screen and (max-width: 768px) {
   .cta-banner__circle-glow {
     width: 90%;
@@ -159,7 +158,7 @@
   }
 }
 
-/* Ensure content stays above all decorative elements */
+/* Ensure content stays above decorations */
 .cta-banner__content {
   position: relative;
   z-index: 2;
@@ -261,10 +260,11 @@
   }
 }
 
-/* Primary Button */
-.cta-banner__button {
-  background-color: var(--neutral-white);
-  color: var(--secondary-color);
+/* ========================================
+   BUTTONS - Unified styles
+======================================== */
+.cta-banner__button,
+.cta-banner__button--outline {
   padding: 12px 20px;
   border-radius: 50px;
   font-weight: 700;
@@ -273,15 +273,16 @@
   align-items: center;
   justify-content: center;
   gap: 6px;
-  border: none;
-  cursor: pointer;
   text-decoration: none;
   width: 100%;
   font-size: 0.85rem;
+  cursor: pointer;
+  border: 2px solid transparent;
 }
 
 @media screen and (min-width: 640px) {
-  .cta-banner__button {
+  .cta-banner__button,
+  .cta-banner__button--outline {
     width: auto;
     padding: var(--spacing-2) var(--spacing-5);
     font-size: 0.9rem;
@@ -289,60 +290,35 @@
 }
 
 @media screen and (min-width: 768px) {
-  .cta-banner__button {
+  .cta-banner__button,
+  .cta-banner__button--outline {
     padding: var(--spacing-2) var(--spacing-6);
     font-size: var(--font-size-md);
     gap: 8px;
   }
 }
 
+/* Primary button */
+.cta-banner__button {
+  background-color: var(--neutral-white);
+  color: var(--secondary-color);
+  border-color: var(--neutral-white);
+}
+
 .cta-banner__button:hover,
 .cta-banner__button:active {
   background-color: var(--primary-color);
   color: var(--neutral-white);
+  border-color: var(--primary-color);
   transform: translateY(-2px);
   box-shadow: 0 10px 30px rgba(255, 127, 65, 0.4);
 }
 
-.cta-banner__button svg {
-  transition: transform 0.3s ease;
-}
-
-.cta-banner__button:hover svg,
-.cta-banner__button:active svg {
-  transform: translateX(5px);
-}
-
-/* Secondary Button */
+/* Secondary button (outline) */
 .cta-banner__button--outline {
   background-color: transparent;
   color: var(--neutral-white);
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  padding: 12px 20px;
-  border-radius: 50px;
-  font-weight: 600;
-  transition: var(--transition);
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  font-size: 0.85rem;
-}
-
-@media screen and (min-width: 640px) {
-  .cta-banner__button--outline {
-    width: auto;
-    padding: var(--spacing-2) var(--spacing-5);
-    font-size: 0.9rem;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .cta-banner__button--outline {
-    padding: var(--spacing-2) var(--spacing-6);
-    font-size: var(--font-size-md);
-  }
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 .cta-banner__button--outline:hover,
@@ -350,6 +326,18 @@
   background-color: rgba(255, 255, 255, 0.1);
   border-color: var(--primary-color);
   transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(255, 127, 65, 0.4);
+}
+
+/* Icon animation – same for both */
+.cta-banner__button svg,
+.cta-banner__button--outline svg {
+  transition: transform 0.3s ease;
+}
+
+.cta-banner__button:hover svg,
+.cta-banner__button--outline:hover svg {
+  transform: translateX(5px);
 }
 
 /* ========================================

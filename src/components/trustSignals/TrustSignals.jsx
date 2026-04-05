@@ -49,7 +49,7 @@ const TrustSignals = () => {
 
         {/* CTA */}
         <div className="trust__footer">
-          <a href="/about" className="trust__link">
+          <a href="/about-us" className="trust__link">
             Discover our manufacturing process <PiArrowRight />
           </a>
         </div>
