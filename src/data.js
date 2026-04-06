@@ -578,7 +578,7 @@ export const productData = [
     certifications: ["CE", "UL", "IEC", "UN38.3"],
     warranty: "5 years",
     inStock: true,
-    youtubeVideoId: null
+    youtubeVideoId: "HHInOw0G3_I",
   },
 
   {
