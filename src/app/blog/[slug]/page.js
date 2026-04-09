@@ -1,7 +1,8 @@
+export const runtime = 'edge';
+
 import { blogPosts } from "@/data";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
 import { PortableText } from "@portabletext/react";
 import { 
   PiArrowLeft, 
