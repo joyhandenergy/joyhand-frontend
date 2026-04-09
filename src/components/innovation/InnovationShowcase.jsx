@@ -87,8 +87,8 @@ const InnovationShowcase = () => {
           onCanPlayThrough={() => setVideoLoaded(true)}
         >
           <source
-            src="/videos/heroImg/factory3.mp4"
-            type="video/mp4"
+            src="/homeImg/joyhand-factory-manufacturing.webm"
+            type="video/webm"
           />
         </video>
         <div className="innovation-section__overlay">
