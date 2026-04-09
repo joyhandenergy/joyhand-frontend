@@ -24,8 +24,8 @@ export default function Hero() {
             poster="/videos/heroImg/hero-poster.png"
           >
             <source
-              src="/homeImg/joyhand-factory.webm"
-              type="video/webm"
+              src="/videos/heroImg/joyhand-hero-video.mp4"
+              type="video/mp4"
             />
           </video>
           <div className="hero__overlay"></div>
