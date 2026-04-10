@@ -1,5 +1,3 @@
-export const runtime = 'edge';
-
 import { Suspense } from "react";
 import { getProductsByCategory } from "@/data";
 import ProductCard from "@/components/productCard/ProductCard";
