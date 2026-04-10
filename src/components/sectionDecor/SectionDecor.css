@@ -1,178 +1,123 @@
 /* =====================================================
-   SECTION DECOR SYSTEM (Optimized)
+   SECTION DECOR SYSTEM - High-Performance Atmospheric
 ===================================================== */
 .section-decor {
   position: absolute;
   inset: 0;
   overflow: hidden;
   pointer-events: none;
-  z-index: var(--z-below);
+  z-index: -1; /* Keep it strictly in background */
   opacity: 0.6;
+  
+  /* Performance: Create a new stacking context */
+  contain: strict; 
 }
 
 /* Base shape */
 .section-decor__shape {
   position: absolute;
-  filter: blur(clamp(30px, 6vw, 60px));
+  /* Use fixed blur for speed, responsive for look */
+  filter: blur(50px);
+  /* Force hardware acceleration */
   will-change: transform;
-  transform: translate3d(0, 0, 0); /* GPU boost */
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0); 
 }
 
 /* =====================================================
-   PRIMARY (Perfect Circles - No Oval Ever)
+   THEMES (Optimized aspect-ratios)
 ===================================================== */
+
+/* PRIMARY: Clean Circles */
 .section-decor--primary .section-decor__shape {
   background: var(--primary-color);
   border-radius: 50%;
-  opacity: 0.15;
-
-  width: clamp(180px, 28vw, 500px);
+  opacity: 0.12;
+  width: clamp(200px, 30vw, 550px);
   aspect-ratio: 1 / 1;
-
-  animation: floatBubble 20s infinite ease-in-out;
+  animation: floatBubble 25s infinite ease-in-out;
 }
 
-/* =====================================================
-   SECONDARY (Controlled Ovals - Responsive)
-===================================================== */
+/* SECONDARY: Engineering Ovals */
 .section-decor--secondary .section-decor__shape {
   background: var(--secondary-color-light);
-  opacity: 0.1;
-
-  width: clamp(220px, 35vw, 600px);
-  aspect-ratio: 3 / 2; /* keeps oval consistent */
-
+  opacity: 0.08;
+  width: clamp(250px, 40vw, 700px);
+  aspect-ratio: 16 / 9; /* Ultra-wide industrial feel */
   border-radius: 50%;
-
-  animation: morphOval 25s infinite ease-in-out;
+  animation: morphOval 30s infinite ease-in-out;
 }
 
-/* =====================================================
-   ACCENT (Organic Shapes - Scaled)
-===================================================== */
+/* ACCENT: Organic 'Energy' Blobs */
 .section-decor--accent .section-decor__shape {
   background: var(--accent-color-dark);
-  opacity: 0.12;
-
-  width: clamp(100px, 12vw, 180px);
-  aspect-ratio: 3 / 4;
-
+  opacity: 0.1;
+  width: clamp(120px, 15vw, 220px);
+  aspect-ratio: 4 / 5;
   border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
-
-  animation: driftEgg 15s infinite linear;
+  animation: driftEgg 18s infinite linear;
 }
 
-
 /* =====================================================
-   ANIMATIONS (GPU FRIENDLY)
+   GPU-FRIENDLY ANIMATIONS (Slow = Premium)
 ===================================================== */
 @keyframes floatBubble {
   0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
-  33% { transform: translate3d(10%, -15%, 0) scale(1.1); }
-  66% { transform: translate3d(-5%, 10%, 0) scale(0.9); }
+  33% { transform: translate3d(5%, -10%, 0) scale(1.05); }
+  66% { transform: translate3d(-5%, 5%, 0) scale(0.95); }
 }
 
 @keyframes morphOval {
-  0%, 100% {
-    border-radius: 50%;
-    transform: rotate(0deg) scale(1);
-  }
-  50% {
-    border-radius: 30% 70% 70% 30% / 50%;
-    transform: rotate(15deg) scale(1.05);
-  }
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50% { transform: translate3d(2%, 2%, 0) rotate(10deg) scale(1.02); }
 }
 
 @keyframes driftEgg {
-  from {
-    transform: translate3d(0, 100%, 0) rotate(0deg);
-    opacity: 0;
-  }
-  20%, 80% {
-    opacity: 0.12;
-  }
-  to {
-    transform: translate3d(0, -100%, 0) rotate(360deg);
-    opacity: 0;
-  }
+  from { transform: translate3d(0, 80%, 0) rotate(0deg); opacity: 0; }
+  20%, 80% { opacity: 0.12; }
+  to { transform: translate3d(0, -80%, 0) rotate(360deg); opacity: 0; }
 }
 
-
 /* =====================================================
-   SMART POSITIONING (Responsive Safe)
+   POSITIONING & PERFORMANCE
 ===================================================== */
 .section-decor__shape:nth-child(1) {
-  top: 10%;
-  left: -10%;
+  top: 5%;
+  left: -5%;
   animation-delay: 0s;
 }
 
 .section-decor__shape:nth-child(2) {
-  bottom: 10%;
+  bottom: 5%;
   right: -5%;
-  animation-delay: -5s;
+  animation-delay: -7s;
 }
 
 .section-decor__shape:nth-child(3) {
-  top: 40%;
-  left: 60%;
-  animation-delay: -10s;
+  top: 45%;
+  left: 55%;
+  animation-delay: -14s;
 }
 
-
 /* =====================================================
-   MOBILE OPTIMIZATION
+   RESPONSIVE OPTIMIZATION
 ===================================================== */
 @media (max-width: 768px) {
   .section-decor {
-    opacity: 0.4; /* reduce visual noise */
+    opacity: 0.35;
   }
-
+  
+  /* Limit blur and movement on mobile for battery life */
   .section-decor__shape {
-    filter: blur(30px);
-  }
-
-  /* reposition for better layout */
-  .section-decor__shape:nth-child(1) {
-    top: 5%;
-    left: -20%;
-  }
-
-  .section-decor__shape:nth-child(2) {
-    bottom: 5%;
-    right: -15%;
+    filter: blur(35px);
+    animation-duration: 35s; /* Slower = less CPU usage */
   }
 
   .section-decor__shape:nth-child(3) {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    display: none; /* Hide middle shape on mobile for performance */
   }
 }
 
-
-/* =====================================================
-   SMALL DEVICES (Extra Tight Control)
-===================================================== */
-@media (max-width: 480px) {
-  .section-decor {
-    opacity: 0.3;
-  }
-
-  .section-decor--primary .section-decor__shape,
-  .section-decor--secondary .section-decor__shape {
-    width: clamp(120px, 35vw, 250px);
-  }
-
-  .section-decor--accent .section-decor__shape {
-    width: clamp(80px, 20vw, 140px);
-  }
-}
-
-
-/* =====================================================
-   ACCESSIBILITY
-===================================================== */
 @media (prefers-reduced-motion: reduce) {
   .section-decor__shape {
     animation: none !important;

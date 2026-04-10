@@ -1,575 +1,201 @@
 /* ========================================
-   ENERGY PLATFORMS SECTION - Mobile First
+   ENERGY PLATFORMS - High-End Scoped Style
 ======================================== */
+
 .energy-platforms {
-  padding: var(--spacing-4) 0;
-  position: relative;
-  z-index: 0;
-  background-color: var(--accent-color-light);
+  width: 100%;
+  background-color: #000;
   overflow: hidden;
-  width: 100%;
+  position: relative;
 }
 
-/* Container handles horizontal padding for ALL devices */
-.energy-platforms .container {
-  width: 100%;
-  padding-left: var(--spacing-3);
-  padding-right: var(--spacing-3);
-  padding-top: var(--spacing-4);
-  padding-bottom: var(--spacing-4);
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* Desktop container padding */
-@media screen and (min-width: 768px) {
-  .energy-platforms .container {
-    padding-left: var(--spacing-5);
-    padding-right: var(--spacing-5);
-  }
-}
-
-@media screen and (min-width: 1024px) {
-  .energy-platforms .container {
-    padding-left: var(--spacing-6);
-    padding-right: var(--spacing-6);
-  }
+/* SCOPED BORDER RADIUS: 
+   Only removes curves from the section, grid, and cards. 
+   Does NOT affect your global site or the Explore button. */
+.energy-platforms, 
+.energy-platforms .energy-platforms__grid,
+.energy-platforms .platform-card, 
+.energy-platforms .platform-card__image {
+  border-radius: 0 !important;
 }
 
 .energy-platforms__grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--spacing-3);
-  margin-top: var(--spacing-3);
-  width: 100%;
-}
-
-@media screen and (min-width: 640px) {
-  .energy-platforms__grid {
-    gap: var(--spacing-3);
-    margin-top: var(--spacing-4);
-  }
+  gap: 2px; /* Precision split line between cards */
 }
 
 @media screen and (min-width: 768px) {
   .energy-platforms__grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: var(--spacing-4);
-    margin-top: var(--spacing-5);
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  .energy-platforms__grid {
-    grid-template-columns: repeat(4, 1fr);
-    gap: var(--spacing-4);
   }
 }
 
 /* ========================================
-   PLATFORM CARD - Mobile First
+   PLATFORM CARD
 ======================================== */
 .platform-card {
   position: relative;
-  height: 320px;
-  border-radius: var(--spacing-2);
+  height: 65vh;
+  min-height: 480px;
+  max-height: 750px;
   overflow: hidden;
-  isolation: isolate;
-  
-  /* Initial State (Invisible) */
-  opacity: 0;
-  transform: translateY(40px);
-  transition: 
-    opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
-    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-  transition-delay: var(--delay, 0s);
-  
-  /* Mobile tap highlight */
-  -webkit-tap-highlight-color: transparent;
-}
-
-@media screen and (min-width: 480px) {
-  .platform-card {
-    height: 340px;
-  }
-}
-
-@media screen and (min-width: 640px) {
-  .platform-card {
-    height: 360px;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .platform-card {
-    height: 380px;
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  .platform-card {
-    height: 400px;
-  }
-}
-
-/* Triggered by JS IntersectionObserver */
-.energy-platforms--is-visible .platform-card {
-  opacity: 1;
-  transform: translateY(0);
+  background-color: #111;
 }
 
 .platform-card__link {
-  display: flex;
-  flex-direction: column;
+  display: block;
   height: 100%;
   width: 100%;
   text-decoration: none;
-  position: relative;
 }
 
-/* ========================================
-   IMAGE & OVERLAY - OPTIMIZED
-======================================== */
-.platform-card__image-wrapper {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background-color: var(--secondary-color-dark);
-}
-
-/* Blur placeholder - loads instantly */
-.platform-card__blur-placeholder {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background-size: cover;
-  background-position: center;
-  filter: blur(20px);
-  transform: scale(1.1);
-  transition: opacity 0.3s ease;
-}
-
-/* Main image */
 .platform-card__image {
   object-fit: cover;
-  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
-  border-radius: 0;
-  opacity: 0;
-  z-index: 2;
-}
-
-.platform-card__image--loaded {
-  opacity: 1;
-}
-
-/* Hide blur placeholder when main image loads */
-.platform-card--image-loaded .platform-card__blur-placeholder {
-  opacity: 0;
+  transition: transform 1.2s cubic-bezier(0.2, 1, 0.3, 1);
 }
 
 .platform-card__overlay {
   position: absolute;
   inset: 0;
-
-  /* NEW: softer default gradient */
-  background: linear-gradient(
-    to top,
-    rgba(18, 27, 45, 0.75) 10%,
-    rgba(18, 27, 45, 0.35) 50%,
-    rgba(18, 27, 45, 0.1) 100%
-  );
-
-  transition: all 0.4s ease;
-  z-index: 3;
-}
-
-
-.platform-card:hover .platform-card__overlay,
-.platform-card:active .platform-card__overlay {
-  background: linear-gradient(
-    to top,
-    rgba(255, 127, 65, 0.92) 0%,
-    rgba(18, 27, 45, 0.85) 65%,
-    rgba(18, 27, 45, 0.4) 100%
-  );
+  /* Darker base for better title pop */
+  background: rgba(0, 0, 0, 0.45); 
+  z-index: 2;
+  transition: background 0.5s ease;
 }
 
 /* ========================================
-   CONTENT - Tighter spacing
+   CONTENT ALIGNMENT (Centered)
 ======================================== */
 .platform-card__content {
   position: relative;
-  z-index: 4;
+  z-index: 10;
   height: 100%;
-  padding: var(--spacing-3);
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center; /* Vertical Center */
+  align-items: center;    /* Horizontal Center */
+  padding: 40px;
+  text-align: center;
 }
 
-@media screen and (min-width: 480px) {
-  .platform-card__content {
-    padding: var(--spacing-3);
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .platform-card__content {
-    padding: var(--spacing-4);
-  }
+.platform-card__center-group {
+  transition: transform 0.5s cubic-bezier(0.2, 1, 0.3, 1);
 }
 
 .platform-card__title {
-  color: var(--neutral-white);
-  font-size: 1.2rem;
-  margin-bottom: 4px;
+  color: #ffffff;
+  font-size: clamp(1.4rem, 3vw, 1.8rem);
   font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  margin: 0;
   line-height: 1.2;
 }
 
-@media screen and (min-width: 480px) {
-  .platform-card__title {
-    font-size: 1.3rem;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .platform-card__title {
-    font-size: 1.4rem;
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  .platform-card__title {
-    font-size: 1.5rem;
-  }
+/* ========================================
+   REVEAL LOGIC & CURVED BUTTON
+======================================== */
+.platform-card__reveal-content {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transform: translateY(20px);
+  transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
 }
 
 .platform-card__description {
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 0.8rem;
-  line-height: 1.3;
-  margin-bottom: var(--spacing-1);
-  max-width: 100%;
-  overflow: hidden;
-  max-height: 2.6em;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 20px auto;
+  max-width: 300px;
 }
 
-@media screen and (min-width: 480px) {
-  .platform-card__description {
-    font-size: 0.85rem;
-    margin-bottom: var(--spacing-2);
-    max-height: 2.6em;
-  }
+.platform-card__button-container {
+  margin-top: 5px;
 }
 
-@media screen and (min-width: 768px) {
-  .platform-card__description {
-    font-size: 0.9rem;
-    margin-bottom: var(--spacing-2);
-    max-height: 2.7em;
-  }
+/* THE CURVED BUTTON */
+.platform-card__button {
+  background-color: var(--primary-color, #ff7f41);
+  color: #ffffff;
+  padding: 12px 32px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  
+  /* Explicitly curved like a pill */
+  border-radius: 50px !important; 
+  
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
-/* Source note - appears on hover/tap */
-.platform-card__source-note {
+.platform-card__button:hover {
+  background-color: #ffffff;
+  color: #000000;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+/* ========================================
+   STATIONARY ELEMENTS
+======================================== */
+.platform-card__source-tag {
+  position: absolute;
+  bottom: 30px;
   display: flex;
   align-items: center;
-  gap: 6px;
-  background: rgba(255,255,255,0.12);
-  backdrop-filter: blur(6px);
-  padding: 6px 12px;
-  border-radius: 50px;
-  width: fit-content;
-  margin-bottom: var(--spacing-2);
-
-  /* ALWAYS VISIBLE */
-  opacity: 1;
-  transform: translateY(0);
-
-  border: 1px solid rgba(255,255,255,0.2);
-}
-
-@media screen and (min-width: 480px) {
-  .platform-card__source-note {
-    padding: 6px 12px;
-    margin-bottom: var(--spacing-2);
-  }
-}
-
-
-.platform-card__source-note svg {
-  color: var(--primary-color);
-  width: 12px;
-  height: 12px;
-}
-
-.platform-card__source-note span {
-  color: white;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.5);
   font-size: 0.65rem;
-  font-weight: 500;
-}
-
-@media screen and (min-width: 480px) {
-  .platform-card__source-note span {
-    font-size: 0.7rem;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .platform-card__source-note span {
-    font-size: 0.75rem;
-  }
-}
-
-/* ========================================
-   FOOTER - Tighter spacing
-======================================== */
-.platform-card__footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: var(--spacing-2);
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
-  transition: border-color 0.3s ease;
-  margin-top: auto;
-}
-
-@media screen and (min-width: 480px) {
-  .platform-card__footer {
-    padding-top: var(--spacing-2);
-  }
-}
-
-.platform-card:hover .platform-card__footer,
-.platform-card:active .platform-card__footer {
-  border-top-color: var(--primary-color);
-}
-
-.platform-card__cta {
-  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
   font-weight: 600;
-  color: var(--neutral-white);
-  transition: transform 0.3s ease;
-  letter-spacing: 0.5px;
-}
-
-@media screen and (min-width: 480px) {
-  .platform-card__cta {
-    font-size: 0.75rem;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .platform-card__cta {
-    font-size: 0.8rem;
-  }
-}
-
-.platform-card:hover .platform-card__cta,
-.platform-card:active .platform-card__cta {
-  transform: translateX(-5px);
-}
-
-.platform-card__icon-wrapper {
-  width: 44px;
-  height: 44px;
-  background-color: var(--primary-color);
-  color: var(--neutral-white);
-  border-radius: 10px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  transition: all 0.35s ease;
-  box-shadow: 0 6px 18px rgba(255,127,65,0.35);
-}
-
-@media screen and (min-width: 480px) {
-  .platform-card__icon-wrapper {
-    width: 34px;
-    height: 34px;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .platform-card__icon-wrapper {
-    width: 36px;
-    height: 36px;
-  }
-}
-
-.platform-card__icon-wrapper svg {
-  width: 20px;
-  height: 20px;
 }
 
 /* ========================================
-   HOVER STATES
+   HOVER ACTIONS
 ======================================== */
-.platform-card:hover .platform-card__image,
-.platform-card:active .platform-card__image {
+.platform-card:hover .platform-card__image {
   transform: scale(1.1);
 }
 
-.platform-card:hover .platform-card__icon-wrapper,
-.platform-card:active .platform-card__icon-wrapper {
-  background-color: var(--neutral-white);
-  color: var(--primary-color);
-  transform: rotate(45deg);
-  box-shadow: 0 6px 16px rgba(255,127,65,0.4);
+.platform-card:hover .platform-card__overlay {
+  background: rgba(0, 0, 0, 0.65);
 }
 
-.platform-card:hover .platform-card__overlay,
-.platform-card:active .platform-card__overlay {
-  background: linear-gradient(
-    to top,
-    rgba(255, 127, 65, 0.95) 0%,
-    rgba(18, 27, 45, 0.8) 70%,
-    rgba(18, 27, 45, 0.4) 100%
-  );
+.platform-card:hover .platform-card__center-group {
+  /* Shifts the title up slightly to keep the whole group centered when expanded */
+  transform: translateY(-10px);
 }
 
-/* ========================================
-   SMALL MOBILE (480px and below)
-======================================== */
-@media screen and (max-width: 480px) {
-  .energy-platforms {
-    padding: var(--spacing-3) 0;
-  }
-  
-  .energy-platforms .container {
-    padding-left: var(--spacing-2);
-    padding-right: var(--spacing-2);
-  }
-  
-  .energy-platforms__grid {
-    gap: var(--spacing-2);
-  }
-  
+.platform-card:hover .platform-card__reveal-content {
+  max-height: 350px;
+  opacity: 1;
+  transform: translateY(0);
+  margin-top: 10px;
+}
+
+/* Mobile Tweak - Show more by default on small screens */
+@media screen and (max-width: 768px) {
   .platform-card {
-    height: 280px;
+    height: 55vh;
   }
   
-  .platform-card__content {
-    padding: 16px;
-  }
-  
-  .platform-card__title {
-    font-size: 1.1rem;
-    margin-bottom: 2px;
-  }
-  
-  .platform-card__description {
-    font-size: 0.7rem;
-    margin-bottom: 8px;
-    max-height: 2.6em;
-  }
-  
-  .platform-card__source-note {
-    padding: 3px 8px;
-    margin-bottom: 8px;
-  }
-  
-  .platform-card__source-note span {
-    font-size: 0.6rem;
-  }
-  
-  .platform-card__source-note svg {
-    width: 10px;
-    height: 10px;
-  }
-  
-  .platform-card__footer {
-    padding-top: 8px;
-  }
-  
-  .platform-card__icon-wrapper {
-    width: 28px;
-    height: 28px;
-  }
-  
-  .platform-card__icon-wrapper svg {
-    width: 14px;
-    height: 14px;
-  }
-  
-  .platform-card__cta {
-    font-size: 0.65rem;
-  }
-}
-
-/* ========================================
-   MEDIUM MOBILE (481px - 640px)
-======================================== */
-@media screen and (min-width: 481px) and (max-width: 639px) {
-  .platform-card {
-    height: 300px;
-  }
-  
-  .platform-card__content {
-    padding: 18px;
-  }
-  
-  .platform-card__title {
-    font-size: 1.2rem;
-  }
-  
-  .platform-card__description {
-    font-size: 0.75rem;
-  }
-}
-
-/* ========================================
-   PERFORMANCE OPTIMIZATIONS
-======================================== */
-.platform-card,
-.platform-card__image,
-.platform-card__icon-wrapper {
-  will-change: transform;
-}
-
-.platform-card__blur-placeholder {
-  will-change: opacity;
-}
-
-/* Prevent layout shift */
-.platform-card__image-wrapper img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
-
-/* ========================================
-   REDUCED MOTION PREFERENCES
-======================================== */
-@media (prefers-reduced-motion: reduce) {
-  .platform-card,
-  .platform-card__image,
-  .platform-card__icon-wrapper,
-  .platform-card__source-note,
-  .platform-card__cta,
-  .platform-card__blur-placeholder {
-    animation: none !important;
-    transition: none !important;
-  }
-  
-  .platform-card:hover .platform-card__image,
-  .platform-card:active .platform-card__image {
+  .platform-card__reveal-content {
+    max-height: none;
+    opacity: 1;
     transform: none;
+    margin-top: 15px;
   }
   
-  .platform-card:hover .platform-card__icon-wrapper,
-  .platform-card:active .platform-card__icon-wrapper {
+  .platform-card:hover .platform-card__center-group {
     transform: none;
-  }
-  
-  .platform-card__image {
-    opacity: 1 !important;
-  }
-  
-  .platform-card__blur-placeholder {
-    display: none;
   }
 }

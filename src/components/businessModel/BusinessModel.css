@@ -25,37 +25,21 @@
   z-index: 2;
 }
 
-/* =====================================================
-   ORDER ON MOBILE/TABLET (default)
-===================================================== */
+/* ORDER ON MOBILE/TABLET */
 .businessModel__images {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-3);
-  opacity: 0;
-  transform: translateX(-40px);
   transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   order: 1;
 }
 
 .businessModel__content {
-  opacity: 0;
-  transform: translateX(40px);
   transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   order: 2;
 }
 
-/* On mobile/tablet, static image first, dynamic second */
-.businessModel__image-card--static {
-  order: 1;
-}
-.businessModel__image-card--dynamic {
-  order: 2;
-}
-
-/* =====================================================
-   DESKTOP (1024px+) – images on left, content on right
-===================================================== */
+/* DESKTOP (1024px+) – images on left, content on right */
 @media screen and (min-width: 1024px) {
   .businessModel__container {
     grid-template-columns: 1fr 1fr;
@@ -64,11 +48,9 @@
   }
   .businessModel__images {
     order: 1;
-    transform: translateX(-40px);
   }
   .businessModel__content {
     order: 2;
-    transform: translateX(40px);
   }
   /* On desktop, dynamic image first (top), static second (bottom) */
   .businessModel__image-card--dynamic {
@@ -79,15 +61,24 @@
   }
 }
 
+/* Animation only when visible */
+.businessModel:not(.is-visible) .businessModel__images,
+.businessModel:not(.is-visible) .businessModel__content {
+  opacity: 0;
+  transform: translateX(-40px);
+}
+
+.businessModel:not(.is-visible) .businessModel__content {
+  transform: translateX(40px);
+}
+
 .businessModel.is-visible .businessModel__images,
 .businessModel.is-visible .businessModel__content {
   opacity: 1;
   transform: translateX(0);
 }
 
-/* =====================================================
-   IMAGE CARDS (with overlay)
-===================================================== */
+/* IMAGE CARDS */
 .businessModel__image-card {
   position: relative;
   width: 100%;
@@ -97,15 +88,7 @@
   background: var(--neutral-light);
   box-shadow: var(--shadow-lg);
   transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-  opacity: 0;
-  transition: opacity 0.5s ease, transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-  
-  /* Thick border – responsive */
   border: 4px solid var(--accent-color-dark);
-}
-
-.businessModel__image-card--loaded {
-  opacity: 1;
 }
 
 .businessModel__image-card:hover {
@@ -114,7 +97,7 @@
   border-color: var(--primary-color);
 }
 
-/* Image overlay – dark gradient for consistency */
+/* Image overlay */
 .businessModel__image-overlay {
   position: absolute;
   inset: 0;
@@ -140,18 +123,13 @@
   aspect-ratio: 16 / 9;
 }
 
-/* Responsive border thickness on mobile */
 @media screen and (max-width: 768px) {
   .businessModel__image-card {
     border-width: 2px;
   }
 }
 
-/* =====================================================
-   RIGHT CONTENT – tabs & text
-===================================================== */
-
-/* Tabs - Pill Buttons (left-aligned) */
+/* Tabs */
 .businessModel__service-tabs {
   display: flex;
   gap: var(--spacing-2);
@@ -232,7 +210,7 @@
   50% { opacity: 0.4; }
 }
 
-/* Heading with underline */
+/* Heading */
 .businessModel__heading {
   font-size: clamp(1.5rem, 5vw, 1.75rem);
   padding: var(--spacing-2) 0;
@@ -270,7 +248,7 @@
   }
 }
 
-/* Description & Extra – justified on desktop */
+/* Description */
 .businessModel__description,
 .businessModel__extra {
   font-size: var(--font-size-sm);
@@ -285,18 +263,15 @@
   .businessModel__description,
   .businessModel__extra {
     margin-top: var(--spacing-2);
-    
     font-size: var(--font-size-md);
     line-height: 1.6;
-    text-align: justify;
-  text-justify: inter-word;
   }
   .businessModel__extra {
     margin-bottom: var(--spacing-3);
   }
 }
 
-/* Features list – 2 columns on tablet+, green arrow */
+/* Features list */
 .businessModel__list {
   display: grid;
   grid-template-columns: 1fr;
@@ -322,7 +297,7 @@
 }
 
 .businessModel__list li::before {
-  content: "✓";;
+  content: "✓";
   position: absolute;
   left: 0;
   color: var(--accent-color-dark);
@@ -336,7 +311,7 @@
   transform: translateX(4px);
 }
 
-/* PREVENT VERTICAL SHIFT ON TAB SWITCH */
+/* Prevent vertical shift */
 .businessModel__content {
   min-height: 540px;
 }
@@ -353,7 +328,7 @@
   }
 }
 
-/* Actions – centered single button */
+/* Actions */
 .businessModel__actions {
   display: flex;
   justify-content: center;
@@ -386,14 +361,7 @@
   transform: translateY(-2px);
 }
 
-/* =====================================================
-   PERFORMANCE & REDUCED MOTION
-===================================================== */
-.businessModel__image-card,
-.businessModel__btn {
-  will-change: transform;
-}
-
+/* Performance & reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .businessModel__image-card,
   .businessModel__btn,
@@ -408,12 +376,14 @@
   .businessModel__image-card:hover .businessModel__image {
     transform: none;
   }
-  .businessModel__images,
-  .businessModel__content {
+  .businessModel.is-visible .businessModel__images,
+  .businessModel.is-visible .businessModel__content {
     opacity: 1 !important;
     transform: none !important;
   }
-  .businessModel__image-card {
+  .businessModel:not(.is-visible) .businessModel__images,
+  .businessModel:not(.is-visible) .businessModel__content {
     opacity: 1 !important;
+    transform: none !important;
   }
 }

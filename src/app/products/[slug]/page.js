@@ -1,4 +1,3 @@
-export const runtime = 'edge';
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { 
@@ -6,15 +5,17 @@ import {
   PiBatteryHigh, 
   PiLightning,
   PiMotorcycle, 
-  PiFactory
+  PiFactory,
 } from "react-icons/pi";
 import { productData } from "@/data";
 import ProductGallery from "./ProductGallery";
 import ProductVideo from "./ProductVideo";
 import ProductActions from "./ProductActions";
+import ProductFAQ from "./ProductFAQ";
+import ProductRelated from "./ProductRelated";
 import "../Products.css";
 
-// Helper functions
+// Helper functions (same as before)
 function getCategoryIcon(category) {
   switch(category) {
     case "battery": return <PiBatteryHigh size={16} />;
@@ -46,6 +47,71 @@ function getTypeDisplay(type) {
   return types[type] || type;
 }
 
+// Component: Key specs at a glance (right column)
+function ProductKeySpecs({ product }) {
+  const { specifications, category } = product;
+  if (!specifications) return null;
+
+  let keySpecs = [];
+  if (category === "battery") {
+    keySpecs = [
+      { label: "Nominal Voltage", value: specifications.nominalVoltage },
+      { label: "Capacity", value: specifications.capacity || specifications.energy },
+      { label: "Energy", value: specifications.energy },
+      { label: "Cycle Life", value: specifications.cycleLife },
+    ];
+  } else if (category === "inverter") {
+    keySpecs = [
+      { label: "Power", value: specifications.power },
+      { label: "DC Input", value: specifications.dcInput },
+      { label: "AC Output", value: specifications.acOutput },
+      { label: "Efficiency", value: specifications.efficiency },
+    ];
+  } else if (category === "electric-mobility") {
+    keySpecs = [
+      { label: "Top Speed", value: specifications.maxSpeed || specifications.topSpeed },
+      { label: "Range", value: specifications.maxRange || specifications.mileage },
+      { label: "Motor", value: specifications.motor },
+      { label: "Battery", value: specifications.battery },
+    ];
+  }
+
+  if (keySpecs.length === 0) return null;
+
+  return (
+    <div className="product-details__key-specs">
+      <h3 className="product-details__key-specs-heading">Key Specifications</h3>
+      <div className="product-details__key-specs-grid">
+        {keySpecs.map((spec, idx) => (
+          <div key={idx} className="product-details__key-spec-item">
+            <span className="product-details__key-spec-label">{spec.label}</span>
+            <span className="product-details__key-spec-value">{spec.value}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// Component: Key Features (bullet list) – now moved to right column
+function ProductFeaturesCompact({ features }) {
+  if (!features || features.length === 0) return null;
+  return (
+    <div className="product-details__features-compact">
+      <h3 className="product-details__features-compact-heading">Key Features</h3>
+      <ul className="product-details__features-compact-list">
+        {features.slice(0, 6).map((feature, idx) => (
+          <li key={idx} className="product-details__feature-compact-item">
+            <span className="product-details__feature-check">✓</span>
+            {feature}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+// Full specifications table (unchanged but we'll add responsive wrapper)
 function ProductSpecs({ product }) {
   const { specifications, category, type } = product;
   if (!specifications) return null;
@@ -125,31 +191,16 @@ function ProductSpecs({ product }) {
   return (
     <div className="product-details__specs">
       <h3 className="product-details__specs-heading">Technical Specifications</h3>
-      <div className="product-details__specs-table">
-        {specsToShow.map((spec, idx) => (
-          <div key={idx} className="product-details__spec-row">
-            <span className="product-details__spec-label">{spec.label}</span>
-            <span className="product-details__spec-value">{formatValue(spec.value)}</span>
-          </div>
-        ))}
+      <div className="product-details__specs-table-wrapper">
+        <div className="product-details__specs-table">
+          {specsToShow.map((spec, idx) => (
+            <div key={idx} className="product-details__spec-row">
+              <span className="product-details__spec-label">{spec.label}</span>
+              <span className="product-details__spec-value">{formatValue(spec.value)}</span>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
-  );
-}
-
-function ProductFeatures({ features }) {
-  if (!features || features.length === 0) return null;
-  return (
-    <div className="product-details__features">
-      <h3 className="product-details__features-heading">Key Features</h3>
-      <ul className="product-details__features-list">
-        {features.map((feature, idx) => (
-          <li key={idx} className="product-details__feature-item">
-            <span className="product-details__feature-check">✓</span>
-            {feature}
-          </li>
-        ))}
-      </ul>
     </div>
   );
 }
@@ -195,7 +246,31 @@ function ProductWarranty({ warranty }) {
   );
 }
 
-// Server component with metadata
+// Breadcrumbs component (unchanged)
+function Breadcrumbs({ product, categoryDisplay }) {
+  return (
+    <nav className="product-details__breadcrumbs" aria-label="Breadcrumb">
+      <ol className="product-details__breadcrumbs-list">
+        <li className="product-details__breadcrumbs-item">
+          <Link href="/">Home</Link>
+        </li>
+        <li className="product-details__breadcrumbs-item">
+          <Link href="/products">Products</Link>
+        </li>
+        <li className="product-details__breadcrumbs-item">
+          <Link href={`/products/solutions/${product.category === "battery" ? "storage-batteries" : product.category === "inverter" ? "solar-inverters" : "electric-mobility"}`}>
+            {categoryDisplay}
+          </Link>
+        </li>
+        <li className="product-details__breadcrumbs-item" aria-current="page">
+          {product.name}
+        </li>
+      </ol>
+    </nav>
+  );
+}
+
+// Main server component
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const product = productData.find(p => p.slug === slug);
@@ -206,7 +281,6 @@ export async function generateMetadata({ params }) {
   };
 }
 
-// Main server component
 export default async function ProductDetailsPage({ params }) {
   const { slug } = await params;
   const product = productData.find(p => p.slug === slug);
@@ -224,16 +298,16 @@ export default async function ProductDetailsPage({ params }) {
   return (
     <main className="product-details">
       <div className="container">
-        <Link href="/products" className="product-details__back-link">
-          <PiArrowLeft size={18} /> Back to All Products
-        </Link>
+        <Breadcrumbs product={product} categoryDisplay={categoryDisplay} />
 
         <div className="product-details__grid">
+          {/* Left column: Gallery + Video */}
           <section className="product-details__gallery">
             <ProductGallery images={images} productName={product.name} />
             <ProductVideo videoId={videoId} productName={product.name} />
           </section>
 
+          {/* Right column: Info + Key Specs + Features + Actions */}
           <section className="product-details__info">
             <div className="product-details__meta">
               <span className="product-details__badge">
@@ -248,18 +322,24 @@ export default async function ProductDetailsPage({ params }) {
             <h1 className="product-details__title">{product.name}</h1>
             <p className="product-details__description">{product.description}</p>
 
-            <ProductFeatures features={product.features} />
-            <ProductSpecs product={product} />
-            <ProductApplications applications={product.applications} />
-            
-            <div className="product-details__footer-info">
-              <ProductCertifications certifications={product.certifications} />
-              <ProductWarranty warranty={product.warranty} />
-            </div>
-
-            {/* Client component for interactive buttons */}
+            <ProductKeySpecs product={product} />
+            <ProductFeaturesCompact features={product.features} />
             <ProductActions category={product.category} />
           </section>
+        </div>
+
+        {/* Full‑width sections below */}
+        <div className="product-details__full-content">
+          <ProductSpecs product={product} />
+          <ProductApplications applications={product.applications} />
+          
+          <div className="product-details__bottom-grid">
+            <ProductCertifications certifications={product.certifications} />
+            <ProductWarranty warranty={product.warranty} />
+          </div>
+
+          <ProductFAQ product={product} />
+          <ProductRelated currentProductId={product.id} />
         </div>
       </div>
     </main>

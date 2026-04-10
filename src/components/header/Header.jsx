@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -40,7 +40,7 @@ export default function Header() {
   
   const pathName = usePathname();
 
-  // Scroll effect for glassmorphism only
+  // Scroll effect with passive event listener
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
@@ -49,36 +49,42 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const closeMenu = () => {
+  const closeMenu = useCallback(() => {
     setIsMenuOpen(false);
     setActiveDropdown(null);
-  };
+  }, []);
 
-  const handleMobileDropdown = (name, e) => {
+  const handleMobileDropdown = useCallback((name, e) => {
     e.preventDefault();
     e.stopPropagation();
-    setActiveDropdown(activeDropdown === name ? null : name);
-  };
+    setActiveDropdown(prev => (prev === name ? null : name));
+  }, []);
 
+  const openModal = useCallback(() => {
+    closeMenu();
+    setIsModalOpen(true);
+  }, [closeMenu]);
+
+  // Close on escape key
   useEffect(() => {
     const handleEscape = (e) => {
       if (e.key === "Escape" && isMenuOpen) {
-        setIsMenuOpen(false);
-        setActiveDropdown(null);
+        closeMenu();
       }
     };
     window.addEventListener("keydown", handleEscape);
     return () => window.removeEventListener("keydown", handleEscape);
-  }, [isMenuOpen]);
+  }, [isMenuOpen, closeMenu]);
 
+  // Prevent body scroll when mobile menu open
   useEffect(() => {
     if (isMenuOpen) {
       document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = "";
     }
     return () => {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = "";
     };
   }, [isMenuOpen]);
 
@@ -92,7 +98,6 @@ export default function Header() {
             <div className="header__trust-badge">
               <span className="header__trust-badge-text">ISO 9001:2025 Certified</span>
             </div>
-
             <div className="header__contact">
               <a href="tel:+8613060850617" className="header__contact-item">
                 <PiPhone size={14} />
@@ -109,12 +114,12 @@ export default function Header() {
         {/* MAIN NAV */}
         <div className="header__main">
           <div className="container header__main-container">
-            
             <Link 
               href="/" 
               className="header__logo" 
               onClick={closeMenu}
               aria-label="JoyHand Energy - Manufacturer"
+              prefetch={true}
             >
               <Image
                 src="/images/logos/joyhandLogo.png"
@@ -127,13 +132,14 @@ export default function Header() {
             </Link>
 
             <nav className="header__nav" aria-label="Desktop navigation">
-              {links.map((link, idx) => (
-                <div key={idx} className="header__nav-item">
+              {links.map((link) => (
+                <div key={link.name} className="header__nav-item">
                   <Link
                     href={link.href}
                     className={`header__nav-link ${
                       pathName === link.href ? "header__nav-link--active" : ""
                     }`}
+                    prefetch={true}
                   >
                     {link.name}
                     {link.subLinks && <PiCaretDownBold className="header__nav-icon" />}
@@ -141,11 +147,12 @@ export default function Header() {
 
                   {link.subLinks && (
                     <ul className="header__dropdown" aria-label={`${link.name} submenu`}>
-                      {link.subLinks.map((sub, sIdx) => (
-                        <li key={sIdx}>
+                      {link.subLinks.map((sub) => (
+                        <li key={sub.href}>
                           <Link
                             href={sub.href}
                             className="header__dropdown-link"
+                            prefetch={true}
                           >
                             {sub.name}
                           </Link>
@@ -168,7 +175,7 @@ export default function Header() {
 
               <button 
                 className="header__mobile-toggle" 
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                onClick={() => setIsMenuOpen(prev => !prev)}
                 aria-label={isMenuOpen ? "Close menu" : "Open menu"}
                 aria-expanded={isMenuOpen}
               >
@@ -184,15 +191,15 @@ export default function Header() {
           aria-hidden={!isMenuOpen}
         >
           <nav className="header__mobile-nav" aria-label="Mobile navigation">
-            {links.map((link, idx) => (
-              <div key={idx} className="header__mobile-item">
+            {links.map((link) => (
+              <div key={link.name} className="header__mobile-item">
                 <div
                   className="header__mobile-link-wrapper"
                   onClick={(e) => link.subLinks && handleMobileDropdown(link.name, e)}
                   role="button"
                   tabIndex={0}
                   onKeyDown={(e) => {
-                    if (e.key === "Enter" || e.key === " ") {
+                    if ((e.key === "Enter" || e.key === " ") && link.subLinks) {
                       handleMobileDropdown(link.name, e);
                     }
                   }}
@@ -202,10 +209,10 @@ export default function Header() {
                     href={link.href}
                     className="header__mobile-link"
                     onClick={() => !link.subLinks && closeMenu()}
+                    prefetch={true}
                   >
                     {link.name}
                   </Link>
-
                   {link.subLinks && (
                     <PiCaretDownBold
                       className={`header__mobile-caret ${
@@ -215,7 +222,6 @@ export default function Header() {
                     />
                   )}
                 </div>
-
                 {link.subLinks && (
                   <ul 
                     className={`header__mobile-sub ${
@@ -223,12 +229,13 @@ export default function Header() {
                     }`}
                     aria-label={`${link.name} submenu`}
                   >
-                    {link.subLinks.map((sub, sIdx) => (
-                      <li key={sIdx}>
+                    {link.subLinks.map((sub) => (
+                      <li key={sub.href}>
                         <Link
                           href={sub.href}
                           className="header__mobile-sub-link"
                           onClick={closeMenu}
+                          prefetch={true}
                         >
                           {sub.name}
                         </Link>
@@ -252,10 +259,7 @@ export default function Header() {
 
             <button
               className="btn btn--primary header__mobile-cta"
-              onClick={() => {
-                closeMenu();
-                setIsModalOpen(true);
-              }}
+              onClick={openModal}
             >
               Get a Quote <PiArrowRight />
             </button>

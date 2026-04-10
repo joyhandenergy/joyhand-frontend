@@ -1,5 +1,5 @@
 /* =====================================================
-   HEADER CORE - Mobile First
+   HEADER CORE - Mobile First (Optimized)
 ===================================================== */
 .header {
   width: 100%;
@@ -14,7 +14,6 @@
   will-change: background-color, backdrop-filter;
 }
 
-/* Glassmorphism scroll state */
 .header--scrolled {
   background-color: rgba(255, 246, 242, 0.92);
   backdrop-filter: blur(12px);
@@ -22,16 +21,12 @@
   box-shadow: var(--shadow-md);
 }
 
-/* =====================================================
-   TOP BAR - Hidden on mobile, shown on desktop
-===================================================== */
+/* TOP BAR - Hidden on mobile */
 .header__top {
   display: none;
 }
 
-/* =====================================================
-   MAIN NAV - Mobile First
-===================================================== */
+/* MAIN NAV */
 .header__main {
   padding: var(--spacing-2) 0;
   position: relative;
@@ -50,12 +45,11 @@
   display: flex;
   align-items: center;
   flex-shrink: 0;
-  transition: var(--transition-fast);
+  transition: opacity 0.2s ease;
 }
 
 .header__logo:hover {
   opacity: 0.9;
-  transform: scale(1.02);
 }
 
 .header__logo-img {
@@ -86,9 +80,7 @@
   display: none;
 }
 
-/* =====================================================
-   MOBILE TOGGLE BUTTON - LARGER TAP TARGET
-===================================================== */
+/* Mobile toggle button */
 .header__mobile-toggle {
   display: flex;
   align-items: center;
@@ -99,7 +91,7 @@
   cursor: pointer;
   padding: 10px;
   border-radius: 12px;
-  transition: var(--transition-fast);
+  transition: background-color 0.2s ease;
   width: 48px;
   height: 48px;
 }
@@ -129,9 +121,7 @@
   }
 }
 
-/* =====================================================
-   MOBILE MENU - OPTIMIZED FOR VIEWPORT
-===================================================== */
+/* Mobile Menu */
 .header__mobile-menu {
   position: fixed;
   inset: 0;
@@ -154,7 +144,7 @@
   transform: translateX(0);
 }
 
-/* Mobile Navigation - Scrollable area */
+/* Mobile Navigation */
 .header__mobile-nav {
   display: flex;
   flex-direction: column;
@@ -162,14 +152,13 @@
   gap: 4px;
 }
 
-/* Remove all bullets */
+/* Reset lists */
 ul, li {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-/* Mobile Items - Compact but tappable */
 .header__mobile-item {
   border-bottom: 1px solid var(--neutral-light);
 }
@@ -187,7 +176,7 @@ ul, li {
   font-size: 1rem;
   font-weight: 700;
   color: var(--secondary-color);
-  transition: var(--transition-fast);
+  transition: color 0.2s ease;
   text-decoration: none;
   padding: 4px 0;
 }
@@ -196,7 +185,6 @@ ul, li {
   color: var(--primary-color);
 }
 
-/* Mobile Caret */
 .header__mobile-caret {
   font-size: 1.1rem;
   color: var(--primary-color);
@@ -210,7 +198,6 @@ ul, li {
   transform: rotate(180deg);
 }
 
-/* Mobile Submenu - Compact */
 .header__mobile-sub {
   max-height: 0;
   opacity: 0;
@@ -218,7 +205,7 @@ ul, li {
   display: flex;
   flex-direction: column;
   padding-left: 16px;
-  transition: all 0.3s ease;
+  transition: max-height 0.3s ease, opacity 0.2s ease;
 }
 
 .header__mobile-sub--open {
@@ -233,7 +220,7 @@ ul, li {
   font-weight: 500;
   padding: 8px 0;
   display: block;
-  transition: var(--transition-fast);
+  transition: color 0.2s ease, transform 0.2s ease;
   text-decoration: none;
 }
 
@@ -242,9 +229,7 @@ ul, li {
   transform: translateX(6px);
 }
 
-/* =====================================================
-   MOBILE CONTACT - COMPACT (MOVED ABOVE CTA)
-===================================================== */
+/* Mobile Contact */
 .header__mobile-contact {
   margin-top: auto;
   padding: 12px 0 8px 0;
@@ -261,7 +246,7 @@ ul, li {
   color: var(--neutral-medium);
   font-size: 0.85rem;
   text-decoration: none;
-  transition: var(--transition-fast);
+  transition: color 0.2s ease;
   padding: 4px 0;
   min-height: 36px;
 }
@@ -270,11 +255,6 @@ ul, li {
   color: var(--primary-color);
   width: 16px;
   height: 16px;
-  animation: headerPulse 2s ease-in-out infinite;
-}
-
-.header__mobile-contact-item:nth-child(2) svg {
-  animation-delay: 0.5s;
 }
 
 .header__mobile-contact-item:active {
@@ -282,9 +262,7 @@ ul, li {
   transform: translateX(4px);
 }
 
-/* =====================================================
-   MOBILE CTA BUTTON - VISIBLE WITHOUT SCROLLING
-===================================================== */
+/* Mobile CTA */
 .header__mobile-cta {
   width: 100%;
   margin-top: 8px;
@@ -302,7 +280,7 @@ ul, li {
   color: white;
   border: none;
   cursor: pointer;
-  transition: var(--transition);
+  transition: background-color 0.2s ease, transform 0.1s ease;
   min-height: 48px;
 }
 
@@ -321,9 +299,7 @@ ul, li {
   transform: translateX(4px);
 }
 
-/* =====================================================
-   DESKTOP (992px+)
-===================================================== */
+/* DESKTOP (992px+) */
 @media screen and (min-width: 992px) {
   .header__top {
     display: block;
@@ -349,7 +325,7 @@ ul, li {
     font-size: var(--font-size-xs);
     color: rgba(255, 255, 255, 0.8);
     font-weight: 500;
-    transition: var(--transition-fast);
+    transition: color 0.2s ease;
     text-decoration: none;
   }
   
@@ -359,11 +335,19 @@ ul, li {
   
   .header__contact-item svg {
     color: var(--primary-color);
-    animation: headerPulse 2s ease-in-out infinite;
   }
   
-  .header__contact-item:nth-child(2) svg {
-    animation-delay: 0.5s;
+  .header__trust-badge {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(46, 196, 182, 0.15);
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    color: var(--accent-color-dark);
+    border: 1px solid rgba(46, 196, 182, 0.3);
   }
   
   .header__nav {
@@ -386,7 +370,7 @@ ul, li {
     display: flex;
     align-items: center;
     gap: 4px;
-    transition: var(--transition-fast);
+    transition: color 0.2s ease;
     text-decoration: none;
     position: relative;
   }
@@ -435,7 +419,7 @@ ul, li {
     opacity: 0;
     visibility: hidden;
     transform: translateY(10px);
-    transition: all 0.3s ease;
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
     z-index: var(--z-dropdown);
   }
   
@@ -451,7 +435,7 @@ ul, li {
     color: var(--secondary-color);
     font-size: 0.9rem;
     font-weight: 600;
-    transition: var(--transition-fast);
+    transition: background-color 0.2s ease, padding-left 0.2s ease;
     text-decoration: none;
   }
   
@@ -480,9 +464,7 @@ ul, li {
   }
 }
 
-/* =====================================================
-   SMALL MOBILE (480px and below)
-===================================================== */
+/* SMALL MOBILE (480px and below) */
 @media screen and (max-width: 480px) {
   .header__logo-img {
     width: 90px;
@@ -526,64 +508,14 @@ ul, li {
   }
 }
 
-/* =====================================================
-   NFC ANIMATION
-===================================================== */
-@keyframes headerPulse {
-  0%, 100% {
-    opacity: 0.5;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.05);
-  }
-}
-
-/* =====================================================
-   HEADER TRUST BADGE (Desktop only)
-===================================================== */
-.header__trust-badge {
-  display: inline-flex;
-  align-items: center;
-  background: rgba(46, 196, 182, 0.15);
-  padding: 4px 12px;
-  border-radius: 50px;
-  font-size: 0.7rem;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-  color: var(--accent-color-dark);
-  border: 1px solid rgba(46, 196, 182, 0.3);
-  transition: all 0.2s ease;
-}
-
-.header__trust-badge-text {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-/* Position the badge on the left side of the top bar */
-.header__top-container {
-  justify-content: space-between;
-}
-
-/* =====================================================
-   PERFORMANCE
-===================================================== */
-.header {
-  will-change: background-color, backdrop-filter;
-}
-
+/* Reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
   .header,
   .header__dropdown,
   .header__mobile-menu,
   .header__nav-link::after,
   .header__mobile-caret,
-  .header__mobile-contact-item svg,
-  .header__contact-item svg {
+  .header__mobile-sub {
     transition: none !important;
-    animation: none !important;
   }
 }

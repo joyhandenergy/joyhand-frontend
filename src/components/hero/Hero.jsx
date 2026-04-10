@@ -1,26 +1,53 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { PiArrowRight } from "react-icons/pi";
-import PopUpModal from "@/components/contactForm/PopUpModal";
+import PopUpModal from "../contactForm/PopUpModal";
 import "./Hero.css";
 
 export default function Hero() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [videoLoaded, setVideoLoaded] = useState(false);
+  const videoRef = useRef(null);
+
+  // Only load video after page is interactive (improves LCP)
+  useEffect(() => {
+    const loadVideo = () => {
+      if (videoRef.current && !videoLoaded) {
+        videoRef.current.load();
+        setVideoLoaded(true);
+      }
+    };
+    // Delay video loading to prioritize critical content
+    const timer = setTimeout(loadVideo, 2000);
+    return () => clearTimeout(timer);
+  }, [videoLoaded]);
 
   return (
     <>
       <section className="hero">
-        {/* Background */}
+        {/* Background – static image first, video replaces after load */}
         <div className="hero__background">
+          <div className="hero__static-bg" aria-hidden="true">
+            <Image
+              src="/videos/heroImg/hero-poster.png"
+              alt=""
+              fill
+              priority
+              sizes="100vw"
+              className="hero__static-img"
+            />
+          </div>
           <video
+            ref={videoRef}
             autoPlay
             muted
             loop
             playsInline
-            preload="auto"
-            className="hero__video"
+            preload="metadata"
+            className={`hero__video ${videoLoaded ? "hero__video--loaded" : ""}`}
             poster="/videos/heroImg/hero-poster.png"
           >
             <source
@@ -31,29 +58,24 @@ export default function Hero() {
           <div className="hero__overlay"></div>
         </div>
 
-        {/* Content */}
         <div className="container hero__container">
           <div className="hero__content">
             <div className="hero__badge-wrapper">
-              <span className="hero__badge">
-                ⚡ OEM/ODM Manufacturer
-              </span>
+              <span className="hero__badge">⚡ OEM/ODM Manufacturer</span>
             </div>
 
             <h1 className="hero__title">
-              <span className="hero__title-line">
-                Custom Energy &
-              </span>
+              <span className="hero__title-line">Custom Energy &</span>
               <span className="hero__title-line hero__title-line--highlight">
                 E‑Mobility Manufacturer
               </span>
             </h1>
 
             <p className="hero__desc">
-              <strong>Direct factory supply</strong> of custom 
-              <strong> lithium‑ion batteries</strong>,
-              <strong> solar inverters</strong>, and
-              <strong> electric motorcycles</strong> with full OEM/ODM 
+              <strong>Direct factory supply</strong> of custom{" "}
+              <strong>lithium‑ion batteries</strong>,{" "}
+              <strong>solar inverters</strong>, and{" "}
+              <strong>electric motorcycles</strong> with full OEM/ODM
               capabilities for global distributors.
             </p>
 
@@ -78,7 +100,7 @@ export default function Hero() {
               <Link href="/products" className="btn hero__cta">
                 Explore Products <PiArrowRight />
               </Link>
-              <button 
+              <button
                 onClick={() => setIsModalOpen(true)}
                 className="btn btn--secondary hero__cta-secondary"
               >
@@ -87,29 +109,24 @@ export default function Hero() {
             </div>
 
             <p className="hero__trust-note">
-              <span className="hero__trust-icon">✓</span> 
+              <span className="hero__trust-icon">✓</span>
               ISO, CE, UL, UN38.3 Certified | Factory Direct
             </p>
           </div>
         </div>
 
-        {/* Animated Graphic */}
-        <div className="hero__sun-graphic">
+        {/* Simplified animated graphic – reduced complexity */}
+        <div className="hero__sun-graphic" aria-hidden="true">
           <div className="hero__graphic-particles"></div>
         </div>
 
-        {/* Scroll Indicator */}
         <div className="hero__scroll-indicator">
           <span className="hero__scroll-text">Discover Our Manufacturing</span>
           <div className="hero__scroll-line"></div>
         </div>
       </section>
 
-      <PopUpModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        mode="quote"
-      />
+      <PopUpModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} mode="quote" />
     </>
   );
 }

@@ -13,7 +13,7 @@ const SERVICES = [
     tag: "OEM / WHITE LABEL",
     title: "Scale Your Brand with Certified Solar & Battery Products",
     description:
-      "Launch your own line of solar inverters, power stations, and energy storage systems using JoyHand’s mature, certified platforms. We handle manufacturing, branding, and compliance so you can focus on sales and distribution.",
+      "Launch your own line of solar inverters, power stations, and energy storage systems using JoyHand's mature, certified platforms. We handle manufacturing, branding, and compliance so you can focus on sales and distribution.",
     extra:
       "Our OEM program gives you direct access to factory‑tested LFP batteries, hybrid inverters, and portable power stations. Add your logo, packaging, and firmware – we manage production, quality control, and global certifications (CE, UL, UN38.3). Scale from pilot orders to full container loads with predictable lead times.",
     features: [
@@ -23,7 +23,7 @@ const SERVICES = [
       "Flexible MOQs and scalable capacity"
     ],
     icon: <PiCube size={32} />,
-    image: "/HomeImg/businessModelImage2.jpg",
+    image: "/homeImg/businessModelImage2.jpg",  // Fixed path (lowercase)
     imageAlt: "OEM production line for solar inverters and battery packs"
   },
   {
@@ -31,7 +31,7 @@ const SERVICES = [
     tag: "ODM / CUSTOM ENGINEERING",
     title: "From Concept to Production‑Ready Energy Systems",
     description:
-      "When off‑the‑shelf won’t do, our engineering team designs custom lithium battery packs, e‑mobility powertrains, and integrated solar solutions tailored to your exact specifications.",
+      "When off‑the‑shelf won't do, our engineering team designs custom lithium battery packs, e‑mobility powertrains, and integrated solar solutions tailored to your exact specifications.",
     extra:
       "We provide full‑stack development: electrical architecture, BMS tuning, thermal simulation, structural design, and certification support. Work with our 30+ engineers to create unique products with exclusive tooling and IP protection. Prototyping, pilot runs, and mass production all under one roof.",
     features: [
@@ -41,7 +41,7 @@ const SERVICES = [
       "Exclusive tooling and IP protection"
     ],
     icon: <PiMicroscope size={32} />,
-    image: "/HomeImg/businessModelImage3.png",
+    image: "/homeImg/businessModelImage3.png",  // Fixed path
     imageAlt: "Engineering team developing custom battery solutions"
   },
   {
@@ -51,7 +51,7 @@ const SERVICES = [
     description:
       "Grow your catalog with ready‑to‑ship energy products. Choose from our standard range of storage batteries, inverters, and portable power stations – all certified and available for immediate logistics.",
     extra:
-      "Benefit from direct factory pricing, low MOQs, and complete technical support. Whether you’re stocking warehouses or dropshipping to end customers, JoyHand provides consistent quality, datasheets, and after‑sales service. Ideal for solar installers, e‑mobility dealers, and online retailers.",
+      "Benefit from direct factory pricing, low MOQs, and complete technical support. Whether you're stocking warehouses or dropshipping to end customers, JoyHand provides consistent quality, datasheets, and after‑sales service. Ideal for solar installers, e‑mobility dealers, and online retailers.",
     features: [
       "Global certifications: CE, UL, UN38.3",
       "Low minimum order quantities",
@@ -59,40 +59,44 @@ const SERVICES = [
       "Logistics support: bulk shipments or dropshipping"
     ],
     icon: <PiBuildings size={32} />,
-    image: "/HomeImg/businessModelImage4.png",
+    image: "/homeImg/businessModelImage4.png",  // Fixed path
     imageAlt: "Finished products ready for global shipment"
   }
 ];
 
 export default function BusinessModel() {
   const [activeService, setActiveService] = useState(SERVICES[0]);
+  const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
-  const [imagesLoaded, setImagesLoaded] = useState({
-    dynamic: false,
-    static: false
-  });
 
   useEffect(() => {
     const section = sectionRef.current;
+    if (!section) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          section.classList.add("is-visible");
+          setIsVisible(true);
+          observer.disconnect(); // Stop observing once visible
         }
       },
       { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
     );
-    if (section) observer.observe(section);
+    observer.observe(section);
     return () => observer.disconnect();
   }, []);
 
-  const handleImageLoad = (type) => {
-    setImagesLoaded(prev => ({ ...prev, [type]: true }));
+  // Preload next image when tab changes (optional performance)
+  const handleTabChange = (service) => {
+    setActiveService(service);
   };
 
   return (
-    <section ref={sectionRef} className="businessModel" aria-labelledby="business-model-heading">
-
+    <section 
+      ref={sectionRef} 
+      className={`businessModel ${isVisible ? 'is-visible' : ''}`} 
+      aria-labelledby="business-model-heading"
+    >
       {/* Decorative rings */}
       <SuperRing
         type="primary"
@@ -130,7 +134,7 @@ export default function BusinessModel() {
         {/* LEFT SIDE – images */}
         <div className="businessModel__images">
           {/* Static Image Card */}
-          <div className={`businessModel__image-card businessModel__image-card--static ${imagesLoaded.static ? 'businessModel__image-card--loaded' : ''}`}>
+          <div className="businessModel__image-card businessModel__image-card--static">
             <Image
               src="/homeImg/businessModelImage1.png"
               alt="JoyHand manufacturing facility"
@@ -139,14 +143,12 @@ export default function BusinessModel() {
               sizes="(max-width: 768px) 100vw, 50vw"
               quality={85}
               priority
-              onLoad={() => handleImageLoad('static')}
             />
-            {/* Overlay for image – adds gradient for text readability */}
             <div className="businessModel__image-overlay"></div>
           </div>
           
           {/* Dynamic Image Card */}
-          <div className={`businessModel__image-card businessModel__image-card--dynamic ${imagesLoaded.dynamic ? 'businessModel__image-card--loaded' : ''}`}>
+          <div className="businessModel__image-card businessModel__image-card--dynamic" key={activeService.id}>
             <Image
               src={activeService.image}
               alt={activeService.imageAlt}
@@ -155,21 +157,19 @@ export default function BusinessModel() {
               sizes="(max-width: 768px) 100vw, 50vw"
               quality={85}
               priority={activeService.id === SERVICES[0].id}
-              onLoad={() => handleImageLoad('dynamic')}
             />
-            {/* Overlay for image */}
             <div className="businessModel__image-overlay"></div>
           </div>
         </div>
 
         {/* RIGHT SIDE – content */}
         <div className="businessModel__content">
-          {/* Tabs - Pill Buttons (left-aligned on desktop) */}
+          {/* Tabs - Pill Buttons */}
           <div className="businessModel__service-tabs">
             {SERVICES.map((s) => (
               <button
                 key={s.id}
-                onClick={() => setActiveService(s)}
+                onClick={() => handleTabChange(s)}
                 className={`service-tab-btn ${activeService.id === s.id ? 'active' : ''}`}
                 aria-label={`Switch to ${s.id.toUpperCase()} services`}
               >
@@ -200,7 +200,7 @@ export default function BusinessModel() {
 
           <div className="businessModel__actions">
             <Link href="/services" className="btn btn--secondary businessModel__btn">
-              EXPLOR CAPABILITY
+              EXPLORE CAPABILITY
             </Link>
           </div>
         </div>

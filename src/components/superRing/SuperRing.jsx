@@ -1,8 +1,8 @@
 "use client";
-import React from "react";
+import React, { memo } from "react";
 import "./SuperRing.css";
 
-const SuperRing = ({
+const SuperRing = memo(({
   type = "primary",
   size = "1200px",
   thickness = "2px",
@@ -29,6 +29,8 @@ const SuperRing = ({
       aria-hidden="true"
     />
   );
-};
+});
+
+SuperRing.displayName = "SuperRing";
 
 export default SuperRing;
