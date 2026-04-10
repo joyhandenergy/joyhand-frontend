@@ -4,7 +4,7 @@
 
 .energy-platforms {
   width: 100%;
-  background-color: #000;
+  background-color: var(--accent-color-dark);
   overflow: hidden;
   position: relative;
 }
@@ -22,7 +22,7 @@
 .energy-platforms__grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2px; /* Precision split line between cards */
+  gap: 1px; /* Precision split line between cards */
 }
 
 @media screen and (min-width: 768px) {
@@ -40,7 +40,7 @@
   min-height: 480px;
   max-height: 750px;
   overflow: hidden;
-  background-color: #111;
+  background-color: var(--secondary-color);
 }
 
 .platform-card__link {
@@ -59,7 +59,8 @@
   position: absolute;
   inset: 0;
   /* Darker base for better title pop */
-  background: rgba(0, 0, 0, 0.45); 
+  background: color-mix(in srgb, var(--secondary-color), transparent 45%);
+ 
   z-index: 2;
   transition: background 0.5s ease;
 }
@@ -167,7 +168,8 @@
 }
 
 .platform-card:hover .platform-card__overlay {
-  background: rgba(0, 0, 0, 0.65);
+  background: color-mix(in srgb, var(--primary-color-dark), transparent 80%);
+;
 }
 
 .platform-card:hover .platform-card__center-group {
