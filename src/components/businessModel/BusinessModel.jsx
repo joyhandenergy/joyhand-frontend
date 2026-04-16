@@ -41,8 +41,7 @@ const SERVICES = [
       "Exclusive tooling and IP protection"
     ],
     icon: <PiMicroscope size={32} />,
-    image: "/homeImg/businessModelImage3.png",  // Fixed path
-    imageAlt: "Engineering team developing custom battery solutions"
+    image: "/homeImg/businessModelImage03.jpg"
   },
   {
     id: "b2b",
@@ -59,7 +58,7 @@ const SERVICES = [
       "Logistics support: bulk shipments or dropshipping"
     ],
     icon: <PiBuildings size={32} />,
-    image: "/homeImg/businessModelImage4.png",  // Fixed path
+    image: "/homeImg/businessModelImage4.jpg",  // Fixed path
     imageAlt: "Finished products ready for global shipment"
   }
 ];
@@ -136,7 +135,7 @@ export default function BusinessModel() {
           {/* Static Image Card */}
           <div className="businessModel__image-card businessModel__image-card--static">
             <Image
-              src="/homeImg/businessModelImage1.png"
+              src="/homeImg/businessModelImage01.jpg"
               alt="JoyHand manufacturing facility"
               fill
               className="businessModel__image"

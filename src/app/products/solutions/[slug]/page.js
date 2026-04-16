@@ -30,7 +30,7 @@ const solutionConfig = {
     image: "/homeImg/energyPlatformImage3.png",
     description: "Rugged, solar‑ready units for emergency & off‑grid.",
     keywords: "portable power station, solar generator, backup power, camping power, emergency power",
-    comingSoon: true
+    comingSoon: false   // ← CHANGE: set to false or remove this line
   },
   "electric-mobility": {
     title: "Electric Mobility",
@@ -60,6 +60,7 @@ function getProductsForCategory(filterCategory) {
   if (filterCategory === "battery") return getProductsByCategory("battery");
   if (filterCategory === "inverter") return getProductsByCategory("inverter");
   if (filterCategory === "electric-mobility") return getProductsByCategory("electric-mobility");
+  if (filterCategory === "portable-power") return getProductsByCategory("portable-power"); // ← ADD THIS LINE
   return [];
 }
 
@@ -70,7 +71,7 @@ async function SolutionContent({ slug, searchParams }) {
   if (!config) notFound();
 
   const allProducts = getProductsForCategory(config.filterCategory);
-  const isComingSoon = config.comingSoon || (config.filterCategory === "portable-power");
+  const isComingSoon = config.comingSoon === true; // only true if explicitly set
 
   const page = Number(searchParams?.page) || 1;
   const start = (page - 1) * PRODUCTS_PER_PAGE;

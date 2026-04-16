@@ -1766,7 +1766,231 @@ export const productData = [
     "40HQ": "Please contact sales"
   },
   youtubeVideoId: null
-}
+},
+  // ===== PORTABLE POWER STATIONS =====
+  {
+    id: "pp-001",
+    slug: "portable-power-station-1000w-2000wh",
+    name: "Portable Power Station 1000W",
+    model: "PPS-1000",
+    category: "portable-power",
+    type: "portable-station",
+    description: "1000W portable power station with 2000Wh LiFePO4 battery, pure sine wave output, and built-in MPPT solar controller. Perfect for camping, emergencies, and off-grid power.",
+    specifications: {
+      ratedPower: "1000W",
+      peakPower: "1500W",
+      batteryCapacity: "2000Wh",
+      batteryChemistry: "LiFePO4 (2-series)",
+      outputWaveform: "Pure Sine Wave",
+      acInput: "180V–240V (1000W max)",
+      solarInput: "XT90, 18V–55V, 500W max (built-in MPPT)",
+      carCharging: "Optional car charger",
+      acOutput: "2 x 220V 50Hz (total 1000W)",
+      dcOutput: "3 x DC5521, 12V 5A (total)",
+      usbOutput: "1 x 5V 2A",
+      upsFunction: "Supported",
+      cycleLife: "4500+ cycles (≥80% capacity)",
+      dischargeTemp: "-20°C to 55°C",
+      chargeTemp: "-10°C to 40°C",
+      productDimensions: "28 × 25 × 29 cm",
+      productWeight: "18.2 kg",
+      packingDimensions: "48 × 34 × 33.5 cm"
+    },
+    features: [
+      "UPS function for uninterruptible power switching",
+      "Built-in MPPT solar controller for efficient solar charging",
+      "Intelligent BMS for safe power usage",
+      "Pure sine wave output – safe for sensitive electronics",
+      "4500+ cycle life LiFePO4 battery",
+      "Supports solar and mains charging"
+    ],
+    applications: [
+      "Camping and outdoor activities",
+      "Emergency home backup",
+      "Off-grid power for tools",
+      "RV and van life"
+    ],
+    image: "/productImg/p-station/powerstation01.jpg",
+    gallery: [
+
+      "/productImg/p-station/powerstation01a.jpg",
+      "/productImg/p-station/powerstation01b.jpg",
+      "/productImg/p-station/powerstation01.jpg"
+
+    ],
+    datasheet: "",
+    certifications: ["CE", "UN38.3"],
+    warranty: "3 years",
+    inStock: true,
+    youtubeVideoId: null
+  },
+
+  {
+    id: "pp-002",
+    slug: "solar-generator-300w-500w-1000wh",
+    name: "Solar Generator UPS Energy Storage",
+    model: "SG-300/500",
+    category: "portable-power",
+    type: "portable-station",
+    description: "Lightweight solar generator with 1000Wh LiFePO4 battery. Available in 300W or 500W rated power. Perfect for small appliances, phones, and lights.",
+    specifications: {
+      ratedPower: "300W or 500W (sub‑model)",
+      batteryCapacity: "1000Wh",
+      batteryChemistry: "LiFePO4",
+      productDimensions: "30 × 15.5 × 21 cm",
+      netWeight: "10 kg",
+      acOutput: "1 x 220V 50Hz (Pure Sine Wave)",
+      usbOutput: "1 x 5V 2A",
+      typeCOutput: "PD 2.0, 20W max",
+      dcOutput: "2 x 12V 5A (total)",
+      acInput: "180V–240V",
+      solarInput: "XT90, 18V–55V, 300W max (built-in MPPT)",
+      upsFunction: "Supported",
+      cycleLife: "4500+ cycles (≥80% capacity)",
+      dischargeTemp: "-20°C to 55°C",
+      chargeTemp: "-10°C to 40°C"
+    },
+    features: [
+      "All-in-one solar generator with built‑in MPPT",
+      "Pure sine wave output – safe for electronics",
+      "Bidirectional + UPS function",
+      "Intelligent BMS protection",
+      "Supports solar and grid charging",
+      "Lightweight and portable (10kg)"
+    ],
+    applications: [
+      "Small home appliances",
+      "Phone and laptop charging",
+      "Emergency lighting",
+      "Outdoor photography"
+    ],
+    image: "/productImg/p-station/powerstation02.jpg",
+    gallery: [
+
+      "/productImg/p-station/powerstation02a.jpg",
+      "/productImg/p-station/powerstation02b.jpg", 
+      "/productImg/p-station/powerstation02.jpg"
+
+    ],
+    datasheet: "",
+    certifications: ["CE", "UN38.3"],
+    warranty: "2 years",
+    inStock: true,
+    youtubeVideoId: null
+  },
+
+  {
+    id: "pp-003",
+    slug: "all-in-one-solar-storage-3000w-9570wh",
+    name: "All-in-One Solar Storage System 3000W",
+    model: "ESS-3000",
+    category: "portable-power",
+    type: "home-storage",
+    description: "Heavy‑duty all‑in‑one solar storage system with 3000W low‑frequency inverter and 9570Wh LiFePO4 battery. On wheels, built‑in MPPT, and UPS. Ideal for engineering tools and home backup.",
+    specifications: {
+      systemType: "Engineering & Home Storage Dedicated PV Storage System",
+      ratedPower: "3000W",
+      batteryCapacity: "9570Wh",
+      inverterType: "Industrial frequency (low‑frequency) inverter",
+      mainsChargingPower: "1200W",
+      solarController: "Built‑in MPPT",
+      maxSolarInputPower: "2500W",
+      solarVoltageRange: "36V ~ 90V",
+      upsMode: "Bypass mode, up to 3000W output",
+      acOutput: "2 x 220V 50Hz",
+      dcOutput: "1 x Anderson, 50A",
+      outputWaveform: "Pure Sine Wave"
+    },
+    features: [
+      "3000W low‑frequency inverter – handles motor loads easily",
+      "Built‑in MPPT solar controller (2500W max)",
+      "Bidirectional grid charging with UPS function",
+      "Supports up to 3000W of engineering motor equipment",
+      "No need to distinguish inductive vs resistive loads",
+      "Heavy‑duty wheels for portability"
+    ],
+    applications: [
+      "Engineering and construction sites",
+      "Home backup power",
+      "Workshops and garages",
+      "Off‑grid cabins"
+    ],
+    image: "/productImg/p-station/powerstation03.jpg",
+    gallery: [
+      
+      "/productImg/p-station/powerstation03a.jpg",
+      "/productImg/p-station/powerstation03b.jpg",
+      "/productImg/p-station/powerstation03c.jpg",
+      "/productImg/p-station/powerstation03.jpg"
+
+
+    ],
+    datasheet: "",
+    certifications: ["CE", "UN38.3"],
+    warranty: "3 years",
+    inStock: true,
+    youtubeVideoId: null
+  },
+
+  {
+    id: "bat-010",
+    slug: "he01-residential-all-in-one-5-5kw-11-16kwh",
+    name: "HE01 Residential All-in-One Storage",
+    model: "HE01",
+    category: "battery",
+    type: "all-in-one",
+    description: "5.5kW residential solar storage all‑in‑one system with 11‑16kWh LiFePO4 battery. Combines inverter, MPPT, and battery in one cabinet. Smart display and BMS protection.",
+    specifications: {
+      ratedOutputPower: "5.5KW",
+      storageCapacity: "11kWh ~ 16kWh",
+      communication: "RS485",
+      operatingTemperature: "-15°C to 55°C",
+      productSizeWithoutWheels: "55 × 44 × 77 cm",
+      productSizeWithWheels: "55 × 44 × 85 cm",
+      systemWeight: "91 kg",
+      batteryCellMaterial: "LiFePO4",
+      nominalVoltage: "51.2V",
+      cycleLife: "≥6000 cycles",
+      inverterType: "Pure Sine Wave (low‑frequency)",
+      inputSources: "L+N+PE single phase",
+      ratedInputVoltage: "210/220/230/240V",
+      inputVoltageRange: "90 ~ 280V",
+      outputVoltage: "210/220/230/240V",
+      maxPVInputPower: "6000W",
+      pvChargeModel: "MPPT",
+      maxPVInputVoltage: "450V",
+      bestPVVoltageRange: "300 ~ 450V",
+      maxPVChargingCurrent: "120A",
+      maxACChargingCurrent: "120A"
+    },
+    features: [
+      "All‑in‑one design: inverter + MPPT + battery",
+      "Smart LCD display for monitoring",
+      "BMS safety protection",
+      "6000+ cycle life LiFePO4 battery",
+      "Supports PV and grid charging",
+      "Expandable storage from 11kWh to 16kWh"
+    ],
+    applications: [
+      "Residential solar storage",
+      "Home backup power",
+      "Off‑grid homes",
+      "Peak shaving"
+    ],
+    image: "/productImg/s-battery/solarbattery04.jpg",
+    gallery: [
+
+      "/productImg/s-battery/solarbattery04b.jpg",
+      "/productImg/s-battery/solarbattery04a.jpg",
+      "/productImg/s-battery/solarbattery04.jpg"
+
+    ],
+    datasheet: "",
+    certifications: ["CE", "IEC"],
+    warranty: "5 years",
+    inStock: true,
+    youtubeVideoId: null
+  }
 ];
 
 // =====================================================
