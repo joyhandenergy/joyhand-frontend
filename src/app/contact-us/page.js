@@ -28,7 +28,7 @@ const globalOffices = [
     icon: <Building2 size={22} />,
     title: "USA - Headquarters",
     content: "Montgomery, AL, USA",
-    address: "2530 E South Blvd, Montgomery, AL 36116, United States",
+    address: "445 Dexter Avenue, Suite 4050, Montgomery, AL 36104", // ✅ Updated address
     link: "https://maps.google.com",
     isOffice: true,
     region: "Americas"
@@ -286,7 +286,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* ================= MAP SECTION ================= */}
+      {/* ================= MAP SECTION – China factory only ================= */}
       <section className="contact-map">
         <div className="contact-map__overlay">
           <div className="contact-map__content">
@@ -299,8 +299,8 @@ export default function ContactPage() {
           </div>
         </div>
         <iframe
-          title="JoyHand Global Locations"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2000000!2d-100!3d35!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzXCsDAwJzAwLjAiTiAxMDXCsDAwJzAwLjAiVw!5e0!3m2!1sen!2sus!4v1640000000000!5m2!1sen!2sus"
+          title="JoyHand China Manufacturing Facility"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3696.481864232149!2d113.5141813150156!3d22.788581985071915!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34036d8b5b3f7b9b%3A0x2b4b5c7a6d8e9f0a!2sNansha%20District%2C%20Guangzhou%2C%20Guangdong%2C%20China!5e0!3m2!1sen!2sus!4v1640000000000!5m2!1sen!2sus"
           width="100%"
           height="500"
           style={{ border: 0, filter: "grayscale(100%) invert(90%) contrast(1.2)" }}

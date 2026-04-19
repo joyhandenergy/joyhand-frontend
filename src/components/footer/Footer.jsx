@@ -20,29 +20,29 @@ export default function Footer() {
     {
       name: "USA - Headquarters",
       location: "Montgomery, AL",
-      address: "2530 E South Blvd, Montgomery, AL 36116",
+      address: "445 Dexter Avenue, Suite 4050, Montgomery, AL 36104",
       icon: <PiBuilding size={14} />,
-      link: "https://maps.google.com/?q=2530+E+South+Blvd+Montgomery+AL+36116"
+      link: "https://maps.google.com/?q=445+Dexter+Avenue+Suite+4050+Montgomery+AL+36104"
     },
     {
       name: "China - Manufacturing Facility",
       location: "Guangzhou, Guangdong",
-      address: "No. 7 Nansha District, Guangzhou 511400",
+      address: "No. 7, Nansha District, Guangzhou 511400, Guangdong, China",
       icon: <PiFactory size={14} />,
-      link: "https://maps.google.com/?q=Nansha+District+Guangzhou+511400+China",
+      link: "https://maps.google.com/?q=No.+7,+Nansha+District,+Guangzhou+511400,+Guangdong,+China",
       featured: true
     },
     {
       name: "Australia - Pacific Office",
       location: "Melbourne, VIC",
-      address: "157 A'Beckett Street, Melbourne VIC 3000",
+      address: "157 A'Beckett Street, Melbourne VIC 3000, Australia",
       icon: <PiGlobe size={14} />,
       link: "https://maps.google.com/?q=157+A%27Beckett+Street+Melbourne+VIC+3000"
     },
     {
       name: "Nigeria - Africa Office",
       location: "Lagos, Nigeria",
-      address: "New Mandilas International Market, Trade Fair, Ojo, Lagos",
+      address: "New Mandilas International Market, Trade Fair, Ojo, Lagos, Nigeria",
       icon: <PiGlobe size={14} />,
       link: "https://maps.google.com/?q=Trade+Fair+Ojo+Lagos+Nigeria"
     }

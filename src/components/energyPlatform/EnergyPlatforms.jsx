@@ -11,7 +11,7 @@ const FEATURED_CATEGORIES = [
     id: 1,
     title: "Storage Battery Solutions",
     slug: "storage-batteries",
-    image: "/homeImg/energyPlatformImage1.png",
+    image: "/homeImg/energyPlatformImage01.jpg",
     desc: "LFP battery systems for residential & industrial use.",
     sourceNote: "In‑house Production"
   },
@@ -19,7 +19,7 @@ const FEATURED_CATEGORIES = [
     id: 2,
     title: "Solar Inverter Solutions",
     slug: "solar-inverters",
-    image: "/homeImg/energyPlatformImage2.png",
+    image: "/homeImg/energyPlatformImage02.jpg",
     desc: "High-efficiency pure sine wave power conversion.",
     sourceNote: "Tier‑1 Components"
   },
@@ -27,7 +27,7 @@ const FEATURED_CATEGORIES = [
     id: 3,
     title: "Portable Power Solutions",
     slug: "portable-power-stations",
-    image: "/homeImg/energyPlatformImage3.png",
+    image: "/homeImg/energyPlatformImage03.jpg",
     desc: "Rugged power for emergency and off-grid needs.",
     sourceNote: "OEM/ODM Ready"
   },
@@ -35,7 +35,7 @@ const FEATURED_CATEGORIES = [
     id: 4,
     title: "Electric Mobility Solutions",
     slug: "electric-mobility",
-    image: "/homeImg/energyPlatformImage4.png",
+    image: "/homeImg/energyPlatformImage04.jpg",
     desc: "Sustainable electric motorcycles and scooters.",
     sourceNote: "Urban Logistics"
   },

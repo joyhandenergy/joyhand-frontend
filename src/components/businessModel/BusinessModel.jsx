@@ -135,7 +135,7 @@ export default function BusinessModel() {
           {/* Static Image Card */}
           <div className="businessModel__image-card businessModel__image-card--static">
             <Image
-              src="/homeImg/businessModelImage01.jpg"
+              src="/homeImg/businessModelImage001.jpg"
               alt="JoyHand manufacturing facility"
               fill
               className="businessModel__image"

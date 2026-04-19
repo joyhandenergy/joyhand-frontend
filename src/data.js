@@ -977,7 +977,7 @@ export const productData = [
       "Home backup power",
       "Self-consumption optimization"
     ],
-    image: "/images/productImg/inverter1.jpg",
+    image: "/images/productImg/inverter001.jpg",
     gallery: [],
     datasheet: "/datasheets/HF-6.2KW-48V.pdf",
     certifications: ["CE", "IEC 62109"],
@@ -1022,7 +1022,7 @@ export const productData = [
       "Large home installations",
       "Small business backup"
     ],
-    image: "/images/productImg/inverter2.jpg",
+    image: "/images/productImg/inverter001.jpg",
     gallery: [],
     datasheet: "/datasheets/HF-12KW-48V.pdf",
     certifications: ["CE", "IEC 62109"],
