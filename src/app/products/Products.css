@@ -929,13 +929,27 @@
   text-align: left;
   transition: var(--transition);
 }
-.product-details__faq-question:hover {
-  background: rgba(255, 127, 65, 0.1);
+
+.product-details__faq-question-content {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
 }
+
 .product-details__faq-icon {
   color: var(--primary-color);
   flex-shrink: 0;
+  transition: transform 0.2s ease;
 }
+
+.product-details__faq-question:hover .product-details__faq-icon {
+  transform: scale(1.1);
+}
+
+.product-details__faq-question:hover {
+  background: rgba(255, 127, 65, 0.1);
+}
+
 .product-details__faq-answer {
   padding: var(--spacing-3);
   color: var(--neutral-medium);
@@ -943,6 +957,7 @@
   line-height: 1.5;
   border-top: 1px solid rgba(18, 27, 45, 0.05);
 }
+
 .product-details__related {
   margin-top: var(--spacing-4);
   padding-top: var(--spacing-4);

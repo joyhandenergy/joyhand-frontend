@@ -40,9 +40,11 @@ export default function ProductFAQ({ product }) {
               onClick={() => toggle(idx)}
               aria-expanded={openIndex === idx}
             >
-              <PiQuestion size={18} className="product-details__faq-icon" />
-              <span>{faq.question}</span>
-              {openIndex === idx ? <PiCaretUp size={24} /> : <PiCaretDown size={24} />}
+              <div className="product-details__faq-question-content">
+                <PiQuestion size={24} className="product-details__faq-icon" />  {/* ← increased from 18 to 24 */}
+                <span>{faq.question}</span>
+              </div>
+              {openIndex === idx ? <PiCaretUp size={20} /> : <PiCaretDown size={20} />}
             </button>
             {openIndex === idx && (
               <div className="product-details__faq-answer">
