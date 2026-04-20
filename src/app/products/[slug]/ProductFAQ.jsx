@@ -42,7 +42,7 @@ export default function ProductFAQ({ product }) {
             >
               <PiQuestion size={18} className="product-details__faq-icon" />
               <span>{faq.question}</span>
-              {openIndex === idx ? <PiCaretUp size={16} /> : <PiCaretDown size={16} />}
+              {openIndex === idx ? <PiCaretUp size={24} /> : <PiCaretDown size={24} />}
             </button>
             {openIndex === idx && (
               <div className="product-details__faq-answer">
