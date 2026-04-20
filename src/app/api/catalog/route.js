@@ -1,9 +1,8 @@
-export const runtime = 'edge';
 import { NextResponse } from "next/server";
 import { productData } from "@/data";
 import { Document, Page, Text, View, Image, StyleSheet, renderToBuffer } from "@react-pdf/renderer";
 
-// No external font registration – use built‑in Helvetica
+// No external fonts – use built‑in Helvetica
 const styles = StyleSheet.create({
   page: {
     padding: 30,
@@ -32,7 +31,6 @@ const styles = StyleSheet.create({
   headerTitle: {
     fontFamily: "Helvetica-Bold",
     fontSize: 18,
-    fontWeight: "bold",
     color: "#121b2d",
     marginBottom: 4,
   },
@@ -46,7 +44,6 @@ const styles = StyleSheet.create({
   categoryTitle: {
     fontFamily: "Helvetica-Bold",
     fontSize: 22,
-    fontWeight: "bold",
     color: "#ff7f41",
     marginBottom: 8,
   },
@@ -68,10 +65,11 @@ const styles = StyleSheet.create({
   productImageContainer: {
     width: "30%",
     marginRight: 16,
+    height: 120, // Fixed height for consistent image sizing
   },
   productImage: {
     width: "100%",
-    height: "auto",
+    height: "100%",
     objectFit: "contain",
   },
   productDetails: {
@@ -80,7 +78,6 @@ const styles = StyleSheet.create({
   productName: {
     fontFamily: "Helvetica-Bold",
     fontSize: 14,
-    fontWeight: "bold",
     color: "#121b2d",
     marginBottom: 4,
   },
@@ -154,6 +151,10 @@ const categoryMeta = {
     name: "Electric Mobility",
     desc: "Electric motorcycles and scooters engineered for urban commuting and last‑mile delivery. Reliable motors, long‑range batteries, and rugged frames.",
   },
+  "portable-power": {
+    name: "Portable Power Stations",
+    desc: "Portable power stations with LiFePO4 batteries, pure sine wave output, and built-in MPPT controllers. Ideal for camping, home backup, and off-grid use.",
+  },
 };
 
 function getKeySpecs(product) {
@@ -177,6 +178,11 @@ function getKeySpecs(product) {
     if (s.maxRange || s.mileage) specs.push({ label: "Range", value: s.maxRange || s.mileage });
     if (s.motor) specs.push({ label: "Motor", value: s.motor });
     if (s.battery) specs.push({ label: "Battery", value: s.battery });
+  } else if (cat === "portable-power") {
+    if (s.ratedPower) specs.push({ label: "Rated Power", value: s.ratedPower });
+    if (s.batteryCapacity) specs.push({ label: "Capacity", value: s.batteryCapacity });
+    if (s.outputWaveform) specs.push({ label: "Waveform", value: s.outputWaveform });
+    if (s.cycleLife) specs.push({ label: "Cycle Life", value: s.cycleLife });
   }
   return specs.slice(0, 5);
 }
@@ -196,6 +202,7 @@ export async function GET(request) {
     }
 
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+    // Update this path to your actual logo (ensure the file exists)
     const logoUrl = `${baseUrl}/images/logos/joyhandLogo.png`;
 
     const PdfDocument = () => (
@@ -203,7 +210,7 @@ export async function GET(request) {
         <Page size="A4" style={styles.page}>
           <View style={styles.header}>
             <View style={styles.logoContainer}>
-              <Image src={logoUrl} style={styles.logo} alt="JoyHand Logo" />
+              <Image src={logoUrl} style={styles.logo} />
             </View>
             <View style={styles.headerText}>
               <Text style={styles.headerTitle}>Product Catalog</Text>
@@ -222,7 +229,7 @@ export async function GET(request) {
             return (
               <View key={idx} style={styles.productCard} wrap={false}>
                 <View style={styles.productImageContainer}>
-                  <Image src={imageUrl} style={styles.productImage} alt={product.name} />
+                  <Image src={imageUrl} style={styles.productImage} />
                 </View>
                 <View style={styles.productDetails}>
                   <Text style={styles.productName}>{product.name} {product.model}</Text>
@@ -257,7 +264,6 @@ export async function GET(request) {
     );
 
     const pdfBuffer = await renderToBuffer(<PdfDocument />);
-
     return new NextResponse(pdfBuffer, {
       headers: {
         "Content-Type": "application/pdf",

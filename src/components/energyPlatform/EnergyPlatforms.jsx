@@ -19,7 +19,7 @@ const FEATURED_CATEGORIES = [
     id: 2,
     title: "Solar Inverter Solutions",
     slug: "solar-inverters",
-    image: "/homeImg/energyPlatformImage02.jpg",
+    image: "/homeImg/energyPlatformImage002.jpg",
     desc: "High-efficiency pure sine wave power conversion.",
     sourceNote: "Tier‑1 Components"
   },
@@ -27,7 +27,7 @@ const FEATURED_CATEGORIES = [
     id: 3,
     title: "Portable Power Solutions",
     slug: "portable-power-stations",
-    image: "/homeImg/energyPlatformImage03.jpg",
+    image: "/homeImg/energyPlatformImage003.jpg",
     desc: "Rugged power for emergency and off-grid needs.",
     sourceNote: "OEM/ODM Ready"
   },

@@ -451,7 +451,7 @@
 
 .why-distributors__box {
   background: var(--secondary-color);
-  padding: var(--spacing-5) var(--spacing-3); /* Smaller on mobile */
+  padding: var(--spacing-4) var(--spacing-2); /* Smaller on mobile */
   border-radius: 24px; /* Smaller on mobile */
   color: white;
   position: relative;
@@ -559,7 +559,7 @@
 
 .why-item {
   background: rgba(255, 255, 255, 0.05);
-  padding: var(--spacing-4); /* Smaller on mobile */
+  padding: var(--spacing-3); /* Smaller on mobile */
   border-radius: 20px; /* Smaller on mobile */
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -570,7 +570,7 @@
 
 @media screen and (min-width: 768px) {
   .why-item {
-    padding: var(--spacing-5);
+    padding: var(--spacing-4);
     border-radius: 24px;
   }
 }

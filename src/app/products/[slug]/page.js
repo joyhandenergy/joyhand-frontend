@@ -8,6 +8,7 @@ import {
   PiLightning,
   PiMotorcycle, 
   PiFactory,
+  PiPlug,
 } from "react-icons/pi";
 import { productData } from "@/data";
 import ProductGallery from "./ProductGallery";
@@ -17,12 +18,12 @@ import ProductFAQ from "./ProductFAQ";
 import ProductRelated from "./ProductRelated";
 import "../Products.css";
 
-// Helper functions (same as before)
 function getCategoryIcon(category) {
   switch(category) {
     case "battery": return <PiBatteryHigh size={16} />;
     case "inverter": return <PiLightning size={16} />;
     case "electric-mobility": return <PiMotorcycle size={16} />;
+    case "portable-power": return <PiPlug size={16} />;
     default: return <PiFactory size={16} />;
   }
 }
@@ -32,6 +33,7 @@ function getCategoryDisplay(category) {
     case "battery": return "Battery Storage";
     case "inverter": return "Solar Inverter";
     case "electric-mobility": return "Electric Mobility";
+    case "portable-power": return "Portable Power";
     default: return "Energy Solution";
   }
 }
@@ -44,12 +46,15 @@ function getTypeDisplay(type) {
     "solar-storage": "Solar Storage",
     "hybrid": "Hybrid Inverter",
     "motorcycle": "Electric Motorcycle",
-    "scooter": "Electric Scooter"
+    "scooter": "Electric Scooter",
+    "portable-station": "Portable Station",
+    "home-storage": "Home Storage",
+    "all-in-one": "All-in-One"
   };
   return types[type] || type;
 }
 
-// Component: Key specs at a glance (right column)
+// Key specs for right column
 function ProductKeySpecs({ product }) {
   const { specifications, category } = product;
   if (!specifications) return null;
@@ -76,6 +81,13 @@ function ProductKeySpecs({ product }) {
       { label: "Motor", value: specifications.motor },
       { label: "Battery", value: specifications.battery },
     ];
+  } else if (category === "portable-power") {
+    keySpecs = [
+      { label: "Rated Power", value: specifications.ratedPower },
+      { label: "Battery Capacity", value: specifications.batteryCapacity },
+      { label: "Cycle Life", value: specifications.cycleLife },
+      { label: "UPS Support", value: specifications.upsFunction === "Supported" ? "Yes" : specifications.upsFunction || "Yes" },
+    ];
   }
 
   if (keySpecs.length === 0) return null;
@@ -95,7 +107,6 @@ function ProductKeySpecs({ product }) {
   );
 }
 
-// Component: Key Features (bullet list) – now moved to right column
 function ProductFeaturesCompact({ features }) {
   if (!features || features.length === 0) return null;
   return (
@@ -113,7 +124,6 @@ function ProductFeaturesCompact({ features }) {
   );
 }
 
-// Full specifications table (unchanged but we'll add responsive wrapper)
 function ProductSpecs({ product }) {
   const { specifications, category, type } = product;
   if (!specifications) return null;
@@ -185,6 +195,25 @@ function ProductSpecs({ product }) {
       { label: "Dimensions", value: specifications.dimension },
       { label: "Container Loading", value: specifications.containerLoading },
     ];
+  } else if (category === "portable-power") {
+    specsToShow = [
+      { label: "Model", value: product.model },
+      { label: "Type", value: getTypeDisplay(type) },
+      { label: "Rated Power", value: specifications.ratedPower },
+      { label: "Peak Power", value: specifications.peakPower },
+      { label: "Battery Capacity", value: specifications.batteryCapacity },
+      { label: "Battery Chemistry", value: specifications.batteryChemistry },
+      { label: "Output Waveform", value: specifications.outputWaveform },
+      { label: "AC Output", value: specifications.acOutput },
+      { label: "DC Output", value: specifications.dcOutput },
+      { label: "USB Output", value: specifications.usbOutput },
+      { label: "Solar Input", value: specifications.solarInput },
+      { label: "AC Input", value: specifications.acInput },
+      { label: "Cycle Life", value: specifications.cycleLife },
+      { label: "UPS Function", value: specifications.upsFunction === "Supported" ? "Yes" : specifications.upsFunction },
+      { label: "Dimensions", value: specifications.productDimensions },
+      { label: "Weight", value: specifications.productWeight },
+    ];
   }
 
   specsToShow = specsToShow.filter(spec => spec.value);
@@ -248,31 +277,25 @@ function ProductWarranty({ warranty }) {
   );
 }
 
-// Breadcrumbs component (unchanged)
 function Breadcrumbs({ product, categoryDisplay }) {
+  let solutionSlug = "";
+  if (product.category === "battery") solutionSlug = "storage-batteries";
+  else if (product.category === "inverter") solutionSlug = "solar-inverters";
+  else if (product.category === "electric-mobility") solutionSlug = "electric-mobility";
+  else if (product.category === "portable-power") solutionSlug = "portable-power-stations";
+  
   return (
     <nav className="product-details__breadcrumbs" aria-label="Breadcrumb">
       <ol className="product-details__breadcrumbs-list">
-        <li className="product-details__breadcrumbs-item">
-          <Link href="/">Home</Link>
-        </li>
-        <li className="product-details__breadcrumbs-item">
-          <Link href="/products">Products</Link>
-        </li>
-        <li className="product-details__breadcrumbs-item">
-          <Link href={`/products/solutions/${product.category === "battery" ? "storage-batteries" : product.category === "inverter" ? "solar-inverters" : "electric-mobility"}`}>
-            {categoryDisplay}
-          </Link>
-        </li>
-        <li className="product-details__breadcrumbs-item" aria-current="page">
-          {product.name}
-        </li>
+        <li className="product-details__breadcrumbs-item"><Link href="/">Home</Link></li>
+        <li className="product-details__breadcrumbs-item"><Link href="/products">Products</Link></li>
+        <li className="product-details__breadcrumbs-item"><Link href={`/products/solutions/${solutionSlug}`}>{categoryDisplay}</Link></li>
+        <li className="product-details__breadcrumbs-item" aria-current="page">{product.name}</li>
       </ol>
     </nav>
   );
 }
 
-// Main server component
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const product = productData.find(p => p.slug === slug);
@@ -286,10 +309,7 @@ export async function generateMetadata({ params }) {
 export default async function ProductDetailsPage({ params }) {
   const { slug } = await params;
   const product = productData.find(p => p.slug === slug);
-  
-  if (!product) {
-    notFound();
-  }
+  if (!product) notFound();
 
   const images = product.gallery?.length ? product.gallery : [product.image];
   const categoryDisplay = getCategoryDisplay(product.category);
@@ -301,45 +321,31 @@ export default async function ProductDetailsPage({ params }) {
     <main className="product-details">
       <div className="container">
         <Breadcrumbs product={product} categoryDisplay={categoryDisplay} />
-
         <div className="product-details__grid">
-          {/* Left column: Gallery + Video */}
           <section className="product-details__gallery">
             <ProductGallery images={images} productName={product.name} />
             <ProductVideo videoId={videoId} productName={product.name} />
           </section>
-
-          {/* Right column: Info + Key Specs + Features + Actions */}
           <section className="product-details__info">
             <div className="product-details__meta">
-              <span className="product-details__badge">
-                {categoryIcon} {categoryDisplay}
-              </span>
+              <span className="product-details__badge">{categoryIcon} {categoryDisplay}</span>
               <span className="product-details__type">{typeDisplay}</span>
-              {product.model && (
-                <span className="product-details__model">Model: {product.model}</span>
-              )}
+              {product.model && <span className="product-details__model">Model: {product.model}</span>}
             </div>
-            
             <h1 className="product-details__title">{product.name}</h1>
             <p className="product-details__description">{product.description}</p>
-
             <ProductKeySpecs product={product} />
             <ProductFeaturesCompact features={product.features} />
             <ProductActions category={product.category} />
           </section>
         </div>
-
-        {/* Full‑width sections below */}
         <div className="product-details__full-content">
           <ProductSpecs product={product} />
           <ProductApplications applications={product.applications} />
-          
           <div className="product-details__bottom-grid">
             <ProductCertifications certifications={product.certifications} />
             <ProductWarranty warranty={product.warranty} />
           </div>
-
           <ProductFAQ product={product} />
           <ProductRelated currentProductId={product.id} />
         </div>

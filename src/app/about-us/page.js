@@ -152,7 +152,7 @@ export default function AboutPage() {
       <PageHeader
         title="Direct Manufacturing Excellence"
         subtitle="Since 1998, we've built the technology that powers global energy markets."
-        pageImage="/pageHeadImg/pageheader-about.jpg"
+        pageImage="/pageHeadImg/pageheader-about01.jpg"
       />
 
       {/* ================= INTRO ================= */}

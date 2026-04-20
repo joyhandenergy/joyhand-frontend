@@ -12,7 +12,7 @@ export const revalidate = 3600;
 const solutionConfig = {
   "storage-batteries": {
     title: "Storage Batteries",
-    image: "/homeImg/energyPlatformImage1.png",
+    image: "/homeImg/energyPlatformImage01.jpg",
     filterCategory: "battery",
     description: "Wall‑mounted, mobile & rack‑mounted LFP batteries.",
     keywords: "lithium battery, LFP battery, energy storage, solar battery, battery storage system"
@@ -20,14 +20,14 @@ const solutionConfig = {
   "solar-inverters": {
     title: "Solar Inverters",
     filterCategory: "inverter",
-    image: "/homeImg/energyPlatformImage2.png",
+    image: "/homeImg/energyPlatformImage002.jpg",
     description: "High‑efficiency hybrid & wall‑mounted inverters.",
     keywords: "solar inverter, hybrid inverter, off-grid inverter, MPPT inverter, power inverter"
   },
   "portable-power-stations": {
     title: "Portable Power Stations",
     filterCategory: "portable-power",
-    image: "/homeImg/energyPlatformImage3.png",
+    image: "/homeImg/energyPlatformImage003.jpg",
     description: "Rugged, solar‑ready units for emergency & off‑grid.",
     keywords: "portable power station, solar generator, backup power, camping power, emergency power",
     comingSoon: false   // ← CHANGE: set to false or remove this line
@@ -35,7 +35,7 @@ const solutionConfig = {
   "electric-mobility": {
     title: "Electric Mobility",
     filterCategory: "electric-mobility",
-    image: "/homeImg/energyPlatformImage4.png",
+    image: "/homeImg/energyPlatformImage04.jpg",
     description: "Electric motorcycles, scooters & e‑bikes.",
     keywords: "electric motorcycle, e-motorcycle, electric scooter, e-bike, electric mobility"
   }

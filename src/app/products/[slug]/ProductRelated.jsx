@@ -7,19 +7,26 @@ import { productData } from "@/data";
 
 export default function ProductRelated({ currentProductId }) {
   const relatedProducts = useMemo(() => {
-    // Filter out current product and get 3 random products from all categories
+    // Filter out current product
     const otherProducts = productData.filter(p => p.id !== currentProductId);
-    const shuffled = [...otherProducts];
-    // Use a seeded random based on currentProductId for deterministic shuffling
+    if (otherProducts.length === 0) return [];
+
+    // Create a seeded random function based on currentProductId
     const seededRandom = (seed) => {
       const x = Math.sin(seed) * 10000;
       return x - Math.floor(x);
     };
+
+    // Shuffle using seeded random (deterministic per product)
+    const shuffled = [...otherProducts];
     for (let i = shuffled.length - 1; i > 0; i--) {
-      const j = Math.floor(seededRandom(currentProductId + i) * (i + 1));
+      // Use product ID as seed to get consistent order for same product
+      const seed = currentProductId.charCodeAt(0) || 1;
+      const j = Math.floor(seededRandom(seed + i) * (i + 1));
       [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
     }
-    return shuffled.slice(0, 3);
+    // Return first 4 products
+    return shuffled.slice(0, 4);
   }, [currentProductId]);
 
   if (relatedProducts.length === 0) return null;
@@ -31,7 +38,13 @@ export default function ProductRelated({ currentProductId }) {
         {relatedProducts.map((product) => (
           <Link key={product.id} href={`/products/${product.slug}`} className="product-details__related-card">
             <div className="product-details__related-img-wrapper">
-              <Image src={product.image} alt={product.name} className="product-details__related-img" width={200} height={200} />
+              <Image
+                src={product.image}
+                alt={product.name}
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw"
+                className="product-details__related-img"
+              />
             </div>
             <h4 className="product-details__related-name">{product.name}</h4>
             <span className="product-details__related-model">{product.model}</span>
