@@ -1,0 +1,13 @@
+{
+  "name": "joyhand-frontend",
+  "main": ".worker-next/index.mjs",
+  "compatibility_date": "2024-12-30",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": ".worker-next/assets",
+    "binding": "ASSETS"
+  },
+  "observability": {
+    "enabled": true
+  }
+}

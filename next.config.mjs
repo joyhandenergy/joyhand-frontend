@@ -1,18 +1,14 @@
-/** @type {import('next').NextConfig} */
+// next.config.js – for local development
 const nextConfig = {
-  /* Keep your existing compiler setting */
   reactCompiler: true,
-
-  /* Add the images configuration to fix the [75, 85] error */
   images: {
-    qualities: [75, 85],
-    formats: ['image/avif', 'image/webp'], // Optimized for faster loading
+    // Temporarily use default Next.js loader (requires sharp)
+    // loader: 'custom',           // Comment this out
+    // loaderFile: './lib/cloudflareImageLoader.js', // Comment this out
+    formats: ['image/avif', 'image/webp'],
   },
-
-  /* Recommended: Helps with smooth scroll route transitions */
   experimental: {
     scrollRestoration: true,
   },
 };
-
 export default nextConfig;
