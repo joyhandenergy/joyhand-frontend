@@ -6,8 +6,5 @@
   "assets": {
     "directory": ".worker-next/assets",
     "binding": "ASSETS"
-  },
-  "observability": {
-    "enabled": true
   }
 }
