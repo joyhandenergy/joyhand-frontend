@@ -105,7 +105,7 @@ export default function Header() {
               </a>
               <a href="mailto:info@joyhand.com" className="header__contact-item">
                 <PiEnvelopeSimple size={14} />
-                <span>info@joyhand.com</span>
+                <span>sales@joyhand.com</span>
               </a>
             </div>
           </div>
